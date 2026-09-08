@@ -131,14 +131,15 @@ if (reducedMotion) {
                             entry.isIntersecting
                         ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                            entry.target
+                                .classList
+                                .add("visible");
 
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
+                            revealObserver
+                                .unobserve(
+                                    entry.target
+                                );
 
                         }
 
@@ -328,9 +329,10 @@ const counterObserver =
                         );
 
 
-                        counterObserver.unobserve(
-                            entry.target
-                        );
+                        counterObserver
+                            .unobserve(
+                                entry.target
+                            );
 
                     }
 
@@ -542,7 +544,7 @@ if (
         } else {
 
             portraitSystem.style.transform =
-                "translate3d(0, 0, 0)";
+                "translate3d(0,0,0)";
 
         }
 
@@ -560,7 +562,7 @@ if (
 
 
 /* =========================================================
-   9. INTERACTIVE PARTICLE BACKGROUND
+   9. PARTICLE BACKGROUND
 ========================================================= */
 
 const canvas =
@@ -593,7 +595,7 @@ if (
         x: null,
         y: null,
 
-        radius: 160
+        radius: 165
 
     };
 
@@ -680,11 +682,11 @@ if (
             this.size =
                 Math.random() *
                 1.7 +
-                0.7;
+                0.75;
 
 
             /*
-                Intentionally slow ambient motion.
+                Deliberately slow ambient motion.
             */
 
             this.velocityX =
@@ -692,7 +694,7 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.20;
+                0.19;
 
 
             this.velocityY =
@@ -700,7 +702,7 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.20;
+                0.19;
 
 
             this.forceX = 0;
@@ -710,7 +712,7 @@ if (
             this.opacity =
                 Math.random() *
                 0.15 +
-                0.23;
+                0.24;
 
         }
 
@@ -728,7 +730,7 @@ if (
 
 
             /*
-                Cursor force fades away gradually.
+                Forces decay smoothly.
             */
 
             this.forceX *=
@@ -740,7 +742,7 @@ if (
 
 
             /*
-                Gentle cursor interaction.
+                Gentle cursor repulsion.
             */
 
             if (
@@ -779,18 +781,13 @@ if (
                         mouse.radius;
 
 
-                    /*
-                        Repulsion is intentionally
-                        subtle rather than dramatic.
-                    */
-
                     this.forceX +=
                         (
                             dx /
                             distance
                         ) *
                         strength *
-                        0.26;
+                        0.25;
 
 
                     this.forceY +=
@@ -799,7 +796,7 @@ if (
                             distance
                         ) *
                         strength *
-                        0.26;
+                        0.25;
 
                 }
 
@@ -807,7 +804,7 @@ if (
 
 
             /*
-                Wrap around screen.
+                Screen wrapping.
             */
 
             if (
@@ -885,7 +882,7 @@ if (
 
 
     /* -----------------------------------------------------
-       PARTICLE COUNT
+       CREATE PARTICLES
     ----------------------------------------------------- */
 
     function createParticles() {
@@ -901,7 +898,7 @@ if (
         let count =
             Math.floor(
                 screenArea /
-                22000
+                21500
             );
 
 
@@ -924,9 +921,9 @@ if (
                 Math.min(
                     Math.max(
                         count,
-                        45
+                        46
                     ),
-                    72
+                    74
                 );
 
         }
@@ -948,15 +945,15 @@ if (
 
 
     /* -----------------------------------------------------
-       CONNECT NEARBY PARTICLES
+       CONNECT PARTICLES
     ----------------------------------------------------- */
 
     function connectParticles() {
 
         const connectionDistance =
             width < 760
-                ? 85
-                : 120;
+                ? 86
+                : 122;
 
 
         for (
@@ -999,7 +996,7 @@ if (
                             distance /
                             connectionDistance
                         ) *
-                        0.12;
+                        0.13;
 
 
                     context.beginPath();
@@ -1042,7 +1039,7 @@ if (
 
 
     /* -----------------------------------------------------
-       CURSOR HALO CONNECTION
+       CURSOR CONNECTION
     ----------------------------------------------------- */
 
     function connectCursor() {
@@ -1079,16 +1076,16 @@ if (
 
                 if (
                     distance <
-                    105
+                    110
                 ) {
 
                     const opacity =
                         (
                             1 -
                             distance /
-                            105
+                            110
                         ) *
-                        0.12;
+                        0.14;
 
 
                     context.beginPath();
@@ -1204,6 +1201,7 @@ if (
             () => {
 
                 mouse.x = null;
+
                 mouse.y = null;
 
             }
@@ -1239,7 +1237,7 @@ if (
 
 
     /* -----------------------------------------------------
-       PAUSE WHEN TAB HIDDEN
+       PAUSE IF TAB IS HIDDEN
     ----------------------------------------------------- */
 
     document.addEventListener(
@@ -1272,7 +1270,7 @@ if (
 
 
 /* =========================================================
-   10. CLOSE MOBILE NAV ON DESKTOP RESIZE
+   10. DESKTOP RESIZE CLEANUP
 ========================================================= */
 
 window.addEventListener(
