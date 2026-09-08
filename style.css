@@ -1,37 +1,37 @@
 /* =========================================================
-   VICTOR AKOYO PORTFOLIO
-   ========================================================= */
+   VICTOR AKOYO PROFESSIONAL PORTFOLIO
+========================================================= */
 
 
 /* =========================================================
-   1. VARIABLES
+   1. DESIGN SYSTEM
 ========================================================= */
 
 :root {
 
-    --navy: #0a2e4d;
-    --navy-dark: #061f35;
+    --heading: #173d5b;
+    --heading-dark: #0c304d;
 
-    --accent: #0878bd;
-    --accent-dark: #06659e;
+    --accent: #1674a8;
+    --accent-dark: #115f8b;
 
-    --text: #486c86;
-    --muted: #70899d;
+    --body: #607d91;
+    --muted: #8095a5;
 
     --white: #ffffff;
-    --off-white: #f8fbfd;
-    --soft: #f0f6fa;
+    --soft: #f2f7fa;
+    --soft-transparent: rgba(242, 247, 250, 0.82);
 
-    --border: rgba(10, 46, 77, 0.12);
-    --border-accent: rgba(8, 120, 189, 0.22);
+    --border: rgba(23, 61, 91, 0.13);
+    --accent-border: rgba(22, 116, 168, 0.23);
 
     --shadow:
-        0 18px 55px rgba(6, 45, 75, 0.08);
+        0 18px 48px rgba(13, 53, 82, 0.07);
 
     --shadow-hover:
-        0 24px 65px rgba(6, 45, 75, 0.12);
+        0 23px 58px rgba(13, 53, 82, 0.11);
 
-    --radius: 16px;
+    --radius: 15px;
 
     --max-width: 1120px;
 
@@ -55,7 +55,7 @@ html {
 
     scroll-behavior: smooth;
 
-    scroll-padding-top: 76px;
+    scroll-padding-top: 72px;
 
 }
 
@@ -66,7 +66,7 @@ body {
 
     overflow-x: hidden;
 
-    color: var(--text);
+    color: var(--body);
 
     background: var(--white);
 
@@ -78,7 +78,7 @@ body {
         Arial,
         sans-serif;
 
-    line-height: 1.65;
+    line-height: 1.62;
 
 }
 
@@ -112,13 +112,13 @@ button {
 
     color: var(--white);
 
-    background: var(--navy);
+    background: var(--heading);
 
 }
 
 
 /* =========================================================
-   3. INTERACTIVE BACKGROUND
+   3. BACKGROUND
 ========================================================= */
 
 #particleCanvas {
@@ -127,7 +127,7 @@ button {
 
     inset: 0;
 
-    z-index: -5;
+    z-index: -4;
 
     width: 100%;
     height: 100%;
@@ -143,25 +143,27 @@ button {
 
     inset: 0;
 
-    z-index: -7;
+    z-index: -6;
 
     pointer-events: none;
 
     background-image:
 
         linear-gradient(
-            rgba(8, 120, 189, 0.027) 1px,
+            rgba(22, 116, 168, 0.04) 1px,
             transparent 1px
         ),
 
         linear-gradient(
             90deg,
-            rgba(8, 120, 189, 0.027) 1px,
+            rgba(22, 116, 168, 0.04) 1px,
             transparent 1px
         );
 
     background-size:
-        44px 44px;
+        42px 42px;
+
+    opacity: 0.72;
 
 }
 
@@ -170,46 +172,44 @@ button {
 
     position: fixed;
 
-    z-index: -8;
+    z-index: -7;
 
-    width: 600px;
-    height: 600px;
+    width: 620px;
+    height: 620px;
 
     border-radius: 50%;
 
-    filter: blur(105px);
+    filter: blur(110px);
 
     pointer-events: none;
-
-    opacity: 0.18;
 
 }
 
 
 .glow-one {
 
-    top: -190px;
+    top: -210px;
     right: -220px;
 
     background:
-        #64c2f3;
+        rgba(110, 193, 235, 0.25);
 
 }
 
 
 .glow-two {
 
-    bottom: -250px;
-    left: -220px;
+    bottom: -260px;
+    left: -240px;
 
     background:
-        #a4ddfa;
+        rgba(151, 216, 245, 0.21);
 
 }
 
 
 /* =========================================================
-   4. GENERAL LAYOUT
+   4. GLOBAL LAYOUT
 ========================================================= */
 
 .container {
@@ -230,7 +230,7 @@ button {
     position: relative;
 
     padding:
-        88px 0;
+        76px 0;
 
 }
 
@@ -238,15 +238,10 @@ button {
 .section-soft {
 
     background:
-        rgba(
-            240,
-            246,
-            250,
-            0.76
-        );
+        var(--soft-transparent);
 
     backdrop-filter:
-        blur(3px);
+        blur(2px);
 
 }
 
@@ -264,16 +259,10 @@ button {
     z-index: 1000;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.92
-        );
+        rgba(255, 255, 255, 0.93);
 
     border-bottom:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     backdrop-filter:
         blur(18px);
@@ -289,7 +278,7 @@ button {
             var(--max-width)
         );
 
-    height: 72px;
+    height: 70px;
 
     margin-inline: auto;
 
@@ -297,10 +286,9 @@ button {
 
     align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap: 30px;
+    gap: 28px;
 
 }
 
@@ -309,15 +297,17 @@ button {
 
     flex-shrink: 0;
 
-    color: var(--navy);
+    color:
+        var(--heading);
 
     font-size:
-        0.98rem;
+        0.96rem;
 
-    font-weight: 850;
+    font-weight:
+        750;
 
     letter-spacing:
-        -0.02em;
+        -0.018em;
 
 }
 
@@ -328,7 +318,7 @@ button {
 
     align-items: center;
 
-    gap: 27px;
+    gap: 26px;
 
 }
 
@@ -337,12 +327,14 @@ button {
 
     position: relative;
 
-    color: #43637c;
+    color:
+        #4f6b7f;
 
     font-size:
-        0.79rem;
+        0.77rem;
 
-    font-weight: 750;
+    font-weight:
+        650;
 
     transition:
         color 0.25s ease;
@@ -357,7 +349,7 @@ button {
     position: absolute;
 
     left: 0;
-    bottom: -9px;
+    bottom: -8px;
 
     width: 100%;
     height: 2px;
@@ -412,8 +404,7 @@ button {
     padding: 8px;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         8px;
@@ -437,59 +428,14 @@ button {
         4px auto;
 
     background:
-        var(--navy);
-
-    transition:
-        transform 0.25s ease,
-        opacity 0.25s ease;
+        var(--heading);
 
 }
 
 
 /* =========================================================
-   7. HERO
+   7. EYEBROWS / SMALL SECTION LABELS
 ========================================================= */
-
-.hero {
-
-    position: relative;
-
-    min-height:
-        calc(
-            100svh - 72px
-        );
-
-    display: flex;
-
-    align-items: center;
-
-    padding:
-        38px 0 44px;
-
-}
-
-
-.hero-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1.35fr)
-        minmax(280px, 0.65fr);
-
-    gap: 62px;
-
-    align-items: center;
-
-}
-
-
-.hero-content {
-
-    max-width: 770px;
-
-}
-
 
 .eyebrow {
 
@@ -502,18 +448,19 @@ button {
     gap: 7px;
 
     margin:
-        0 0 14px;
+        0 0 13px;
 
     color:
         var(--accent);
 
     font-size:
-        0.71rem;
+        0.72rem;
 
-    font-weight: 850;
+    font-weight:
+        750;
 
     letter-spacing:
-        0.145em;
+        0.135em;
 
     text-transform:
         uppercase;
@@ -523,51 +470,108 @@ button {
 
 .eyebrow span {
 
-    opacity: 0.58;
+    opacity: 0.62;
+
+}
+
+
+.hero-eyebrow {
+
+    color:
+        var(--accent-dark);
+
+    font-weight:
+        800;
+
+}
+
+
+/* =========================================================
+   8. HERO
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    min-height:
+        calc(100svh - 70px);
+
+    display: flex;
+
+    align-items: flex-start;
+
+    padding:
+        34px 0 32px;
+
+}
+
+
+.hero-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.32fr)
+        minmax(260px, 0.68fr);
+
+    gap: 68px;
+
+    align-items: center;
+
+}
+
+
+.hero-content {
+
+    max-width: 720px;
 
 }
 
 
 .hero-title {
 
-    max-width: 750px;
+    max-width: 690px;
 
     margin:
-        0 0 18px;
+        0 0 17px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
         clamp(
-            2.65rem,
-            4vw,
-            3.85rem
+            2.55rem,
+            3.4vw,
+            3.2rem
         );
 
-    line-height: 1.045;
+    line-height: 1.08;
 
     letter-spacing:
-        -0.052em;
+        -0.042em;
 
-    font-weight: 820;
+    font-weight: 700;
 
 }
 
 
 .hero-description {
 
-    max-width: 690px;
+    max-width: 670px;
 
     margin: 0;
 
     color:
-        #52728a;
+        #58758a;
 
     font-size:
-        0.94rem;
+        0.91rem;
 
-    line-height: 1.68;
+    line-height:
+        1.64;
 
 }
 
@@ -581,7 +585,7 @@ button {
     gap: 10px;
 
     margin-top:
-        24px;
+        21px;
 
 }
 
@@ -591,25 +595,23 @@ button {
     display:
         inline-flex;
 
-    min-height: 44px;
+    min-height: 43px;
 
     padding:
-        0 18px;
+        0 17px;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
     border-radius:
         6px;
 
     font-size:
-        0.79rem;
+        0.77rem;
 
     font-weight:
-        800;
+        700;
 
     transition:
         transform 0.25s ease,
@@ -634,25 +636,24 @@ button {
         var(--white);
 
     border:
-        1px solid
-        var(--accent);
+        1px solid var(--accent);
 
     background:
         var(--accent);
 
     box-shadow:
-        0 10px 24px
-        rgba(8, 120, 189, 0.16);
+        0 9px 21px
+        rgba(22, 116, 168, 0.14);
 
 }
 
 
 .button-primary:hover {
 
-    border-color:
+    background:
         var(--accent-dark);
 
-    background:
+    border-color:
         var(--accent-dark);
 
 }
@@ -661,36 +662,32 @@ button {
 .button-secondary {
 
     color:
-        var(--navy);
+        var(--heading);
 
     border:
-        1px solid
-        var(--border-accent);
+        1px solid var(--accent-border);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.78
-        );
+        rgba(255, 255, 255, 0.8);
 
 }
 
 
 .button-secondary:hover {
 
-    border-color:
-        var(--navy);
-
     color:
         var(--white);
 
     background:
-        var(--navy);
+        var(--heading);
+
+    border-color:
+        var(--heading);
 
 }
 
+
+/* HERO META */
 
 .hero-meta {
 
@@ -699,7 +696,7 @@ button {
     flex-wrap: wrap;
 
     margin-top:
-        26px;
+        23px;
 
 }
 
@@ -709,11 +706,10 @@ button {
     min-width: 132px;
 
     padding:
-        0 22px;
+        0 20px;
 
     border-left:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
 }
 
@@ -732,10 +728,13 @@ button {
     display: block;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        0.78rem;
+        0.75rem;
+
+    font-weight:
+        700;
 
 }
 
@@ -744,19 +743,19 @@ button {
 
     display: block;
 
-    margin-top: 2px;
+    margin-top: 1px;
 
     color:
         var(--muted);
 
     font-size:
-        0.66rem;
+        0.64rem;
 
 }
 
 
 /* =========================================================
-   8. PORTRAIT
+   9. HERO PORTRAIT
 ========================================================= */
 
 .hero-visual {
@@ -773,6 +772,8 @@ button {
 
     width: 100%;
 
+    padding-top: 18px;
+
 }
 
 
@@ -780,8 +781,8 @@ button {
 
     position: relative;
 
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
 
     display: flex;
 
@@ -789,11 +790,10 @@ button {
 
     justify-content: center;
 
-    margin-inline:
-        auto;
+    margin-inline: auto;
 
     transition:
-        transform 0.15s linear;
+        transform 0.14s linear;
 
 }
 
@@ -804,28 +804,22 @@ button {
 
     z-index: 5;
 
-    width: 178px;
-    height: 178px;
+    width: 170px;
+    height: 170px;
 
     padding: 7px;
 
     border:
-        1px solid
-        var(--border-accent);
+        1px solid var(--accent-border);
 
     border-radius: 50%;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.96
-        );
+        rgba(255, 255, 255, 0.97);
 
     box-shadow:
-        0 20px 55px
-        rgba(6, 45, 75, 0.13);
+        0 18px 48px
+        rgba(13, 53, 82, 0.12);
 
 }
 
@@ -859,7 +853,7 @@ button {
 
 
 /* =========================================================
-   9. PORTRAIT ORBITS
+   10. PORTRAIT ORBITS
 ========================================================= */
 
 .orbit {
@@ -875,16 +869,16 @@ button {
 
 .orbit-one {
 
-    width: 222px;
-    height: 222px;
+    width: 214px;
+    height: 214px;
 
     border:
         1px solid
-        rgba(8, 120, 189, 0.18);
+        rgba(22, 116, 168, 0.19);
 
     animation:
         orbitClockwise
-        10s
+        11s
         linear
         infinite;
 
@@ -901,7 +895,7 @@ button {
 
     border:
         1px dashed
-        rgba(8, 120, 189, 0.14);
+        rgba(22, 116, 168, 0.16);
 
     border-radius: 50%;
 
@@ -910,16 +904,16 @@ button {
 
 .orbit-two {
 
-    width: 255px;
-    height: 255px;
+    width: 245px;
+    height: 245px;
 
     border:
         1px dashed
-        rgba(8, 120, 189, 0.14);
+        rgba(22, 116, 168, 0.16);
 
     animation:
         orbitCounterClockwise
-        16s
+        17s
         linear
         infinite;
 
@@ -936,17 +930,15 @@ button {
         var(--accent);
 
     box-shadow:
-        0 0 0
-        5px
-        rgba(8, 120, 189, 0.08),
-        0 0 15px
-        rgba(8, 120, 189, 0.32);
+        0 0 0 5px
+        rgba(22, 116, 168, 0.09),
+        0 0 14px
+        rgba(22, 116, 168, 0.32);
 
 }
 
 
-.orbit-one
-.orbit-dot {
+.orbit-one .orbit-dot {
 
     top: 50%;
     right: -5px;
@@ -957,11 +949,10 @@ button {
 }
 
 
-.orbit-two
-.orbit-dot {
+.orbit-two .orbit-dot {
 
-    bottom: 21px;
-    left: 34px;
+    bottom: 20px;
+    left: 32px;
 
     width: 9px;
     height: 9px;
@@ -972,17 +963,11 @@ button {
 @keyframes orbitClockwise {
 
     from {
-
-        transform:
-            rotate(0deg);
-
+        transform: rotate(0deg);
     }
 
     to {
-
-        transform:
-            rotate(360deg);
-
+        transform: rotate(360deg);
     }
 
 }
@@ -991,24 +976,18 @@ button {
 @keyframes orbitCounterClockwise {
 
     from {
-
-        transform:
-            rotate(360deg);
-
+        transform: rotate(360deg);
     }
 
     to {
-
-        transform:
-            rotate(0deg);
-
+        transform: rotate(0deg);
     }
 
 }
 
 
 /* =========================================================
-   10. HERO STATUS
+   11. HERO STATUS
 ========================================================= */
 
 .hero-status {
@@ -1017,32 +996,26 @@ button {
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
     margin:
-        2px auto 0;
+        -3px auto 0;
 
     padding:
-        9px 14px;
+        8px 13px;
 
     border:
-        1px solid
-        var(--border-accent);
+        1px solid var(--accent-border);
 
     border-radius:
         999px;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.9
-        );
+        rgba(255, 255, 255, 0.9);
 
     box-shadow:
-        0 10px 25px
-        rgba(6, 45, 75, 0.07);
+        0 9px 22px
+        rgba(13, 53, 82, 0.06);
 
 }
 
@@ -1052,10 +1025,12 @@ button {
     display: block;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        0.7rem;
+        0.67rem;
+
+    font-weight: 700;
 
 }
 
@@ -1070,7 +1045,7 @@ button {
         var(--muted);
 
     font-size:
-        0.6rem;
+        0.58rem;
 
 }
 
@@ -1083,16 +1058,15 @@ button {
     border-radius: 50%;
 
     background:
-        #20b779;
+        #23ae79;
 
     box-shadow:
-        0 0 0
-        4px
-        rgba(32, 183, 121, 0.10);
+        0 0 0 4px
+        rgba(35, 174, 121, 0.09);
 
     animation:
         statusPulse
-        2.4s
+        2.7s
         ease-in-out
         infinite;
 
@@ -1105,18 +1079,16 @@ button {
     100% {
 
         box-shadow:
-            0 0 0
-            4px
-            rgba(32, 183, 121, 0.10);
+            0 0 0 4px
+            rgba(35, 174, 121, 0.09);
 
     }
 
     50% {
 
         box-shadow:
-            0 0 0
-            8px
-            rgba(32, 183, 121, 0.025);
+            0 0 0 8px
+            rgba(35, 174, 121, 0.02);
 
     }
 
@@ -1124,7 +1096,7 @@ button {
 
 
 /* =========================================================
-   11. SECTION HEADINGS
+   12. SECTION HEADINGS
 ========================================================= */
 
 .section-heading {
@@ -1132,7 +1104,7 @@ button {
     max-width: 720px;
 
     margin-bottom:
-        42px;
+        37px;
 
 }
 
@@ -1141,43 +1113,45 @@ button {
 .contact-heading h2 {
 
     margin:
-        0 0 13px;
+        0 0 11px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
         clamp(
-            1.85rem,
-            3vw,
-            2.7rem
+            1.75rem,
+            2.45vw,
+            2.25rem
         );
 
-    line-height: 1.1;
+    line-height: 1.13;
 
     letter-spacing:
-        -0.038em;
+        -0.032em;
+
+    font-weight: 700;
 
 }
 
 
 .section-heading p:last-child {
 
-    max-width: 690px;
+    max-width: 670px;
 
     margin: 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.94rem;
+        0.89rem;
 
 }
 
 
 /* =========================================================
-   12. IMPACT
+   13. IMPACT
 ========================================================= */
 
 .impact-grid {
@@ -1187,35 +1161,29 @@ button {
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 16px;
+    gap: 15px;
 
 }
 
 
 .impact-card {
 
-    min-height: 276px;
+    min-height: 260px;
 
-    padding: 26px;
+    padding: 25px;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         var(--radius);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.9
-        );
+        rgba(255, 255, 255, 0.92);
 
     box-shadow:
-        0 8px 30px
-        rgba(6, 45, 75, 0.035);
+        0 7px 25px
+        rgba(13, 53, 82, 0.035);
 
     transition:
         transform 0.3s ease,
@@ -1228,10 +1196,10 @@ button {
 .impact-card:hover {
 
     transform:
-        translateY(-5px);
+        translateY(-4px);
 
     border-color:
-        var(--border-accent);
+        var(--accent-border);
 
     box-shadow:
         var(--shadow-hover);
@@ -1248,12 +1216,13 @@ button {
         var(--accent);
 
     font-size:
-        0.65rem;
+        0.62rem;
 
-    font-weight: 850;
+    font-weight:
+        750;
 
     letter-spacing:
-        0.15em;
+        0.14em;
 
 }
 
@@ -1261,19 +1230,14 @@ button {
 .card-number {
 
     margin-bottom:
-        27px;
+        24px;
 
 }
 
 
-/*
-   IMPORTANT:
-   every primary metric uses the SAME navy.
-*/
-
 .metric {
 
-    min-height: 50px;
+    min-height: 47px;
 
     display: flex;
 
@@ -1282,17 +1246,18 @@ button {
     gap: 2px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        2.3rem;
+        2.12rem;
 
-    font-weight: 850;
+    font-weight:
+        700;
 
     line-height: 1;
 
     letter-spacing:
-        -0.05em;
+        -0.04em;
 
     font-variant-numeric:
         tabular-nums;
@@ -1310,10 +1275,10 @@ button {
 .metric-arrow {
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        1.42rem;
+        1.25rem;
 
 }
 
@@ -1321,13 +1286,15 @@ button {
 .impact-card h3 {
 
     margin:
-        17px 0 9px;
+        16px 0 8px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        0.94rem;
+        0.9rem;
+
+    font-weight: 700;
 
 }
 
@@ -1337,16 +1304,16 @@ button {
     margin: 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.79rem;
+        0.77rem;
 
 }
 
 
 /* =========================================================
-   13. EXPERTISE
+   14. EXPERTISE
 ========================================================= */
 
 .expertise-grid {
@@ -1356,31 +1323,25 @@ button {
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 16px;
+    gap: 15px;
 
 }
 
 
 .expertise-card {
 
-    min-height: 210px;
+    min-height: 195px;
 
-    padding: 26px;
+    padding: 24px;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         var(--radius);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.74
-        );
+        rgba(255, 255, 255, 0.76);
 
     transition:
         transform 0.3s ease,
@@ -1396,7 +1357,7 @@ button {
         translateY(-4px);
 
     border-color:
-        var(--border-accent);
+        var(--accent-border);
 
     box-shadow:
         var(--shadow);
@@ -1407,13 +1368,15 @@ button {
 .expertise-card h3 {
 
     margin:
-        26px 0 10px;
+        23px 0 9px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        1.02rem;
+        0.97rem;
+
+    font-weight: 700;
 
 }
 
@@ -1423,26 +1386,22 @@ button {
     margin: 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.81rem;
+        0.78rem;
 
 }
 
 
 /* =========================================================
-   14. CASE STUDIES
+   15. CASE STUDIES
 ========================================================= */
 
 .case-section {
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(247, 251, 253, 0.9),
-            rgba(255, 255, 255, 0.94)
-        );
+        rgba(248, 251, 253, 0.88);
 
 }
 
@@ -1452,16 +1411,16 @@ button {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(2, 1fr);
 
-    gap: 17px;
+    gap: 16px;
 
 }
 
 
 .case-card {
 
-    min-height: 375px;
+    min-height: 315px;
 
     display: flex;
 
@@ -1478,13 +1437,13 @@ button {
     background:
         linear-gradient(
             145deg,
-            #083b5e,
-            var(--navy-dark)
+            #17445f,
+            #0d3048
         );
 
     box-shadow:
-        0 17px 48px
-        rgba(4, 39, 66, 0.12);
+        0 15px 40px
+        rgba(13, 48, 72, 0.11);
 
     transition:
         transform 0.3s ease,
@@ -1496,11 +1455,11 @@ button {
 .case-card:hover {
 
     transform:
-        translateY(-5px);
+        translateY(-4px);
 
     box-shadow:
-        0 24px 65px
-        rgba(4, 39, 66, 0.16);
+        0 21px 54px
+        rgba(13, 48, 72, 0.15);
 
 }
 
@@ -1509,27 +1468,20 @@ button {
 
     display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap: 15px;
+    gap: 14px;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.6
-        );
+        rgba(255, 255, 255, 0.66);
 
     font-size:
-        0.63rem;
+        0.61rem;
 
-    font-weight:
-        800;
+    font-weight: 700;
 
     letter-spacing:
-        0.09em;
+        0.08em;
 
     text-transform:
         uppercase;
@@ -1540,16 +1492,18 @@ button {
 .case-card h3 {
 
     margin:
-        32px 0 15px;
+        26px 0 13px;
 
     color:
         var(--white);
 
     font-size:
-        1.16rem;
+        1.08rem;
 
     line-height:
         1.35;
+
+    font-weight: 700;
 
 }
 
@@ -1558,16 +1512,13 @@ button {
 
     margin: 0;
 
+    max-width: 500px;
+
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.7
-        );
+        rgba(255, 255, 255, 0.72);
 
     font-size:
-        0.8rem;
+        0.79rem;
 
 }
 
@@ -1577,16 +1528,11 @@ button {
     margin-top: auto;
 
     padding-top:
-        27px;
+        22px;
 
     border-top:
         1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
+        rgba(255, 255, 255, 0.13);
 
 }
 
@@ -1599,10 +1545,12 @@ button {
         var(--white);
 
     font-size:
-        1.8rem;
+        1.55rem;
+
+    font-weight: 700;
 
     letter-spacing:
-        -0.04em;
+        -0.03em;
 
 }
 
@@ -1611,24 +1559,19 @@ button {
 
     display: block;
 
-    margin-top: 5px;
+    margin-top: 4px;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.55
-        );
+        rgba(255, 255, 255, 0.58);
 
     font-size:
-        0.66rem;
+        0.63rem;
 
 }
 
 
 /* =========================================================
-   15. TIMELINE
+   16. EXPERIENCE TIMELINE
 ========================================================= */
 
 .timeline {
@@ -1648,7 +1591,7 @@ button {
 
     top: 0;
     bottom: 0;
-    left: 175px;
+    left: 180px;
 
     width: 1px;
 
@@ -1665,12 +1608,12 @@ button {
     display: grid;
 
     grid-template-columns:
-        148px 1fr;
+        150px 1fr;
 
-    gap: 55px;
+    gap: 58px;
 
     padding-bottom:
-        42px;
+        38px;
 
 }
 
@@ -1681,11 +1624,11 @@ button {
 
     position: absolute;
 
-    top: 6px;
-    left: 170px;
+    top: 5px;
+    left: 175px;
 
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
 
     border-radius: 50%;
 
@@ -1693,9 +1636,8 @@ button {
         var(--accent);
 
     box-shadow:
-        0 0 0
-        5px
-        rgba(8, 120, 189, 0.08);
+        0 0 0 5px
+        rgba(22, 116, 168, 0.08);
 
 }
 
@@ -1706,10 +1648,9 @@ button {
         var(--accent);
 
     font-size:
-        0.7rem;
+        0.68rem;
 
-    font-weight:
-        800;
+    font-weight: 700;
 
 }
 
@@ -1719,10 +1660,12 @@ button {
     margin: 0;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        1.04rem;
+        1rem;
+
+    font-weight: 700;
 
 }
 
@@ -1736,7 +1679,9 @@ button {
         var(--accent);
 
     font-size:
-        0.76rem;
+        0.73rem;
+
+    font-weight: 700;
 
 }
 
@@ -1746,19 +1691,19 @@ button {
     max-width: 670px;
 
     margin:
-        11px 0 0;
+        10px 0 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.81rem;
+        0.79rem;
 
 }
 
 
 /* =========================================================
-   16. EDUCATION
+   17. EDUCATION
 ========================================================= */
 
 .education-grid {
@@ -1768,29 +1713,23 @@ button {
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 18px;
+    gap: 17px;
 
 }
 
 
 .education-card {
 
-    padding: 30px;
+    padding: 28px;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         var(--radius);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.9
-        );
+        rgba(255, 255, 255, 0.92);
 
 }
 
@@ -1801,13 +1740,13 @@ button {
         var(--accent);
 
     font-size:
-        0.66rem;
+        0.63rem;
 
     font-weight:
-        850;
+        750;
 
     letter-spacing:
-        0.09em;
+        0.085em;
 
     text-transform:
         uppercase;
@@ -1818,13 +1757,15 @@ button {
 .education-card h3 {
 
     margin:
-        25px 0 8px;
+        22px 0 7px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        1.08rem;
+        1.02rem;
+
+    font-weight: 700;
 
 }
 
@@ -1834,10 +1775,10 @@ button {
     margin: 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.84rem;
+        0.81rem;
 
 }
 
@@ -1846,26 +1787,24 @@ button {
 
     display: block;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
     color:
-        #879baa;
+        var(--muted);
 
     font-size:
-        0.7rem;
+        0.68rem;
 
 }
 
 
 /* =========================================================
-   17. TECHNOLOGY
+   18. TECHNOLOGY
 ========================================================= */
 
 .technology-grid {
 
     display: grid;
-
-    gap: 0;
 
 }
 
@@ -1877,17 +1816,15 @@ button {
     grid-template-columns:
         230px 1fr;
 
-    gap: 25px;
+    gap: 24px;
 
-    align-items:
-        start;
+    align-items: start;
 
     padding:
-        23px 0;
+        21px 0;
 
     border-bottom:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
 }
 
@@ -1895,10 +1832,12 @@ button {
 .technology-group > strong {
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        0.78rem;
+        0.75rem;
+
+    font-weight: 700;
 
 }
 
@@ -1917,40 +1856,38 @@ button {
 .technology-tags span {
 
     padding:
-        7px 11px;
+        6px 10px;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         999px;
 
     color:
-        #54748c;
+        #58758a;
 
     background:
-        rgba(
-            248,
-            251,
-            253,
-            0.78
-        );
+        rgba(248, 251, 253, 0.82);
 
     font-size:
-        0.69rem;
+        0.67rem;
 
     transition:
+        border-color 0.25s ease,
         background 0.25s ease,
-        border-color 0.25s ease;
+        transform 0.25s ease;
 
 }
 
 
 .technology-tags span:hover {
 
+    transform:
+        translateY(-1px);
+
     border-color:
-        var(--border-accent);
+        var(--accent-border);
 
     background:
         var(--soft);
@@ -1964,37 +1901,30 @@ button {
 
     align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap: 35px;
+    gap: 32px;
 
     margin-top:
-        50px;
+        43px;
 
-    padding: 32px;
+    padding: 29px;
 
     border:
-        1px solid
-        var(--border-accent);
+        1px solid var(--accent-border);
 
     border-radius:
         var(--radius);
 
     background:
-        rgba(
-            237,
-            247,
-            253,
-            0.8
-        );
+        rgba(237, 247, 252, 0.78);
 
 }
 
 
 .automation-link > div {
 
-    max-width: 670px;
+    max-width: 650px;
 
 }
 
@@ -2002,13 +1932,15 @@ button {
 .automation-link h3 {
 
     margin:
-        0 0 8px;
+        0 0 7px;
 
     color:
-        var(--navy);
+        var(--heading);
 
     font-size:
-        1.25rem;
+        1.15rem;
+
+    font-weight: 700;
 
 }
 
@@ -2018,16 +1950,16 @@ button {
     margin: 0;
 
     color:
-        var(--muted);
+        var(--body);
 
     font-size:
-        0.79rem;
+        0.77rem;
 
 }
 
 
 /* =========================================================
-   18. CONTACT
+   19. CONTACT
 ========================================================= */
 
 .contact-section {
@@ -2035,7 +1967,7 @@ button {
     position: relative;
 
     padding:
-        90px 0;
+        80px 0;
 
     color:
         var(--white);
@@ -2043,8 +1975,8 @@ button {
     background:
         linear-gradient(
             145deg,
-            #083958,
-            var(--navy-dark)
+            #17445f,
+            #0d3048
         );
 
 }
@@ -2052,19 +1984,18 @@ button {
 
 .contact-heading {
 
-    max-width: 720px;
+    max-width: 700px;
 
     margin-bottom:
-        40px;
+        35px;
 
 }
 
 
-.contact-heading
-.eyebrow {
+.contact-heading .eyebrow {
 
     color:
-        #66bce9;
+        #8cc5e4;
 
 }
 
@@ -2079,20 +2010,15 @@ button {
 
 .contact-heading > p:last-child {
 
-    max-width: 690px;
+    max-width: 670px;
 
     margin: 0;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.74
-        );
+        rgba(255, 255, 255, 0.75);
 
     font-size:
-        0.9rem;
+        0.86rem;
 
 }
 
@@ -2111,38 +2037,28 @@ button {
 
 .contact-card {
 
-    min-height: 100px;
+    min-height: 96px;
 
     display: grid;
 
     grid-template-columns:
-        42px 1fr auto;
+        40px 1fr auto;
 
-    gap: 15px;
+    gap: 14px;
 
     align-items: center;
 
-    padding: 20px;
+    padding: 19px;
 
     border:
         1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.17
-        );
+        rgba(255, 255, 255, 0.18);
 
     border-radius:
         10px;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.055
-        );
+        rgba(255, 255, 255, 0.055);
 
     transition:
         transform 0.25s ease,
@@ -2158,28 +2074,18 @@ button {
         translateY(-3px);
 
     border-color:
-        rgba(
-            255,
-            255,
-            255,
-            0.28
-        );
+        rgba(255, 255, 255, 0.29);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.09
-        );
+        rgba(255, 255, 255, 0.085);
 
 }
 
 
 .contact-icon {
 
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
 
@@ -2193,18 +2099,12 @@ button {
         var(--white);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.09
-        );
+        rgba(255, 255, 255, 0.09);
 
     font-size:
-        0.8rem;
+        0.77rem;
 
-    font-weight:
-        850;
+    font-weight: 700;
 
 }
 
@@ -2221,21 +2121,16 @@ button {
     display: block;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.62
-        );
+        rgba(255, 255, 255, 0.65);
 
     font-size:
-        0.6rem;
+        0.58rem;
 
     font-weight:
-        850;
+        750;
 
     letter-spacing:
-        0.12em;
+        0.11em;
 
     text-transform:
         uppercase;
@@ -2249,14 +2144,13 @@ button {
 
     margin-top: 3px;
 
-    overflow-wrap:
-        anywhere;
+    overflow-wrap: anywhere;
 
     color:
         var(--white);
 
     font-size:
-        0.82rem;
+        0.8rem;
 
 }
 
@@ -2268,15 +2162,10 @@ button {
     margin-top: 3px;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.5
-        );
+        rgba(255, 255, 255, 0.51);
 
     font-size:
-        0.64rem;
+        0.62rem;
 
 }
 
@@ -2284,12 +2173,7 @@ button {
 .contact-arrow {
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.65
-        );
+        rgba(255, 255, 255, 0.65);
 
 }
 
@@ -2302,21 +2186,16 @@ button {
 
     flex-wrap: wrap;
 
-    gap: 9px;
+    gap: 8px;
 
     margin-top:
-        27px;
+        25px;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.58
-        );
+        rgba(255, 255, 255, 0.6);
 
     font-size:
-        0.69rem;
+        0.67rem;
 
 }
 
@@ -2329,35 +2208,29 @@ button {
     border-radius: 50%;
 
     background:
-        #20b779;
+        #23ae79;
 
     box-shadow:
-        0 0 0
-        4px
-        rgba(32, 183, 121, 0.08);
+        0 0 0 4px
+        rgba(35, 174, 121, 0.08);
 
 }
 
 
 /* =========================================================
-   19. FOOTER
+   20. FOOTER
 ========================================================= */
 
 .site-footer {
 
     padding:
-        23px 0;
+        22px 0;
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.54
-        );
+        rgba(255, 255, 255, 0.55);
 
     background:
-        #041827;
+        #081f30;
 
 }
 
@@ -2368,13 +2241,12 @@ button {
 
     align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
     gap: 20px;
 
     font-size:
-        0.64rem;
+        0.62rem;
 
 }
 
@@ -2382,18 +2254,13 @@ button {
 .footer-content a {
 
     color:
-        rgba(
-            255,
-            255,
-            255,
-            0.75
-        );
+        rgba(255, 255, 255, 0.77);
 
 }
 
 
 /* =========================================================
-   20. SCROLL REVEAL
+   21. SCROLL REVEAL
 ========================================================= */
 
 .reveal {
@@ -2401,11 +2268,11 @@ button {
     opacity: 0;
 
     transform:
-        translateY(20px);
+        translateY(17px);
 
     transition:
-        opacity 0.65s ease,
-        transform 0.65s
+        opacity 0.62s ease,
+        transform 0.62s
         cubic-bezier(
             0.22,
             1,
@@ -2427,19 +2294,18 @@ button {
 
 
 /* =========================================================
-   21. TABLET
+   22. TABLET
 ========================================================= */
 
-@media
-(max-width: 980px) {
+@media (max-width: 980px) {
 
     .hero-grid {
 
         grid-template-columns:
             minmax(0, 1fr)
-            250px;
+            245px;
 
-        gap: 38px;
+        gap: 40px;
 
     }
 
@@ -2448,9 +2314,9 @@ button {
 
         font-size:
             clamp(
-                2.5rem,
-                5vw,
-                3.4rem
+                2.35rem,
+                4.6vw,
+                2.95rem
             );
 
     }
@@ -2472,20 +2338,6 @@ button {
     }
 
 
-    .case-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .case-card {
-
-        min-height: 300px;
-
-    }
-
-
     .main-nav {
 
         gap: 15px;
@@ -2496,28 +2348,16 @@ button {
 
 
 /* =========================================================
-   22. MOBILE
+   23. MOBILE
 ========================================================= */
 
-@media
-(max-width: 760px) {
+@media (max-width: 760px) {
 
-    .container {
-
-        width:
-            calc(
-                100% - 30px
-            );
-
-    }
-
-
+    .container,
     .nav-container {
 
         width:
-            calc(
-                100% - 30px
-            );
+            calc(100% - 30px);
 
     }
 
@@ -2533,7 +2373,7 @@ button {
 
         position: absolute;
 
-        top: 72px;
+        top: 70px;
         left: 15px;
         right: 15px;
 
@@ -2548,19 +2388,13 @@ button {
         padding: 8px;
 
         border:
-            1px solid
-            var(--border);
+            1px solid var(--border);
 
         border-radius:
             10px;
 
         background:
-            rgba(
-                255,
-                255,
-                255,
-                0.98
-            );
+            rgba(255, 255, 255, 0.98);
 
         box-shadow:
             var(--shadow);
@@ -2595,7 +2429,7 @@ button {
         min-height: auto;
 
         padding:
-            52px 0 64px;
+            40px 0 55px;
 
     }
 
@@ -2606,7 +2440,7 @@ button {
 
         flex-direction: column;
 
-        gap: 25px;
+        gap: 23px;
 
     }
 
@@ -2620,15 +2454,17 @@ button {
 
     .hero-title {
 
+        max-width: none;
+
         font-size:
             clamp(
-                2.25rem,
-                10.5vw,
-                3.05rem
+                2.05rem,
+                9vw,
+                2.65rem
             );
 
         line-height:
-            1.04;
+            1.07;
 
     }
 
@@ -2636,7 +2472,7 @@ button {
     .hero-description {
 
         font-size:
-            0.9rem;
+            0.87rem;
 
     }
 
@@ -2661,7 +2497,7 @@ button {
             33.333%;
 
         padding:
-            0 12px;
+            0 11px;
 
     }
 
@@ -2671,6 +2507,8 @@ button {
         order: 2;
 
         width: 100%;
+
+        padding-top: 4px;
 
         align-items: center;
 
@@ -2685,8 +2523,8 @@ button {
 
     .portrait-system {
 
-        width: 245px;
-        height: 245px;
+        width: 230px;
+        height: 230px;
 
         margin:
             0 auto;
@@ -2696,24 +2534,24 @@ button {
 
     .portrait-ring {
 
-        width: 158px;
-        height: 158px;
+        width: 152px;
+        height: 152px;
 
     }
 
 
     .orbit-one {
 
-        width: 198px;
-        height: 198px;
+        width: 190px;
+        height: 190px;
 
     }
 
 
     .orbit-two {
 
-        width: 225px;
-        height: 225px;
+        width: 218px;
+        height: 218px;
 
     }
 
@@ -2721,7 +2559,7 @@ button {
     .hero-status {
 
         margin:
-            0 auto;
+            -2px auto 0;
 
     }
 
@@ -2729,7 +2567,7 @@ button {
     .section {
 
         padding:
-            70px 0;
+            62px 0;
 
     }
 
@@ -2737,13 +2575,14 @@ button {
     .section-heading {
 
         margin-bottom:
-            33px;
+            30px;
 
     }
 
 
     .impact-grid,
     .expertise-grid,
+    .case-grid,
     .education-grid,
     .contact-grid {
 
@@ -2753,7 +2592,8 @@ button {
 
 
     .impact-card,
-    .expertise-card {
+    .expertise-card,
+    .case-card {
 
         min-height: auto;
 
@@ -2774,7 +2614,7 @@ button {
         gap: 5px;
 
         padding-left:
-            30px;
+            28px;
 
     }
 
@@ -2790,7 +2630,7 @@ button {
 
         grid-template-columns: 1fr;
 
-        gap: 13px;
+        gap: 12px;
 
     }
 
@@ -2799,10 +2639,9 @@ button {
 
         flex-direction: column;
 
-        align-items:
-            flex-start;
+        align-items: flex-start;
 
-        padding: 26px;
+        padding: 25px;
 
     }
 
@@ -2811,8 +2650,7 @@ button {
 
         flex-direction: column;
 
-        align-items:
-            flex-start;
+        align-items: flex-start;
 
     }
 
@@ -2820,16 +2658,15 @@ button {
 
 
 /* =========================================================
-   23. SMALL MOBILE
+   24. SMALL MOBILE
 ========================================================= */
 
-@media
-(max-width: 460px) {
+@media (max-width: 460px) {
 
     .hero-title {
 
         font-size:
-            2.4rem;
+            2.2rem;
 
     }
 
@@ -2860,7 +2697,7 @@ button {
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 13px;
+        gap: 12px;
 
     }
 
@@ -2879,7 +2716,7 @@ button {
     .metric {
 
         font-size:
-            2.05rem;
+            1.95rem;
 
     }
 
@@ -2887,7 +2724,7 @@ button {
 
 
 /* =========================================================
-   24. REDUCED MOTION
+   25. REDUCED MOTION
 ========================================================= */
 
 @media
