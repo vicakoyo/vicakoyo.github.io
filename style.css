@@ -1,10 +1,10 @@
 /* =========================================================
-   VICTOR AKOYO PROFESSIONAL PORTFOLIO
+   VICTOR AKOYO PORTFOLIO
 ========================================================= */
 
 
 /* =========================================================
-   1. DESIGN SYSTEM
+   DESIGN SYSTEM
 ========================================================= */
 
 :root {
@@ -19,7 +19,9 @@
     --muted: #8296a5;
 
     --white: #ffffff;
+
     --soft: #f2f7fa;
+    --header-bg: rgba(244, 248, 252, 0.96);
 
     --border: rgba(23, 61, 91, 0.13);
     --accent-border: rgba(22, 116, 168, 0.23);
@@ -38,7 +40,7 @@
 
 
 /* =========================================================
-   2. RESET
+   RESET
 ========================================================= */
 
 *,
@@ -54,7 +56,7 @@ html {
 
     scroll-behavior: smooth;
 
-    scroll-padding-top: 72px;
+    scroll-padding-top: 78px;
 
 }
 
@@ -85,7 +87,6 @@ body {
 a {
 
     color: inherit;
-
     text-decoration: none;
 
 }
@@ -94,7 +95,6 @@ a {
 img {
 
     display: block;
-
     max-width: 100%;
 
 }
@@ -110,14 +110,13 @@ button {
 ::selection {
 
     color: var(--white);
-
     background: var(--heading);
 
 }
 
 
 /* =========================================================
-   3. ANIMATED BACKGROUND
+   BACKGROUND
 ========================================================= */
 
 #particleCanvas {
@@ -159,10 +158,9 @@ button {
             transparent 1px
         );
 
-    background-size:
-        42px 42px;
+    background-size: 42px 42px;
 
-    opacity: 0.68;
+    opacity: 0.66;
 
 }
 
@@ -178,8 +176,7 @@ button {
 
     border-radius: 50%;
 
-    filter:
-        blur(110px);
+    filter: blur(110px);
 
     pointer-events: none;
 
@@ -209,7 +206,7 @@ button {
 
 
 /* =========================================================
-   4. LAYOUT
+   LAYOUT
 ========================================================= */
 
 .container {
@@ -229,8 +226,7 @@ button {
 
     position: relative;
 
-    padding:
-        74px 0;
+    padding: 72px 0;
 
 }
 
@@ -238,16 +234,15 @@ button {
 .section-soft {
 
     background:
-        rgba(242, 247, 250, 0.84);
+        rgba(242, 247, 250, 0.86);
 
-    backdrop-filter:
-        blur(2px);
+    backdrop-filter: blur(2px);
 
 }
 
 
 /* =========================================================
-   5. HEADER
+   HEADER
 ========================================================= */
 
 .site-header {
@@ -259,13 +254,19 @@ button {
     z-index: 1000;
 
     background:
-        rgba(255, 255, 255, 0.94);
+        var(--header-bg);
 
     border-bottom:
-        1px solid var(--border);
+        1px solid rgba(13, 48, 72, 0.10);
+
+    box-shadow:
+        0 5px 18px rgba(13, 48, 72, 0.025);
 
     backdrop-filter:
-        blur(18px);
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
 }
 
@@ -297,14 +298,11 @@ button {
 
     flex-shrink: 0;
 
-    color:
-        var(--heading);
+    color: var(--heading-dark);
 
-    font-size:
-        0.96rem;
+    font-size: 0.96rem;
 
-    font-weight:
-        750;
+    font-weight: 780;
 
 }
 
@@ -315,7 +313,7 @@ button {
 
     align-items: center;
 
-    gap: 25px;
+    gap: 24px;
 
 }
 
@@ -324,14 +322,11 @@ button {
 
     position: relative;
 
-    color:
-        #506b7e;
+    color: #506b7e;
 
-    font-size:
-        0.76rem;
+    font-size: 0.75rem;
 
-    font-weight:
-        650;
+    font-weight: 650;
 
     transition:
         color 0.25s ease;
@@ -346,19 +341,16 @@ button {
     position: absolute;
 
     left: 0;
-    bottom: -8px;
+    bottom: -9px;
 
     width: 100%;
     height: 2px;
 
-    background:
-        var(--accent);
+    background: var(--accent);
 
-    transform:
-        scaleX(0);
+    transform: scaleX(0);
 
-    transform-origin:
-        right;
+    transform-origin: right;
 
     transition:
         transform 0.25s ease;
@@ -369,8 +361,7 @@ button {
 .main-nav a:hover,
 .main-nav a.active {
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
 }
 
@@ -378,17 +369,15 @@ button {
 .main-nav a:hover::after,
 .main-nav a.active::after {
 
-    transform:
-        scaleX(1);
+    transform: scaleX(1);
 
-    transform-origin:
-        left;
+    transform-origin: left;
 
 }
 
 
 /* =========================================================
-   6. MOBILE NAV
+   MOBILE MENU
 ========================================================= */
 
 .mobile-menu-button {
@@ -400,14 +389,11 @@ button {
 
     padding: 8px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
-    background:
-        var(--white);
+    background: rgba(255,255,255,0.78);
 
     cursor: pointer;
 
@@ -421,17 +407,15 @@ button {
     width: 20px;
     height: 2px;
 
-    margin:
-        4px auto;
+    margin: 4px auto;
 
-    background:
-        var(--heading);
+    background: var(--heading);
 
 }
 
 
 /* =========================================================
-   7. SMALL LABELS
+   LABELS
 ========================================================= */
 
 .eyebrow {
@@ -444,23 +428,17 @@ button {
 
     gap: 7px;
 
-    margin:
-        0 0 12px;
+    margin: 0 0 12px;
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
-    font-size:
-        0.71rem;
+    font-size: 0.7rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    letter-spacing:
-        0.13em;
+    letter-spacing: 0.13em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
 }
 
@@ -474,14 +452,13 @@ button {
 
 .hero-eyebrow {
 
-    color:
-        var(--accent-dark);
+    color: var(--accent-dark);
 
 }
 
 
 /* =========================================================
-   8. HERO
+   HERO
 ========================================================= */
 
 .hero {
@@ -492,38 +469,27 @@ button {
 
     align-items: center;
 
-    /*
-       Keeps hero compact on large screens while
-       still adapting to shorter laptop displays.
-    */
-
     min-height:
         min(
-            640px,
+            625px,
             calc(100svh - 70px)
         );
 
     padding:
-        38px 0 44px;
+        34px 0 40px;
 
 }
 
 
 .hero-grid {
 
-    /*
-       IMPORTANT:
-       No width: 100%.
-       .container handles the width.
-    */
-
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.25fr)
-        minmax(260px, 0.75fr);
+        minmax(0, 1.23fr)
+        minmax(260px, 0.77fr);
 
-    gap: 70px;
+    gap: 68px;
 
     align-items: center;
 
@@ -532,94 +498,77 @@ button {
 
 .hero-content {
 
-    max-width: 690px;
+    max-width: 670px;
 
 }
 
 
-/* =========================================================
-   9. HERO HEADING
-========================================================= */
-
 .hero-heading {
 
-    margin-bottom:
-        17px;
+    margin-bottom: 17px;
 
 }
 
 
 .hero-heading h1 {
 
-    max-width: 650px;
+    max-width: 630px;
 
-    margin:
-        0 0 7px;
+    margin: 0 0 7px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
     font-size:
         clamp(
-            2.45rem,
-            3.15vw,
-            3rem
+            2.35rem,
+            3vw,
+            2.9rem
         );
 
-    line-height:
-        1.04;
+    line-height: 1.05;
 
-    letter-spacing:
-        -0.038em;
+    letter-spacing: -0.035em;
 
-    font-weight:
-        720;
+    font-weight: 710;
 
 }
 
 
 .hero-heading p {
 
-    max-width: 650px;
+    max-width: 630px;
 
     margin: 0;
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
     font-size:
         clamp(
-            1.18rem,
-            1.65vw,
-            1.42rem
+            1.12rem,
+            1.55vw,
+            1.36rem
         );
 
-    line-height:
-        1.35;
+    line-height: 1.36;
 
-    letter-spacing:
-        -0.018em;
+    letter-spacing: -0.015em;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
 }
 
 
 .hero-description {
 
-    max-width: 650px;
+    max-width: 620px;
 
     margin: 0;
 
-    color:
-        #58758a;
+    color: #58758a;
 
-    font-size:
-        0.89rem;
+    font-size: 0.88rem;
 
-    line-height:
-        1.63;
+    line-height: 1.62;
 
 }
 
@@ -632,14 +581,13 @@ button {
 
     gap: 9px;
 
-    margin-top:
-        21px;
+    margin-top: 21px;
 
 }
 
 
 /* =========================================================
-   10. BUTTONS
+   BUTTONS
 ========================================================= */
 
 .button {
@@ -648,21 +596,17 @@ button {
 
     min-height: 42px;
 
-    padding:
-        0 17px;
+    padding: 0 17px;
 
     align-items: center;
 
     justify-content: center;
 
-    border-radius:
-        6px;
+    border-radius: 6px;
 
-    font-size:
-        0.76rem;
+    font-size: 0.75rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
     transition:
         transform 0.25s ease,
@@ -675,22 +619,18 @@ button {
 
 .button:hover {
 
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
 }
 
 
 .button-primary {
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    border:
-        1px solid var(--accent);
+    border: 1px solid var(--accent);
 
-    background:
-        var(--accent);
+    background: var(--accent);
 
     box-shadow:
         0 9px 20px
@@ -701,22 +641,17 @@ button {
 
 .button-primary:hover {
 
-    background:
-        var(--accent-dark);
-
-    border-color:
-        var(--accent-dark);
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
 
 }
 
 
 .button-secondary {
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    border:
-        1px solid var(--accent-border);
+    border: 1px solid var(--accent-border);
 
     background:
         rgba(255, 255, 255, 0.82);
@@ -726,20 +661,17 @@ button {
 
 .button-secondary:hover {
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    border-color:
-        var(--heading);
+    border-color: var(--heading);
 
-    background:
-        var(--heading);
+    background: var(--heading);
 
 }
 
 
 /* =========================================================
-   11. HERO META
+   HERO META
 ========================================================= */
 
 .hero-meta {
@@ -748,8 +680,7 @@ button {
 
     flex-wrap: wrap;
 
-    margin-top:
-        22px;
+    margin-top: 22px;
 
 }
 
@@ -758,8 +689,7 @@ button {
 
     min-width: 132px;
 
-    padding:
-        0 19px;
+    padding: 0 19px;
 
     border-left:
         1px solid var(--border);
@@ -770,7 +700,6 @@ button {
 .meta-item:first-child {
 
     padding-left: 0;
-
     border-left: 0;
 
 }
@@ -780,14 +709,11 @@ button {
 
     display: block;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.74rem;
+    font-size: 0.74rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
 }
 
@@ -798,17 +724,15 @@ button {
 
     margin-top: 2px;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        0.63rem;
+    font-size: 0.63rem;
 
 }
 
 
 /* =========================================================
-   12. PORTRAIT
+   HERO PORTRAIT
 ========================================================= */
 
 .hero-visual {
@@ -843,8 +767,7 @@ button {
 
     margin-inline: auto;
 
-    transition:
-        transform 0.14s linear;
+    transition: transform 0.14s linear;
 
 }
 
@@ -863,8 +786,7 @@ button {
     border:
         1px solid var(--accent-border);
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         rgba(255, 255, 255, 0.97);
@@ -885,8 +807,7 @@ button {
 
     border-radius: 50%;
 
-    background:
-        #dce6f7;
+    background: #dce6f7;
 
 }
 
@@ -898,14 +819,13 @@ button {
 
     object-fit: cover;
 
-    object-position:
-        center 30%;
+    object-position: center 30%;
 
 }
 
 
 /* =========================================================
-   13. ORBITS
+   ORBITS
 ========================================================= */
 
 .orbit {
@@ -978,14 +898,11 @@ button {
 
     border-radius: 50%;
 
-    background:
-        var(--accent);
+    background: var(--accent);
 
     box-shadow:
-        0 0 0 5px
-        rgba(22, 116, 168, 0.09),
-        0 0 14px
-        rgba(22, 116, 168, 0.31);
+        0 0 0 5px rgba(22, 116, 168, 0.09),
+        0 0 14px rgba(22, 116, 168, 0.31);
 
 }
 
@@ -1039,7 +956,7 @@ button {
 
 
 /* =========================================================
-   14. PORTRAIT STATUS
+   HERO STATUS
 ========================================================= */
 
 .hero-status {
@@ -1050,17 +967,14 @@ button {
 
     gap: 8px;
 
-    margin:
-        -2px auto 0;
+    margin: -2px auto 0;
 
-    padding:
-        8px 13px;
+    padding: 8px 13px;
 
     border:
         1px solid var(--accent-border);
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
     background:
         rgba(255, 255, 255, 0.91);
@@ -1076,11 +990,9 @@ button {
 
     display: block;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.66rem;
+    font-size: 0.66rem;
 
 }
 
@@ -1089,11 +1001,9 @@ button {
 
     display: block;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        0.57rem;
+    font-size: 0.57rem;
 
 }
 
@@ -1105,8 +1015,7 @@ button {
 
     border-radius: 50%;
 
-    background:
-        #23ae79;
+    background: #23ae79;
 
     box-shadow:
         0 0 0 4px
@@ -1144,15 +1053,14 @@ button {
 
 
 /* =========================================================
-   15. SECTION HEADINGS
+   SECTION HEADINGS
 ========================================================= */
 
 .section-heading {
 
     max-width: 710px;
 
-    margin-bottom:
-        35px;
+    margin-bottom: 35px;
 
 }
 
@@ -1160,27 +1068,22 @@ button {
 .section-heading h2,
 .contact-heading h2 {
 
-    margin:
-        0 0 10px;
+    margin: 0 0 10px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
     font-size:
         clamp(
-            1.7rem,
-            2.35vw,
-            2.18rem
+            1.65rem,
+            2.2vw,
+            2.08rem
         );
 
-    line-height:
-        1.14;
+    line-height: 1.15;
 
-    letter-spacing:
-        -0.03em;
+    letter-spacing: -0.027em;
 
-    font-weight:
-        680;
+    font-weight: 680;
 
 }
 
@@ -1191,17 +1094,15 @@ button {
 
     margin: 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.87rem;
+    font-size: 0.86rem;
 
 }
 
 
 /* =========================================================
-   16. IMPACT
+   IMPACT
 ========================================================= */
 
 .impact-grid {
@@ -1218,15 +1119,14 @@ button {
 
 .impact-card {
 
-    min-height: 255px;
+    min-height: 265px;
 
     padding: 24px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
     background:
         rgba(255, 255, 255, 0.92);
@@ -1243,16 +1143,22 @@ button {
 }
 
 
+.impact-link {
+
+    display: block;
+
+    cursor: pointer;
+
+}
+
+
 .impact-card:hover {
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
-    border-color:
-        var(--accent-border);
+    border-color: var(--accent-border);
 
-    box-shadow:
-        var(--shadow-hover);
+    box-shadow: var(--shadow-hover);
 
 }
 
@@ -1262,25 +1168,20 @@ button {
 
     display: block;
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
-    font-size:
-        0.61rem;
+    font-size: 0.61rem;
 
-    font-weight:
-        750;
+    font-weight: 750;
 
-    letter-spacing:
-        0.14em;
+    letter-spacing: 0.14em;
 
 }
 
 
 .card-number {
 
-    margin-bottom:
-        23px;
+    margin-bottom: 23px;
 
 }
 
@@ -1295,22 +1196,17 @@ button {
 
     gap: 2px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        2rem;
+    font-size: 2rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
     line-height: 1;
 
-    letter-spacing:
-        -0.04em;
+    letter-spacing: -0.04em;
 
-    font-variant-numeric:
-        tabular-nums;
+    font-variant-numeric: tabular-nums;
 
 }
 
@@ -1324,25 +1220,20 @@ button {
 
 .metric-arrow {
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        1.2rem;
+    font-size: 1.2rem;
 
 }
 
 
 .impact-card h3 {
 
-    margin:
-        15px 0 8px;
+    margin: 15px 0 8px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.88rem;
+    font-size: 0.87rem;
 
 }
 
@@ -1351,17 +1242,30 @@ button {
 
     margin: 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.75rem;
+    font-size: 0.74rem;
+
+}
+
+
+.impact-cta {
+
+    display: block;
+
+    margin-top: 17px;
+
+    color: var(--accent);
+
+    font-size: 0.66rem;
+
+    font-weight: 700;
 
 }
 
 
 /* =========================================================
-   17. EXPERTISE
+   EXPERTISE
 ========================================================= */
 
 .expertise-grid {
@@ -1385,8 +1289,7 @@ button {
     border:
         1px solid var(--border);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
     background:
         rgba(255, 255, 255, 0.77);
@@ -1401,28 +1304,22 @@ button {
 
 .expertise-card:hover {
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
-    border-color:
-        var(--accent-border);
+    border-color: var(--accent-border);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
 }
 
 
 .expertise-card h3 {
 
-    margin:
-        22px 0 8px;
+    margin: 22px 0 8px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.95rem;
+    font-size: 0.95rem;
 
 }
 
@@ -1431,17 +1328,15 @@ button {
 
     margin: 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.76rem;
+    font-size: 0.76rem;
 
 }
 
 
 /* =========================================================
-   18. CASE STUDIES
+   CASE STUDIES
 ========================================================= */
 
 .case-section {
@@ -1466,7 +1361,7 @@ button {
 
 .case-card {
 
-    min-height: 350px;
+    min-height: 405px;
 
     display: flex;
 
@@ -1474,11 +1369,11 @@ button {
 
     padding: 27px;
 
-    border-radius:
-        var(--radius);
+    scroll-margin-top: 95px;
 
-    color:
-        var(--white);
+    border-radius: var(--radius);
+
+    color: var(--white);
 
     background:
         linear-gradient(
@@ -1500,8 +1395,7 @@ button {
 
 .case-card:hover {
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
     box-shadow:
         0 21px 54px
@@ -1514,42 +1408,59 @@ button {
 
     display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
     gap: 13px;
 
     color:
         rgba(255, 255, 255, 0.66);
 
-    font-size:
-        0.59rem;
+    font-size: 0.58rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
-    letter-spacing:
-        0.08em;
+    letter-spacing: 0.08em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
 }
 
 
 .case-card h3 {
 
-    margin:
-        26px 0 13px;
+    margin: 24px 0 18px;
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    font-size:
-        1.04rem;
+    font-size: 1.02rem;
 
-    line-height:
-        1.35;
+    line-height: 1.35;
+
+}
+
+
+.case-section-block {
+
+    margin-bottom: 16px;
+
+}
+
+
+.case-label {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #9ad1ec;
+
+    font-size: 0.58rem;
+
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
 
 }
 
@@ -1561,8 +1472,7 @@ button {
     color:
         rgba(255, 255, 255, 0.72);
 
-    font-size:
-        0.77rem;
+    font-size: 0.75rem;
 
 }
 
@@ -1571,8 +1481,7 @@ button {
 
     margin-top: auto;
 
-    padding-top:
-        22px;
+    padding-top: 22px;
 
     border-top:
         1px solid
@@ -1585,11 +1494,9 @@ button {
 
     display: block;
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    font-size:
-        1.5rem;
+    font-size: 1.5rem;
 
 }
 
@@ -1603,14 +1510,13 @@ button {
     color:
         rgba(255, 255, 255, 0.58);
 
-    font-size:
-        0.62rem;
+    font-size: 0.62rem;
 
 }
 
 
 /* =========================================================
-   19. EXPERIENCE TIMELINE
+   EXPERIENCE
 ========================================================= */
 
 .timeline {
@@ -1634,8 +1540,7 @@ button {
 
     width: 1px;
 
-    background:
-        var(--border);
+    background: var(--border);
 
 }
 
@@ -1651,8 +1556,7 @@ button {
 
     gap: 58px;
 
-    padding-bottom:
-        37px;
+    padding-bottom: 37px;
 
 }
 
@@ -1671,8 +1575,7 @@ button {
 
     border-radius: 50%;
 
-    background:
-        var(--accent);
+    background: var(--accent);
 
     box-shadow:
         0 0 0 5px
@@ -1683,14 +1586,11 @@ button {
 
 .timeline-date {
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
-    font-size:
-        0.67rem;
+    font-size: 0.67rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
 }
 
@@ -1699,25 +1599,20 @@ button {
 
     margin: 0;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.98rem;
+    font-size: 0.98rem;
 
 }
 
 
 .timeline-content h4 {
 
-    margin:
-        3px 0 0;
+    margin: 3px 0 0;
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
-    font-size:
-        0.72rem;
+    font-size: 0.72rem;
 
 }
 
@@ -1726,20 +1621,17 @@ button {
 
     max-width: 670px;
 
-    margin:
-        9px 0 0;
+    margin: 9px 0 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.77rem;
+    font-size: 0.77rem;
 
 }
 
 
 /* =========================================================
-   20. EDUCATION
+   EDUCATION
 ========================================================= */
 
 .education-grid {
@@ -1761,8 +1653,7 @@ button {
     border:
         1px solid var(--border);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
     background:
         rgba(255, 255, 255, 0.92);
@@ -1772,34 +1663,26 @@ button {
 
 .education-year {
 
-    color:
-        var(--accent);
+    color: var(--accent);
 
-    font-size:
-        0.62rem;
+    font-size: 0.62rem;
 
-    font-weight:
-        750;
+    font-weight: 750;
 
-    letter-spacing:
-        0.085em;
+    letter-spacing: 0.085em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
 }
 
 
 .education-card h3 {
 
-    margin:
-        21px 0 7px;
+    margin: 21px 0 7px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        1rem;
+    font-size: 1rem;
 
 }
 
@@ -1808,11 +1691,9 @@ button {
 
     margin: 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.8rem;
+    font-size: 0.8rem;
 
 }
 
@@ -1823,17 +1704,15 @@ button {
 
     margin-top: 7px;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        0.67rem;
+    font-size: 0.67rem;
 
 }
 
 
 /* =========================================================
-   21. TECHNOLOGY
+   TECHNOLOGY
 ========================================================= */
 
 .technology-grid {
@@ -1854,8 +1733,7 @@ button {
 
     align-items: start;
 
-    padding:
-        20px 0;
+    padding: 20px 0;
 
     border-bottom:
         1px solid var(--border);
@@ -1865,11 +1743,9 @@ button {
 
 .technology-group > strong {
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        0.74rem;
+    font-size: 0.74rem;
 
 }
 
@@ -1887,23 +1763,19 @@ button {
 
 .technology-tags span {
 
-    padding:
-        6px 10px;
+    padding: 6px 10px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    color:
-        #58758a;
+    color: #58758a;
 
     background:
         rgba(248, 251, 253, 0.82);
 
-    font-size:
-        0.66rem;
+    font-size: 0.66rem;
 
     transition:
         transform 0.25s ease,
@@ -1915,14 +1787,11 @@ button {
 
 .technology-tags span:hover {
 
-    transform:
-        translateY(-1px);
+    transform: translateY(-1px);
 
-    border-color:
-        var(--accent-border);
+    border-color: var(--accent-border);
 
-    background:
-        var(--soft);
+    background: var(--soft);
 
 }
 
@@ -1933,21 +1802,18 @@ button {
 
     align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
     gap: 32px;
 
-    margin-top:
-        42px;
+    margin-top: 42px;
 
     padding: 28px;
 
     border:
         1px solid var(--accent-border);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
     background:
         rgba(237, 247, 252, 0.78);
@@ -1964,14 +1830,11 @@ button {
 
 .automation-link h3 {
 
-    margin:
-        0 0 7px;
+    margin: 0 0 7px;
 
-    color:
-        var(--heading);
+    color: var(--heading);
 
-    font-size:
-        1.12rem;
+    font-size: 1.12rem;
 
 }
 
@@ -1980,28 +1843,24 @@ button {
 
     margin: 0;
 
-    color:
-        var(--body);
+    color: var(--body);
 
-    font-size:
-        0.75rem;
+    font-size: 0.75rem;
 
 }
 
 
 /* =========================================================
-   22. CONTACT
+   CONTACT
 ========================================================= */
 
 .contact-section {
 
     position: relative;
 
-    padding:
-        78px 0;
+    padding: 78px 0;
 
-    color:
-        var(--white);
+    color: var(--white);
 
     background:
         linear-gradient(
@@ -2017,24 +1876,21 @@ button {
 
     max-width: 690px;
 
-    margin-bottom:
-        34px;
+    margin-bottom: 34px;
 
 }
 
 
 .contact-heading .eyebrow {
 
-    color:
-        #91c9e6;
+    color: #91c9e6;
 
 }
 
 
 .contact-heading h2 {
 
-    color:
-        var(--white);
+    color: var(--white);
 
 }
 
@@ -2048,8 +1904,7 @@ button {
     color:
         rgba(255, 255, 255, 0.75);
 
-    font-size:
-        0.84rem;
+    font-size: 0.84rem;
 
 }
 
@@ -2085,8 +1940,7 @@ button {
         1px solid
         rgba(255, 255, 255, 0.18);
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     background:
         rgba(255, 255, 255, 0.055);
@@ -2101,8 +1955,7 @@ button {
 
 .contact-card:hover {
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     border-color:
         rgba(255, 255, 255, 0.29);
@@ -2126,8 +1979,7 @@ button {
 
     border-radius: 50%;
 
-    color:
-        var(--white);
+    color: var(--white);
 
     background:
         rgba(255, 255, 255, 0.09);
@@ -2140,31 +1992,7 @@ button {
     width: 18px;
     height: 18px;
 
-    fill:
-        currentColor;
-
-}
-
-
-.whatsapp-icon {
-
-    color:
-        #ffffff;
-
-}
-
-
-.linkedin-icon {
-
-    color:
-        #ffffff;
-
-}
-
-
-.contact-info {
-
-    min-width: 0;
+    fill: currentColor;
 
 }
 
@@ -2176,17 +2004,13 @@ button {
     color:
         rgba(255, 255, 255, 0.65);
 
-    font-size:
-        0.57rem;
+    font-size: 0.57rem;
 
-    font-weight:
-        750;
+    font-weight: 750;
 
-    letter-spacing:
-        0.11em;
+    letter-spacing: 0.11em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
 }
 
@@ -2197,14 +2021,11 @@ button {
 
     margin-top: 3px;
 
-    overflow-wrap:
-        anywhere;
+    overflow-wrap: anywhere;
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    font-size:
-        0.79rem;
+    font-size: 0.79rem;
 
 }
 
@@ -2218,8 +2039,7 @@ button {
     color:
         rgba(255, 255, 255, 0.51);
 
-    font-size:
-        0.61rem;
+    font-size: 0.61rem;
 
 }
 
@@ -2242,14 +2062,12 @@ button {
 
     gap: 8px;
 
-    margin-top:
-        24px;
+    margin-top: 24px;
 
     color:
         rgba(255, 255, 255, 0.6);
 
-    font-size:
-        0.66rem;
+    font-size: 0.66rem;
 
 }
 
@@ -2261,8 +2079,7 @@ button {
 
     border-radius: 50%;
 
-    background:
-        #23ae79;
+    background: #23ae79;
 
     box-shadow:
         0 0 0 4px
@@ -2272,19 +2089,17 @@ button {
 
 
 /* =========================================================
-   23. FOOTER
+   FOOTER
 ========================================================= */
 
 .site-footer {
 
-    padding:
-        21px 0;
+    padding: 21px 0;
 
     color:
         rgba(255, 255, 255, 0.55);
 
-    background:
-        #081f30;
+    background: #081f30;
 
 }
 
@@ -2299,8 +2114,7 @@ button {
 
     gap: 20px;
 
-    font-size:
-        0.61rem;
+    font-size: 0.61rem;
 
 }
 
@@ -2314,7 +2128,7 @@ button {
 
 
 /* =========================================================
-   24. REVEAL ANIMATION
+   REVEAL ANIMATION
 ========================================================= */
 
 .reveal {
@@ -2348,7 +2162,7 @@ button {
 
 
 /* =========================================================
-   25. TABLET
+   TABLET
 ========================================================= */
 
 @media (max-width: 980px) {
@@ -2357,7 +2171,7 @@ button {
 
         min-height:
             min(
-                610px,
+                600px,
                 calc(100svh - 70px)
             );
 
@@ -2370,7 +2184,7 @@ button {
             minmax(0, 1fr)
             235px;
 
-        gap: 42px;
+        gap: 40px;
 
     }
 
@@ -2379,18 +2193,10 @@ button {
 
         font-size:
             clamp(
-                2.2rem,
-                4.3vw,
-                2.7rem
+                2.15rem,
+                4.15vw,
+                2.65rem
             );
-
-    }
-
-
-    .hero-heading p {
-
-        font-size:
-            1.15rem;
 
     }
 
@@ -2421,7 +2227,7 @@ button {
 
 
 /* =========================================================
-   26. MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 760px) {
@@ -2463,14 +2269,14 @@ button {
         border:
             1px solid var(--border);
 
-        border-radius:
-            10px;
+        border-radius: 10px;
 
         background:
-            rgba(255, 255, 255, 0.98);
+            rgba(246, 250, 253, 0.99);
 
-        box-shadow:
-            var(--shadow);
+        box-shadow: var(--shadow);
+
+        backdrop-filter: blur(16px);
 
     }
 
@@ -2484,8 +2290,7 @@ button {
 
     .main-nav a {
 
-        padding:
-            11px 10px;
+        padding: 11px 10px;
 
     }
 
@@ -2502,7 +2307,7 @@ button {
         min-height: auto;
 
         padding:
-            38px 0 54px;
+            37px 0 56px;
 
     }
 
@@ -2513,7 +2318,7 @@ button {
 
         flex-direction: column;
 
-        gap: 26px;
+        gap: 33px;
 
     }
 
@@ -2533,13 +2338,12 @@ button {
 
         font-size:
             clamp(
-                2rem,
-                8.8vw,
-                2.55rem
+                1.95rem,
+                8.3vw,
+                2.45rem
             );
 
-        line-height:
-            1.06;
+        line-height: 1.07;
 
     }
 
@@ -2550,9 +2354,9 @@ button {
 
         font-size:
             clamp(
-                1.05rem,
-                5vw,
-                1.28rem
+                1.03rem,
+                4.7vw,
+                1.22rem
             );
 
     }
@@ -2560,8 +2364,7 @@ button {
 
     .hero-description {
 
-        font-size:
-            0.86rem;
+        font-size: 0.85rem;
 
     }
 
@@ -2571,6 +2374,9 @@ button {
         width: 100%;
 
         margin-inline: auto;
+
+        padding:
+            10px 0 5px;
 
         text-align: center;
 
@@ -2582,8 +2388,7 @@ button {
         width: 230px;
         height: 230px;
 
-        margin:
-            0 auto;
+        margin: 0 auto;
 
     }
 
@@ -2614,16 +2419,14 @@ button {
 
     .hero-status {
 
-        margin:
-            -2px auto 0;
+        margin: 3px auto 0;
 
     }
 
 
     .section {
 
-        padding:
-            61px 0;
+        padding: 61px 0;
 
     }
 
@@ -2648,6 +2451,13 @@ button {
     }
 
 
+    .case-card {
+
+        padding: 25px;
+
+    }
+
+
     .timeline::before {
 
         left: 5px;
@@ -2661,8 +2471,7 @@ button {
 
         gap: 5px;
 
-        padding-left:
-            28px;
+        padding-left: 28px;
 
     }
 
@@ -2706,15 +2515,14 @@ button {
 
 
 /* =========================================================
-   27. SMALL MOBILE
+   SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 460px) {
 
     .hero-heading h1 {
 
-        font-size:
-            2.18rem;
+        font-size: 2.08rem;
 
     }
 
@@ -2732,8 +2540,7 @@ button {
     .hero-actions
     .button:first-child {
 
-        grid-column:
-            1 / -1;
+        grid-column: 1 / -1;
 
     }
 
@@ -2763,8 +2570,7 @@ button {
 
     .metric {
 
-        font-size:
-            1.9rem;
+        font-size: 1.9rem;
 
     }
 
@@ -2772,7 +2578,7 @@ button {
 
 
 /* =========================================================
-   28. REDUCED MOTION
+   REDUCED MOTION
 ========================================================= */
 
 @media
