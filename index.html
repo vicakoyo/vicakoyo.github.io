@@ -6,20 +6,23 @@
 
   <title>Victor Akoyo | Operations, Supply Chain & Process Improvement</title>
 
-  <meta name="description"
-        content="Victor Akoyo - Operations, Supply Chain, Quality and Process Improvement professional based in Nairobi, Kenya.">
+  <meta
+    name="description"
+    content="Professional portfolio of Victor Akoyo — Operations, Business Operations, Supply Chain, Quality and Process Improvement professional based in Nairobi, Kenya."
+  >
 
   <style>
     :root {
-      --navy: #102a43;
-      --blue: #1f5f99;
-      --light-blue: #eaf2f8;
-      --text: #243b53;
-      --muted: #627d98;
-      --light: #f7f9fc;
+      --navy: #102f4d;
+      --blue: #1767a5;
+      --blue-dark: #11578e;
+      --text: #102f4d;
+      --muted: #607d98;
+      --light: #f4f7fb;
+      --lighter: #f8fafc;
       --white: #ffffff;
-      --border: #d9e2ec;
-      --max-width: 1120px;
+      --border: #d8e1e9;
+      --max-width: 1080px;
     }
 
     * {
@@ -30,13 +33,14 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background: var(--white);
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     a {
@@ -44,105 +48,183 @@
     }
 
     .container {
-      width: min(92%, var(--max-width));
-      margin: auto;
+      width: min(90%, var(--max-width));
+      margin: 0 auto;
     }
 
-    /* NAVIGATION */
+    /* =========================
+       NAVIGATION
+    ========================== */
 
-    nav {
-      background: var(--white);
+    header {
+      background: rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
-    .nav-inner {
-      min-height: 70px;
+    .nav-container {
+      min-height: 82px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 25px;
+      justify-content: space-between;
+      gap: 30px;
     }
 
-    .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
       text-decoration: none;
+      color: var(--navy);
+      white-space: nowrap;
     }
 
-    .nav-links {
+    .desktop-nav {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 26px;
     }
 
-    .nav-links a {
+    .desktop-nav a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
+    .desktop-nav a:hover {
       color: var(--blue);
     }
 
-    /* HERO */
+    .menu-button {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+
+    /* =========================
+       GENERAL SECTION STYLING
+    ========================== */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 42px;
+      font-size: 1rem;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
-      padding: 105px 0 90px;
-      background:
-        linear-gradient(135deg, #f7f9fc 0%, #ffffff 55%, #eaf2f8 100%);
+      background: linear-gradient(
+        120deg,
+        #ffffff 0%,
+        #ffffff 48%,
+        #eef5fa 100%
+      );
+
+      padding: 95px 0 90px;
+    }
+
+    .hero-content {
+      max-width: 790px;
     }
 
     .eyebrow {
       color: var(--blue);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 4.7rem);
       margin-bottom: 18px;
+      letter-spacing: -0.03em;
     }
 
-    h1 {
-      color: var(--navy);
-      font-size: clamp(2.6rem, 6vw, 4.7rem);
-      line-height: 1.05;
-      max-width: 850px;
-      margin-bottom: 20px;
-    }
-
-    .headline {
+    .hero-tagline {
       color: var(--blue);
-      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-      font-weight: 600;
-      margin-bottom: 25px;
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 28px;
     }
 
-    .hero-copy {
-      max-width: 780px;
-      font-size: 1.08rem;
+    .hero-description {
       color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 720px;
       margin-bottom: 34px;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .button {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 6px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: 700;
       border: 1px solid var(--blue);
-      transition: 0.2s ease;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .button:hover {
@@ -154,45 +236,26 @@
       color: var(--white);
     }
 
+    .button-primary:hover {
+      background: var(--blue-dark);
+    }
+
     .button-secondary {
       background: var(--white);
       color: var(--blue);
     }
 
-    /* GENERAL */
-
-    section {
-      padding: 80px 0;
-      scroll-margin-top: 70px;
+    .button-secondary:hover {
+      background: #f5f9fc;
     }
 
-    .section-light {
+    /* =========================
+       IMPACT
+    ========================== */
+
+    #impact {
       background: var(--light);
     }
-
-    .section-label {
-      color: var(--blue);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      color: var(--navy);
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      line-height: 1.25;
-      margin-bottom: 15px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 38px;
-    }
-
-    /* IMPACT */
 
     .impact-grid {
       display: grid;
@@ -204,14 +267,16 @@
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 25px;
+      padding: 30px 24px;
+      min-height: 205px;
     }
 
     .impact-number {
       color: var(--blue);
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 800;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
+      line-height: 1.15;
     }
 
     .impact-card p {
@@ -219,240 +284,421 @@
       font-size: 0.95rem;
     }
 
-    /* EXPERTISE */
+    /* =========================
+       EXPERTISE
+    ========================== */
 
     .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px 40px;
+      margin-top: 35px;
+    }
+
+    .expertise-item {
+      border-left: 4px solid var(--blue);
+      padding: 10px 0 10px 20px;
+    }
+
+    .expertise-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .expertise-item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       CASE STUDIES
+    ========================== */
+
+    #case-studies {
+      background: var(--light);
+    }
+
+    .case-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
 
-    .expertise-card {
-      border-left: 4px solid var(--blue);
-      padding: 8px 0 8px 22px;
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
     }
 
-    .expertise-card h3 {
-      color: var(--navy);
-      margin-bottom: 6px;
+    .case-type {
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .expertise-card p {
+    .case-card h3 {
+      margin-bottom: 13px;
+      font-size: 1.15rem;
+    }
+
+    .case-card p {
+      color: var(--muted);
+      margin-bottom: 13px;
+      font-size: 0.95rem;
+    }
+
+    .case-card .result {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================== */
+
+    .timeline {
+      border-left: 2px solid #d6e3ee;
+      margin-left: 6px;
+      padding-left: 28px;
+      max-width: 850px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 30px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -34px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.08rem;
+      margin-bottom: 2px;
+    }
+
+    .role {
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .timeline-item p:last-child {
       color: var(--muted);
     }
 
-    /* CASE STUDIES */
+    /* =========================
+       EDUCATION
+    ========================== */
 
-    .case-grid {
+    #education {
+      background: var(--light);
+    }
+
+    .education-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
-    .case-card {
+    .education-card {
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 28px;
-      background: var(--white);
     }
 
-    .case-tag {
-      color: var(--blue);
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
+    .education-card h3 {
+      margin-bottom: 10px;
     }
 
-    .case-card h3 {
-      color: var(--navy);
-      margin-bottom: 13px;
-    }
-
-    .case-card p {
+    .education-card p {
       color: var(--muted);
-      margin-bottom: 12px;
     }
 
-    .result {
-      color: var(--navy) !important;
-      font-weight: 700;
-    }
-
-    /* CAREER */
-
-    .career-item {
-      padding: 0 0 32px 22px;
-      border-left: 2px solid var(--border);
-      position: relative;
-    }
-
-    .career-item::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      background: var(--blue);
-      border-radius: 50%;
-      position: absolute;
-      left: -6px;
-      top: 8px;
-    }
-
-    .career-item h3 {
-      color: var(--navy);
-    }
-
-    .career-meta {
-      color: var(--blue);
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .career-item p {
+    .credential-list {
+      margin-top: 10px;
+      padding-left: 20px;
       color: var(--muted);
-      max-width: 850px;
     }
 
-    /* TECHNOLOGY */
+    .credential-list li {
+      margin-bottom: 7px;
+    }
 
-    .tech-box {
+    /* =========================
+       TECHNOLOGY
+    ========================== */
+
+    #technology {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .technology-box {
       background: var(--navy);
       color: var(--white);
-      border-radius: 10px;
-      padding: 35px;
+      padding: 38px;
+      border-radius: 9px;
     }
 
-    .tech-box h2,
-    .tech-box h3 {
+    .technology-box .section-label {
+      color: #2c83c5;
+    }
+
+    .technology-box h2 {
       color: var(--white);
     }
 
-    .tech-box p {
-      color: #d9e2ec;
+    .technology-box p {
+      color: #ffffff;
       max-width: 850px;
       margin-bottom: 16px;
     }
 
-    .tech-list {
+    .tech-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 22px;
     }
 
-    .tech-item {
-      border: 1px solid #486581;
-      padding: 8px 12px;
+    .tech-tag {
+      border: 1px solid #4e6e89;
       border-radius: 5px;
-      color: #f0f4f8;
-      font-size: 0.9rem;
+      padding: 8px 12px;
+      font-size: 0.88rem;
+      color: var(--white);
     }
 
-    .project-box {
-      margin-top: 30px;
-      padding-top: 25px;
-      border-top: 1px solid #486581;
+    .project-evidence {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #4e6e89;
     }
 
-    .project-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #9fb3c8;
+    .project-evidence h3 {
       margin-bottom: 8px;
     }
 
-    /* CONTACT */
+    .project-evidence p {
+      color: #d9e6f0;
+      font-size: 0.94rem;
+    }
 
-    .contact {
+    .project-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    #contact {
       text-align: center;
+      padding-top: 50px;
+      padding-bottom: 80px;
     }
 
-    .contact p {
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto 25px;
+    #contact .section-intro {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
     }
 
-    .contact .buttons {
+    #contact .buttons {
       justify-content: center;
     }
 
+    /* =========================
+       FOOTER
+    ========================== */
+
     footer {
       background: var(--navy);
-      color: #bcccdc;
+      color: #dce8f1;
       text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
+      padding: 25px 20px;
+      font-size: 0.85rem;
     }
 
-    /* MOBILE */
+    /* =========================
+       TABLET
+    ========================== */
 
     @media (max-width: 900px) {
       .impact-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .desktop-nav {
+        gap: 15px;
+      }
+
+      .desktop-nav a {
+        font-size: 0.82rem;
+      }
     }
 
-    @media (max-width: 800px) {
-      .expertise-grid,
-      .case-grid {
-        grid-template-columns: 1fr;
+    /* =========================
+       MOBILE NAVIGATION
+    ========================== */
+
+    @media (max-width: 760px) {
+      html {
+        scroll-padding-top: 78px;
       }
 
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 15px 0;
+      .nav-container {
+        min-height: 70px;
       }
 
-      .nav-links {
-        gap: 12px 16px;
+      .desktop-nav {
+        display: none;
       }
 
-      .hero {
-        padding: 70px 0;
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .mobile-nav {
+        display: none;
+        border-top: 1px solid var(--border);
+        background: var(--white);
+        padding: 8px 5%;
+      }
+
+      .mobile-nav.open {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+
+      .mobile-nav a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 700;
+        padding: 13px 8px;
+        border-bottom: 1px solid #eef2f5;
+      }
+
+      .mobile-nav a:hover {
+        color: var(--blue);
       }
 
       section {
         padding: 60px 0;
       }
-    }
 
-    @media (max-width: 520px) {
-      .impact-grid {
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .impact-grid,
+      .expertise-grid,
+      .case-grid,
+      .education-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding: 55px 0;
+      .impact-card {
+        min-height: auto;
       }
 
-      .tech-box {
-        padding: 25px;
+      .buttons {
+        flex-direction: column;
       }
 
       .button {
         width: 100%;
-        text-align: center;
+        padding: 15px 18px;
+      }
+
+      .technology-box {
+        padding: 28px 22px;
+      }
+    }
+
+    /* =========================
+       SMALL PHONES
+    ========================== */
+
+    @media (max-width: 430px) {
+      .container {
+        width: 92%;
+      }
+
+      .logo {
+        font-size: 1.05rem;
+      }
+
+      .hero h1 {
+        font-size: 2.65rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .mobile-nav.open {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .impact-number {
+        font-size: 2rem;
+      }
+
+      .case-card,
+      .education-card {
+        padding: 23px;
       }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-  <nav>
-    <div class="container nav-inner">
+  <header>
+    <div class="container nav-container">
 
-      <a class="brand" href="#home">Victor Akoyo</a>
+      <a href="#top" class="logo">Victor Akoyo</a>
 
-      <div class="nav-links">
+      <nav class="desktop-nav" aria-label="Desktop navigation">
         <a href="#impact">Impact</a>
         <a href="#expertise">Expertise</a>
         <a href="#case-studies">Case Studies</a>
@@ -460,645 +706,628 @@
         <a href="#education">Education</a>
         <a href="#technology">Technology</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
 
-    </div>
-  </nav>
-
-
-  <!-- HERO -->
-
-  <header class="hero" id="home">
-
-    <div class="container">
-
-      <div class="eyebrow">
-        Operations • Supply Chain • Quality • Process Improvement
-      </div>
-
-      <h1>Victor Akoyo</h1>
-
-      <div class="headline">
-        Building stronger operations through disciplined execution,
-        data and continuous improvement.
-      </div>
-
-      <p class="hero-copy">
-        Operations and supply chain professional based in Nairobi, Kenya,
-        with experience spanning international logistics, quality management,
-        business operations, engineering and process improvement. I focus on
-        turning operational problems into measurable improvements while
-        building practical systems that strengthen visibility, accountability
-        and execution.
-      </p>
-
-      <div class="buttons">
-
-        <a class="button button-primary" href="#case-studies">
-          View Selected Work
-        </a>
-
-        <a class="button button-secondary"
-           href="mailto:vicakoyo2@gmail.com">
-          Email Me
-        </a>
-
-        <a class="button button-secondary"
-           href="https://www.linkedin.com/in/victorakoyo/"
-           target="_blank"
-           rel="noopener noreferrer">
-          LinkedIn
-        </a>
-
-      </div>
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileNavigation"
+      >
+        <span class="menu-icon" id="menuIcon">☰</span>
+        <span>Menu</span>
+      </button>
 
     </div>
 
+    <nav
+      class="mobile-nav"
+      id="mobileNavigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="#impact">Impact</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#technology">Technology</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
 
-  <!-- IMPACT -->
+  <!-- =========================
+       HERO
+  ========================== -->
 
-  <section class="section-light" id="impact">
+  <main id="top">
 
-    <div class="container">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
 
-      <div class="section-label">Selected Impact</div>
-
-      <h2>Evidence over adjectives.</h2>
-
-      <p class="section-intro">
-        Selected outcomes from roles across supply chain, quality,
-        manufacturing and business operations.
-      </p>
-
-      <div class="impact-grid">
-
-        <div class="impact-card">
-
-          <div class="impact-number">~£520K</div>
-
-          <p>
-            Approximate annual logistics savings through warehouse,
-            3PL and final-mile optimisation.
-          </p>
-
-        </div>
-
-
-        <div class="impact-card">
-
-          <div class="impact-number">12% → 4%</div>
-
-          <p>
-            Reduction in returns measured by CBM through quality,
-            packaging and logistics improvements.
-          </p>
-
-        </div>
-
-
-        <div class="impact-card">
-
-          <div class="impact-number">10% → 5%</div>
-
-          <p>
-            Reduction in customer complaints while leading quality
-            improvement in a manufacturing environment.
-          </p>
-
-        </div>
-
-
-        <div class="impact-card">
-
-          <div class="impact-number">19 KPIs</div>
-
-          <p>
-            Leadership scorecard designed to improve visibility,
-            accountability and operating cadence.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EXPERTISE -->
-
-  <section id="expertise">
-
-    <div class="container">
-
-      <div class="section-label">Core Expertise</div>
-
-      <h2>Cross-functional operational leadership.</h2>
-
-      <p class="section-intro">
-        My experience sits at the intersection of operations,
-        supply chain, quality and structured business improvement.
-      </p>
-
-
-      <div class="expertise-grid">
-
-        <div class="expertise-card">
-
-          <h3>Operations & Business Operations</h3>
-
-          <p>
-            Operating rhythms, KPI management, SOPs, cross-functional
-            execution, executive reporting and process improvement.
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>Supply Chain & Logistics</h3>
-
-          <p>
-            International freight, 3PL management, warehousing,
-            demand planning, inventory, final mile and reverse logistics.
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>Quality & Continuous Improvement</h3>
-
-          <p>
-            Supplier quality, root-cause analysis, corrective action,
-            manufacturing controls, customer complaints and ISO-based systems.
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>Data & Operational Systems</h3>
-
-          <p>
-            Excel-based analysis, Power BI, ERP/WMS environments,
-            KPI reporting and practical AI-enabled workflow improvement.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CASE STUDIES -->
-
-  <section class="section-light" id="case-studies">
-
-    <div class="container">
-
-      <div class="section-label">Selected Work</div>
-
-      <h2>Operational problems turned into measurable outcomes.</h2>
-
-      <p class="section-intro">
-        Short case studies showing the type of problems I have worked on,
-        the decisions involved and the resulting operational impact.
-      </p>
-
-
-      <div class="case-grid">
-
-
-        <article class="case-card">
-
-          <div class="case-tag">
-            Supply Chain • Cost Optimisation
+          <div class="eyebrow">
+            Operations • Supply Chain • Quality • Process Improvement
           </div>
 
-          <h3>Restructuring logistics costs</h3>
+          <h1>Victor Akoyo</h1>
 
-          <p>
-            Reviewed warehousing, storage and final-mile cost structures,
-            benchmarked alternatives, negotiated commercial terms and
-            supported a transition to a more efficient logistics model.
+          <p class="hero-tagline">
+            Building stronger operations through disciplined execution,
+            data and continuous improvement.
           </p>
 
-          <p class="result">
-            Result: approximately £400K annual warehouse/3PL savings
-            plus approximately £120K in final-mile savings.
+          <p class="hero-description">
+            Operations and supply chain professional based in Nairobi, Kenya,
+            with experience spanning international logistics, quality
+            management, business operations, engineering and process
+            improvement. I focus on turning operational problems into
+            measurable improvements while building practical systems that
+            strengthen visibility, accountability and execution.
           </p>
 
-        </article>
+          <div class="buttons">
 
+            <a href="#case-studies" class="button button-primary">
+              View Selected Work
+            </a>
 
-        <article class="case-card">
+            <a
+              href="mailto:vicakoyo2@gmail.com"
+              class="button button-secondary"
+            >
+              Email Me
+            </a>
 
-          <div class="case-tag">
-            Quality • Reverse Logistics
+            <a
+              href="https://www.linkedin.com/in/victorakoyo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button button-secondary"
+            >
+              LinkedIn
+            </a>
+
           </div>
 
-          <h3>Reducing product returns</h3>
-
-          <p>
-            Used return-cause analysis alongside supplier quality,
-            packaging, handling and delivery reviews to address recurring
-            failure modes across the product journey.
-          </p>
-
-          <p class="result">
-            Result: returns reduced from approximately 12% to 4% by CBM.
-          </p>
-
-        </article>
+        </div>
+      </div>
+    </section>
 
 
-        <article class="case-card">
+    <!-- =========================
+         IMPACT
+    ========================== -->
 
-          <div class="case-tag">
-            Logistics • Operational Recovery
+    <section id="impact">
+      <div class="container">
+
+        <div class="section-label">Selected Impact</div>
+
+        <h2>Evidence over adjectives.</h2>
+
+        <p class="section-intro">
+          Selected outcomes from roles across supply chain, quality,
+          manufacturing and business operations.
+        </p>
+
+        <div class="impact-grid">
+
+          <div class="impact-card">
+            <div class="impact-number">~£520K</div>
+            <p>
+              Approximate annual logistics savings through warehouse,
+              3PL and final-mile optimisation.
+            </p>
           </div>
 
-          <h3>Protecting a time-critical container movement</h3>
-
-          <p>
-            Responded to a capacity constraint affecting approximately
-            ten inbound containers by sourcing an alternative operating
-            route, coordinating warehouse capacity and accelerating movement
-            within available free time.
-          </p>
-
-          <p class="result">
-            Result: all affected containers moved within free time,
-            avoiding demurrage exposure and further operational delay.
-          </p>
-
-        </article>
-
-
-        <article class="case-card">
-
-          <div class="case-tag">
-            Business Operations • Performance Management
+          <div class="impact-card">
+            <div class="impact-number">12% → 4%</div>
+            <p>
+              Reduction in returns measured by CBM through quality,
+              packaging and logistics improvements.
+            </p>
           </div>
 
-          <h3>Building leadership visibility</h3>
+          <div class="impact-card">
+            <div class="impact-number">10% → 5%</div>
+            <p>
+              Reduction in customer complaints while leading quality
+              improvement in a manufacturing environment.
+            </p>
+          </div>
 
-          <p>
-            Designed a 19-KPI leadership scorecard spanning customer,
-            workforce, recruitment and commercial performance, integrated
-            into structured leadership and quarterly review rhythms.
-          </p>
+          <div class="impact-card">
+            <div class="impact-number">19 KPIs</div>
+            <p>
+              Leadership scorecard designed to improve visibility,
+              accountability and operating cadence.
+            </p>
+          </div>
 
-          <p class="result">
-            Result: clearer operating visibility, ownership and
-            management discussion around performance and priorities.
-          </p>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EXPERIENCE -->
-
-  <section id="experience">
-
-    <div class="container">
-
-      <div class="section-label">Career</div>
-
-      <h2>
-        Experience across operations, supply chain,
-        quality and engineering.
-      </h2>
-
-
-      <div class="career-item">
-
-        <h3>Optimise Outsourcing</h3>
-
-        <div class="career-meta">
-          Operations Manager & EOS Integrator | Oct 2025 – 2026
         </div>
+      </div>
+    </section>
 
-        <p>
-          Business operations, leadership operating cadence, KPI reporting,
-          finance administration, SOP development, executive support and
-          AI-enabled workflow improvement.
+
+    <!-- =========================
+         EXPERTISE
+    ========================== -->
+
+    <section id="expertise">
+      <div class="container">
+
+        <div class="section-label">Core Expertise</div>
+
+        <h2>Cross-functional operational leadership.</h2>
+
+        <p class="section-intro">
+          My experience sits at the intersection of operations,
+          supply chain, quality and structured business improvement.
         </p>
 
-      </div>
+        <div class="expertise-grid">
 
+          <div class="expertise-item">
+            <h3>Operations &amp; Business Operations</h3>
+            <p>
+              Operating rhythms, KPI management, SOPs, cross-functional
+              execution, executive reporting and process improvement.
+            </p>
+          </div>
 
-      <div class="career-item">
+          <div class="expertise-item">
+            <h3>Supply Chain &amp; Logistics</h3>
+            <p>
+              International freight, 3PL management, warehousing,
+              demand planning, inventory, final mile and reverse logistics.
+            </p>
+          </div>
 
-        <h3>Rattan Direct</h3>
+          <div class="expertise-item">
+            <h3>Quality &amp; Continuous Improvement</h3>
+            <p>
+              Supplier quality, root-cause analysis, corrective action,
+              manufacturing controls, customer complaints and ISO-based systems.
+            </p>
+          </div>
 
-        <div class="career-meta">
-          Supply Chain, Quality Control & Technical Manager |
-          Dec 2022 – Feb 2026
+          <div class="expertise-item">
+            <h3>Data &amp; Operational Systems</h3>
+            <p>
+              Excel-based analysis, Power BI, ERP/WMS environments,
+              KPI reporting and practical AI-enabled workflow improvement.
+            </p>
+          </div>
+
         </div>
+      </div>
+    </section>
 
-        <p>
-          International supply chain, freight, 3PL warehousing, inventory,
-          demand planning, final-mile delivery, reverse logistics,
-          supplier quality and operational cost improvement.
+
+    <!-- =========================
+         CASE STUDIES
+    ========================== -->
+
+    <section id="case-studies">
+      <div class="container">
+
+        <div class="section-label">Selected Work</div>
+
+        <h2>Operational problems turned into measurable outcomes.</h2>
+
+        <p class="section-intro">
+          Short case studies showing the type of problems I have worked on,
+          the decisions involved and the resulting operational impact.
         </p>
 
+        <div class="case-grid">
+
+          <article class="case-card">
+            <div class="case-type">
+              Supply Chain • Cost Optimisation
+            </div>
+
+            <h3>Restructuring logistics costs</h3>
+
+            <p>
+              Reviewed warehousing, storage and final-mile cost structures,
+              benchmarked alternatives, negotiated commercial terms and
+              supported a transition to a more efficient logistics model.
+            </p>
+
+            <p class="result">
+              Result: approximately £400K annual warehouse/3PL savings
+              plus approximately £120K in final-mile savings.
+            </p>
+          </article>
+
+
+          <article class="case-card">
+            <div class="case-type">
+              Quality • Reverse Logistics
+            </div>
+
+            <h3>Reducing product returns</h3>
+
+            <p>
+              Used return-cause analysis alongside supplier quality,
+              packaging, handling and delivery reviews to address recurring
+              failure modes across the product journey.
+            </p>
+
+            <p class="result">
+              Result: returns reduced from approximately 12% to 4% by CBM.
+            </p>
+          </article>
+
+
+          <article class="case-card">
+            <div class="case-type">
+              Logistics • Operational Recovery
+            </div>
+
+            <h3>Protecting a time-critical container movement</h3>
+
+            <p>
+              Responded to a capacity constraint affecting approximately
+              ten inbound containers by sourcing an alternative operating
+              route, coordinating warehouse capacity and accelerating
+              movement within available free time.
+            </p>
+
+            <p class="result">
+              Result: all affected containers moved within free time,
+              avoiding demurrage exposure and further operational delay.
+            </p>
+          </article>
+
+
+          <article class="case-card">
+            <div class="case-type">
+              Business Operations • Performance Management
+            </div>
+
+            <h3>Building leadership visibility</h3>
+
+            <p>
+              Designed a 19-KPI leadership scorecard spanning customer,
+              workforce, recruitment and commercial performance, integrated
+              into structured leadership and quarterly review rhythms.
+            </p>
+
+            <p class="result">
+              Result: clearer operating visibility, ownership and management
+              discussion around performance and priorities.
+            </p>
+          </article>
+
+        </div>
       </div>
+    </section>
 
 
-      <div class="career-item">
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
 
-        <h3>Tile & Carpet Centre</h3>
+    <section id="experience">
+      <div class="container">
 
-        <div class="career-meta">
-          Quality Team Lead | Apr 2021 – Nov 2022
-        </div>
-
-        <p>
-          Led quality inspectors and improvement activity across
-          manufacturing quality, customer complaints, compliance,
-          corrective action and field-service quality.
-        </p>
-
-      </div>
-
-
-      <div class="career-item">
-
-        <h3>Auto Springs East Africa PLC</h3>
-
-        <div class="career-meta">
-          Quality Control Engineer | Jul 2020 – Apr 2021
-        </div>
-
-        <p>
-          Automotive manufacturing quality including APQP, PPAP,
-          PFMEA, control plans, MSA, SPC, corrective action and
-          production quality control.
-        </p>
-
-      </div>
-
-
-      <div class="career-item">
-
-        <h3>Coca-Cola Beverages Africa</h3>
-
-        <div class="career-meta">
-          Electrical Engineer | Nov 2018 – Jul 2020
-        </div>
-
-        <p>
-          Production and utilities maintenance, troubleshooting,
-          preventive maintenance, SAP PM and manufacturing support.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EDUCATION -->
-
-  <section class="section-light" id="education">
-
-    <div class="container">
-
-      <div class="section-label">
-        Education & Credentials
-      </div>
-
-      <h2>
-        Engineering foundation with operations and
-        improvement development.
-      </h2>
-
-      <p class="section-intro">
-        Formal education supported by professional development
-        across service management, quality, continuous improvement
-        and structured delivery.
-      </p>
-
-
-      <div class="expertise-grid">
-
-
-        <div class="expertise-card">
-
-          <h3>BSc Control & Instrumentation</h3>
-
-          <p>
-            Jomo Kenyatta University of Agriculture and Technology (JKUAT)<br>
-            Second Class Honours, Lower Division • 2018
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>ITIL 4 Foundation</h3>
-
-          <p>
-            Foundation-level credential in IT service management,
-            service value and structured service improvement.
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>Scrum Fundamentals Certified</h3>
-
-          <p>
-            Foundation-level understanding of Scrum principles,
-            roles, events and iterative delivery.
-          </p>
-
-        </div>
-
-
-        <div class="expertise-card">
-
-          <h3>Continuous Improvement & Quality</h3>
-
-          <p>
-            Training includes Six Sigma Foundations, Lean Six Sigma
-            Define & Measure, Operational Excellence Foundations and
-            Quality Management Foundations.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- TECHNOLOGY -->
-
-  <section id="technology">
-
-    <div class="container">
-
-      <div class="tech-box">
-
-        <div class="section-label">
-          Technology & Automation
-        </div>
+        <div class="section-label">Career</div>
 
         <h2>
-          Technology as an operations enabler.
+          Experience across operations, supply chain, quality and engineering.
         </h2>
 
-        <p>
-          I apply business systems, analytics and developing automation
-          capability to improve operational visibility, decision-making
-          and execution.
-        </p>
+        <div class="timeline">
 
-        <p>
-          My practical technology experience spans business systems,
-          Microsoft 365 administration, analytics and AI-enabled workflow
-          improvement, alongside continued development in workflow automation,
-          APIs, JSON, webhooks, Git/GitHub and Python fundamentals.
-        </p>
+          <div class="timeline-item">
+            <h3>Optimise Outsourcing</h3>
 
+            <p class="role">
+              Operations Manager &amp; EOS Integrator
+            </p>
 
-        <div class="tech-list">
-
-          <span class="tech-item">Excel</span>
-
-          <span class="tech-item">Power BI</span>
-
-          <span class="tech-item">Microsoft 365</span>
-
-          <span class="tech-item">SharePoint</span>
-
-          <span class="tech-item">SAP PM</span>
-
-          <span class="tech-item">OrderWise ERP</span>
-
-          <span class="tech-item">Make.com</span>
-
-          <span class="tech-item">n8n</span>
-
-          <span class="tech-item">AI-enabled workflows</span>
-
-          <span class="tech-item">Git / GitHub</span>
-
-        </div>
-
-
-        <div class="project-box">
-
-          <div class="project-label">
-            Selected Project
+            <p>
+              Business operations, leadership operating cadence,
+              KPI reporting, finance administration, SOP development,
+              executive support and AI-enabled workflow improvement.
+            </p>
           </div>
 
-          <h3>
-            AI & Workflow Automation
-          </h3>
+
+          <div class="timeline-item">
+            <h3>Rattan Direct</h3>
+
+            <p class="role">
+              Supply Chain, Quality Control &amp; Technical Manager
+            </p>
+
+            <p>
+              International supply chain, freight, 3PL warehousing,
+              inventory, demand planning, final-mile delivery,
+              reverse logistics, supplier quality and operational
+              cost improvement.
+            </p>
+          </div>
+
+
+          <div class="timeline-item">
+            <h3>Tile &amp; Carpet Centre</h3>
+
+            <p class="role">
+              Quality Team Lead
+            </p>
+
+            <p>
+              Led quality inspectors and improvement activity across
+              manufacturing quality, customer complaints, compliance,
+              corrective action and field-service quality.
+            </p>
+          </div>
+
+
+          <div class="timeline-item">
+            <h3>Auto Springs East Africa PLC</h3>
+
+            <p class="role">
+              Quality Control Engineer
+            </p>
+
+            <p>
+              Automotive manufacturing quality including APQP, PPAP,
+              PFMEA, control plans, MSA, SPC, corrective action and
+              production quality control.
+            </p>
+          </div>
+
+
+          <div class="timeline-item">
+            <h3>Coca-Cola Beverages Africa</h3>
+
+            <p class="role">
+              Electrical Engineer
+            </p>
+
+            <p>
+              Production and utilities maintenance, preventive and
+              corrective maintenance, troubleshooting, SAP PM,
+              equipment reliability and manufacturing support.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section id="education">
+      <div class="container">
+
+        <div class="section-label">Education &amp; Credentials</div>
+
+        <h2>Engineering foundation with operational development.</h2>
+
+        <p class="section-intro">
+          Formal engineering education supported by training across
+          operations, quality, service management and continuous improvement.
+        </p>
+
+        <div class="education-grid">
+
+          <div class="education-card">
+            <h3>
+              BSc Control &amp; Instrumentation
+            </h3>
+
+            <p>
+              Jomo Kenyatta University of Agriculture and Technology (JKUAT)
+            </p>
+
+            <p>
+              Second Class Honours, Lower Division
+            </p>
+
+            <p>
+              Awarded 2018
+            </p>
+          </div>
+
+
+          <div class="education-card">
+
+            <h3>Selected Professional Credentials</h3>
+
+            <ul class="credential-list">
+              <li>ITIL 4 Foundation</li>
+              <li>Scrum Fundamentals Certified</li>
+              <li>Six Sigma Foundations</li>
+              <li>Lean Six Sigma – Define &amp; Measure</li>
+              <li>Operational Excellence Foundations</li>
+              <li>Quality Management Foundations</li>
+              <li>SAP ERP Essential Training</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         TECHNOLOGY
+    ========================== -->
+
+    <section id="technology">
+      <div class="container">
+
+        <div class="technology-box">
+
+          <div class="section-label">
+            Technology &amp; Automation
+          </div>
+
+          <h2>Technology as an operations enabler.</h2>
 
           <p>
-            Practical experimentation with AI-enabled operational workflows,
-            including information processing, summarisation, structured
-            reporting and workflow automation.
+            I use business systems, analytics and developing automation
+            capability to support established operations expertise.
+            My focus is practical application rather than presenting
+            myself as a software engineer.
           </p>
 
-          <a class="button button-secondary"
-             href="https://github.com/vicakoyo/victor-ai-automation"
-             target="_blank"
-             rel="noopener noreferrer">
-            View Project on GitHub
+          <p>
+            Current development areas include workflow automation,
+            APIs, JSON, webhooks, Git/GitHub and basic Python.
+          </p>
+
+          <div class="tech-tags">
+
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Microsoft 365</span>
+            <span class="tech-tag">SharePoint</span>
+            <span class="tech-tag">SAP PM</span>
+            <span class="tech-tag">OrderWise ERP</span>
+            <span class="tech-tag">Make.com</span>
+            <span class="tech-tag">n8n</span>
+            <span class="tech-tag">AI-enabled workflows</span>
+            <span class="tech-tag">Git / GitHub - Developing</span>
+
+          </div>
+
+
+          <div class="project-evidence">
+
+            <h3>Developing Automation Portfolio</h3>
+
+            <p>
+              Practical workflow projects exploring how automation and
+              AI can support operational reporting, information flow
+              and repetitive business processes.
+            </p>
+
+            <a
+              class="project-link"
+              href="https://github.com/vicakoyo/victor-ai-automation"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project on GitHub →
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-label">Contact</div>
+
+        <h2>Interested in working together?</h2>
+
+        <p class="section-intro">
+          I am open to relevant opportunities across Operations,
+          Business Operations, Supply Chain, Logistics, Quality
+          and Process Improvement.
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="mailto:vicakoyo2@gmail.com"
+            class="button button-primary"
+          >
+            Email Me
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/victorakoyo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-secondary"
+          >
+            Connect on LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/vicakoyo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-secondary"
+          >
+            View GitHub
           </a>
 
         </div>
 
       </div>
+    </section>
 
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="container contact">
-
-      <div class="section-label">
-        Contact
-      </div>
-
-      <h2>
-        Interested in working together?
-      </h2>
-
-      <p>
-        I am open to relevant opportunities across Operations,
-        Business Operations, Supply Chain, Logistics, Quality and
-        Process Improvement in Kenya and selected international
-        or remote environments.
-      </p>
+  </main>
 
 
-      <div class="buttons">
-
-        <a class="button button-primary"
-           href="mailto:vicakoyo2@gmail.com">
-          Email Me
-        </a>
-
-        <a class="button button-secondary"
-           href="https://www.linkedin.com/in/victorakoyo/"
-           target="_blank"
-           rel="noopener noreferrer">
-          LinkedIn
-        </a>
-
-        <a class="button button-secondary"
-           href="https://github.com/vicakoyo"
-           target="_blank"
-           rel="noopener noreferrer">
-          GitHub
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer>
-    © 2026 Victor Akoyo • Nairobi, Kenya • vicakoyo2@gmail.com
+    © 2026 Victor Akoyo • Nairobi, Kenya
   </footer>
 
+
+  <!-- =========================
+       MOBILE MENU JAVASCRIPT
+  ========================== -->
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNavigation = document.getElementById("mobileNavigation");
+    const menuIcon = document.getElementById("menuIcon");
+    const mobileLinks = mobileNavigation.querySelectorAll("a");
+
+    function closeMenu() {
+      mobileNavigation.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuIcon.textContent = "☰";
+    }
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = mobileNavigation.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menuIcon.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mobileLinks.forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 760) {
+        closeMenu();
+      }
+    });
+  </script>
 
 </body>
 </html>
