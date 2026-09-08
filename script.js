@@ -1,1767 +1,1482 @@
 /* =========================================================
    VICTOR AKOYO PROFESSIONAL PORTFOLIO
-   script.js
-
-   Interactive features:
-   1. Mobile navigation
-   2. Header scroll state
-   3. Smooth anchor navigation
-   4. Scroll reveal animations
-   5. Active navigation tracking
-   6. Slow KPI counters
-   7. Interactive card tilt
-   8. Hero parallax
-   9. Cursor glow
-   10. Animated network background
-   11. Visibility / performance controls
+   INTERACTION + ANIMATION
    ========================================================= */
 
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+/* =========================================================
+   1. REDUCED MOTION
+   ========================================================= */
 
-    /* =====================================================
-       BASIC SETTINGS
-       ===================================================== */
-
-    const reduceMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+const reduceMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
 
-    const isTouchDevice =
-      window.matchMedia(
-        "(pointer: coarse)"
-      ).matches;
+/* =========================================================
+   2. CURRENT YEAR
+   ========================================================= */
+
+const currentYear =
+  document.getElementById(
+    "current-year"
+  );
 
 
+if (currentYear) {
 
-    /* =====================================================
-       1. MOBILE NAVIGATION
-       ===================================================== */
+  currentYear.textContent =
+    new Date().getFullYear();
 
-    const menuButton =
-      document.getElementById(
-        "mobile-menu-button"
+}
+
+
+/* =========================================================
+   3. MOBILE NAVIGATION
+   ========================================================= */
+
+const menuToggle =
+  document.getElementById(
+    "menu-toggle"
+  );
+
+
+const mainNavigation =
+  document.getElementById(
+    "main-navigation"
+  );
+
+
+if (
+  menuToggle &&
+  mainNavigation
+) {
+
+  menuToggle.addEventListener(
+    "click",
+    () => {
+
+      const isOpen =
+        mainNavigation
+          .classList
+          .toggle("open");
+
+
+      menuToggle
+        .classList
+        .toggle(
+          "active",
+          isOpen
+        );
+
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
       );
 
-
-    const navigation =
-      document.getElementById(
-        "main-nav"
-      );
+    }
+  );
 
 
-    if (
-      menuButton &&
-      navigation
-    ) {
+  mainNavigation
+    .querySelectorAll("a")
+    .forEach(link => {
 
-      menuButton.addEventListener(
+      link.addEventListener(
         "click",
         () => {
 
-          const isOpen =
-            navigation.classList.toggle(
-              "open"
-            );
+          mainNavigation
+            .classList
+            .remove("open");
 
 
-          menuButton.classList.toggle(
-            "active",
-            isOpen
-          );
+          menuToggle
+            .classList
+            .remove("active");
 
 
-          menuButton.setAttribute(
+          menuToggle.setAttribute(
             "aria-expanded",
-            String(isOpen)
-          );
-
-
-          document.body.classList.toggle(
-            "menu-open",
-            isOpen
+            "false"
           );
 
         }
       );
 
+    });
 
-      navigation
-        .querySelectorAll("a")
-        .forEach(link => {
-
-          link.addEventListener(
-            "click",
-            () => {
-
-              navigation.classList.remove(
-                "open"
-              );
+}
 
 
-              menuButton.classList.remove(
-                "active"
-              );
+/* =========================================================
+   4. SCROLL REVEAL
+   ========================================================= */
+
+const revealElements =
+  document.querySelectorAll(
+    ".reveal"
+  );
 
 
-              menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-              );
+if (reduceMotion) {
 
+  revealElements.forEach(
+    element => {
 
-              document.body.classList.remove(
-                "menu-open"
-              );
-
-            }
-          );
-
-        });
+      element
+        .classList
+        .add("visible");
 
     }
+  );
+
+} else {
+
+  const revealObserver =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target
+                .classList
+                .add("visible");
 
 
+              revealObserver
+                .unobserve(
+                  entry.target
+                );
 
-    /* =====================================================
-       2. HEADER SCROLL STATE
-       ===================================================== */
+            }
 
-    const header =
-      document.querySelector(
-        ".site-header"
-      );
-
-
-    const updateHeader =
-      () => {
-
-        if (!header) {
-          return;
-        }
-
-
-        header.classList.toggle(
-          "scrolled",
-          window.scrollY > 20
+          }
         );
 
-      };
+      },
 
-
-    updateHeader();
-
-
-    window.addEventListener(
-      "scroll",
-      updateHeader,
       {
-        passive: true
+        threshold: 0.12,
+        rootMargin:
+          "0px 0px -40px 0px"
+      }
+
+    );
+
+
+  revealElements.forEach(
+    element => {
+
+      revealObserver.observe(
+        element
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   5. ACTIVE NAVIGATION
+   ========================================================= */
+
+const sections =
+  document.querySelectorAll(
+    "main section[id]"
+  );
+
+
+const navLinks =
+  document.querySelectorAll(
+    ".main-navigation a"
+  );
+
+
+const updateActiveNavigation =
+  () => {
+
+    let currentSection = "";
+
+
+    sections.forEach(
+      section => {
+
+        const sectionTop =
+          section.offsetTop -
+          150;
+
+
+        if (
+          window.scrollY >=
+          sectionTop
+        ) {
+
+          currentSection =
+            section.id;
+
+        }
+
       }
     );
 
 
+    navLinks.forEach(
+      link => {
 
-    /* =====================================================
-       3. SMOOTH INTERNAL NAVIGATION
-       ===================================================== */
+        link.classList.remove(
+          "active"
+        );
 
-    document
-      .querySelectorAll(
-        'a[href^="#"]'
+
+        const href =
+          link.getAttribute(
+            "href"
+          );
+
+
+        if (
+          href ===
+          `#${currentSection}`
+        ) {
+
+          link.classList.add(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  };
+
+
+window.addEventListener(
+  "scroll",
+  updateActiveNavigation,
+  {
+    passive: true
+  }
+);
+
+
+updateActiveNavigation();
+
+
+/* =========================================================
+   6. KPI COUNTERS
+   ========================================================= */
+
+/*
+   IMPORTANT:
+
+   £520K:
+   0 -> 520
+
+   19 KPIs:
+   0 -> 19
+
+   12% -> 4%:
+   "12%" remains fixed.
+   Only the second number moves:
+   12 -> 11 -> ... -> 4
+
+   8% -> 4%:
+   "8%" remains fixed.
+   Only the second number moves:
+   8 -> 7 -> ... -> 4
+*/
+
+
+const impactNumbers =
+  document.querySelectorAll(
+    ".impact-number"
+  );
+
+
+/*
+   Returned to a normal transition speed.
+*/
+
+const KPI_DURATION = 1800;
+
+
+/*
+   Smooth deceleration.
+*/
+
+const easeOutCubic =
+  progress => {
+
+    return (
+      1 -
+      Math.pow(
+        1 - progress,
+        3
       )
-      .forEach(link => {
+    );
 
-        link.addEventListener(
-          "click",
-          event => {
+  };
 
-            const href =
-              link.getAttribute(
-                "href"
-              );
 
+const getCounterConfig =
+  element => {
 
-            if (
-              !href ||
-              href === "#"
-            ) {
-              return;
-            }
+    const type =
+      element.dataset.counter;
 
 
-            const target =
-              document.querySelector(
-                href
-              );
+    switch (type) {
 
+      case "savings":
 
-            if (!target) {
-              return;
-            }
+        return {
+          type: "single",
+          start: 0,
+          end: 520,
+          prefix: "£",
+          suffix: "K"
+        };
 
 
-            event.preventDefault();
+      case "returns":
 
+        return {
+          type: "reduction",
+          baseline: 12,
+          start: 12,
+          end: 4
+        };
 
-            target.scrollIntoView({
-              behavior:
-                reduceMotion
-                  ? "auto"
-                  : "smooth",
 
-              block: "start"
-            });
+      case "quality":
 
-          }
-        );
+        return {
+          type: "reduction",
+          baseline: 8,
+          start: 8,
+          end: 4
+        };
 
-      });
 
+      case "kpis":
 
+        return {
+          type: "single",
+          start: 0,
+          end: 19,
+          prefix: "",
+          suffix: " KPIs"
+        };
 
-    /* =====================================================
-       4. SCROLL REVEAL
-       ===================================================== */
 
-    const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
-
-    if (
-      reduceMotion ||
-      !("IntersectionObserver" in window)
-    ) {
-
-      revealElements.forEach(
-        element => {
-
-          element.classList.add(
-            "revealed"
-          );
-
-        }
-      );
-
-    } else {
-
-      const revealObserver =
-        new IntersectionObserver(
-
-          entries => {
-
-            entries.forEach(
-              entry => {
-
-                if (
-                  entry.isIntersecting
-                ) {
-
-                  entry.target
-                    .classList
-                    .add(
-                      "revealed"
-                    );
-
-
-                  revealObserver
-                    .unobserve(
-                      entry.target
-                    );
-
-                }
-
-              }
-            );
-
-          },
-
-          {
-            threshold: 0.12,
-
-            rootMargin:
-              "0px 0px -50px 0px"
-          }
-
-        );
-
-
-      revealElements.forEach(
-        element => {
-
-          revealObserver.observe(
-            element
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================================
-       5. ACTIVE NAVIGATION TRACKING
-       ===================================================== */
-
-    const sections =
-      document.querySelectorAll(
-        "main section[id]"
-      );
-
-
-    const navLinks =
-      document.querySelectorAll(
-        '.main-nav a[href^="#"]'
-      );
-
-
-    if (
-      "IntersectionObserver" in window
-    ) {
-
-      const sectionObserver =
-        new IntersectionObserver(
-
-          entries => {
-
-            entries.forEach(
-              entry => {
-
-                if (
-                  !entry.isIntersecting
-                ) {
-                  return;
-                }
-
-
-                const sectionID =
-                  entry.target.id;
-
-
-                navLinks.forEach(
-                  link => {
-
-                    const href =
-                      link.getAttribute(
-                        "href"
-                      );
-
-
-                    link.classList.toggle(
-                      "active",
-                      href ===
-                        `#${sectionID}`
-                    );
-
-                  }
-                );
-
-              }
-            );
-
-          },
-
-          {
-            rootMargin:
-              "-30% 0px -60% 0px",
-
-            threshold: 0
-          }
-
-        );
-
-
-      sections.forEach(
-        section => {
-
-          sectionObserver.observe(
-            section
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================================
-       6. SLOW KPI COUNTERS
-       ===================================================== */
-
-    const impactNumbers =
-      document.querySelectorAll(
-        ".impact-number"
-      );
-
-
-    /*
-       Duration is intentionally long.
-
-       4.8 seconds makes the movement
-       visible and deliberate rather
-       than looking like a slot machine.
-    */
-
-    const KPI_DURATION = 4800;
-
-
-    const parseImpactNumber =
-      original => {
-
-        const clean =
-          original
-            .replace(/,/g, "")
-            .trim();
-
-
-        /*
-           £520K
-        */
-
-        if (
-          clean.includes("520") &&
-          clean.includes("£")
-        ) {
-
-          return {
-            start: 0,
-            end: 520,
-            prefix:
-              clean.startsWith("~")
-                ? "~£"
-                : "£",
-            suffix: "K"
-          };
-
-        }
-
-
-        /*
-           19 KPIs
-        */
-
-        if (
-          clean.includes("19") &&
-          clean
-            .toLowerCase()
-            .includes("kpi")
-        ) {
-
-          return {
-            start: 0,
-            end: 19,
-            prefix: "",
-            suffix: " KPIs"
-          };
-
-        }
-
-
-        /*
-           12% → 4%
-        */
-
-        if (
-          clean.includes("12") &&
-          clean.includes("4") &&
-          clean.includes("→")
-        ) {
-
-          return {
-            start: 0,
-            end: 12,
-            prefix: "",
-            suffix: "% → 4%"
-          };
-
-        }
-
-
-        /*
-           8% → 4%
-        */
-
-        if (
-          clean.includes("8") &&
-          clean.includes("4") &&
-          clean.includes("→")
-        ) {
-
-          return {
-            start: 0,
-            end: 8,
-            prefix: "",
-            suffix: "% → 4%"
-          };
-
-        }
-
+      default:
 
         return null;
 
-      };
+    }
+
+  };
 
 
-    const easeOutQuart =
-      progress => {
+const animateKPI =
+  element => {
 
-        return (
-          1 -
-          Math.pow(
-            1 - progress,
-            4
-          )
-        );
+    if (
+      element.dataset.animated ===
+      "true"
+    ) {
 
-      };
+      return;
 
-
-    const animateKPI =
-      element => {
-
-        if (
-          element.dataset.animated ===
-          "true"
-        ) {
-          return;
-        }
+    }
 
 
-        const original =
-          element.textContent.trim();
+    const original =
+      element.textContent.trim();
 
 
-        const config =
-          parseImpactNumber(
-            original
+    const config =
+      getCounterConfig(
+        element
+      );
+
+
+    if (!config) {
+
+      return;
+
+    }
+
+
+    element.dataset.animated =
+      "true";
+
+
+    if (reduceMotion) {
+
+      element.textContent =
+        original;
+
+      return;
+
+    }
+
+
+    const startTime =
+      performance.now();
+
+
+    const updateCounter =
+      currentTime => {
+
+        const elapsed =
+          currentTime -
+          startTime;
+
+
+        const progress =
+          Math.min(
+            elapsed /
+              KPI_DURATION,
+            1
           );
 
 
-        if (!config) {
-          return;
+        const easedProgress =
+          easeOutCubic(
+            progress
+          );
+
+
+        /* ---------------------------------------------
+           STANDARD COUNTER
+           --------------------------------------------- */
+
+        if (
+          config.type ===
+          "single"
+        ) {
+
+          const currentValue =
+            Math.round(
+
+              config.start +
+
+              (
+                config.end -
+                config.start
+              ) *
+
+              easedProgress
+
+            );
+
+
+          element.textContent =
+            `${config.prefix}${currentValue}${config.suffix}`;
+
         }
 
 
-        element.dataset.animated =
-          "true";
+        /* ---------------------------------------------
+           REDUCTION COUNTER
+
+           Example:
+
+           12% -> 12%
+           12% -> 11%
+           12% -> 10%
+           ...
+           12% -> 4%
+
+           The baseline NEVER changes.
+           --------------------------------------------- */
+
+        if (
+          config.type ===
+          "reduction"
+        ) {
+
+          const movingValue =
+            Math.round(
+
+              config.start +
+
+              (
+                config.end -
+                config.start
+              ) *
+
+              easedProgress
+
+            );
 
 
-        if (reduceMotion) {
+          element.textContent =
+            `${config.baseline}% → ${movingValue}%`;
+
+        }
+
+
+        if (
+          progress < 1
+        ) {
+
+          requestAnimationFrame(
+            updateCounter
+          );
+
+        } else {
+
+          /*
+             Restore the exact original
+             evidence statement.
+          */
 
           element.textContent =
             original;
 
-          return;
-
         }
-
-
-        const startTime =
-          performance.now();
-
-
-        const update =
-          currentTime => {
-
-            const elapsed =
-              currentTime -
-              startTime;
-
-
-            const progress =
-              Math.min(
-                elapsed /
-                  KPI_DURATION,
-                1
-              );
-
-
-            const eased =
-              easeOutQuart(
-                progress
-              );
-
-
-            const value =
-              Math.round(
-
-                config.start +
-
-                (
-                  config.end -
-                  config.start
-                ) *
-
-                eased
-
-              );
-
-
-            element.textContent =
-              `${config.prefix}${value}${config.suffix}`;
-
-
-            if (
-              progress < 1
-            ) {
-
-              requestAnimationFrame(
-                update
-              );
-
-            } else {
-
-              /*
-                 Restore the exact
-                 evidence wording
-                 from the HTML.
-              */
-
-              element.textContent =
-                original;
-
-            }
-
-          };
-
-
-        requestAnimationFrame(
-          update
-        );
 
       };
 
 
-    if (
-      "IntersectionObserver" in window
-    ) {
+    requestAnimationFrame(
+      updateCounter
+    );
 
-      const kpiObserver =
-        new IntersectionObserver(
-
-          entries => {
-
-            entries.forEach(
-              entry => {
-
-                if (
-                  entry.isIntersecting
-                ) {
-
-                  animateKPI(
-                    entry.target
-                  );
+  };
 
 
-                  kpiObserver
-                    .unobserve(
-                      entry.target
-                    );
+if (
+  "IntersectionObserver" in window
+) {
 
-                }
+  const kpiObserver =
+    new IntersectionObserver(
 
-              }
-            );
+      entries => {
 
-          },
+        entries.forEach(
+          entry => {
 
-          {
-            threshold: 0.5
+            if (
+              entry.isIntersecting
+            ) {
+
+              animateKPI(
+                entry.target
+              );
+
+
+              kpiObserver
+                .unobserve(
+                  entry.target
+                );
+
+            }
+
           }
-
         );
 
+      },
 
-      impactNumbers.forEach(
-        number => {
+      {
+        threshold: 0.5
+      }
 
-          kpiObserver.observe(
-            number
-          );
-
-        }
-      );
-
-    } else {
-
-      impactNumbers.forEach(
-        animateKPI
-      );
-
-    }
+    );
 
 
+  impactNumbers.forEach(
+    number => {
 
-    /* =====================================================
-       7. INTERACTIVE CARD TILT
-       ===================================================== */
-
-    const tiltCards =
-      document.querySelectorAll(
-        ".impact-card"
-      );
-
-
-    if (
-      !reduceMotion &&
-      !isTouchDevice
-    ) {
-
-      tiltCards.forEach(
-        card => {
-
-          card.addEventListener(
-            "mousemove",
-            event => {
-
-              const rect =
-                card.getBoundingClientRect();
-
-
-              const x =
-                event.clientX -
-                rect.left;
-
-
-              const y =
-                event.clientY -
-                rect.top;
-
-
-              const centerX =
-                rect.width / 2;
-
-
-              const centerY =
-                rect.height / 2;
-
-
-              const rotateX =
-                (
-                  centerY - y
-                ) /
-                28;
-
-
-              const rotateY =
-                (
-                  x - centerX
-                ) /
-                28;
-
-
-              card.style.transform =
-                `
-                perspective(900px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translateY(-5px)
-                `;
-
-            }
-          );
-
-
-          card.addEventListener(
-            "mouseleave",
-            () => {
-
-              card.style.transform =
-                "";
-
-            }
-          );
-
-        }
+      kpiObserver.observe(
+        number
       );
 
     }
+  );
+
+} else {
+
+  impactNumbers.forEach(
+    animateKPI
+  );
+
+}
 
 
+/* =========================================================
+   7. CURSOR GLOW
+   ========================================================= */
 
-    /* =====================================================
-       8. HERO PARALLAX
-       ===================================================== */
+const cursorGlow =
+  document.getElementById(
+    "cursor-glow"
+  );
 
-    const hero =
-      document.querySelector(
-        ".hero"
+
+if (
+  cursorGlow &&
+  !reduceMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  let targetX = 0;
+  let targetY = 0;
+
+  let currentX = 0;
+  let currentY = 0;
+
+
+  window.addEventListener(
+    "mousemove",
+    event => {
+
+      targetX =
+        event.clientX;
+
+      targetY =
+        event.clientY;
+
+      cursorGlow.style.opacity =
+        "1";
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  document.addEventListener(
+    "mouseleave",
+    () => {
+
+      cursorGlow.style.opacity =
+        "0";
+
+    }
+  );
+
+
+  const animateCursor =
+    () => {
+
+      currentX +=
+        (
+          targetX -
+          currentX
+        ) * 0.12;
+
+
+      currentY +=
+        (
+          targetY -
+          currentY
+        ) * 0.12;
+
+
+      cursorGlow.style.transform =
+        `translate(
+          ${currentX - 125}px,
+          ${currentY - 125}px
+        )`;
+
+
+      requestAnimationFrame(
+        animateCursor
       );
 
-
-    const heroVisual =
-      document.querySelector(
-        ".hero-visual"
-      );
+    };
 
 
-    if (
-      hero &&
-      heroVisual &&
-      !reduceMotion &&
-      !isTouchDevice
-    ) {
+  animateCursor();
 
-      hero.addEventListener(
+}
+
+
+/* =========================================================
+   8. INTERACTIVE CARD TILT
+   ========================================================= */
+
+const interactiveCards =
+  document.querySelectorAll(
+    ".impact-card, .expertise-card"
+  );
+
+
+if (
+  !reduceMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  interactiveCards.forEach(
+    card => {
+
+      card.addEventListener(
         "mousemove",
         event => {
 
           const rect =
-            hero.getBoundingClientRect();
+            card.getBoundingClientRect();
 
 
           const x =
-            (
-              event.clientX -
-              rect.left
-            ) /
-            rect.width;
+            event.clientX -
+            rect.left;
 
 
           const y =
+            event.clientY -
+            rect.top;
+
+
+          const centerX =
+            rect.width / 2;
+
+
+          const centerY =
+            rect.height / 2;
+
+
+          const rotateX =
             (
-              event.clientY -
-              rect.top
-            ) /
-            rect.height;
+              centerY - y
+            ) / 45;
 
 
-          const moveX =
+          const rotateY =
             (
-              x - 0.5
-            ) *
-            18;
+              x - centerX
+            ) / 45;
 
 
-          const moveY =
-            (
-              y - 0.5
-            ) *
-            14;
-
-
-          heroVisual.style.transform =
+          card.style.transform =
             `
-            translate3d(
-              ${moveX}px,
-              ${moveY}px,
-              0
-            )
+              perspective(900px)
+              translateY(-6px)
+              rotateX(${rotateX}deg)
+              rotateY(${rotateY}deg)
             `;
 
         }
       );
 
 
-      hero.addEventListener(
+      card.addEventListener(
         "mouseleave",
         () => {
 
-          heroVisual.style.transform =
-            "translate3d(0,0,0)";
+          card.style.transform =
+            "";
 
         }
       );
 
     }
+  );
+
+}
 
 
+/* =========================================================
+   9. NETWORK BACKGROUND
+   ========================================================= */
 
-    /* =====================================================
-       9. CURSOR GLOW
-       ===================================================== */
+const canvas =
+  document.getElementById(
+    "network-canvas"
+  );
 
-    if (
-      !reduceMotion &&
-      !isTouchDevice
-    ) {
 
-      const glow =
-        document.createElement(
-          "div"
+if (
+  canvas &&
+  !reduceMotion
+) {
+
+  const context =
+    canvas.getContext("2d");
+
+
+  let width;
+  let height;
+
+  let particles = [];
+
+  let animationFrame;
+
+
+  const mouse = {
+
+    x: null,
+    y: null,
+
+    radius: 130
+
+  };
+
+
+  const resizeCanvas =
+    () => {
+
+      const pixelRatio =
+        Math.min(
+          window.devicePixelRatio || 1,
+          2
         );
 
 
-      glow.className =
-        "cursor-glow";
+      width =
+        window.innerWidth;
 
 
-      document.body.appendChild(
-        glow
+      height =
+        window.innerHeight;
+
+
+      canvas.width =
+        width *
+        pixelRatio;
+
+
+      canvas.height =
+        height *
+        pixelRatio;
+
+
+      canvas.style.width =
+        `${width}px`;
+
+
+      canvas.style.height =
+        `${height}px`;
+
+
+      context.setTransform(
+        pixelRatio,
+        0,
+        0,
+        pixelRatio,
+        0,
+        0
       );
 
 
-      let targetX = 0;
-      let targetY = 0;
+      createParticles();
 
-      let currentX = 0;
-      let currentY = 0;
+    };
 
 
-      document.addEventListener(
-        "mousemove",
-        event => {
+  class Particle {
 
-          targetX =
-            event.clientX;
+    constructor() {
 
-
-          targetY =
-            event.clientY;
-
-
-          glow.style.opacity =
-            "1";
-
-        }
-      );
-
-
-      document.addEventListener(
-        "mouseleave",
-        () => {
-
-          glow.style.opacity =
-            "0";
-
-        }
-      );
-
-
-      const animateGlow =
-        () => {
-
-          currentX +=
-            (
-              targetX -
-              currentX
-            ) *
-            0.12;
-
-
-          currentY +=
-            (
-              targetY -
-              currentY
-            ) *
-            0.12;
-
-
-          glow.style.left =
-            `${currentX}px`;
-
-
-          glow.style.top =
-            `${currentY}px`;
-
-
-          requestAnimationFrame(
-            animateGlow
-          );
-
-        };
-
-
-      animateGlow();
+      this.reset();
 
     }
 
 
+    reset() {
 
-    /* =====================================================
-       10. ANIMATED NETWORK BACKGROUND
-       ===================================================== */
+      this.x =
+        Math.random() *
+        width;
 
-    const canvas =
-      document.getElementById(
-        "network-canvas"
-      );
 
+      this.y =
+        Math.random() *
+        height;
 
-    if (
-      canvas &&
-      !reduceMotion
-    ) {
 
-      const context =
-        canvas.getContext(
-          "2d"
-        );
+      this.radius =
+        Math.random() *
+        1.4 +
+        0.5;
 
 
-      if (context) {
+      this.velocityX =
+        (
+          Math.random() -
+          0.5
+        ) *
+        0.24;
 
-        let width = 0;
-        let height = 0;
 
-        let particles = [];
+      this.velocityY =
+        (
+          Math.random() -
+          0.5
+        ) *
+        0.24;
 
-        let animationFrame = null;
+    }
 
-        let pageVisible = true;
 
+    update() {
 
-        const mouse = {
-          x: null,
-          y: null,
-          radius: 145
-        };
+      this.x +=
+        this.velocityX;
 
 
-        /*
-           Particle density is dynamic.
+      this.y +=
+        this.velocityY;
 
-           Large monitors get more
-           nodes but we cap them to
-           avoid wasting CPU.
-        */
 
-        const calculateParticleCount =
-          () => {
+      if (
+        this.x < -20
+      ) {
 
-            const area =
-              width * height;
+        this.x =
+          width + 20;
 
+      }
 
-            return Math.min(
-              72,
-              Math.max(
-                30,
-                Math.floor(
-                  area /
-                  30000
-                )
-              )
-            );
 
-          };
+      if (
+        this.x >
+        width + 20
+      ) {
 
+        this.x =
+          -20;
 
-        class Particle {
+      }
 
-          constructor() {
-            this.reset(true);
-          }
 
+      if (
+        this.y < -20
+      ) {
 
-          reset(randomPosition = false) {
+        this.y =
+          height + 20;
 
-            this.x =
-              randomPosition
-                ? Math.random() *
-                  width
-                : (
-                    Math.random() >
-                    0.5
-                      ? 0
-                      : width
-                  );
+      }
 
 
-            this.y =
-              Math.random() *
-              height;
+      if (
+        this.y >
+        height + 20
+      ) {
 
+        this.y =
+          -20;
 
-            this.radius =
-              Math.random() *
-              1.3 +
-              0.6;
+      }
 
 
-            this.speedX =
-              (
-                Math.random() -
-                0.5
-              ) *
-              0.22;
+      /*
+         Very subtle interaction
+         with mouse movement.
+      */
 
+      if (
+        mouse.x !== null &&
+        mouse.y !== null
+      ) {
 
-            this.speedY =
-              (
-                Math.random() -
-                0.5
-              ) *
-              0.22;
+        const dx =
+          this.x -
+          mouse.x;
 
 
-            this.baseAlpha =
-              Math.random() *
-              0.22 +
-              0.10;
+        const dy =
+          this.y -
+          mouse.y;
 
-          }
 
-
-          update() {
-
-            this.x +=
-              this.speedX;
-
-
-            this.y +=
-              this.speedY;
-
-
-            /*
-               Wrap around screen.
-            */
-
-            if (
-              this.x < -20
-            ) {
-              this.x =
-                width + 20;
-            }
-
-
-            if (
-              this.x >
-              width + 20
-            ) {
-              this.x = -20;
-            }
-
-
-            if (
-              this.y < -20
-            ) {
-              this.y =
-                height + 20;
-            }
-
-
-            if (
-              this.y >
-              height + 20
-            ) {
-              this.y = -20;
-            }
-
-
-            /*
-               Very subtle interaction
-               with cursor.
-            */
-
-            if (
-              mouse.x !== null &&
-              mouse.y !== null
-            ) {
-
-              const dx =
-                mouse.x -
-                this.x;
-
-
-              const dy =
-                mouse.y -
-                this.y;
-
-
-              const distance =
-                Math.sqrt(
-                  dx * dx +
-                  dy * dy
-                );
-
-
-              if (
-                distance <
-                mouse.radius &&
-                distance > 0
-              ) {
-
-                const force =
-                  (
-                    mouse.radius -
-                    distance
-                  ) /
-                  mouse.radius;
-
-
-                this.x -=
-                  (
-                    dx /
-                    distance
-                  ) *
-                  force *
-                  0.18;
-
-
-                this.y -=
-                  (
-                    dy /
-                    distance
-                  ) *
-                  force *
-                  0.18;
-
-              }
-
-            }
-
-          }
-
-
-          draw() {
-
-            context.beginPath();
-
-
-            context.arc(
-              this.x,
-              this.y,
-              this.radius,
-              0,
-              Math.PI * 2
-            );
-
-
-            context.fillStyle =
-              `rgba(
-                18,
-                107,
-                168,
-                ${this.baseAlpha}
-              )`;
-
-
-            context.fill();
-
-          }
-
-        }
-
-
-
-        const initialiseParticles =
-          () => {
-
-            particles = [];
-
-
-            const count =
-              calculateParticleCount();
-
-
-            for (
-              let i = 0;
-              i < count;
-              i++
-            ) {
-
-              particles.push(
-                new Particle()
-              );
-
-            }
-
-          };
-
-
-
-        const connectParticles =
-          () => {
-
-            const maxDistance =
-              125;
-
-
-            const maxDistanceSquared =
-              maxDistance *
-              maxDistance;
-
-
-            for (
-              let i = 0;
-              i <
-              particles.length;
-              i++
-            ) {
-
-              for (
-                let j =
-                  i + 1;
-                j <
-                particles.length;
-                j++
-              ) {
-
-                const dx =
-                  particles[i].x -
-                  particles[j].x;
-
-
-                const dy =
-                  particles[i].y -
-                  particles[j].y;
-
-
-                const distanceSquared =
-                  dx * dx +
-                  dy * dy;
-
-
-                if (
-                  distanceSquared <
-                  maxDistanceSquared
-                ) {
-
-                  const distance =
-                    Math.sqrt(
-                      distanceSquared
-                    );
-
-
-                  const opacity =
-                    (
-                      1 -
-                      distance /
-                      maxDistance
-                    ) *
-                    0.11;
-
-
-                  context.beginPath();
-
-
-                  context.moveTo(
-                    particles[i].x,
-                    particles[i].y
-                  );
-
-
-                  context.lineTo(
-                    particles[j].x,
-                    particles[j].y
-                  );
-
-
-                  context.strokeStyle =
-                    `rgba(
-                      18,
-                      107,
-                      168,
-                      ${opacity}
-                    )`;
-
-
-                  context.lineWidth =
-                    0.65;
-
-
-                  context.stroke();
-
-                }
-
-              }
-
-            }
-
-          };
-
-
-
-        const connectMouse =
-          () => {
-
-            if (
-              mouse.x === null ||
-              mouse.y === null
-            ) {
-              return;
-            }
-
-
-            particles.forEach(
-              particle => {
-
-                const dx =
-                  particle.x -
-                  mouse.x;
-
-
-                const dy =
-                  particle.y -
-                  mouse.y;
-
-
-                const distance =
-                  Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                  );
-
-
-                if (
-                  distance <
-                  150
-                ) {
-
-                  const opacity =
-                    (
-                      1 -
-                      distance /
-                      150
-                    ) *
-                    0.13;
-
-
-                  context.beginPath();
-
-
-                  context.moveTo(
-                    particle.x,
-                    particle.y
-                  );
-
-
-                  context.lineTo(
-                    mouse.x,
-                    mouse.y
-                  );
-
-
-                  context.strokeStyle =
-                    `rgba(
-                      23,
-                      132,
-                      199,
-                      ${opacity}
-                    )`;
-
-
-                  context.lineWidth =
-                    0.7;
-
-
-                  context.stroke();
-
-                }
-
-              }
-            );
-
-          };
-
-
-
-        const animateNetwork =
-          () => {
-
-            if (!pageVisible) {
-              return;
-            }
-
-
-            context.clearRect(
-              0,
-              0,
-              width,
-              height
-            );
-
-
-            particles.forEach(
-              particle => {
-
-                particle.update();
-                particle.draw();
-
-              }
-            );
-
-
-            connectParticles();
-
-            connectMouse();
-
-
-            animationFrame =
-              requestAnimationFrame(
-                animateNetwork
-              );
-
-          };
-
-
-
-        const resizeCanvas =
-          () => {
-
-            const pixelRatio =
-              Math.min(
-                window.devicePixelRatio ||
-                1,
-                2
-              );
-
-
-            width =
-              window.innerWidth;
-
-
-            height =
-              window.innerHeight;
-
-
-            canvas.width =
-              width *
-              pixelRatio;
-
-
-            canvas.height =
-              height *
-              pixelRatio;
-
-
-            canvas.style.width =
-              `${width}px`;
-
-
-            canvas.style.height =
-              `${height}px`;
-
-
-            context.setTransform(
-              pixelRatio,
-              0,
-              0,
-              pixelRatio,
-              0,
-              0
-            );
-
-
-            initialiseParticles();
-
-          };
-
-
-
-        /*
-           Mouse tracking for
-           network interaction.
-        */
-
-        if (!isTouchDevice) {
-
-          window.addEventListener(
-            "mousemove",
-            event => {
-
-              mouse.x =
-                event.clientX;
-
-
-              mouse.y =
-                event.clientY;
-
-            },
-            {
-              passive: true
-            }
+        const distance =
+          Math.sqrt(
+            dx * dx +
+            dy * dy
           );
 
 
-          window.addEventListener(
-            "mouseout",
-            event => {
+        if (
+          distance <
+          mouse.radius &&
+          distance > 0
+        ) {
 
-              if (
-                !event.relatedTarget
-              ) {
+          const force =
+            (
+              mouse.radius -
+              distance
+            ) /
+            mouse.radius;
 
-                mouse.x = null;
-                mouse.y = null;
 
-              }
+          this.x +=
+            (
+              dx /
+              distance
+            ) *
+            force *
+            0.35;
 
-            }
-          );
+
+          this.y +=
+            (
+              dy /
+              distance
+            ) *
+            force *
+            0.35;
 
         }
-
-
-
-        /*
-           Pause network when the
-           browser tab isn't visible.
-
-           This reduces unnecessary
-           processor usage.
-        */
-
-        document.addEventListener(
-          "visibilitychange",
-          () => {
-
-            pageVisible =
-              !document.hidden;
-
-
-            if (pageVisible) {
-
-              if (animationFrame) {
-                cancelAnimationFrame(
-                  animationFrame
-                );
-              }
-
-
-              animateNetwork();
-
-            } else {
-
-              if (animationFrame) {
-
-                cancelAnimationFrame(
-                  animationFrame
-                );
-
-              }
-
-            }
-
-          }
-        );
-
-
-
-        let resizeTimer;
-
-
-        window.addEventListener(
-          "resize",
-          () => {
-
-            clearTimeout(
-              resizeTimer
-            );
-
-
-            resizeTimer =
-              setTimeout(
-                resizeCanvas,
-                150
-              );
-
-          }
-        );
-
-
-
-        resizeCanvas();
-
-        animateNetwork();
 
       }
 
     }
 
 
+    draw() {
 
-    /* =====================================================
-       11. SUBTLE CASE-STUDY MOUSE RESPONSE
-       ===================================================== */
+      context.beginPath();
 
-    if (
-      !reduceMotion &&
-      !isTouchDevice
-    ) {
 
-      const cases =
-        document.querySelectorAll(
-          ".case-study"
+      context.arc(
+        this.x,
+        this.y,
+        this.radius,
+        0,
+        Math.PI * 2
+      );
+
+
+      context.fillStyle =
+        "rgba(8, 105, 173, 0.26)";
+
+
+      context.fill();
+
+    }
+
+  }
+
+
+  const createParticles =
+    () => {
+
+      particles = [];
+
+
+      /*
+         Keep the background visually
+         restrained on small screens.
+      */
+
+      const area =
+        width *
+        height;
+
+
+      const particleCount =
+        Math.min(
+          Math.max(
+            Math.floor(
+              area / 23000
+            ),
+            28
+          ),
+          75
         );
 
 
-      cases.forEach(
-        item => {
+      for (
+        let i = 0;
+        i < particleCount;
+        i++
+      ) {
 
-          item.addEventListener(
-            "mouseenter",
-            () => {
+        particles.push(
+          new Particle()
+        );
 
-              const number =
-                item.querySelector(
-                  ".case-study-index"
-                );
+      }
 
-
-              if (number) {
-
-                number.style.transform =
-                  "translateX(6px)";
-
-                number.style.transition =
-                  "transform 300ms ease";
-
-              }
-
-            }
-          );
+    };
 
 
-          item.addEventListener(
-            "mouseleave",
-            () => {
+  const connectParticles =
+    () => {
 
-              const number =
-                item.querySelector(
-                  ".case-study-index"
-                );
+      const connectionDistance =
+        width < 700
+          ? 90
+          : 120;
 
 
-              if (number) {
+      for (
+        let i = 0;
+        i < particles.length;
+        i++
+      ) {
 
-                number.style.transform =
-                  "translateX(0)";
+        for (
+          let j = i + 1;
+          j < particles.length;
+          j++
+        ) {
 
-              }
+          const dx =
+            particles[i].x -
+            particles[j].x;
 
-            }
-          );
+
+          const dy =
+            particles[i].y -
+            particles[j].y;
+
+
+          const distance =
+            Math.sqrt(
+              dx * dx +
+              dy * dy
+            );
+
+
+          if (
+            distance <
+            connectionDistance
+          ) {
+
+            const opacity =
+              (
+                1 -
+                distance /
+                connectionDistance
+              ) *
+              0.12;
+
+
+            context.beginPath();
+
+
+            context.moveTo(
+              particles[i].x,
+              particles[i].y
+            );
+
+
+            context.lineTo(
+              particles[j].x,
+              particles[j].y
+            );
+
+
+            context.strokeStyle =
+              `rgba(
+                8,
+                105,
+                173,
+                ${opacity}
+              )`;
+
+
+            context.lineWidth =
+              0.7;
+
+
+            context.stroke();
+
+          }
+
+        }
+
+      }
+
+    };
+
+
+  const animateNetwork =
+    () => {
+
+      context.clearRect(
+        0,
+        0,
+        width,
+        height
+      );
+
+
+      particles.forEach(
+        particle => {
+
+          particle.update();
+
+          particle.draw();
+
+        }
+      );
+
+
+      connectParticles();
+
+
+      animationFrame =
+        requestAnimationFrame(
+          animateNetwork
+        );
+
+    };
+
+
+  window.addEventListener(
+    "mousemove",
+    event => {
+
+      mouse.x =
+        event.clientX;
+
+
+      mouse.y =
+        event.clientY;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  document.addEventListener(
+    "mouseleave",
+    () => {
+
+      mouse.x = null;
+      mouse.y = null;
+
+    }
+  );
+
+
+  let resizeTimer;
+
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      clearTimeout(
+        resizeTimer
+      );
+
+
+      resizeTimer =
+        setTimeout(
+          resizeCanvas,
+          180
+        );
+
+    }
+  );
+
+
+  /*
+     Stop unnecessary processing
+     while the browser tab is hidden.
+  */
+
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+
+      if (
+        document.hidden
+      ) {
+
+        cancelAnimationFrame(
+          animationFrame
+        );
+
+      } else {
+
+        animateNetwork();
+
+      }
+
+    }
+  );
+
+
+  resizeCanvas();
+
+  animateNetwork();
+
+}
+
+
+/* =========================================================
+   10. SUBTLE HERO PARALLAX
+   ========================================================= */
+
+const portraitOrbit =
+  document.querySelector(
+    ".portrait-orbit"
+  );
+
+
+if (
+  portraitOrbit &&
+  !reduceMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  const hero =
+    document.querySelector(
+      ".hero"
+    );
+
+
+  if (hero) {
+
+    hero.addEventListener(
+      "mousemove",
+      event => {
+
+        const rect =
+          hero.getBoundingClientRect();
+
+
+        const x =
+          (
+            event.clientX -
+            rect.left
+          ) /
+          rect.width -
+          0.5;
+
+
+        const y =
+          (
+            event.clientY -
+            rect.top
+          ) /
+          rect.height -
+          0.5;
+
+
+        portraitOrbit.style.transform =
+          `
+            translate(
+              ${x * 10}px,
+              ${y * 10}px
+            )
+          `;
+
+      }
+    );
+
+
+    hero.addEventListener(
+      "mouseleave",
+      () => {
+
+        portraitOrbit.style.transform =
+          "translate(0, 0)";
+
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   11. CONTACT CARD POINTER EFFECT
+   ========================================================= */
+
+const contactCards =
+  document.querySelectorAll(
+    ".contact-card"
+  );
+
+
+if (
+  !reduceMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  contactCards.forEach(
+    card => {
+
+      card.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            card.getBoundingClientRect();
+
+
+          const x =
+            event.clientX -
+            rect.left;
+
+
+          const y =
+            event.clientY -
+            rect.top;
+
+
+          card.style.background =
+            `
+              radial-gradient(
+                circle at
+                ${x}px
+                ${y}px,
+                rgba(
+                  121,
+                  188,
+                  232,
+                  0.15
+                ),
+                rgba(
+                  255,
+                  255,
+                  255,
+                  0.055
+                )
+                45%
+              )
+            `;
+
+        }
+      );
+
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+
+          card.style.background =
+            "";
 
         }
       );
 
     }
+  );
 
-
-
-    /* =====================================================
-       12. CONSOLE SIGNATURE
-
-       Harmless little detail for
-       anyone inspecting the site.
-       ===================================================== */
-
-    console.log(
-      "%cVictor Akoyo",
-      "font-size:20px;font-weight:700;color:#126ba8;"
-    );
-
-
-    console.log(
-      "%cOperations • Supply Chain • Quality • Process Improvement",
-      "font-size:12px;color:#58758e;"
-    );
-
-
-    console.log(
-      "%cPortfolio interaction layer loaded successfully.",
-      "font-size:11px;color:#668097;"
-    );
-
-  }
-);
+}
