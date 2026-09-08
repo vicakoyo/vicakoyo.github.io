@@ -48,7 +48,7 @@
       margin: auto;
     }
 
-    /* Navigation */
+    /* NAVIGATION */
 
     nav {
       background: var(--white);
@@ -75,14 +75,14 @@
 
     .nav-links {
       display: flex;
-      gap: 22px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 600;
     }
 
@@ -90,7 +90,7 @@
       color: var(--blue);
     }
 
-    /* Hero */
+    /* HERO */
 
     .hero {
       padding: 105px 0 90px;
@@ -142,6 +142,11 @@
       text-decoration: none;
       font-weight: 700;
       border: 1px solid var(--blue);
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
     }
 
     .button-primary {
@@ -154,10 +159,11 @@
       color: var(--blue);
     }
 
-    /* General sections */
+    /* GENERAL */
 
     section {
       padding: 80px 0;
+      scroll-margin-top: 70px;
     }
 
     .section-light {
@@ -176,6 +182,7 @@
     h2 {
       color: var(--navy);
       font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.25;
       margin-bottom: 15px;
     }
 
@@ -185,7 +192,7 @@
       margin-bottom: 38px;
     }
 
-    /* Impact */
+    /* IMPACT */
 
     .impact-grid {
       display: grid;
@@ -212,12 +219,12 @@
       font-size: 0.95rem;
     }
 
-    /* Expertise */
+    /* EXPERTISE */
 
     .expertise-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     .expertise-card {
@@ -234,7 +241,7 @@
       color: var(--muted);
     }
 
-    /* Case studies */
+    /* CASE STUDIES */
 
     .case-grid {
       display: grid;
@@ -273,10 +280,10 @@
       font-weight: 700;
     }
 
-    /* Career */
+    /* CAREER */
 
     .career-item {
-      padding: 0 0 30px 22px;
+      padding: 0 0 32px 22px;
       border-left: 2px solid var(--border);
       position: relative;
     }
@@ -304,10 +311,10 @@
 
     .career-item p {
       color: var(--muted);
-      max-width: 820px;
+      max-width: 850px;
     }
 
-    /* Technology */
+    /* TECHNOLOGY */
 
     .tech-box {
       background: var(--navy);
@@ -316,13 +323,14 @@
       padding: 35px;
     }
 
-    .tech-box h2 {
+    .tech-box h2,
+    .tech-box h3 {
       color: var(--white);
     }
 
     .tech-box p {
       color: #d9e2ec;
-      max-width: 820px;
+      max-width: 850px;
       margin-bottom: 16px;
     }
 
@@ -341,7 +349,22 @@
       font-size: 0.9rem;
     }
 
-    /* Contact */
+    .project-box {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #486581;
+    }
+
+    .project-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9fb3c8;
+      margin-bottom: 8px;
+    }
+
+    /* CONTACT */
 
     .contact {
       text-align: center;
@@ -349,8 +372,12 @@
 
     .contact p {
       color: var(--muted);
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto 25px;
+    }
+
+    .contact .buttons {
+      justify-content: center;
     }
 
     footer {
@@ -361,8 +388,15 @@
       font-size: 0.9rem;
     }
 
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 800px) {
-      .impact-grid,
       .expertise-grid,
       .case-grid {
         grid-template-columns: 1fr;
@@ -371,11 +405,11 @@
       .nav-inner {
         align-items: flex-start;
         flex-direction: column;
-        padding: 16px 0;
+        padding: 15px 0;
       }
 
       .nav-links {
-        gap: 13px;
+        gap: 12px 16px;
       }
 
       .hero {
@@ -386,13 +420,36 @@
         padding: 60px 0;
       }
     }
+
+    @media (max-width: 520px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .tech-box {
+        padding: 25px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
+
 <body>
+
+  <!-- NAVIGATION -->
 
   <nav>
     <div class="container nav-inner">
+
       <a class="brand" href="#home">Victor Akoyo</a>
 
       <div class="nav-links">
@@ -400,17 +457,24 @@
         <a href="#expertise">Expertise</a>
         <a href="#case-studies">Case Studies</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#technology">Technology</a>
         <a href="#contact">Contact</a>
       </div>
+
     </div>
   </nav>
 
 
+  <!-- HERO -->
+
   <header class="hero" id="home">
+
     <div class="container">
 
-      <div class="eyebrow">Operations • Supply Chain • Quality • Process Improvement</div>
+      <div class="eyebrow">
+        Operations • Supply Chain • Quality • Process Improvement
+      </div>
 
       <h1>Victor Akoyo</h1>
 
@@ -429,25 +493,38 @@
       </p>
 
       <div class="buttons">
+
         <a class="button button-primary" href="#case-studies">
           View Selected Work
         </a>
 
         <a class="button button-secondary"
+           href="mailto:vicakoyo2@gmail.com">
+          Email Me
+        </a>
+
+        <a class="button button-secondary"
            href="https://www.linkedin.com/in/victorakoyo/"
-           target="_blank">
+           target="_blank"
+           rel="noopener noreferrer">
           LinkedIn
         </a>
+
       </div>
 
     </div>
+
   </header>
 
 
+  <!-- IMPACT -->
+
   <section class="section-light" id="impact">
+
     <div class="container">
 
       <div class="section-label">Selected Impact</div>
+
       <h2>Evidence over adjectives.</h2>
 
       <p class="section-intro">
@@ -458,46 +535,67 @@
       <div class="impact-grid">
 
         <div class="impact-card">
+
           <div class="impact-number">~£520K</div>
+
           <p>
             Approximate annual logistics savings through warehouse,
             3PL and final-mile optimisation.
           </p>
+
         </div>
 
+
         <div class="impact-card">
+
           <div class="impact-number">12% → 4%</div>
+
           <p>
             Reduction in returns measured by CBM through quality,
             packaging and logistics improvements.
           </p>
+
         </div>
 
+
         <div class="impact-card">
+
           <div class="impact-number">10% → 5%</div>
+
           <p>
             Reduction in customer complaints while leading quality
             improvement in a manufacturing environment.
           </p>
+
         </div>
 
+
         <div class="impact-card">
+
           <div class="impact-number">19 KPIs</div>
+
           <p>
             Leadership scorecard designed to improve visibility,
             accountability and operating cadence.
           </p>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 
+  <!-- EXPERTISE -->
+
   <section id="expertise">
+
     <div class="container">
 
       <div class="section-label">Core Expertise</div>
+
       <h2>Cross-functional operational leadership.</h2>
 
       <p class="section-intro">
@@ -505,49 +603,71 @@
         supply chain, quality and structured business improvement.
       </p>
 
+
       <div class="expertise-grid">
 
         <div class="expertise-card">
+
           <h3>Operations & Business Operations</h3>
+
           <p>
             Operating rhythms, KPI management, SOPs, cross-functional
             execution, executive reporting and process improvement.
           </p>
+
         </div>
 
+
         <div class="expertise-card">
+
           <h3>Supply Chain & Logistics</h3>
+
           <p>
             International freight, 3PL management, warehousing,
             demand planning, inventory, final mile and reverse logistics.
           </p>
+
         </div>
 
+
         <div class="expertise-card">
+
           <h3>Quality & Continuous Improvement</h3>
+
           <p>
             Supplier quality, root-cause analysis, corrective action,
             manufacturing controls, customer complaints and ISO-based systems.
           </p>
+
         </div>
 
+
         <div class="expertise-card">
+
           <h3>Data & Operational Systems</h3>
+
           <p>
             Excel-based analysis, Power BI, ERP/WMS environments,
             KPI reporting and practical AI-enabled workflow improvement.
           </p>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 
+  <!-- CASE STUDIES -->
+
   <section class="section-light" id="case-studies">
+
     <div class="container">
 
       <div class="section-label">Selected Work</div>
+
       <h2>Operational problems turned into measurable outcomes.</h2>
 
       <p class="section-intro">
@@ -555,10 +675,16 @@
         the decisions involved and the resulting operational impact.
       </p>
 
+
       <div class="case-grid">
 
+
         <article class="case-card">
-          <div class="case-tag">Supply Chain • Cost Optimisation</div>
+
+          <div class="case-tag">
+            Supply Chain • Cost Optimisation
+          </div>
+
           <h3>Restructuring logistics costs</h3>
 
           <p>
@@ -571,11 +697,16 @@
             Result: approximately £400K annual warehouse/3PL savings
             plus approximately £120K in final-mile savings.
           </p>
+
         </article>
 
 
         <article class="case-card">
-          <div class="case-tag">Quality • Reverse Logistics</div>
+
+          <div class="case-tag">
+            Quality • Reverse Logistics
+          </div>
+
           <h3>Reducing product returns</h3>
 
           <p>
@@ -587,11 +718,16 @@
           <p class="result">
             Result: returns reduced from approximately 12% to 4% by CBM.
           </p>
+
         </article>
 
 
         <article class="case-card">
-          <div class="case-tag">Logistics • Operational Recovery</div>
+
+          <div class="case-tag">
+            Logistics • Operational Recovery
+          </div>
+
           <h3>Protecting a time-critical container movement</h3>
 
           <p>
@@ -605,11 +741,16 @@
             Result: all affected containers moved within free time,
             avoiding demurrage exposure and further operational delay.
           </p>
+
         </article>
 
 
         <article class="case-card">
-          <div class="case-tag">Business Operations • Performance Management</div>
+
+          <div class="case-tag">
+            Business Operations • Performance Management
+          </div>
+
           <h3>Building leadership visibility</h3>
 
           <p>
@@ -622,146 +763,342 @@
             Result: clearer operating visibility, ownership and
             management discussion around performance and priorities.
           </p>
+
         </article>
 
       </div>
+
     </div>
+
   </section>
 
 
+  <!-- EXPERIENCE -->
+
   <section id="experience">
+
     <div class="container">
 
       <div class="section-label">Career</div>
-      <h2>Experience across operations, supply chain, quality and engineering.</h2>
+
+      <h2>
+        Experience across operations, supply chain,
+        quality and engineering.
+      </h2>
+
 
       <div class="career-item">
+
         <h3>Optimise Outsourcing</h3>
-        <div class="career-meta">Operations Manager & EOS Integrator</div>
+
+        <div class="career-meta">
+          Operations Manager & EOS Integrator | Oct 2025 – 2026
+        </div>
+
         <p>
           Business operations, leadership operating cadence, KPI reporting,
           finance administration, SOP development, executive support and
           AI-enabled workflow improvement.
         </p>
+
       </div>
 
+
       <div class="career-item">
+
         <h3>Rattan Direct</h3>
+
         <div class="career-meta">
-          Supply Chain, Quality Control & Technical Manager
+          Supply Chain, Quality Control & Technical Manager |
+          Dec 2022 – Feb 2026
         </div>
+
         <p>
           International supply chain, freight, 3PL warehousing, inventory,
           demand planning, final-mile delivery, reverse logistics,
           supplier quality and operational cost improvement.
         </p>
+
       </div>
 
+
       <div class="career-item">
+
         <h3>Tile & Carpet Centre</h3>
-        <div class="career-meta">Quality Team Lead</div>
+
+        <div class="career-meta">
+          Quality Team Lead | Apr 2021 – Nov 2022
+        </div>
+
         <p>
           Led quality inspectors and improvement activity across
           manufacturing quality, customer complaints, compliance,
           corrective action and field-service quality.
         </p>
+
       </div>
 
+
       <div class="career-item">
+
         <h3>Auto Springs East Africa PLC</h3>
-        <div class="career-meta">Quality Control Engineer</div>
+
+        <div class="career-meta">
+          Quality Control Engineer | Jul 2020 – Apr 2021
+        </div>
+
         <p>
           Automotive manufacturing quality including APQP, PPAP,
           PFMEA, control plans, MSA, SPC, corrective action and
           production quality control.
         </p>
+
       </div>
 
+
       <div class="career-item">
+
         <h3>Coca-Cola Beverages Africa</h3>
-        <div class="career-meta">Electrical Engineer</div>
+
+        <div class="career-meta">
+          Electrical Engineer | Nov 2018 – Jul 2020
+        </div>
+
         <p>
           Production and utilities maintenance, troubleshooting,
           preventive maintenance, SAP PM and manufacturing support.
         </p>
+
       </div>
 
     </div>
+
   </section>
 
 
+  <!-- EDUCATION -->
+
+  <section class="section-light" id="education">
+
+    <div class="container">
+
+      <div class="section-label">
+        Education & Credentials
+      </div>
+
+      <h2>
+        Engineering foundation with operations and
+        improvement development.
+      </h2>
+
+      <p class="section-intro">
+        Formal education supported by professional development
+        across service management, quality, continuous improvement
+        and structured delivery.
+      </p>
+
+
+      <div class="expertise-grid">
+
+
+        <div class="expertise-card">
+
+          <h3>BSc Control & Instrumentation</h3>
+
+          <p>
+            Jomo Kenyatta University of Agriculture and Technology (JKUAT)<br>
+            Second Class Honours, Lower Division • 2018
+          </p>
+
+        </div>
+
+
+        <div class="expertise-card">
+
+          <h3>ITIL 4 Foundation</h3>
+
+          <p>
+            Foundation-level credential in IT service management,
+            service value and structured service improvement.
+          </p>
+
+        </div>
+
+
+        <div class="expertise-card">
+
+          <h3>Scrum Fundamentals Certified</h3>
+
+          <p>
+            Foundation-level understanding of Scrum principles,
+            roles, events and iterative delivery.
+          </p>
+
+        </div>
+
+
+        <div class="expertise-card">
+
+          <h3>Continuous Improvement & Quality</h3>
+
+          <p>
+            Training includes Six Sigma Foundations, Lean Six Sigma
+            Define & Measure, Operational Excellence Foundations and
+            Quality Management Foundations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TECHNOLOGY -->
+
   <section id="technology">
+
     <div class="container">
 
       <div class="tech-box">
 
-        <div class="section-label">Technology & Automation</div>
+        <div class="section-label">
+          Technology & Automation
+        </div>
 
-        <h2>Technology as an operations enabler.</h2>
+        <h2>
+          Technology as an operations enabler.
+        </h2>
 
         <p>
-          I use business systems, analytics and developing automation
-          capability to support established operations expertise.
-          My focus is practical application rather than presenting
-          myself as a software engineer.
+          I apply business systems, analytics and developing automation
+          capability to improve operational visibility, decision-making
+          and execution.
         </p>
 
         <p>
-          Current development areas include workflow automation,
-          APIs, JSON, webhooks, Git/GitHub and basic Python.
+          My practical technology experience spans business systems,
+          Microsoft 365 administration, analytics and AI-enabled workflow
+          improvement, alongside continued development in workflow automation,
+          APIs, JSON, webhooks, Git/GitHub and Python fundamentals.
         </p>
+
 
         <div class="tech-list">
+
           <span class="tech-item">Excel</span>
+
           <span class="tech-item">Power BI</span>
+
           <span class="tech-item">Microsoft 365</span>
+
           <span class="tech-item">SharePoint</span>
+
           <span class="tech-item">SAP PM</span>
+
           <span class="tech-item">OrderWise ERP</span>
+
           <span class="tech-item">Make.com</span>
+
           <span class="tech-item">n8n</span>
+
           <span class="tech-item">AI-enabled workflows</span>
-          <span class="tech-item">Git / GitHub - Developing</span>
+
+          <span class="tech-item">Git / GitHub</span>
+
+        </div>
+
+
+        <div class="project-box">
+
+          <div class="project-label">
+            Selected Project
+          </div>
+
+          <h3>
+            AI & Workflow Automation
+          </h3>
+
+          <p>
+            Practical experimentation with AI-enabled operational workflows,
+            including information processing, summarisation, structured
+            reporting and workflow automation.
+          </p>
+
+          <a class="button button-secondary"
+             href="https://github.com/vicakoyo/victor-ai-automation"
+             target="_blank"
+             rel="noopener noreferrer">
+            View Project on GitHub
+          </a>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 
+  <!-- CONTACT -->
+
   <section id="contact">
+
     <div class="container contact">
 
-      <div class="section-label">Contact</div>
-      <h2>Interested in working together?</h2>
+      <div class="section-label">
+        Contact
+      </div>
+
+      <h2>
+        Interested in working together?
+      </h2>
 
       <p>
         I am open to relevant opportunities across Operations,
         Business Operations, Supply Chain, Logistics, Quality and
-        Process Improvement.
+        Process Improvement in Kenya and selected international
+        or remote environments.
       </p>
 
-      <div class="buttons" style="justify-content:center;">
+
+      <div class="buttons">
+
         <a class="button button-primary"
+           href="mailto:vicakoyo2@gmail.com">
+          Email Me
+        </a>
+
+        <a class="button button-secondary"
            href="https://www.linkedin.com/in/victorakoyo/"
-           target="_blank">
-          Connect on LinkedIn
+           target="_blank"
+           rel="noopener noreferrer">
+          LinkedIn
         </a>
 
         <a class="button button-secondary"
            href="https://github.com/vicakoyo"
-           target="_blank">
-          View GitHub
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub
         </a>
+
       </div>
 
     </div>
+
   </section>
 
 
+  <!-- FOOTER -->
+
   <footer>
-    © 2026 Victor Akoyo • Nairobi, Kenya
+    © 2026 Victor Akoyo • Nairobi, Kenya • vicakoyo2@gmail.com
   </footer>
+
 
 </body>
 </html>
