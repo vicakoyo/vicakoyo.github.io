@@ -1,1484 +1,2934 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Professional portfolio of Victor Akoyo — Operations, Supply Chain, Quality and Process Improvement professional based in Nairobi, Kenya."
-    >
-
-    <title>
-        Victor Akoyo | Operations, Supply Chain & Process Improvement
-    </title>
+/* =========================================================
+   VICTOR AKOYO PORTFOLIO
+   ========================================================= */
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-</head>
 
+/* =========================================================
+   1. VARIABLES
+========================================================= */
 
-<body>
+:root {
 
-    <!-- =====================================================
-         INTERACTIVE BACKGROUND
-    ====================================================== -->
+    --navy: #0a2e4d;
+    --navy-dark: #061f35;
 
-    <canvas
-        id="particleCanvas"
-        aria-hidden="true"
-    ></canvas>
+    --accent: #0878bd;
+    --accent-dark: #06659e;
 
-    <div
-        class="background-grid"
-        aria-hidden="true"
-    ></div>
+    --text: #486c86;
+    --muted: #70899d;
 
-    <div
-        class="background-glow glow-one"
-        aria-hidden="true"
-    ></div>
+    --white: #ffffff;
+    --off-white: #f8fbfd;
+    --soft: #f0f6fa;
 
-    <div
-        class="background-glow glow-two"
-        aria-hidden="true"
-    ></div>
+    --border: rgba(10, 46, 77, 0.12);
+    --border-accent: rgba(8, 120, 189, 0.22);
 
+    --shadow:
+        0 18px 55px rgba(6, 45, 75, 0.08);
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    --shadow-hover:
+        0 24px 65px rgba(6, 45, 75, 0.12);
 
-    <header class="site-header">
+    --radius: 16px;
 
-        <div class="nav-container">
+    --max-width: 1120px;
 
-            <a
-                href="#home"
-                class="brand"
-            >
-                Victor Akoyo
-            </a>
+}
 
 
-            <button
-                id="mobileMenuButton"
-                class="mobile-menu-button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mainNav"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+/* =========================================================
+   2. RESET
+========================================================= */
 
+*,
+*::before,
+*::after {
 
-            <nav
-                id="mainNav"
-                class="main-nav"
-                aria-label="Main navigation"
-            >
+    box-sizing: border-box;
 
-                <a href="#impact">
-                    Impact
-                </a>
+}
 
-                <a href="#expertise">
-                    Expertise
-                </a>
 
-                <a href="#case-studies">
-                    Case Studies
-                </a>
+html {
 
-                <a href="#experience">
-                    Experience
-                </a>
+    scroll-behavior: smooth;
 
-                <a href="#education">
-                    Education
-                </a>
+    scroll-padding-top: 76px;
 
-                <a href="#technology">
-                    Technology
-                </a>
+}
 
-                <a href="#contact">
-                    Contact
-                </a>
 
-            </nav>
+body {
 
-        </div>
+    margin: 0;
 
-    </header>
+    overflow-x: hidden;
 
+    color: var(--text);
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+    background: var(--white);
 
-    <main>
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
+    line-height: 1.65;
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
+}
 
-        <section
-            id="home"
-            class="hero"
-        >
 
-            <div class="container hero-grid">
+a {
 
+    color: inherit;
 
-                <!-- HERO CONTENT -->
+    text-decoration: none;
 
-                <div class="hero-content reveal">
+}
 
-                    <p class="eyebrow">
-                        Operations
-                        <span>•</span>
-                        Supply Chain
-                        <span>•</span>
-                        Quality
-                        <span>•</span>
-                        Process Improvement
-                    </p>
 
+img {
 
-                    <h1 class="hero-title">
+    display: block;
 
-                        Building stronger operations through
-                        disciplined execution, data and continuous
-                        improvement.
+    max-width: 100%;
 
-                    </h1>
+}
 
 
-                    <p class="hero-description">
+button {
 
-                        Operations and supply chain professional based in
-                        Nairobi, Kenya, with experience spanning international
-                        logistics, quality management, business operations,
-                        engineering and process improvement.
+    font: inherit;
 
-                        I focus on turning operational problems into measurable
-                        improvements while building practical systems that
-                        strengthen visibility, accountability and execution.
+}
 
-                    </p>
 
+::selection {
 
-                    <div class="hero-actions">
+    color: var(--white);
 
-                        <a
-                            href="#case-studies"
-                            class="button button-primary"
-                        >
-                            View Selected Work
-                        </a>
+    background: var(--navy);
 
+}
 
-                        <a
-                            href="Victor_Akoyo_Professional_Portfolio_CV.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="button button-secondary"
-                        >
-                            Download CV
-                        </a>
 
+/* =========================================================
+   3. INTERACTIVE BACKGROUND
+========================================================= */
 
-                        <a
-                            href="#contact"
-                            class="button button-secondary"
-                        >
-                            Contact Me
-                        </a>
+#particleCanvas {
 
-                    </div>
+    position: fixed;
 
+    inset: 0;
 
-                    <div class="hero-meta">
+    z-index: -5;
 
-                        <div class="meta-item">
+    width: 100%;
+    height: 100%;
 
-                            <strong>
-                                ~8 years
-                            </strong>
+    pointer-events: none;
 
-                            <span>
-                                Cross-functional experience
-                            </span>
+}
 
-                        </div>
 
+.background-grid {
 
-                        <div class="meta-item">
+    position: fixed;
 
-                            <strong>
-                                Nairobi
-                            </strong>
+    inset: 0;
 
-                            <span>
-                                Kenya
-                            </span>
+    z-index: -7;
 
-                        </div>
+    pointer-events: none;
 
+    background-image:
 
-                        <div class="meta-item">
+        linear-gradient(
+            rgba(8, 120, 189, 0.027) 1px,
+            transparent 1px
+        ),
 
-                            <strong>
-                                Operations
-                            </strong>
+        linear-gradient(
+            90deg,
+            rgba(8, 120, 189, 0.027) 1px,
+            transparent 1px
+        );
 
-                            <span>
-                                Primary professional focus
-                            </span>
+    background-size:
+        44px 44px;
 
-                        </div>
+}
 
-                    </div>
 
-                </div>
+.background-glow {
 
+    position: fixed;
 
+    z-index: -8;
 
-                <!-- HERO PORTRAIT -->
+    width: 600px;
+    height: 600px;
 
-                <div class="hero-visual reveal">
+    border-radius: 50%;
 
-                    <div class="portrait-system">
+    filter: blur(105px);
 
-                        <div class="orbit orbit-one">
+    pointer-events: none;
 
-                            <span class="orbit-dot"></span>
+    opacity: 0.18;
 
-                        </div>
+}
 
 
-                        <div class="orbit orbit-two">
+.glow-one {
 
-                            <span class="orbit-dot"></span>
+    top: -190px;
+    right: -220px;
 
-                        </div>
+    background:
+        #64c2f3;
 
+}
 
-                        <div class="portrait-ring">
 
-                            <div class="portrait-frame">
+.glow-two {
 
-                                <img
-                                    src="victor-akoyo-portrait.png.jpeg"
-                                    alt="Victor Akoyo"
-                                    class="profile-photo"
-                                >
+    bottom: -250px;
+    left: -220px;
 
-                            </div>
+    background:
+        #a4ddfa;
 
-                        </div>
+}
 
-                    </div>
 
+/* =========================================================
+   4. GENERAL LAYOUT
+========================================================= */
 
-                    <div class="hero-status">
+.container {
 
-                        <span class="status-dot"></span>
+    width:
+        min(
+            calc(100% - 42px),
+            var(--max-width)
+        );
 
-                        <div>
+    margin-inline: auto;
 
-                            <strong>
-                                Operations + Improvement
-                            </strong>
+}
 
-                            <small>
-                                Evidence-led execution
-                            </small>
 
-                        </div>
+.section {
 
-                    </div>
+    position: relative;
 
-                </div>
+    padding:
+        88px 0;
 
-            </div>
+}
 
-        </section>
 
+.section-soft {
 
+    background:
+        rgba(
+            240,
+            246,
+            250,
+            0.76
+        );
 
-        <!-- =================================================
-             IMPACT
-        ================================================== -->
+    backdrop-filter:
+        blur(3px);
 
-        <section
-            id="impact"
-            class="section section-soft"
-        >
+}
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+/* =========================================================
+   5. HEADER
+========================================================= */
 
-                    <p class="eyebrow">
-                        Selected Impact
-                    </p>
+.site-header {
 
-                    <h2>
-                        Evidence over adjectives.
-                    </h2>
+    position: sticky;
 
-                    <p>
-                        Selected outcomes from roles across supply chain,
-                        quality, manufacturing and business operations.
-                    </p>
+    top: 0;
 
-                </div>
+    z-index: 1000;
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
 
-                <div class="impact-grid">
+    border-bottom:
+        1px solid
+        var(--border);
 
+    backdrop-filter:
+        blur(18px);
 
-                    <!-- 01 -->
+}
 
-                    <article class="impact-card reveal">
 
-                        <span class="card-number">
-                            01
-                        </span>
+.nav-container {
 
+    width:
+        min(
+            calc(100% - 42px),
+            var(--max-width)
+        );
 
-                        <div class="metric">
+    height: 72px;
 
-                            <span>£</span>
+    margin-inline: auto;
 
-                            <span
-                                class="counter"
-                                data-start="0"
-                                data-target="520"
-                            >
-                                0
-                            </span>
+    display: flex;
 
-                            <span>k</span>
+    align-items: center;
 
-                        </div>
+    justify-content:
+        space-between;
 
+    gap: 30px;
 
-                        <h3>
-                            Annual logistics savings
-                        </h3>
+}
 
 
-                        <p>
-                            Approximate annual savings across warehouse,
-                            3PL and final-mile logistics costs at
-                            Rattan Direct.
-                        </p>
+.brand {
 
-                    </article>
+    flex-shrink: 0;
 
+    color: var(--navy);
 
+    font-size:
+        0.98rem;
 
-                    <!-- 02 -->
+    font-weight: 850;
 
-                    <article class="impact-card reveal">
+    letter-spacing:
+        -0.02em;
 
-                        <span class="card-number">
-                            02
-                        </span>
+}
 
 
-                        <div class="metric transition-metric">
+.main-nav {
 
-                            <span>
-                                12%
-                            </span>
+    display: flex;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    align-items: center;
 
-                            <span
-                                class="counter"
-                                data-start="12"
-                                data-target="4"
-                                data-suffix="%"
-                            >
-                                12%
-                            </span>
+    gap: 27px;
 
-                        </div>
+}
 
 
-                        <h3>
-                            Returns reduction
-                        </h3>
+.main-nav a {
 
+    position: relative;
 
-                        <p>
-                            Return rate by cubic volume reduced through
-                            supplier quality, packaging, logistics and
-                            reverse-logistics improvements.
-                        </p>
+    color: #43637c;
 
-                    </article>
+    font-size:
+        0.79rem;
 
+    font-weight: 750;
 
+    transition:
+        color 0.25s ease;
 
-                    <!-- 03 -->
+}
 
-                    <article class="impact-card reveal">
 
-                        <span class="card-number">
-                            03
-                        </span>
+.main-nav a::after {
 
+    content: "";
 
-                        <div class="metric transition-metric">
+    position: absolute;
 
-                            <span>
-                                8%
-                            </span>
+    left: 0;
+    bottom: -9px;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    width: 100%;
+    height: 2px;
 
-                            <span
-                                class="counter"
-                                data-start="8"
-                                data-target="4"
-                                data-suffix="%"
-                            >
-                                8%
-                            </span>
+    background:
+        var(--accent);
 
-                        </div>
+    transform:
+        scaleX(0);
 
+    transform-origin:
+        right;
 
-                        <h3>
-                            Pipe rejection reduction
-                        </h3>
+    transition:
+        transform 0.25s ease;
 
+}
 
-                        <p>
-                            Pipe rejection reduced through stronger
-                            process controls, quality-at-source practices
-                            and structured defect analysis.
-                        </p>
 
-                    </article>
+.main-nav a:hover,
+.main-nav a.active {
 
+    color:
+        var(--accent);
 
+}
 
-                    <!-- 04 -->
 
-                    <article class="impact-card reveal">
+.main-nav a:hover::after,
+.main-nav a.active::after {
 
-                        <span class="card-number">
-                            04
-                        </span>
+    transform:
+        scaleX(1);
 
+    transform-origin:
+        left;
 
-                        <div class="metric">
+}
 
-                            <span
-                                class="counter"
-                                data-start="0"
-                                data-target="19"
-                            >
-                                0
-                            </span>
 
-                        </div>
+/* =========================================================
+   6. MOBILE MENU
+========================================================= */
 
+.mobile-menu-button {
 
-                        <h3>
-                            Leadership KPIs
-                        </h3>
+    display: none;
 
+    width: 42px;
+    height: 42px;
 
-                        <p>
-                            Built an integrated leadership scorecard covering
-                            customers, workforce, recruitment, revenue,
-                            churn and operational performance.
-                        </p>
+    padding: 8px;
 
-                    </article>
+    border:
+        1px solid
+        var(--border);
 
-                </div>
+    border-radius:
+        8px;
 
-            </div>
+    background:
+        var(--white);
 
-        </section>
+    cursor: pointer;
 
+}
 
 
-        <!-- =================================================
-             EXPERTISE
-        ================================================== -->
+.mobile-menu-button span {
 
-        <section
-            id="expertise"
-            class="section"
-        >
+    display: block;
 
-            <div class="container">
+    width: 20px;
+    height: 2px;
 
-                <div class="section-heading reveal">
+    margin:
+        4px auto;
 
-                    <p class="eyebrow">
-                        Expertise
-                    </p>
+    background:
+        var(--navy);
 
-                    <h2>
-                        Operations from problem to execution.
-                    </h2>
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
 
-                    <p>
-                        My experience sits at the intersection of
-                        operational execution, supply chain, quality,
-                        data and process improvement.
-                    </p>
+}
 
-                </div>
 
+/* =========================================================
+   7. HERO
+========================================================= */
 
-                <div class="expertise-grid">
+.hero {
 
+    position: relative;
 
-                    <article class="expertise-card reveal">
+    min-height:
+        calc(
+            100svh - 72px
+        );
 
-                        <span class="expertise-index">
-                            01
-                        </span>
+    display: flex;
 
-                        <h3>
-                            Operations Management
-                        </h3>
+    align-items: center;
 
-                        <p>
-                            KPI management, SOP development,
-                            cross-functional execution, leadership cadence,
-                            issue resolution and operational reporting.
-                        </p>
+    padding:
+        38px 0 44px;
 
-                    </article>
+}
 
 
-                    <article class="expertise-card reveal">
+.hero-grid {
 
-                        <span class="expertise-index">
-                            02
-                        </span>
+    display: grid;
 
-                        <h3>
-                            Supply Chain & Logistics
-                        </h3>
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(280px, 0.65fr);
 
-                        <p>
-                            International freight, inventory planning,
-                            3PL management, warehousing, final mile,
-                            supplier coordination and reverse logistics.
-                        </p>
+    gap: 62px;
 
-                    </article>
+    align-items: center;
 
+}
 
-                    <article class="expertise-card reveal">
 
-                        <span class="expertise-index">
-                            03
-                        </span>
+.hero-content {
 
-                        <h3>
-                            Quality Management
-                        </h3>
+    max-width: 770px;
 
-                        <p>
-                            Supplier quality, manufacturing quality,
-                            CAPA, root-cause analysis, control plans,
-                            inspection systems and continuous improvement.
-                        </p>
+}
 
-                    </article>
 
+.eyebrow {
 
-                    <article class="expertise-card reveal">
+    display: flex;
 
-                        <span class="expertise-index">
-                            04
-                        </span>
+    flex-wrap: wrap;
 
-                        <h3>
-                            Process Improvement
-                        </h3>
+    align-items: center;
 
-                        <p>
-                            Translating recurring operational problems
-                            into measurable processes, controls, reporting
-                            structures and improvement actions.
-                        </p>
+    gap: 7px;
 
-                    </article>
+    margin:
+        0 0 14px;
 
+    color:
+        var(--accent);
 
-                    <article class="expertise-card reveal">
+    font-size:
+        0.71rem;
 
-                        <span class="expertise-index">
-                            05
-                        </span>
+    font-weight: 850;
 
-                        <h3>
-                            Operational Analytics
-                        </h3>
+    letter-spacing:
+        0.145em;
 
-                        <p>
-                            Excel-based analysis, KPI reporting,
-                            reconciliation, forecasting, cost analysis
-                            and practical Power BI reporting.
-                        </p>
+    text-transform:
+        uppercase;
 
-                    </article>
+}
 
 
-                    <article class="expertise-card reveal">
+.eyebrow span {
 
-                        <span class="expertise-index">
-                            06
-                        </span>
+    opacity: 0.58;
 
-                        <h3>
-                            Business Systems
-                        </h3>
+}
 
-                        <p>
-                            Practical experience across ERP,
-                            customer-service systems, Microsoft 365,
-                            workflow automation and AI-enabled
-                            operational workflows.
-                        </p>
 
-                    </article>
+.hero-title {
 
-                </div>
+    max-width: 750px;
 
-            </div>
+    margin:
+        0 0 18px;
 
-        </section>
+    color:
+        var(--navy);
 
+    font-size:
+        clamp(
+            2.65rem,
+            4vw,
+            3.85rem
+        );
 
+    line-height: 1.045;
 
-        <!-- =================================================
-             CASE STUDIES
-        ================================================== -->
+    letter-spacing:
+        -0.052em;
 
-        <section
-            id="case-studies"
-            class="section case-section"
-        >
+    font-weight: 820;
 
-            <div class="container">
+}
 
-                <div class="section-heading reveal">
 
-                    <p class="eyebrow">
-                        Case Studies
-                    </p>
+.hero-description {
 
-                    <h2>
-                        Selected operational problems solved.
-                    </h2>
+    max-width: 690px;
 
-                </div>
+    margin: 0;
 
+    color:
+        #52728a;
 
-                <div class="case-grid">
+    font-size:
+        0.94rem;
 
+    line-height: 1.68;
 
-                    <!-- CASE 1 -->
+}
 
-                    <article class="case-card reveal">
 
-                        <div class="case-top">
+.hero-actions {
 
-                            <span>
-                                Supply Chain
-                            </span>
+    display: flex;
 
-                            <span>
-                                Rattan Direct
-                            </span>
+    flex-wrap: wrap;
 
-                        </div>
+    gap: 10px;
 
+    margin-top:
+        24px;
 
-                        <h3>
-                            Reducing logistics cost without losing
-                            operational capacity
-                        </h3>
+}
 
 
-                        <p>
-                            Reviewed warehousing and logistics costs,
-                            benchmarked alternative providers, negotiated
-                            commercial terms and supported the transition
-                            of inventory to a new operating model.
-                        </p>
+.button {
 
+    display:
+        inline-flex;
 
-                        <div class="case-result">
+    min-height: 44px;
 
-                            <strong>
-                                ~£520k
-                            </strong>
+    padding:
+        0 18px;
 
-                            <span>
-                                approximate annual logistics savings
-                            </span>
+    align-items:
+        center;
 
-                        </div>
+    justify-content:
+        center;
 
-                    </article>
+    border-radius:
+        6px;
 
+    font-size:
+        0.79rem;
 
+    font-weight:
+        800;
 
-                    <!-- CASE 2 -->
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
 
-                    <article class="case-card reveal">
+}
 
-                        <div class="case-top">
 
-                            <span>
-                                Quality
-                            </span>
+.button:hover {
 
-                            <span>
-                                Rattan Direct
-                            </span>
+    transform:
+        translateY(-2px);
 
-                        </div>
+}
 
 
-                        <h3>
-                            Reducing product returns through
-                            cross-functional quality improvement
-                        </h3>
+.button-primary {
 
+    color:
+        var(--white);
 
-                        <p>
-                            Used return data and recurring defect patterns
-                            to coordinate improvements across suppliers,
-                            packaging, warehouse handling, delivery and
-                            reverse logistics.
-                        </p>
+    border:
+        1px solid
+        var(--accent);
 
+    background:
+        var(--accent);
 
-                        <div class="case-result">
+    box-shadow:
+        0 10px 24px
+        rgba(8, 120, 189, 0.16);
 
-                            <strong>
-                                12% → 4%
-                            </strong>
+}
 
-                            <span>
-                                return rate by cubic volume
-                            </span>
 
-                        </div>
+.button-primary:hover {
 
-                    </article>
+    border-color:
+        var(--accent-dark);
 
+    background:
+        var(--accent-dark);
 
+}
 
-                    <!-- CASE 3 -->
 
-                    <article class="case-card reveal">
+.button-secondary {
 
-                        <div class="case-top">
+    color:
+        var(--navy);
 
-                            <span>
-                                Business Operations
-                            </span>
+    border:
+        1px solid
+        var(--border-accent);
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
 
-                        </div>
+}
 
 
-                        <h3>
-                            Building leadership visibility through
-                            structured operational reporting
-                        </h3>
+.button-secondary:hover {
 
+    border-color:
+        var(--navy);
 
-                        <p>
-                            Developed an integrated KPI scorecard and
-                            operating cadence connecting recruitment,
-                            customers, workforce, revenue and execution
-                            priorities.
-                        </p>
+    color:
+        var(--white);
 
+    background:
+        var(--navy);
 
-                        <div class="case-result">
+}
 
-                            <strong>
-                                19 KPIs
-                            </strong>
 
-                            <span>
-                                integrated into leadership reporting
-                            </span>
+.hero-meta {
 
-                        </div>
+    display: flex;
 
-                    </article>
+    flex-wrap: wrap;
 
-                </div>
+    margin-top:
+        26px;
 
-            </div>
+}
 
-        </section>
 
+.meta-item {
 
+    min-width: 132px;
 
-        <!-- =================================================
-             EXPERIENCE
-        ================================================== -->
+    padding:
+        0 22px;
 
-        <section
-            id="experience"
-            class="section"
-        >
+    border-left:
+        1px solid
+        var(--border);
 
-            <div class="container">
+}
 
-                <div class="section-heading reveal">
 
-                    <p class="eyebrow">
-                        Experience
-                    </p>
+.meta-item:first-child {
 
-                    <h2>
-                        Cross-functional operating experience.
-                    </h2>
+    padding-left: 0;
 
-                </div>
+    border-left: 0;
 
+}
 
-                <div class="timeline">
 
+.meta-item strong {
 
-                    <article class="timeline-item reveal">
+    display: block;
 
-                        <div class="timeline-date">
-                            Oct 2025–2026
-                        </div>
+    color:
+        var(--navy);
 
+    font-size:
+        0.78rem;
 
-                        <div class="timeline-content">
+}
 
-                            <h3>
-                                Operations Manager & EOS Integrator
-                            </h3>
 
-                            <h4>
-                                Optimise Outsourcing
-                            </h4>
+.meta-item span {
 
-                            <p>
-                                Business operations, executive reporting,
-                                KPI systems, SOPs, finance administration,
-                                technology administration and AI-enabled
-                                workflow improvement.
-                            </p>
+    display: block;
 
-                        </div>
+    margin-top: 2px;
 
-                    </article>
+    color:
+        var(--muted);
 
+    font-size:
+        0.66rem;
 
+}
 
-                    <article class="timeline-item reveal">
 
-                        <div class="timeline-date">
-                            Dec 2022–Feb 2026
-                        </div>
+/* =========================================================
+   8. PORTRAIT
+========================================================= */
 
+.hero-visual {
 
-                        <div class="timeline-content">
+    position: relative;
 
-                            <h3>
-                                Supply Chain, Quality Control & Technical Manager
-                            </h3>
+    display: flex;
 
-                            <h4>
-                                Rattan Direct
-                            </h4>
+    flex-direction: column;
 
-                            <p>
-                                International supply chain, freight,
-                                inventory planning, 3PL warehousing,
-                                supplier quality, final-mile delivery,
-                                reverse logistics and cost optimisation.
-                            </p>
+    align-items: center;
 
-                        </div>
+    justify-content: center;
 
-                    </article>
+    width: 100%;
 
+}
 
 
-                    <article class="timeline-item reveal">
+.portrait-system {
 
-                        <div class="timeline-date">
-                            Apr 2021–Nov 2022
-                        </div>
+    position: relative;
 
+    width: 280px;
+    height: 280px;
 
-                        <div class="timeline-content">
+    display: flex;
 
-                            <h3>
-                                Quality Team Lead
-                            </h3>
+    align-items: center;
 
-                            <h4>
-                                Tile & Carpet Centre
-                            </h4>
+    justify-content: center;
 
-                            <p>
-                                Manufacturing quality leadership,
-                                inspection teams, production controls,
-                                root-cause analysis, customer complaints
-                                and continuous improvement.
-                            </p>
+    margin-inline:
+        auto;
 
-                        </div>
+    transition:
+        transform 0.15s linear;
 
-                    </article>
+}
 
 
+.portrait-ring {
 
-                    <article class="timeline-item reveal">
+    position: relative;
 
-                        <div class="timeline-date">
-                            Jul 2020–Apr 2021
-                        </div>
+    z-index: 5;
 
+    width: 178px;
+    height: 178px;
 
-                        <div class="timeline-content">
+    padding: 7px;
 
-                            <h3>
-                                Quality Control Engineer
-                            </h3>
+    border:
+        1px solid
+        var(--border-accent);
 
-                            <h4>
-                                Auto Springs East Africa PLC
-                            </h4>
+    border-radius: 50%;
 
-                            <p>
-                                Automotive manufacturing quality,
-                                APQP, PPAP, PFMEA, Control Plans,
-                                SPC, MSA, inspection and corrective action.
-                            </p>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.96
+        );
 
-                        </div>
+    box-shadow:
+        0 20px 55px
+        rgba(6, 45, 75, 0.13);
 
-                    </article>
+}
 
 
+.portrait-frame {
 
-                    <article class="timeline-item reveal">
+    width: 100%;
+    height: 100%;
 
-                        <div class="timeline-date">
-                            Nov 2018–Jul 2020
-                        </div>
+    overflow: hidden;
 
+    border-radius: 50%;
 
-                        <div class="timeline-content">
+    background:
+        #dce6f7;
 
-                            <h3>
-                                Electrical Engineer
-                            </h3>
+}
 
-                            <h4>
-                                Coca-Cola Beverages Africa
-                            </h4>
 
-                            <p>
-                                FMCG production engineering,
-                                preventive maintenance, utilities,
-                                SAP maintenance planning, troubleshooting,
-                                contractor coordination and safety.
-                            </p>
+.profile-photo {
 
-                        </div>
+    width: 100%;
+    height: 100%;
 
-                    </article>
+    object-fit: cover;
 
-                </div>
+    object-position:
+        center 30%;
 
-            </div>
+}
 
-        </section>
 
+/* =========================================================
+   9. PORTRAIT ORBITS
+========================================================= */
 
+.orbit {
 
-        <!-- =================================================
-             EDUCATION
-        ================================================== -->
+    position: absolute;
 
-        <section
-            id="education"
-            class="section section-soft"
-        >
+    border-radius: 50%;
 
-            <div class="container">
+    pointer-events: none;
 
-                <div class="section-heading reveal">
+}
 
-                    <p class="eyebrow">
-                        Education
-                    </p>
 
-                    <h2>
-                        Engineering foundation. Operational career.
-                    </h2>
+.orbit-one {
 
-                </div>
+    width: 222px;
+    height: 222px;
 
+    border:
+        1px solid
+        rgba(8, 120, 189, 0.18);
 
-                <div class="education-grid">
+    animation:
+        orbitClockwise
+        10s
+        linear
+        infinite;
 
+}
 
-                    <article class="education-card reveal">
 
-                        <span class="education-year">
-                            2018
-                        </span>
+.orbit-one::before {
 
-                        <h3>
-                            BSc Control and Instrumentation
-                        </h3>
+    content: "";
 
-                        <p>
-                            Jomo Kenyatta University of Agriculture
-                            and Technology
-                        </p>
+    position: absolute;
 
-                        <small>
-                            Second Class Honours, Lower Division
-                        </small>
+    inset: -10px;
 
-                    </article>
+    border:
+        1px dashed
+        rgba(8, 120, 189, 0.14);
 
+    border-radius: 50%;
 
+}
 
-                    <article class="education-card reveal">
 
-                        <span class="education-year">
-                            Professional Development
-                        </span>
+.orbit-two {
 
-                        <h3>
-                            Operations, Quality & Technology
-                        </h3>
+    width: 255px;
+    height: 255px;
 
-                        <p>
-                            ITIL 4 Foundation • Scrum Fundamentals •
-                            Lean Six Sigma • Quality Management •
-                            Operational Excellence • SAP ERP
-                        </p>
+    border:
+        1px dashed
+        rgba(8, 120, 189, 0.14);
 
-                    </article>
+    animation:
+        orbitCounterClockwise
+        16s
+        linear
+        infinite;
 
-                </div>
+}
 
-            </div>
 
-        </section>
+.orbit-dot {
 
+    position: absolute;
 
+    border-radius: 50%;
 
-        <!-- =================================================
-             TECHNOLOGY
-        ================================================== -->
+    background:
+        var(--accent);
 
-        <section
-            id="technology"
-            class="section"
-        >
+    box-shadow:
+        0 0 0
+        5px
+        rgba(8, 120, 189, 0.08),
+        0 0 15px
+        rgba(8, 120, 189, 0.32);
 
-            <div class="container">
+}
 
-                <div class="section-heading reveal">
 
-                    <p class="eyebrow">
-                        Technology
-                    </p>
+.orbit-one
+.orbit-dot {
 
-                    <h2>
-                        Technology as an operational tool.
-                    </h2>
+    top: 50%;
+    right: -5px;
 
-                    <p>
-                        My technology development is focused on practical
-                        business systems and automation rather than
-                        software engineering for its own sake.
-                    </p>
+    width: 10px;
+    height: 10px;
 
-                </div>
+}
 
 
-                <div class="technology-grid">
+.orbit-two
+.orbit-dot {
 
+    bottom: 21px;
+    left: 34px;
 
-                    <div class="technology-group reveal">
+    width: 9px;
+    height: 9px;
 
-                        <strong>
-                            Operational Systems
-                        </strong>
+}
 
-                        <div class="technology-tags">
 
-                            <span>OrderWise ERP</span>
-                            <span>SAP</span>
-                            <span>eDesk</span>
-                            <span>Xero</span>
-                            <span>Microsoft 365</span>
-                            <span>Teams</span>
-                            <span>SharePoint</span>
+@keyframes orbitClockwise {
 
-                        </div>
+    from {
 
-                    </div>
+        transform:
+            rotate(0deg);
 
+    }
 
+    to {
 
-                    <div class="technology-group reveal">
+        transform:
+            rotate(360deg);
 
-                        <strong>
-                            Analytics
-                        </strong>
+    }
 
-                        <div class="technology-tags">
+}
 
-                            <span>Excel</span>
-                            <span>Power BI</span>
-                            <span>KPI Reporting</span>
-                            <span>Forecasting</span>
-                            <span>Cost Analysis</span>
 
-                        </div>
+@keyframes orbitCounterClockwise {
 
-                    </div>
+    from {
 
+        transform:
+            rotate(360deg);
 
+    }
 
-                    <div class="technology-group reveal">
+    to {
 
-                        <strong>
-                            Developing Automation Capability
-                        </strong>
+        transform:
+            rotate(0deg);
 
-                        <div class="technology-tags">
+    }
 
-                            <span>n8n</span>
-                            <span>Make</span>
-                            <span>AI-enabled Workflows</span>
-                            <span>APIs</span>
-                            <span>JSON</span>
-                            <span>Webhooks</span>
+}
 
-                        </div>
 
-                    </div>
+/* =========================================================
+   10. HERO STATUS
+========================================================= */
 
-                </div>
+.hero-status {
 
+    display: flex;
 
-                <div class="automation-link reveal">
+    align-items: center;
 
-                    <div>
+    gap: 9px;
 
-                        <p class="eyebrow">
-                            Automation Portfolio
-                        </p>
+    margin:
+        2px auto 0;
 
-                        <h3>
-                            Practical workflow experiments and projects
-                        </h3>
+    padding:
+        9px 14px;
 
-                        <p>
-                            See the automation projects I am building as
-                            I develop practical capability in workflow
-                            automation, APIs and AI-enabled operations.
-                        </p>
+    border:
+        1px solid
+        var(--border-accent);
 
-                    </div>
+    border-radius:
+        999px;
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.9
+        );
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="button button-primary"
-                    >
-                        View Automation Work
-                    </a>
+    box-shadow:
+        0 10px 25px
+        rgba(6, 45, 75, 0.07);
 
-                </div>
+}
 
-            </div>
 
-        </section>
+.hero-status strong {
 
+    display: block;
 
+    color:
+        var(--navy);
 
-        <!-- =================================================
-             CONTACT
-        ================================================== -->
+    font-size:
+        0.7rem;
 
-        <section
-            id="contact"
-            class="contact-section"
-        >
+}
 
-            <div class="container">
 
-                <div class="contact-heading reveal">
+.hero-status small {
 
-                    <p class="eyebrow">
-                        Contact
-                    </p>
+    display: block;
 
-                    <h2>
-                        Let's connect.
-                    </h2>
+    margin-top: 1px;
 
-                    <p>
-                        For relevant opportunities across Operations,
-                        Business Operations, Supply Chain, Quality and
-                        Process Improvement, choose the easiest way
-                        to reach me.
-                    </p>
+    color:
+        var(--muted);
 
-                </div>
+    font-size:
+        0.6rem;
 
+}
 
-                <div class="contact-grid">
 
+.status-dot {
 
-                    <!-- EMAIL -->
+    width: 8px;
+    height: 8px;
 
-                    <a
-                        class="contact-card reveal"
-                        href="mailto:vicakoyo2@gmail.com"
-                    >
+    border-radius: 50%;
 
-                        <div class="contact-icon">
-                            @
-                        </div>
+    background:
+        #20b779;
 
-                        <div class="contact-info">
+    box-shadow:
+        0 0 0
+        4px
+        rgba(32, 183, 121, 0.10);
 
-                            <span class="contact-label">
-                                Email
-                            </span>
+    animation:
+        statusPulse
+        2.4s
+        ease-in-out
+        infinite;
 
-                            <strong>
-                                vicakoyo2@gmail.com
-                            </strong>
+}
 
-                            <small>
-                                Click to send an email
-                            </small>
 
-                        </div>
+@keyframes statusPulse {
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+    0%,
+    100% {
 
-                    </a>
+        box-shadow:
+            0 0 0
+            4px
+            rgba(32, 183, 121, 0.10);
 
+    }
 
+    50% {
 
-                    <!-- PHONE -->
+        box-shadow:
+            0 0 0
+            8px
+            rgba(32, 183, 121, 0.025);
 
-                    <a
-                        class="contact-card reveal"
-                        href="tel:+254797590490"
-                    >
+    }
 
-                        <div class="contact-icon">
-                            ☎
-                        </div>
+}
 
-                        <div class="contact-info">
 
-                            <span class="contact-label">
-                                Phone
-                            </span>
+/* =========================================================
+   11. SECTION HEADINGS
+========================================================= */
 
-                            <strong>
-                                +254 797 590 490
-                            </strong>
+.section-heading {
 
-                            <small>
-                                Click to start a call
-                            </small>
+    max-width: 720px;
 
-                        </div>
+    margin-bottom:
+        42px;
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+}
 
-                    </a>
 
+.section-heading h2,
+.contact-heading h2 {
 
+    margin:
+        0 0 13px;
 
-                    <!-- WHATSAPP -->
+    color:
+        var(--navy);
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://wa.me/254797590490"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+    font-size:
+        clamp(
+            1.85rem,
+            3vw,
+            2.7rem
+        );
 
-                        <div class="contact-icon">
-                            W
-                        </div>
+    line-height: 1.1;
 
-                        <div class="contact-info">
+    letter-spacing:
+        -0.038em;
 
-                            <span class="contact-label">
-                                WhatsApp
-                            </span>
+}
 
-                            <strong>
-                                Message Me
-                            </strong>
 
-                            <small>
-                                Start a WhatsApp conversation
-                            </small>
+.section-heading p:last-child {
 
-                        </div>
+    max-width: 690px;
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+    margin: 0;
 
-                    </a>
+    color:
+        var(--muted);
 
+    font-size:
+        0.94rem;
 
+}
 
-                    <!-- LINKEDIN -->
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://www.linkedin.com/in/victorakoyo/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+/* =========================================================
+   12. IMPACT
+========================================================= */
 
-                        <div class="contact-icon">
-                            in
-                        </div>
+.impact-grid {
 
-                        <div class="contact-info">
+    display: grid;
 
-                            <span class="contact-label">
-                                LinkedIn
-                            </span>
+    grid-template-columns:
+        repeat(4, 1fr);
 
-                            <strong>
-                                Connect on LinkedIn
-                            </strong>
+    gap: 16px;
 
-                            <small>
-                                View my professional profile
-                            </small>
+}
 
-                        </div>
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+.impact-card {
 
-                    </a>
+    min-height: 276px;
 
-                </div>
+    padding: 26px;
 
+    border:
+        1px solid
+        var(--border);
 
-                <div class="availability reveal">
+    border-radius:
+        var(--radius);
 
-                    <span class="availability-dot"></span>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.9
+        );
 
-                    <span>
-                        Nairobi, Kenya
-                    </span>
+    box-shadow:
+        0 8px 30px
+        rgba(6, 45, 75, 0.035);
 
-                    <span>•</span>
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
-                    <span>
-                        Open to Operations, Supply Chain &
-                        Process Improvement opportunities
-                    </span>
+}
 
-                </div>
 
-            </div>
+.impact-card:hover {
 
-        </section>
+    transform:
+        translateY(-5px);
 
-    </main>
+    border-color:
+        var(--border-accent);
 
+    box-shadow:
+        var(--shadow-hover);
 
+}
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
-    <footer class="site-footer">
+.card-number,
+.expertise-index {
 
-        <div class="container footer-content">
+    display: block;
 
-            <span>
-                © <span id="currentYear"></span> Victor Akoyo
-            </span>
+    color:
+        var(--accent);
 
-            <span>
-                Operations • Supply Chain • Quality • Process Improvement
-            </span>
+    font-size:
+        0.65rem;
 
-            <a href="#home">
-                Back to top ↑
-            </a>
+    font-weight: 850;
 
-        </div>
+    letter-spacing:
+        0.15em;
 
-    </footer>
+}
 
 
-    <script src="script.js"></script>
+.card-number {
 
-</body>
+    margin-bottom:
+        27px;
 
-</html>
+}
+
+
+/*
+   IMPORTANT:
+   every primary metric uses the SAME navy.
+*/
+
+.metric {
+
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 2px;
+
+    color:
+        var(--navy);
+
+    font-size:
+        2.3rem;
+
+    font-weight: 850;
+
+    line-height: 1;
+
+    letter-spacing:
+        -0.05em;
+
+    font-variant-numeric:
+        tabular-nums;
+
+}
+
+
+.transition-metric {
+
+    gap: 7px;
+
+}
+
+
+.metric-arrow {
+
+    color:
+        var(--navy);
+
+    font-size:
+        1.42rem;
+
+}
+
+
+.impact-card h3 {
+
+    margin:
+        17px 0 9px;
+
+    color:
+        var(--navy);
+
+    font-size:
+        0.94rem;
+
+}
+
+
+.impact-card p {
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.79rem;
+
+}
+
+
+/* =========================================================
+   13. EXPERTISE
+========================================================= */
+
+.expertise-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.expertise-card {
+
+    min-height: 210px;
+
+    padding: 26px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.74
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+}
+
+
+.expertise-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--border-accent);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.expertise-card h3 {
+
+    margin:
+        26px 0 10px;
+
+    color:
+        var(--navy);
+
+    font-size:
+        1.02rem;
+
+}
+
+
+.expertise-card p {
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.81rem;
+
+}
+
+
+/* =========================================================
+   14. CASE STUDIES
+========================================================= */
+
+.case-section {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(247, 251, 253, 0.9),
+            rgba(255, 255, 255, 0.94)
+        );
+
+}
+
+
+.case-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 17px;
+
+}
+
+
+.case-card {
+
+    min-height: 375px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 28px;
+
+    border-radius:
+        var(--radius);
+
+    color:
+        var(--white);
+
+    background:
+        linear-gradient(
+            145deg,
+            #083b5e,
+            var(--navy-dark)
+        );
+
+    box-shadow:
+        0 17px 48px
+        rgba(4, 39, 66, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.case-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 24px 65px
+        rgba(4, 39, 66, 0.16);
+
+}
+
+
+.case-top {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 15px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.6
+        );
+
+    font-size:
+        0.63rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.09em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.case-card h3 {
+
+    margin:
+        32px 0 15px;
+
+    color:
+        var(--white);
+
+    font-size:
+        1.16rem;
+
+    line-height:
+        1.35;
+
+}
+
+
+.case-card p {
+
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
+
+    font-size:
+        0.8rem;
+
+}
+
+
+.case-result {
+
+    margin-top: auto;
+
+    padding-top:
+        27px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+}
+
+
+.case-result strong {
+
+    display: block;
+
+    color:
+        var(--white);
+
+    font-size:
+        1.8rem;
+
+    letter-spacing:
+        -0.04em;
+
+}
+
+
+.case-result span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size:
+        0.66rem;
+
+}
+
+
+/* =========================================================
+   15. TIMELINE
+========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    max-width: 920px;
+
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 175px;
+
+    width: 1px;
+
+    background:
+        var(--border);
+
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        148px 1fr;
+
+    gap: 55px;
+
+    padding-bottom:
+        42px;
+
+}
+
+
+.timeline-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 6px;
+    left: 170px;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background:
+        var(--accent);
+
+    box-shadow:
+        0 0 0
+        5px
+        rgba(8, 120, 189, 0.08);
+
+}
+
+
+.timeline-date {
+
+    color:
+        var(--accent);
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        800;
+
+}
+
+
+.timeline-content h3 {
+
+    margin: 0;
+
+    color:
+        var(--navy);
+
+    font-size:
+        1.04rem;
+
+}
+
+
+.timeline-content h4 {
+
+    margin:
+        3px 0 0;
+
+    color:
+        var(--accent);
+
+    font-size:
+        0.76rem;
+
+}
+
+
+.timeline-content p {
+
+    max-width: 670px;
+
+    margin:
+        11px 0 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.81rem;
+
+}
+
+
+/* =========================================================
+   16. EDUCATION
+========================================================= */
+
+.education-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.education-card {
+
+    padding: 30px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.9
+        );
+
+}
+
+
+.education-year {
+
+    color:
+        var(--accent);
+
+    font-size:
+        0.66rem;
+
+    font-weight:
+        850;
+
+    letter-spacing:
+        0.09em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.education-card h3 {
+
+    margin:
+        25px 0 8px;
+
+    color:
+        var(--navy);
+
+    font-size:
+        1.08rem;
+
+}
+
+
+.education-card p {
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.84rem;
+
+}
+
+
+.education-card small {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color:
+        #879baa;
+
+    font-size:
+        0.7rem;
+
+}
+
+
+/* =========================================================
+   17. TECHNOLOGY
+========================================================= */
+
+.technology-grid {
+
+    display: grid;
+
+    gap: 0;
+
+}
+
+
+.technology-group {
+
+    display: grid;
+
+    grid-template-columns:
+        230px 1fr;
+
+    gap: 25px;
+
+    align-items:
+        start;
+
+    padding:
+        23px 0;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+}
+
+
+.technology-group > strong {
+
+    color:
+        var(--navy);
+
+    font-size:
+        0.78rem;
+
+}
+
+
+.technology-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.technology-tags span {
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        999px;
+
+    color:
+        #54748c;
+
+    background:
+        rgba(
+            248,
+            251,
+            253,
+            0.78
+        );
+
+    font-size:
+        0.69rem;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+.technology-tags span:hover {
+
+    border-color:
+        var(--border-accent);
+
+    background:
+        var(--soft);
+
+}
+
+
+.automation-link {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 35px;
+
+    margin-top:
+        50px;
+
+    padding: 32px;
+
+    border:
+        1px solid
+        var(--border-accent);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(
+            237,
+            247,
+            253,
+            0.8
+        );
+
+}
+
+
+.automation-link > div {
+
+    max-width: 670px;
+
+}
+
+
+.automation-link h3 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        var(--navy);
+
+    font-size:
+        1.25rem;
+
+}
+
+
+.automation-link p:not(.eyebrow) {
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.79rem;
+
+}
+
+
+/* =========================================================
+   18. CONTACT
+========================================================= */
+
+.contact-section {
+
+    position: relative;
+
+    padding:
+        90px 0;
+
+    color:
+        var(--white);
+
+    background:
+        linear-gradient(
+            145deg,
+            #083958,
+            var(--navy-dark)
+        );
+
+}
+
+
+.contact-heading {
+
+    max-width: 720px;
+
+    margin-bottom:
+        40px;
+
+}
+
+
+.contact-heading
+.eyebrow {
+
+    color:
+        #66bce9;
+
+}
+
+
+.contact-heading h2 {
+
+    color:
+        var(--white);
+
+}
+
+
+.contact-heading > p:last-child {
+
+    max-width: 690px;
+
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.74
+        );
+
+    font-size:
+        0.9rem;
+
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.contact-card {
+
+    min-height: 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        42px 1fr auto;
+
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.17
+        );
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+.contact-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+}
+
+
+.contact-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color:
+        var(--white);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        850;
+
+}
+
+
+.contact-info {
+
+    min-width: 0;
+
+}
+
+
+.contact-label {
+
+    display: block;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.62
+        );
+
+    font-size:
+        0.6rem;
+
+    font-weight:
+        850;
+
+    letter-spacing:
+        0.12em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.contact-info strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    overflow-wrap:
+        anywhere;
+
+    color:
+        var(--white);
+
+    font-size:
+        0.82rem;
+
+}
+
+
+.contact-info small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.5
+        );
+
+    font-size:
+        0.64rem;
+
+}
+
+
+.contact-arrow {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+}
+
+
+.availability {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top:
+        27px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-size:
+        0.69rem;
+
+}
+
+
+.availability-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        #20b779;
+
+    box-shadow:
+        0 0 0
+        4px
+        rgba(32, 183, 121, 0.08);
+
+}
+
+
+/* =========================================================
+   19. FOOTER
+========================================================= */
+
+.site-footer {
+
+    padding:
+        23px 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.54
+        );
+
+    background:
+        #041827;
+
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 20px;
+
+    font-size:
+        0.64rem;
+
+}
+
+
+.footer-content a {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+}
+
+
+/* =========================================================
+   20. SCROLL REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   21. TABLET
+========================================================= */
+
+@media
+(max-width: 980px) {
+
+    .hero-grid {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            250px;
+
+        gap: 38px;
+
+    }
+
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                2.5rem,
+                5vw,
+                3.4rem
+            );
+
+    }
+
+
+    .impact-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .expertise-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .case-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .case-card {
+
+        min-height: 300px;
+
+    }
+
+
+    .main-nav {
+
+        gap: 15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   22. MOBILE
+========================================================= */
+
+@media
+(max-width: 760px) {
+
+    .container {
+
+        width:
+            calc(
+                100% - 30px
+            );
+
+    }
+
+
+    .nav-container {
+
+        width:
+            calc(
+                100% - 30px
+            );
+
+    }
+
+
+    .mobile-menu-button {
+
+        display: block;
+
+    }
+
+
+    .main-nav {
+
+        position: absolute;
+
+        top: 72px;
+        left: 15px;
+        right: 15px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 8px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:
+            10px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.98
+            );
+
+        box-shadow:
+            var(--shadow);
+
+    }
+
+
+    .main-nav.open {
+
+        display: flex;
+
+    }
+
+
+    .main-nav a {
+
+        padding:
+            11px 10px;
+
+    }
+
+
+    .main-nav a::after {
+
+        display: none;
+
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            52px 0 64px;
+
+    }
+
+
+    .hero-grid {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+    }
+
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                2.25rem,
+                10.5vw,
+                3.05rem
+            );
+
+        line-height:
+            1.04;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            0.9rem;
+
+    }
+
+
+    .hero-actions {
+
+        gap: 8px;
+
+    }
+
+
+    .hero-meta {
+
+        gap: 0;
+
+    }
+
+
+    .meta-item {
+
+        min-width:
+            33.333%;
+
+        padding:
+            0 12px;
+
+    }
+
+
+    .hero-visual {
+
+        order: 2;
+
+        width: 100%;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin-inline: auto;
+
+        text-align: center;
+
+    }
+
+
+    .portrait-system {
+
+        width: 245px;
+        height: 245px;
+
+        margin:
+            0 auto;
+
+    }
+
+
+    .portrait-ring {
+
+        width: 158px;
+        height: 158px;
+
+    }
+
+
+    .orbit-one {
+
+        width: 198px;
+        height: 198px;
+
+    }
+
+
+    .orbit-two {
+
+        width: 225px;
+        height: 225px;
+
+    }
+
+
+    .hero-status {
+
+        margin:
+            0 auto;
+
+    }
+
+
+    .section {
+
+        padding:
+            70px 0;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom:
+            33px;
+
+    }
+
+
+    .impact-grid,
+    .expertise-grid,
+    .education-grid,
+    .contact-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .impact-card,
+    .expertise-card {
+
+        min-height: auto;
+
+    }
+
+
+    .timeline::before {
+
+        left: 5px;
+
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+
+        padding-left:
+            30px;
+
+    }
+
+
+    .timeline-item::before {
+
+        left: 0;
+
+    }
+
+
+    .technology-group {
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+    }
+
+
+    .automation-link {
+
+        flex-direction: column;
+
+        align-items:
+            flex-start;
+
+        padding: 26px;
+
+    }
+
+
+    .footer-content {
+
+        flex-direction: column;
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+
+/* =========================================================
+   23. SMALL MOBILE
+========================================================= */
+
+@media
+(max-width: 460px) {
+
+    .hero-title {
+
+        font-size:
+            2.4rem;
+
+    }
+
+
+    .hero-actions {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .hero-actions
+    .button:first-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .hero-meta {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 13px;
+
+    }
+
+
+    .meta-item {
+
+        min-width: 0;
+
+        padding: 0;
+
+        border-left: 0;
+
+    }
+
+
+    .metric {
+
+        font-size:
+            2.05rem;
+
+    }
+
+}
+
+
+/* =========================================================
+   24. REDUCED MOTION
+========================================================= */
+
+@media
+(prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior: auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+
+    .reveal {
+
+        opacity: 1;
+
+        transform: none;
+
+    }
+
+
+    #particleCanvas {
+
+        display: none;
+
+    }
+
+}
