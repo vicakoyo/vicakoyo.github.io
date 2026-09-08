@@ -2,7 +2,7 @@
 
 
 /* =========================================================
-   1. ACCESSIBILITY
+   ACCESSIBILITY
 ========================================================= */
 
 const reducedMotion =
@@ -12,7 +12,7 @@ const reducedMotion =
 
 
 /* =========================================================
-   2. CURRENT YEAR
+   CURRENT YEAR
 ========================================================= */
 
 const currentYear =
@@ -30,7 +30,7 @@ if (currentYear) {
 
 
 /* =========================================================
-   3. MOBILE MENU
+   MOBILE MENU
 ========================================================= */
 
 const mobileMenuButton =
@@ -96,7 +96,7 @@ if (
 
 
 /* =========================================================
-   4. REVEAL ON SCROLL
+   REVEAL ON SCROLL
 ========================================================= */
 
 const revealElements =
@@ -150,6 +150,7 @@ if (reducedMotion) {
 
             {
                 threshold: 0.1,
+
                 rootMargin:
                     "0px 0px -28px 0px"
             }
@@ -171,7 +172,7 @@ if (reducedMotion) {
 
 
 /* =========================================================
-   5. KPI COUNTERS
+   KPI COUNTERS
 ========================================================= */
 
 const counters =
@@ -309,7 +310,7 @@ function animateCounter(counter) {
 
 
 /* =========================================================
-   6. COUNTER OBSERVER
+   COUNTER OBSERVER
 ========================================================= */
 
 const counterObserver =
@@ -360,7 +361,7 @@ counters.forEach(
 
 
 /* =========================================================
-   7. ACTIVE NAVIGATION
+   ACTIVE NAVIGATION
 ========================================================= */
 
 const sections =
@@ -452,7 +453,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   8. PORTRAIT PARALLAX
+   PORTRAIT PARALLAX
 ========================================================= */
 
 const portraitSystem =
@@ -562,7 +563,67 @@ if (
 
 
 /* =========================================================
-   9. PARTICLE BACKGROUND
+   CASE STUDY HIGHLIGHT
+========================================================= */
+
+const caseLinks =
+    document.querySelectorAll(
+        ".impact-link"
+    );
+
+
+caseLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            const targetSelector =
+                link.getAttribute("href");
+
+
+            const target =
+                document.querySelector(
+                    targetSelector
+                );
+
+
+            if (!target) {
+                return;
+            }
+
+
+            setTimeout(
+                () => {
+
+                    target.classList.add(
+                        "case-highlight"
+                    );
+
+
+                    setTimeout(
+                        () => {
+
+                            target.classList.remove(
+                                "case-highlight"
+                            );
+
+                        },
+                        1300
+                    );
+
+                },
+                500
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PARTICLE BACKGROUND
 ========================================================= */
 
 const canvas =
@@ -595,7 +656,7 @@ if (
         x: null,
         y: null,
 
-        radius: 165
+        radius: 170
 
     };
 
@@ -655,7 +716,7 @@ if (
 
 
     /* -----------------------------------------------------
-       PARTICLE CLASS
+       PARTICLE
     ----------------------------------------------------- */
 
     class Particle {
@@ -681,20 +742,16 @@ if (
 
             this.size =
                 Math.random() *
-                1.7 +
-                0.75;
+                1.8 +
+                0.8;
 
-
-            /*
-                Deliberately slow ambient motion.
-            */
 
             this.velocityX =
                 (
                     Math.random() -
                     0.5
                 ) *
-                0.19;
+                0.18;
 
 
             this.velocityY =
@@ -702,7 +759,7 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.19;
+                0.18;
 
 
             this.forceX = 0;
@@ -711,8 +768,8 @@ if (
 
             this.opacity =
                 Math.random() *
-                0.15 +
-                0.24;
+                0.16 +
+                0.25;
 
         }
 
@@ -729,10 +786,6 @@ if (
                 this.forceY;
 
 
-            /*
-                Forces decay smoothly.
-            */
-
             this.forceX *=
                 0.90;
 
@@ -740,10 +793,6 @@ if (
             this.forceY *=
                 0.90;
 
-
-            /*
-                Gentle cursor repulsion.
-            */
 
             if (
                 mouse.x !== null &&
@@ -787,7 +836,7 @@ if (
                             distance
                         ) *
                         strength *
-                        0.25;
+                        0.28;
 
 
                     this.forceY +=
@@ -796,16 +845,12 @@ if (
                             distance
                         ) *
                         strength *
-                        0.25;
+                        0.28;
 
                 }
 
             }
 
-
-            /*
-                Screen wrapping.
-            */
 
             if (
                 this.x < -20
@@ -898,7 +943,7 @@ if (
         let count =
             Math.floor(
                 screenArea /
-                21500
+                21000
             );
 
 
@@ -921,9 +966,9 @@ if (
                 Math.min(
                     Math.max(
                         count,
-                        46
+                        48
                     ),
-                    74
+                    76
                 );
 
         }
@@ -945,7 +990,7 @@ if (
 
 
     /* -----------------------------------------------------
-       CONNECT PARTICLES
+       PARTICLE CONNECTIONS
     ----------------------------------------------------- */
 
     function connectParticles() {
@@ -996,7 +1041,7 @@ if (
                             distance /
                             connectionDistance
                         ) *
-                        0.13;
+                        0.14;
 
 
                     context.beginPath();
@@ -1076,16 +1121,16 @@ if (
 
                 if (
                     distance <
-                    110
+                    115
                 ) {
 
                     const opacity =
                         (
                             1 -
                             distance /
-                            110
+                            115
                         ) *
-                        0.14;
+                        0.17;
 
 
                     context.beginPath();
@@ -1127,7 +1172,7 @@ if (
 
 
     /* -----------------------------------------------------
-       ANIMATION LOOP
+       ANIMATION
     ----------------------------------------------------- */
 
     function animateParticles() {
@@ -1165,7 +1210,7 @@ if (
 
 
     /* -----------------------------------------------------
-       POINTER INTERACTION
+       POINTER
     ----------------------------------------------------- */
 
     const finePointer =
@@ -1237,7 +1282,7 @@ if (
 
 
     /* -----------------------------------------------------
-       PAUSE IF TAB IS HIDDEN
+       TAB VISIBILITY
     ----------------------------------------------------- */
 
     document.addEventListener(
@@ -1270,7 +1315,7 @@ if (
 
 
 /* =========================================================
-   10. DESKTOP RESIZE CLEANUP
+   RESIZE CLEANUP
 ========================================================= */
 
 window.addEventListener(
