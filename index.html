@@ -13,16 +13,19 @@
 
   <style>
     :root {
-      --navy: #102f4d;
-      --blue: #1767a5;
-      --blue-dark: #11578e;
-      --text: #102f4d;
-      --muted: #607d98;
-      --light: #f4f7fb;
-      --lighter: #f8fafc;
+      --navy: #0b2d4d;
+      --navy-2: #123e66;
+      --blue: #0869c7;
+      --blue-dark: #05559f;
+      --blue-light: #eaf4ff;
+      --text: #153653;
+      --muted: #60788e;
+      --light: #f5f8fc;
+      --lighter: #fafcff;
       --white: #ffffff;
-      --border: #d8e1e9;
-      --max-width: 1080px;
+      --border: #dce6ef;
+      --shadow: 0 12px 35px rgba(15, 47, 77, 0.08);
+      --max-width: 1180px;
     }
 
     * {
@@ -33,7 +36,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 85px;
     }
 
     body {
@@ -47,31 +50,39 @@
       color: inherit;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      width: min(90%, var(--max-width));
+      width: min(91%, var(--max-width));
       margin: 0 auto;
     }
 
-    /* NAVIGATION */
+    /* =========================
+       NAVIGATION
+    ========================== */
 
     header {
-      background: rgba(255, 255, 255, 0.98);
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 1000;
+      backdrop-filter: blur(12px);
     }
 
     .nav-container {
-      min-height: 82px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 25px;
     }
 
     .logo {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       text-decoration: none;
       color: var(--navy);
@@ -81,19 +92,30 @@
     .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 24px;
     }
 
     .desktop-nav a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 700;
       transition: color 0.2s ease;
     }
 
     .desktop-nav a:hover {
       color: var(--blue);
+    }
+
+    .nav-cv {
+      padding: 9px 15px;
+      border-radius: 6px;
+      background: var(--blue);
+      color: white !important;
+    }
+
+    .nav-cv:hover {
+      background: var(--blue-dark);
     }
 
     .menu-button {
@@ -106,122 +128,147 @@
       border: 1px solid var(--border);
       border-radius: 7px;
       padding: 9px 12px;
-      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
-    }
-
-    .menu-icon {
-      font-size: 1.15rem;
-      line-height: 1;
     }
 
     .mobile-nav {
       display: none;
     }
 
-    /* GENERAL */
+    /* =========================
+       GENERAL
+    ========================== */
 
     section {
-      padding: 80px 0;
+      padding: 62px 0;
     }
 
     .section-label {
       color: var(--blue);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 14px;
+      letter-spacing: 0.15em;
+      margin-bottom: 10px;
     }
 
-    h1, h2, h3 {
-      line-height: 1.2;
+    h1,
+    h2,
+    h3 {
+      line-height: 1.18;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 2.6rem);
-      margin-bottom: 20px;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 14px;
+      color: var(--navy);
     }
 
     .section-intro {
       color: var(--muted);
       max-width: 760px;
-      margin-bottom: 42px;
-      font-size: 1rem;
+      margin-bottom: 32px;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
-      background: linear-gradient(
-        120deg,
-        #ffffff 0%,
-        #ffffff 48%,
-        #eef5fa 100%
-      );
-      padding: 95px 0 90px;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 75% 25%, rgba(8, 105, 199, 0.13), transparent 28%),
+        linear-gradient(115deg, #ffffff 0%, #f7fbff 52%, #e8f3fc 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(8, 105, 199, 0.08);
+      border-radius: 50%;
+      right: -180px;
+      top: -210px;
+    }
+
+    .hero-grid {
+      min-height: 590px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 55px;
     }
 
     .hero-content {
-      max-width: 790px;
+      padding: 65px 0;
+      position: relative;
+      z-index: 2;
     }
 
     .eyebrow {
       color: var(--blue);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 7vw, 4.7rem);
-      margin-bottom: 18px;
-      letter-spacing: -0.03em;
+      font-size: clamp(3.3rem, 7vw, 5rem);
+      color: var(--navy);
+      letter-spacing: -0.045em;
+      margin-bottom: 14px;
     }
 
     .hero-tagline {
       color: var(--blue);
-      font-size: clamp(1.35rem, 3vw, 1.7rem);
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 28px;
+      font-size: clamp(1.35rem, 2.7vw, 1.8rem);
+      font-weight: 750;
+      line-height: 1.35;
+      max-width: 680px;
+      margin-bottom: 20px;
     }
 
     .hero-description {
       color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 720px;
-      margin-bottom: 34px;
+      max-width: 670px;
+      margin-bottom: 26px;
+      font-size: 1rem;
     }
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .button {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      padding: 13px 22px;
-      border-radius: 5px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border-radius: 6px;
       text-decoration: none;
+      font-size: 0.92rem;
       font-weight: 700;
       border: 1px solid var(--blue);
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .button:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(8, 105, 199, 0.12);
     }
 
     .button-primary {
       background: var(--blue);
-      color: var(--white);
+      color: white;
     }
 
     .button-primary:hover {
@@ -229,72 +276,219 @@
     }
 
     .button-secondary {
-      background: var(--white);
+      background: rgba(255,255,255,0.75);
       color: var(--blue);
     }
 
-    .button-secondary:hover {
-      background: #f5f9fc;
+    .hero-principles {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 18px;
+      margin-top: 30px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
     }
 
-    /* IMPACT */
+    .principle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 0.79rem;
+      font-weight: 700;
+    }
+
+    .principle-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       HERO IMAGE
+    ========================== */
+
+    .hero-visual {
+      height: 100%;
+      min-height: 590px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-image-background {
+      position: absolute;
+      inset: 38px 0 0;
+      border-radius: 0 0 0 60px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(8, 105, 199, 0.08), rgba(11, 45, 77, 0.18)),
+        linear-gradient(135deg, #edf6fd, #cfe5f7);
+    }
+
+    .hero-image-background::before,
+    .hero-image-background::after {
+      content: "";
+      position: absolute;
+      transform: rotate(28deg);
+      background: rgba(255, 255, 255, 0.23);
+    }
+
+    .hero-image-background::before {
+      width: 150px;
+      height: 700px;
+      left: 60px;
+      top: -100px;
+    }
+
+    .hero-image-background::after {
+      width: 70px;
+      height: 700px;
+      left: 240px;
+      top: -150px;
+    }
+
+    .hero-photo {
+      position: relative;
+      z-index: 2;
+      width: 92%;
+      height: 545px;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: 18px 18px 0 60px;
+      box-shadow: -18px 18px 50px rgba(15, 47, 77, 0.13);
+    }
+
+    .hero-quote {
+      position: absolute;
+      z-index: 3;
+      right: -18px;
+      bottom: 48px;
+      width: 235px;
+      padding: 20px;
+      border-radius: 12px;
+      color: white;
+      background: rgba(11, 45, 77, 0.92);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-quote-mark {
+      font-size: 2.4rem;
+      line-height: 0.8;
+      opacity: 0.7;
+    }
+
+    .hero-quote p {
+      font-weight: 700;
+      line-height: 1.45;
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       IMPACT
+    ========================== */
 
     #impact {
       background: var(--light);
     }
 
+    .section-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 26px;
+    }
+
+    .section-heading-row .section-intro {
+      margin-bottom: 0;
+    }
+
     .impact-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 15px;
     }
 
     .impact-card {
-      background: var(--white);
+      background: white;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 30px 24px;
-      min-height: 205px;
+      border-radius: 10px;
+      padding: 24px 20px;
+      transition: all 0.2s ease;
+      box-shadow: 0 5px 18px rgba(15, 47, 77, 0.035);
+    }
+
+    .impact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #bfd7ea;
     }
 
     .impact-number {
       color: var(--blue);
-      font-size: 2.1rem;
+      font-size: 1.85rem;
       font-weight: 800;
-      margin-bottom: 15px;
-      line-height: 1.15;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .impact-title {
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-size: 0.92rem;
     }
 
     .impact-card p {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
     }
 
-    /* EXPERTISE */
+    /* =========================
+       EXPERTISE
+    ========================== */
 
     .expertise-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px 40px;
-      margin-top: 35px;
+      gap: 16px;
     }
 
     .expertise-item {
-      border-left: 4px solid var(--blue);
-      padding: 10px 0 10px 20px;
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: white;
+      transition: all 0.2s ease;
+    }
+
+    .expertise-item:hover {
+      border-color: #bcd8ed;
+      box-shadow: var(--shadow);
     }
 
     .expertise-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: 7px;
     }
 
     .expertise-item p {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
-    /* CASE STUDIES */
+    /* =========================
+       CASE STUDIES
+    ========================== */
 
     #case-studies {
       background: var(--light);
@@ -303,34 +497,52 @@
     .case-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 18px;
     }
 
     .case-card {
-      background: var(--white);
+      background: white;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 28px;
+      border-radius: 11px;
+      padding: 27px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .case-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--blue);
+    }
+
+    .case-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
     }
 
     .case-type {
       color: var(--blue);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .case-card h3 {
-      margin-bottom: 13px;
-      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 11px;
     }
 
     .case-card p {
       color: var(--muted);
-      margin-bottom: 13px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
     }
 
     .case-card .result {
@@ -339,18 +551,28 @@
       margin-bottom: 0;
     }
 
-    /* EXPERIENCE */
+    /* =========================
+       EXPERIENCE
+    ========================== */
 
     .timeline {
-      border-left: 2px solid #d6e3ee;
-      margin-left: 6px;
-      padding-left: 28px;
-      max-width: 850px;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: #d5e3ee;
     }
 
     .timeline-item {
       position: relative;
-      padding-bottom: 30px;
+      padding: 0 0 25px 38px;
     }
 
     .timeline-item:last-child {
@@ -360,16 +582,18 @@
     .timeline-item::before {
       content: "";
       position: absolute;
-      left: -34px;
-      top: 7px;
-      width: 10px;
-      height: 10px;
+      left: 3px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
       background: var(--blue);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #bcd8ed;
       border-radius: 50%;
     }
 
     .timeline-item h3 {
-      font-size: 1.08rem;
+      color: var(--navy);
       margin-bottom: 2px;
     }
 
@@ -379,11 +603,14 @@
       margin-bottom: 5px;
     }
 
-    .timeline-item p:last-child {
+    .timeline-description {
       color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    /* EDUCATION */
+    /* =========================
+       EDUCATION
+    ========================== */
 
     #education {
       background: var(--light);
@@ -391,168 +618,179 @@
 
     .education-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
     .education-card {
-      background: var(--white);
+      background: white;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 28px;
+      border-radius: 10px;
+      padding: 25px;
     }
 
     .education-card h3 {
-      margin-bottom: 10px;
+      color: var(--navy);
+      margin-bottom: 9px;
     }
 
-    .education-card p {
+    .education-card p,
+    .credential-list {
       color: var(--muted);
     }
 
     .credential-list {
-      margin-top: 10px;
       padding-left: 20px;
-      color: var(--muted);
+      columns: 2;
+      column-gap: 30px;
     }
 
     .credential-list li {
-      margin-bottom: 7px;
+      margin-bottom: 6px;
+      break-inside: avoid;
     }
 
-    /* TECHNOLOGY */
+    /* =========================
+       TECHNOLOGY
+    ========================== */
 
     #technology {
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding: 62px 0;
     }
 
     .technology-box {
-      background: var(--navy);
-      color: var(--white);
-      padding: 38px;
-      border-radius: 9px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(36, 133, 207, 0.35), transparent 28%),
+        linear-gradient(135deg, #0b2d4d, #123e66);
+      color: white;
+      padding: 42px;
+      border-radius: 14px;
     }
 
     .technology-box .section-label {
-      color: #2c83c5;
+      color: #72b9ef;
     }
 
     .technology-box h2 {
-      color: var(--white);
+      color: white;
     }
 
-    .technology-box p {
-      color: #ffffff;
+    .technology-box > p {
+      color: #dbe8f2;
       max-width: 850px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
       margin-top: 22px;
     }
 
     .tech-tag {
-      border: 1px solid #4e6e89;
-      border-radius: 5px;
-      padding: 8px 12px;
-      font-size: 0.88rem;
-      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 7px 11px;
+      font-size: 0.84rem;
     }
 
     .project-evidence {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid #4e6e89;
+      margin-top: 27px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.18);
     }
 
     .project-evidence h3 {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .project-evidence p {
-      color: #d9e6f0;
-      font-size: 0.94rem;
+      color: #dbe8f2;
+      font-size: 0.91rem;
+      max-width: 780px;
     }
 
     .project-link {
       display: inline-block;
-      margin-top: 8px;
-      color: #ffffff;
+      margin-top: 10px;
+      color: white;
       font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
-    /* CONTACT */
+    /* =========================
+       CONTACT
+    ========================== */
 
     #contact {
+      padding: 55px 0 65px;
       text-align: center;
-      padding-top: 50px;
-      padding-bottom: 80px;
     }
 
     #contact .section-intro {
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     #contact .buttons {
       justify-content: center;
     }
 
-    .contact-details {
-      margin: 0 auto 28px;
-      color: var(--muted);
-    }
-
-    .contact-details a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .contact-details a:hover {
-      text-decoration: underline;
-    }
-
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
       background: var(--navy);
       color: #dce8f1;
       text-align: center;
-      padding: 25px 20px;
-      font-size: 0.85rem;
+      padding: 21px;
+      font-size: 0.82rem;
     }
 
-    /* TABLET */
+    /* =========================
+       RESPONSIVE
+    ========================== */
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
+      .desktop-nav {
+        gap: 14px;
+      }
+
+      .desktop-nav a {
+        font-size: 0.78rem;
+      }
+
+      .hero-grid {
+        gap: 30px;
+      }
+
+      .hero-principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .impact-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .desktop-nav {
-        gap: 15px;
-      }
-
-      .desktop-nav a {
-        font-size: 0.82rem;
+      .hero-quote {
+        right: 5px;
       }
     }
 
-    /* MOBILE */
-
-    @media (max-width: 760px) {
+    @media (max-width: 780px) {
       html {
-        scroll-padding-top: 78px;
+        scroll-padding-top: 72px;
       }
 
       .nav-container {
-        min-height: 70px;
+        min-height: 68px;
       }
 
       .desktop-nav {
@@ -564,44 +802,60 @@
       }
 
       .mobile-nav {
-        display: none;
         border-top: 1px solid var(--border);
-        background: var(--white);
+        background: white;
         padding: 8px 5%;
       }
 
       .mobile-nav.open {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0;
       }
 
       .mobile-nav a {
+        padding: 12px 8px;
         text-decoration: none;
         color: var(--muted);
         font-weight: 700;
-        padding: 13px 8px;
         border-bottom: 1px solid #eef2f5;
       }
 
-      .mobile-nav a:hover {
-        color: var(--blue);
-      }
-
       section {
-        padding: 60px 0;
+        padding: 50px 0;
       }
 
-      .hero {
-        padding: 65px 0;
+      .hero-grid {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-content {
+        padding: 55px 0 35px;
       }
 
       .hero h1 {
-        font-size: 3rem;
+        font-size: 3.4rem;
       }
 
-      .hero-description {
-        font-size: 1rem;
+      .hero-visual {
+        min-height: 480px;
+      }
+
+      .hero-image-background {
+        inset: 20px 0 0;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .hero-photo {
+        width: 100%;
+        height: 460px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .hero-quote {
+        right: 15px;
+        bottom: 25px;
       }
 
       .impact-grid,
@@ -611,8 +865,34 @@
         grid-template-columns: 1fr;
       }
 
-      .impact-card {
-        min-height: auto;
+      .section-heading-row {
+        display: block;
+      }
+
+      .section-heading-row .section-intro {
+        margin-bottom: 20px;
+      }
+
+      .credential-list {
+        columns: 1;
+      }
+
+      .technology-box {
+        padding: 28px 22px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 92%;
+      }
+
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.28rem;
       }
 
       .buttons {
@@ -621,48 +901,32 @@
 
       .button {
         width: 100%;
-        padding: 15px 18px;
       }
 
-      .technology-box {
-        padding: 28px 22px;
-      }
-    }
-
-    /* SMALL PHONES */
-
-    @media (max-width: 430px) {
-      .container {
-        width: 92%;
+      .hero-principles {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
       }
 
-      .logo {
-        font-size: 1.05rem;
+      .hero-visual {
+        min-height: 410px;
       }
 
-      .hero h1 {
-        font-size: 2.65rem;
+      .hero-photo {
+        height: 400px;
       }
 
-      .hero-tagline {
-        font-size: 1.3rem;
+      .hero-quote {
+        width: 205px;
+        padding: 15px;
       }
 
-      h2 {
-        font-size: 2rem;
+      .impact-grid {
+        grid-template-columns: 1fr;
       }
 
       .mobile-nav.open {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .impact-number {
-        font-size: 2rem;
-      }
-
-      .case-card,
-      .education-card {
-        padding: 23px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -675,7 +939,7 @@
 
     <a href="#top" class="logo">Victor Akoyo</a>
 
-    <nav class="desktop-nav" aria-label="Desktop navigation">
+    <nav class="desktop-nav">
       <a href="#impact">Impact</a>
       <a href="#expertise">Expertise</a>
       <a href="#case-studies">Case Studies</a>
@@ -683,26 +947,28 @@
       <a href="#education">Education</a>
       <a href="#technology">Technology</a>
       <a href="#contact">Contact</a>
+      <a
+        href="Victor_Akoyo_Professional_Portfolio_CV.pdf"
+        target="_blank"
+        class="nav-cv"
+      >
+        Download CV
+      </a>
     </nav>
 
     <button
       class="menu-button"
       id="menuButton"
-      aria-label="Open navigation menu"
       aria-expanded="false"
       aria-controls="mobileNavigation"
     >
-      <span class="menu-icon" id="menuIcon">☰</span>
+      <span id="menuIcon">☰</span>
       <span>Menu</span>
     </button>
 
   </div>
 
-  <nav
-    class="mobile-nav"
-    id="mobileNavigation"
-    aria-label="Mobile navigation"
-  >
+  <nav class="mobile-nav" id="mobileNavigation">
     <a href="#impact">Impact</a>
     <a href="#expertise">Expertise</a>
     <a href="#case-studies">Case Studies</a>
@@ -710,16 +976,17 @@
     <a href="#education">Education</a>
     <a href="#technology">Technology</a>
     <a href="#contact">Contact</a>
+    <a href="Victor_Akoyo_Professional_Portfolio_CV.pdf">Download CV</a>
   </nav>
 </header>
-
 
 <main id="top">
 
   <!-- HERO -->
 
   <section class="hero">
-    <div class="container">
+    <div class="container hero-grid">
+
       <div class="hero-content">
 
         <div class="eyebrow">
@@ -735,15 +1002,14 @@
 
         <p class="hero-description">
           Operations and supply chain professional based in Nairobi, Kenya,
-          with experience spanning international logistics, quality
-          management, business operations, engineering and process
-          improvement. I focus on turning operational problems into
-          measurable improvements while building practical systems that
-          strengthen visibility, accountability and execution.
+          with experience spanning international logistics, quality management,
+          business operations, engineering and process improvement. I focus on
+          turning operational problems into measurable improvements while
+          building practical systems that strengthen visibility,
+          accountability and execution.
         </p>
 
         <div class="buttons">
-
           <a href="#case-studies" class="button button-primary">
             View Selected Work
           </a>
@@ -751,7 +1017,6 @@
           <a
             href="Victor_Akoyo_Professional_Portfolio_CV.pdf"
             target="_blank"
-            rel="noopener noreferrer"
             class="button button-secondary"
           >
             Download CV
@@ -772,10 +1037,54 @@
           >
             LinkedIn
           </a>
+        </div>
+
+        <div class="hero-principles">
+
+          <div class="principle">
+            <span class="principle-icon">↗</span>
+            <span>Measurable improvement</span>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">✓</span>
+            <span>Practical execution</span>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">◎</span>
+            <span>Operational leadership</span>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">⚙</span>
+            <span>Systems thinking</span>
+          </div>
 
         </div>
 
       </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-image-background"></div>
+
+        <img
+          src="victor-akoyo-portrait.png"
+          alt="Victor Akoyo"
+          class="hero-photo"
+        >
+
+        <div class="hero-quote">
+          <div class="hero-quote-mark">“</div>
+          <p>
+            Better operations come from making problems visible,
+            assigning ownership and improving the system.
+          </p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -785,27 +1094,39 @@
   <section id="impact">
     <div class="container">
 
-      <div class="section-label">Selected Impact</div>
+      <div class="section-heading-row">
 
-      <h2>Evidence over adjectives.</h2>
+        <div>
+          <div class="section-label">Selected Impact</div>
 
-      <p class="section-intro">
-        Selected outcomes from roles across supply chain, quality,
-        manufacturing and business operations.
-      </p>
+          <h2>Evidence over adjectives.</h2>
+
+          <p class="section-intro">
+            Selected outcomes from roles across supply chain, quality,
+            manufacturing and business operations.
+          </p>
+        </div>
+
+        <a href="#case-studies" class="button button-secondary">
+          View Case Studies →
+        </a>
+
+      </div>
 
       <div class="impact-grid">
 
         <div class="impact-card">
           <div class="impact-number">~£520K</div>
+          <div class="impact-title">Annual logistics savings</div>
           <p>
-            Approximate annual logistics savings through warehouse,
-            3PL and final-mile optimisation.
+            Approximate annual savings across warehouse/3PL
+            and final-mile operations.
           </p>
         </div>
 
         <div class="impact-card">
           <div class="impact-number">12% → 4%</div>
+          <div class="impact-title">Returns reduction</div>
           <p>
             Reduction in returns measured by CBM through quality,
             packaging and logistics improvements.
@@ -814,21 +1135,24 @@
 
         <div class="impact-card">
           <div class="impact-number">10% → 5%</div>
+          <div class="impact-title">Customer complaints</div>
           <p>
-            Reduction in customer complaints while leading quality
-            improvement in a manufacturing environment.
+            Reduction in customer complaints while leading
+            manufacturing quality improvement.
           </p>
         </div>
 
         <div class="impact-card">
           <div class="impact-number">19 KPIs</div>
+          <div class="impact-title">Leadership visibility</div>
           <p>
-            Leadership scorecard designed to improve visibility,
-            accountability and operating cadence.
+            Leadership scorecard designed to strengthen performance
+            visibility and accountability.
           </p>
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -843,14 +1167,14 @@
       <h2>Cross-functional operational leadership.</h2>
 
       <p class="section-intro">
-        My experience sits at the intersection of operations,
-        supply chain, quality and structured business improvement.
+        Experience at the intersection of operations, supply chain,
+        quality and structured business improvement.
       </p>
 
       <div class="expertise-grid">
 
         <div class="expertise-item">
-          <h3>Operations &amp; Business Operations</h3>
+          <h3>Operations & Business Operations</h3>
           <p>
             Operating rhythms, KPI management, SOPs, cross-functional
             execution, executive reporting and process improvement.
@@ -858,7 +1182,7 @@
         </div>
 
         <div class="expertise-item">
-          <h3>Supply Chain &amp; Logistics</h3>
+          <h3>Supply Chain & Logistics</h3>
           <p>
             International freight, 3PL management, warehousing,
             demand planning, inventory, final mile and reverse logistics.
@@ -866,7 +1190,7 @@
         </div>
 
         <div class="expertise-item">
-          <h3>Quality &amp; Continuous Improvement</h3>
+          <h3>Quality & Continuous Improvement</h3>
           <p>
             Supplier quality, root-cause analysis, corrective action,
             manufacturing controls, customer complaints and ISO-based systems.
@@ -874,14 +1198,15 @@
         </div>
 
         <div class="expertise-item">
-          <h3>Data &amp; Operational Systems</h3>
+          <h3>Data & Operational Systems</h3>
           <p>
-            Excel-based analysis, Power BI, ERP/WMS environments,
-            KPI reporting and practical AI-enabled workflow improvement.
+            Excel analysis, Power BI, ERP/WMS environments, KPI reporting
+            and practical AI-enabled workflow improvement.
           </p>
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -896,35 +1221,32 @@
       <h2>Operational problems turned into measurable outcomes.</h2>
 
       <p class="section-intro">
-        Short case studies showing the type of problems I have worked on,
-        the decisions involved and the resulting operational impact.
+        Examples of operational problems, the decisions involved and
+        the resulting impact.
       </p>
 
       <div class="case-grid">
 
         <article class="case-card">
-          <div class="case-type">
-            Supply Chain • Cost Optimisation
-          </div>
+          <div class="case-type">Supply Chain • Cost Optimisation</div>
 
           <h3>Restructuring logistics costs</h3>
 
           <p>
             Reviewed warehousing, storage and final-mile cost structures,
             benchmarked alternatives, negotiated commercial terms and
-            supported a transition to a more efficient logistics model.
+            supported transition to a more efficient logistics model.
           </p>
 
           <p class="result">
             Result: approximately £400K annual warehouse/3PL savings
-            plus approximately £120K in final-mile savings.
+            plus approximately £120K final-mile savings.
           </p>
         </article>
 
+
         <article class="case-card">
-          <div class="case-type">
-            Quality • Reverse Logistics
-          </div>
+          <div class="case-type">Quality • Reverse Logistics</div>
 
           <h3>Reducing product returns</h3>
 
@@ -939,10 +1261,9 @@
           </p>
         </article>
 
+
         <article class="case-card">
-          <div class="case-type">
-            Logistics • Operational Recovery
-          </div>
+          <div class="case-type">Logistics • Operational Recovery</div>
 
           <h3>Protecting a time-critical container movement</h3>
 
@@ -959,6 +1280,7 @@
           </p>
         </article>
 
+
         <article class="case-card">
           <div class="case-type">
             Business Operations • Performance Management
@@ -968,8 +1290,8 @@
 
           <p>
             Designed a 19-KPI leadership scorecard spanning customer,
-            workforce, recruitment and commercial performance, integrated
-            into structured leadership and quarterly review rhythms.
+            workforce, recruitment and commercial performance and integrated
+            it into structured leadership and quarterly review rhythms.
           </p>
 
           <p class="result">
@@ -979,6 +1301,7 @@
         </article>
 
       </div>
+
     </div>
   </section>
 
@@ -994,62 +1317,83 @@
         Experience across operations, supply chain, quality and engineering.
       </h2>
 
+      <p class="section-intro">
+        A career progression from engineering and manufacturing quality
+        into international supply chain and broader business operations.
+      </p>
+
       <div class="timeline">
 
         <div class="timeline-item">
           <h3>Optimise Outsourcing</h3>
-          <p class="role">Operations Manager &amp; EOS Integrator</p>
-          <p>
-            Business operations, leadership operating cadence,
-            KPI reporting, finance administration, SOP development,
-            executive support and AI-enabled workflow improvement.
+
+          <p class="role">
+            Operations Manager & EOS Integrator
+          </p>
+
+          <p class="timeline-description">
+            Business operations, leadership operating cadence, KPI reporting,
+            finance administration, SOP development, executive support and
+            AI-enabled workflow improvement.
           </p>
         </div>
+
 
         <div class="timeline-item">
           <h3>Rattan Direct</h3>
+
           <p class="role">
-            Supply Chain, Quality Control &amp; Technical Manager
+            Supply Chain, Quality Control & Technical Manager
           </p>
-          <p>
-            International supply chain, freight, 3PL warehousing,
-            inventory, demand planning, final-mile delivery,
-            reverse logistics, supplier quality and operational
-            cost improvement.
+
+          <p class="timeline-description">
+            International supply chain, freight, 3PL warehousing, inventory,
+            demand planning, final-mile delivery, reverse logistics,
+            supplier quality and operational cost improvement.
           </p>
         </div>
 
+
         <div class="timeline-item">
-          <h3>Tile &amp; Carpet Centre</h3>
+          <h3>Tile & Carpet Centre</h3>
+
           <p class="role">Quality Team Lead</p>
-          <p>
+
+          <p class="timeline-description">
             Led quality inspectors and improvement activity across
             manufacturing quality, customer complaints, compliance,
             corrective action and field-service quality.
           </p>
         </div>
 
+
         <div class="timeline-item">
           <h3>Auto Springs East Africa PLC</h3>
+
           <p class="role">Quality Control Engineer</p>
-          <p>
+
+          <p class="timeline-description">
             Automotive manufacturing quality including APQP, PPAP,
-            PFMEA, control plans, MSA, SPC, corrective action and
+            PFMEA, Control Plans, MSA, SPC, corrective action and
             production quality control.
           </p>
         </div>
 
+
         <div class="timeline-item">
           <h3>Coca-Cola Beverages Africa</h3>
+
           <p class="role">Electrical Engineer</p>
-          <p>
-            Production and utilities maintenance, preventive and
-            corrective maintenance, troubleshooting, SAP PM,
-            equipment reliability and manufacturing support.
+
+          <p class="timeline-description">
+            Production and utilities maintenance, preventive and corrective
+            maintenance, troubleshooting, SAP PM, equipment reliability
+            and manufacturing support.
           </p>
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -1059,19 +1403,19 @@
   <section id="education">
     <div class="container">
 
-      <div class="section-label">Education &amp; Credentials</div>
+      <div class="section-label">Education & Credentials</div>
 
       <h2>Engineering foundation with operational development.</h2>
 
       <p class="section-intro">
-        Formal engineering education supported by training across
-        operations, quality, service management and continuous improvement.
+        Formal engineering education supported by training across operations,
+        quality, service management and continuous improvement.
       </p>
 
       <div class="education-grid">
 
         <div class="education-card">
-          <h3>BSc Control &amp; Instrumentation</h3>
+          <h3>BSc Control & Instrumentation</h3>
 
           <p>
             Jomo Kenyatta University of Agriculture and Technology (JKUAT)
@@ -1081,23 +1425,23 @@
           <p>Awarded 2018</p>
         </div>
 
-        <div class="education-card">
 
+        <div class="education-card">
           <h3>Selected Professional Credentials</h3>
 
           <ul class="credential-list">
             <li>ITIL 4 Foundation</li>
             <li>Scrum Fundamentals Certified</li>
             <li>Six Sigma Foundations</li>
-            <li>Lean Six Sigma – Define &amp; Measure</li>
+            <li>Lean Six Sigma – Define & Measure</li>
             <li>Operational Excellence Foundations</li>
             <li>Quality Management Foundations</li>
             <li>SAP ERP Essential Training</li>
           </ul>
-
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -1109,9 +1453,7 @@
 
       <div class="technology-box">
 
-        <div class="section-label">
-          Technology &amp; Automation
-        </div>
+        <div class="section-label">Technology & Automation</div>
 
         <h2>Technology as an operations enabler.</h2>
 
@@ -1137,17 +1479,17 @@
           <span class="tech-tag">Make.com</span>
           <span class="tech-tag">n8n</span>
           <span class="tech-tag">AI-enabled workflows</span>
-          <span class="tech-tag">Git / GitHub - Developing</span>
+          <span class="tech-tag">Git / GitHub — Developing</span>
         </div>
 
         <div class="project-evidence">
 
-          <h3>Developing Automation Portfolio</h3>
+          <h3>Automation Portfolio</h3>
 
           <p>
-            Practical workflow projects exploring how automation and
-            AI can support operational reporting, information flow
-            and repetitive business processes.
+            Practical workflow projects exploring how automation and AI
+            can support operational reporting, information flow and
+            repetitive business processes.
           </p>
 
           <a
@@ -1156,12 +1498,13 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            View Project on GitHub →
+            View Automation Projects on GitHub →
           </a>
 
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -1176,16 +1519,8 @@
       <h2>Interested in working together?</h2>
 
       <p class="section-intro">
-        I am open to relevant opportunities across Operations,
-        Business Operations, Supply Chain, Logistics, Quality
-        and Process Improvement.
-      </p>
-
-      <p class="contact-details">
-        Nairobi, Kenya &nbsp;•&nbsp;
-        <a href="mailto:vicakoyo2@gmail.com">vicakoyo2@gmail.com</a>
-        &nbsp;•&nbsp;
-        <a href="tel:+254797590490">+254 797 590 490</a>
+        Open to relevant opportunities across Operations, Business Operations,
+        Supply Chain, Logistics, Quality and Process Improvement.
       </p>
 
       <div class="buttons">
@@ -1198,12 +1533,10 @@
         </a>
 
         <a
-          href="Victor_Akoyo_Professional_Portfolio_CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="tel:+254797590490"
           class="button button-secondary"
         >
-          Download CV
+          Call Me
         </a>
 
         <a
@@ -1212,7 +1545,7 @@
           rel="noopener noreferrer"
           class="button button-secondary"
         >
-          Connect on LinkedIn
+          LinkedIn
         </a>
 
         <a
@@ -1221,7 +1554,7 @@
           rel="noopener noreferrer"
           class="button button-secondary"
         >
-          View GitHub
+          GitHub
         </a>
 
       </div>
@@ -1265,7 +1598,7 @@
   });
 
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 760) {
+    if (window.innerWidth > 780) {
       closeMenu();
     }
   });
