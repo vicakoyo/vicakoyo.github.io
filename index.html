@@ -11,39 +11,45 @@
 
     <meta
         name="description"
-        content="Victor Akoyo — Operations, Supply Chain, Quality and Process Improvement professional based in Nairobi, Kenya."
+        content="Professional portfolio of Victor Akoyo — Operations, Supply Chain, Quality and Process Improvement professional based in Nairobi, Kenya."
     >
 
     <title>
-        Victor Akoyo | Operations, Supply Chain, Quality & Process Improvement
+        Victor Akoyo | Operations, Supply Chain & Process Improvement
     </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 
 <body>
 
     <!-- =====================================================
-         BACKGROUND
+         INTERACTIVE BACKGROUND
     ====================================================== -->
 
-    <div class="background-system" aria-hidden="true">
-        <div class="background-grid"></div>
-        <div class="background-glow glow-one"></div>
-        <div class="background-glow glow-two"></div>
+    <canvas
+        id="particleCanvas"
+        aria-hidden="true"
+    ></canvas>
 
-        <div class="particles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
+    <div
+        class="background-grid"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="background-glow glow-one"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="background-glow glow-two"
+        aria-hidden="true"
+    ></div>
 
 
     <!-- =====================================================
@@ -54,30 +60,60 @@
 
         <div class="nav-container">
 
-            <a href="#home" class="brand">
+            <a
+                href="#home"
+                class="brand"
+            >
                 Victor Akoyo
             </a>
 
+
             <button
-                class="mobile-menu-button"
                 id="mobileMenuButton"
-                aria-label="Open navigation"
+                class="mobile-menu-button"
+                aria-label="Open navigation menu"
                 aria-expanded="false"
+                aria-controls="mainNav"
             >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <nav class="main-nav" id="mainNav">
 
-                <a href="#impact">Impact</a>
-                <a href="#expertise">Expertise</a>
-                <a href="#case-studies">Case Studies</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#technology">Technology</a>
-                <a href="#contact">Contact</a>
+            <nav
+                id="mainNav"
+                class="main-nav"
+                aria-label="Main navigation"
+            >
+
+                <a href="#impact">
+                    Impact
+                </a>
+
+                <a href="#expertise">
+                    Expertise
+                </a>
+
+                <a href="#case-studies">
+                    Case Studies
+                </a>
+
+                <a href="#experience">
+                    Experience
+                </a>
+
+                <a href="#education">
+                    Education
+                </a>
+
+                <a href="#technology">
+                    Technology
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
 
             </nav>
 
@@ -86,6 +122,10 @@
     </header>
 
 
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
     <main>
 
 
@@ -93,15 +133,19 @@
              HERO
         ================================================== -->
 
-        <section id="home" class="hero section">
+        <section
+            id="home"
+            class="hero"
+        >
 
             <div class="container hero-grid">
 
-                <!-- HERO TEXT -->
+
+                <!-- HERO CONTENT -->
 
                 <div class="hero-content reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Operations
                         <span>•</span>
                         Supply Chain
@@ -109,49 +153,56 @@
                         Quality
                         <span>•</span>
                         Process Improvement
-                    </div>
+                    </p>
 
 
                     <h1 class="hero-title">
 
                         Building stronger operations through
-
-                        <span>
-                            disciplined execution, data and continuous improvement.
-                        </span>
+                        disciplined execution, data and continuous
+                        improvement.
 
                     </h1>
 
 
                     <p class="hero-description">
 
-                        Operations and supply chain professional based in Nairobi,
-                        Kenya, with experience spanning international logistics,
-                        quality management, business operations, engineering and
-                        process improvement.
+                        Operations and supply chain professional based in
+                        Nairobi, Kenya, with experience spanning international
+                        logistics, quality management, business operations,
+                        engineering and process improvement.
 
                         I focus on turning operational problems into measurable
-                        improvements while building practical systems that strengthen
-                        visibility, accountability and execution.
+                        improvements while building practical systems that
+                        strengthen visibility, accountability and execution.
 
                     </p>
 
 
                     <div class="hero-actions">
 
-                        <a href="#case-studies" class="button button-primary">
+                        <a
+                            href="#case-studies"
+                            class="button button-primary"
+                        >
                             View Selected Work
                         </a>
 
+
                         <a
                             href="Victor_Akoyo_Professional_Portfolio_CV.pdf"
-                            class="button button-secondary"
                             target="_blank"
+                            rel="noopener noreferrer"
+                            class="button button-secondary"
                         >
                             Download CV
                         </a>
 
-                        <a href="#contact" class="button button-secondary">
+
+                        <a
+                            href="#contact"
+                            class="button button-secondary"
+                        >
                             Contact Me
                         </a>
 
@@ -162,7 +213,9 @@
 
                         <div class="meta-item">
 
-                            <strong>~8 years</strong>
+                            <strong>
+                                ~8 years
+                            </strong>
 
                             <span>
                                 Cross-functional experience
@@ -173,7 +226,9 @@
 
                         <div class="meta-item">
 
-                            <strong>Nairobi</strong>
+                            <strong>
+                                Nairobi
+                            </strong>
 
                             <span>
                                 Kenya
@@ -184,7 +239,9 @@
 
                         <div class="meta-item">
 
-                            <strong>Operations</strong>
+                            <strong>
+                                Operations
+                            </strong>
 
                             <span>
                                 Primary professional focus
@@ -197,6 +254,7 @@
                 </div>
 
 
+
                 <!-- HERO PORTRAIT -->
 
                 <div class="hero-visual reveal">
@@ -204,12 +262,18 @@
                     <div class="portrait-system">
 
                         <div class="orbit orbit-one">
+
                             <span class="orbit-dot"></span>
+
                         </div>
 
+
                         <div class="orbit orbit-two">
+
                             <span class="orbit-dot"></span>
+
                         </div>
+
 
                         <div class="portrait-ring">
 
@@ -258,15 +322,18 @@
              IMPACT
         ================================================== -->
 
-        <section id="impact" class="section impact-section">
+        <section
+            id="impact"
+            class="section section-soft"
+        >
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Selected Impact
-                    </div>
+                    </p>
 
                     <h2>
                         Evidence over adjectives.
@@ -283,7 +350,7 @@
                 <div class="impact-grid">
 
 
-                    <!-- LOGISTICS -->
+                    <!-- 01 -->
 
                     <article class="impact-card reveal">
 
@@ -291,37 +358,40 @@
                             01
                         </span>
 
+
                         <div class="metric">
 
-                            <span class="metric-prefix">£</span>
+                            <span>£</span>
 
                             <span
                                 class="counter"
+                                data-start="0"
                                 data-target="520"
                             >
                                 0
                             </span>
 
-                            <span class="metric-suffix">
-                                k
-                            </span>
+                            <span>k</span>
 
                         </div>
+
 
                         <h3>
                             Annual logistics savings
                         </h3>
 
+
                         <p>
                             Approximate annual savings across warehouse,
-                            3PL and last-mile logistics costs at Rattan Direct.
+                            3PL and final-mile logistics costs at
+                            Rattan Direct.
                         </p>
 
                     </article>
 
 
 
-                    <!-- RETURNS -->
+                    <!-- 02 -->
 
                     <article class="impact-card reveal">
 
@@ -329,9 +399,12 @@
                             02
                         </span>
 
+
                         <div class="metric transition-metric">
 
-                            <span>12%</span>
+                            <span>
+                                12%
+                            </span>
 
                             <span class="metric-arrow">
                                 →
@@ -339,17 +412,20 @@
 
                             <span
                                 class="counter"
+                                data-start="12"
                                 data-target="4"
                                 data-suffix="%"
                             >
-                                0
+                                12%
                             </span>
 
                         </div>
 
+
                         <h3>
                             Returns reduction
                         </h3>
+
 
                         <p>
                             Return rate by cubic volume reduced through
@@ -361,7 +437,7 @@
 
 
 
-                    <!-- MANUFACTURING -->
+                    <!-- 03 -->
 
                     <article class="impact-card reveal">
 
@@ -369,9 +445,12 @@
                             03
                         </span>
 
+
                         <div class="metric transition-metric">
 
-                            <span>8%</span>
+                            <span>
+                                8%
+                            </span>
 
                             <span class="metric-arrow">
                                 →
@@ -379,17 +458,20 @@
 
                             <span
                                 class="counter"
+                                data-start="8"
                                 data-target="4"
                                 data-suffix="%"
                             >
-                                0
+                                8%
                             </span>
 
                         </div>
 
+
                         <h3>
-                            Manufacturing quality
+                            Pipe rejection reduction
                         </h3>
+
 
                         <p>
                             Pipe rejection reduced through stronger
@@ -401,7 +483,7 @@
 
 
 
-                    <!-- KPI -->
+                    <!-- 04 -->
 
                     <article class="impact-card reveal">
 
@@ -409,10 +491,12 @@
                             04
                         </span>
 
+
                         <div class="metric">
 
                             <span
                                 class="counter"
+                                data-start="0"
                                 data-target="19"
                             >
                                 0
@@ -420,14 +504,16 @@
 
                         </div>
 
+
                         <h3>
                             Leadership KPIs
                         </h3>
 
+
                         <p>
-                            Built an integrated leadership scorecard
-                            covering customers, workforce, recruitment,
-                            revenue, churn and operational performance.
+                            Built an integrated leadership scorecard covering
+                            customers, workforce, recruitment, revenue,
+                            churn and operational performance.
                         </p>
 
                     </article>
@@ -444,15 +530,18 @@
              EXPERTISE
         ================================================== -->
 
-        <section id="expertise" class="section">
+        <section
+            id="expertise"
+            class="section"
+        >
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Expertise
-                    </div>
+                    </p>
 
                     <h2>
                         Operations from problem to execution.
@@ -539,8 +628,8 @@
 
                         <p>
                             Translating recurring operational problems
-                            into measurable processes, controls,
-                            reporting structures and improvement actions.
+                            into measurable processes, controls, reporting
+                            structures and improvement actions.
                         </p>
 
                     </article>
@@ -576,9 +665,10 @@
                         </h3>
 
                         <p>
-                            Practical experience across ERP, CRM,
-                            Microsoft 365, workflow automation and
-                            AI-assisted operational systems.
+                            Practical experience across ERP,
+                            customer-service systems, Microsoft 365,
+                            workflow automation and AI-enabled
+                            operational workflows.
                         </p>
 
                     </article>
@@ -604,9 +694,9 @@
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Case Studies
-                    </div>
+                    </p>
 
                     <h2>
                         Selected operational problems solved.
@@ -617,6 +707,8 @@
 
                 <div class="case-grid">
 
+
+                    <!-- CASE 1 -->
 
                     <article class="case-card reveal">
 
@@ -632,9 +724,12 @@
 
                         </div>
 
+
                         <h3>
-                            Reducing logistics cost without losing operational capacity
+                            Reducing logistics cost without losing
+                            operational capacity
                         </h3>
+
 
                         <p>
                             Reviewed warehousing and logistics costs,
@@ -642,6 +737,7 @@
                             commercial terms and supported the transition
                             of inventory to a new operating model.
                         </p>
+
 
                         <div class="case-result">
 
@@ -659,6 +755,8 @@
 
 
 
+                    <!-- CASE 2 -->
+
                     <article class="case-card reveal">
 
                         <div class="case-top">
@@ -673,9 +771,12 @@
 
                         </div>
 
+
                         <h3>
-                            Reducing product returns through cross-functional quality improvement
+                            Reducing product returns through
+                            cross-functional quality improvement
                         </h3>
+
 
                         <p>
                             Used return data and recurring defect patterns
@@ -683,6 +784,7 @@
                             packaging, warehouse handling, delivery and
                             reverse logistics.
                         </p>
+
 
                         <div class="case-result">
 
@@ -700,6 +802,8 @@
 
 
 
+                    <!-- CASE 3 -->
+
                     <article class="case-card reveal">
 
                         <div class="case-top">
@@ -714,9 +818,12 @@
 
                         </div>
 
+
                         <h3>
-                            Building leadership visibility through structured operational reporting
+                            Building leadership visibility through
+                            structured operational reporting
                         </h3>
+
 
                         <p>
                             Developed an integrated KPI scorecard and
@@ -725,14 +832,15 @@
                             priorities.
                         </p>
 
+
                         <div class="case-result">
 
                             <strong>
-                                19
+                                19 KPIs
                             </strong>
 
                             <span>
-                                leadership KPIs integrated
+                                integrated into leadership reporting
                             </span>
 
                         </div>
@@ -751,15 +859,18 @@
              EXPERIENCE
         ================================================== -->
 
-        <section id="experience" class="section">
+        <section
+            id="experience"
+            class="section"
+        >
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Experience
-                    </div>
+                    </p>
 
                     <h2>
                         Cross-functional operating experience.
@@ -774,8 +885,9 @@
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
-                            2025–2026
+                            Oct 2025–2026
                         </div>
+
 
                         <div class="timeline-content">
 
@@ -790,8 +902,8 @@
                             <p>
                                 Business operations, executive reporting,
                                 KPI systems, SOPs, finance administration,
-                                technology administration and
-                                AI-enabled workflow improvement.
+                                technology administration and AI-enabled
+                                workflow improvement.
                             </p>
 
                         </div>
@@ -803,8 +915,9 @@
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
-                            2022–2026
+                            Dec 2022–Feb 2026
                         </div>
+
 
                         <div class="timeline-content">
 
@@ -832,8 +945,9 @@
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
-                            2021–2022
+                            Apr 2021–Nov 2022
                         </div>
+
 
                         <div class="timeline-content">
 
@@ -861,8 +975,9 @@
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
-                            2020–2021
+                            Jul 2020–Apr 2021
                         </div>
+
 
                         <div class="timeline-content">
 
@@ -889,8 +1004,9 @@
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
-                            2018–2020
+                            Nov 2018–Jul 2020
                         </div>
+
 
                         <div class="timeline-content">
 
@@ -927,16 +1043,16 @@
 
         <section
             id="education"
-            class="section education-section"
+            class="section section-soft"
         >
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Education
-                    </div>
+                    </p>
 
                     <h2>
                         Engineering foundation. Operational career.
@@ -955,7 +1071,7 @@
                         </span>
 
                         <h3>
-                            BSc Control & Instrumentation
+                            BSc Control and Instrumentation
                         </h3>
 
                         <p>
@@ -968,6 +1084,7 @@
                         </small>
 
                     </article>
+
 
 
                     <article class="education-card reveal">
@@ -1000,15 +1117,18 @@
              TECHNOLOGY
         ================================================== -->
 
-        <section id="technology" class="section">
+        <section
+            id="technology"
+            class="section"
+        >
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Technology
-                    </div>
+                    </p>
 
                     <h2>
                         Technology as an operational tool.
@@ -1028,9 +1148,9 @@
 
                     <div class="technology-group reveal">
 
-                        <span>
+                        <strong>
                             Operational Systems
-                        </span>
+                        </strong>
 
                         <div class="technology-tags">
 
@@ -1047,11 +1167,12 @@
                     </div>
 
 
+
                     <div class="technology-group reveal">
 
-                        <span>
+                        <strong>
                             Analytics
-                        </span>
+                        </strong>
 
                         <div class="technology-tags">
 
@@ -1066,17 +1187,18 @@
                     </div>
 
 
+
                     <div class="technology-group reveal">
 
-                        <span>
+                        <strong>
                             Developing Automation Capability
-                        </span>
+                        </strong>
 
                         <div class="technology-tags">
 
                             <span>n8n</span>
                             <span>Make</span>
-                            <span>LLM Workflows</span>
+                            <span>AI-enabled Workflows</span>
                             <span>APIs</span>
                             <span>JSON</span>
                             <span>Webhooks</span>
@@ -1092,17 +1214,17 @@
 
                     <div>
 
-                        <span class="eyebrow">
+                        <p class="eyebrow">
                             Automation Portfolio
-                        </span>
+                        </p>
 
                         <h3>
                             Practical workflow experiments and projects
                         </h3>
 
                         <p>
-                            See the automation projects I am building
-                            as I develop practical capability in workflow
+                            See the automation projects I am building as
+                            I develop practical capability in workflow
                             automation, APIs and AI-enabled operations.
                         </p>
 
@@ -1130,25 +1252,28 @@
              CONTACT
         ================================================== -->
 
-        <section id="contact" class="contact-section">
+        <section
+            id="contact"
+            class="contact-section"
+        >
 
             <div class="container">
 
                 <div class="contact-heading reveal">
 
-                    <div class="eyebrow">
+                    <p class="eyebrow">
                         Contact
-                    </div>
+                    </p>
 
                     <h2>
                         Let's connect.
                     </h2>
 
                     <p>
-                        For opportunities across Operations,
-                        Business Operations, Supply Chain, Quality,
-                        Process Improvement and related transformation work,
-                        choose the easiest way to reach me.
+                        For relevant opportunities across Operations,
+                        Business Operations, Supply Chain, Quality and
+                        Process Improvement, choose the easiest way
+                        to reach me.
                     </p>
 
                 </div>
@@ -1313,7 +1438,8 @@
                     <span>•</span>
 
                     <span>
-                        Open to relevant professional opportunities
+                        Open to Operations, Supply Chain &
+                        Process Improvement opportunities
                     </span>
 
                 </div>
@@ -1335,7 +1461,7 @@
         <div class="container footer-content">
 
             <span>
-                © 2026 Victor Akoyo
+                © <span id="currentYear"></span> Victor Akoyo
             </span>
 
             <span>
