@@ -1,331 +1,754 @@
-/* ==================================
-   VICTOR AKOYO PORTFOLIO
-   Interactive behaviour
-================================== */
+/* =========================================================
+   VICTOR AKOYO — PROFESSIONAL PORTFOLIO
+   Interactive Experience
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================================
+     1. MOBILE NAVIGATION
+     ========================================================= */
+
+  const menuButton = document.getElementById("menuButton");
+  const mobileNavigation = document.getElementById("mobileNavigation");
+  const menuIcon = document.getElementById("menuIcon");
+
+  if (menuButton && mobileNavigation) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileNavigation.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", isOpen);
+
+      if (menuIcon) {
+        menuIcon.textContent = isOpen ? "✕" : "☰";
+      }
+    });
+
+    mobileNavigation.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNavigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+
+        if (menuIcon) {
+          menuIcon.textContent = "☰";
+        }
+      });
+    });
+  }
 
 
-/* ==================================
-   MOBILE NAVIGATION
-================================== */
+  /* =========================================================
+     2. SCROLL PROGRESS BAR
+     ========================================================= */
 
-const menuButton =
-  document.getElementById("menuButton");
+  const progressBar = document.createElement("div");
+  progressBar.className = "scroll-progress";
+  document.body.appendChild(progressBar);
 
-const mobileNavigation =
-  document.getElementById("mobileNavigation");
+  function updateScrollProgress() {
+    const scrollTop =
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
 
-const menuIcon =
-  document.getElementById("menuIcon");
+    const scrollHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+
+    const progress =
+      scrollHeight > 0
+        ? (scrollTop / scrollHeight) * 100
+        : 0;
+
+    progressBar.style.width = `${progress}%`;
+  }
+
+  window.addEventListener("scroll", updateScrollProgress, {
+    passive: true
+  });
+
+  updateScrollProgress();
 
 
-function closeMobileMenu() {
+  /* =========================================================
+     3. HEADER EFFECT ON SCROLL
+     ========================================================= */
 
-  mobileNavigation.classList.remove("open");
+  const header = document.querySelector("header");
 
-  menuButton.setAttribute(
-    "aria-expanded",
-    "false"
+  function updateHeader() {
+    if (!header) return;
+
+    if (window.scrollY > 40) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
+
+  updateHeader();
+
+
+  /* =========================================================
+     4. SCROLL REVEAL
+     ========================================================= */
+
+  const revealElements = document.querySelectorAll(
+    ".impact-card, .expertise-item, .case-card, " +
+    ".timeline-item, .education-card, .technology-box"
   );
 
-  menuIcon.textContent = "☰";
-}
+  revealElements.forEach((element, index) => {
+    element.classList.add("reveal-element");
 
-
-menuButton.addEventListener(
-  "click",
-  function () {
-
-    const isOpen =
-      mobileNavigation.classList.toggle("open");
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      isOpen ? "true" : "false"
+    element.style.setProperty(
+      "--reveal-delay",
+      `${(index % 4) * 80}ms`
     );
+  });
 
-    menuIcon.textContent =
-      isOpen ? "✕" : "☰";
-  }
-);
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
 
-
-document
-  .querySelectorAll(".mobile-nav a")
-  .forEach(function (link) {
-
-    link.addEventListener(
-      "click",
-      closeMobileMenu
-    );
-
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
   });
 
 
-window.addEventListener(
-  "resize",
-  function () {
+  /* =========================================================
+     5. ACTIVE NAVIGATION
+     ========================================================= */
 
-    if (window.innerWidth > 760) {
-      closeMobileMenu();
-    }
+  const sections = document.querySelectorAll("main section[id]");
 
-  }
-);
+  const navLinks = document.querySelectorAll(
+    ".desktop-nav a, .mobile-nav a"
+  );
 
+  const sectionObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-/* ==================================
-   SCROLL REVEAL
-================================== */
+        const id = entry.target.id;
 
-const revealElements =
-  document.querySelectorAll(".reveal");
+        navLinks.forEach(link => {
+          link.classList.remove("active-nav");
 
-
-const revealObserver =
-  new IntersectionObserver(
-
-    function (entries, observer) {
-
-      entries.forEach(function (entry) {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add(
-            "visible"
-          );
-
-          observer.unobserve(
-            entry.target
-          );
-        }
-
+          if (link.getAttribute("href") === `#${id}`) {
+            link.classList.add("active-nav");
+          }
+        });
       });
-
     },
-
     {
-      threshold: 0.12
+      threshold: 0.35
     }
-
   );
 
-
-revealElements.forEach(
-  function (element) {
-
-    revealObserver.observe(element);
-
-  }
-);
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
 
 
-/* ==================================
-   NUMBER COUNTERS
-================================== */
+  /* =========================================================
+     6. HERO MOUSE PARALLAX
+     ========================================================= */
 
-const counters =
-  document.querySelectorAll(
-    "[data-counter]"
-  );
+  const hero = document.querySelector(".hero");
+  const heroContent = document.querySelector(".hero-content");
 
-
-function animateCounter(element) {
-
-  const target =
-    Number(
-      element.dataset.counter
-    );
-
-  const prefix =
-    element.dataset.prefix || "";
-
-  const suffix =
-    element.dataset.suffix || "";
-
-  const duration = 1200;
-
-  const startTime =
-    performance.now();
-
-
-  function updateCounter(
-    currentTime
+  if (
+    hero &&
+    heroContent &&
+    window.matchMedia("(pointer: fine)").matches
   ) {
 
-    const elapsed =
-      currentTime - startTime;
+    hero.addEventListener("mousemove", event => {
+      const rect = hero.getBoundingClientRect();
 
-    const progress =
-      Math.min(
-        elapsed / duration,
-        1
-      );
+      const x =
+        (event.clientX - rect.left) / rect.width - 0.5;
 
-    const easedProgress =
-      1 -
-      Math.pow(
-        1 - progress,
-        3
-      );
+      const y =
+        (event.clientY - rect.top) / rect.height - 0.5;
 
-    const currentValue =
-      Math.round(
-        target * easedProgress
-      );
+      heroContent.style.transform =
+        `translate3d(${x * 7}px, ${y * 5}px, 0)`;
+    });
 
-    element.textContent =
-      prefix +
-      currentValue +
-      suffix;
-
-
-    if (progress < 1) {
-
-      requestAnimationFrame(
-        updateCounter
-      );
-
-    }
-
+    hero.addEventListener("mouseleave", () => {
+      heroContent.style.transform =
+        "translate3d(0, 0, 0)";
+    });
   }
 
 
-  requestAnimationFrame(
-    updateCounter
+  /* =========================================================
+     7. INTERACTIVE CARD TILT
+     ========================================================= */
+
+  const tiltCards = document.querySelectorAll(
+    ".impact-card, .case-card, .education-card"
   );
-}
 
+  if (window.matchMedia("(pointer: fine)").matches) {
 
-const counterObserver =
-  new IntersectionObserver(
+    tiltCards.forEach(card => {
 
-    function (entries, observer) {
+      card.addEventListener("mousemove", event => {
+        const rect = card.getBoundingClientRect();
 
-      entries.forEach(function (entry) {
+        const x =
+          event.clientX - rect.left;
 
-        if (entry.isIntersecting) {
+        const y =
+          event.clientY - rect.top;
 
-          animateCounter(
-            entry.target
-          );
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-          observer.unobserve(
-            entry.target
-          );
+        const rotateX =
+          ((y - centerY) / centerY) * -2.5;
 
-        }
+        const rotateY =
+          ((x - centerX) / centerX) * 2.5;
 
+        card.style.transform =
+          `perspective(900px)
+           rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)
+           translateY(-4px)`;
       });
 
-    },
+      card.addEventListener("mouseleave", () => {
+        card.style.transform =
+          "perspective(900px) rotateX(0) rotateY(0)";
+      });
 
-    {
-      threshold: 0.5
-    }
-
-  );
-
-
-counters.forEach(
-  function (counter) {
-
-    counterObserver.observe(counter);
-
+    });
   }
-);
 
 
-/* ==================================
-   ACTIVE NAVIGATION
-================================== */
+  /* =========================================================
+     8. MAGNETIC BUTTONS
+     ========================================================= */
 
-const sections =
-  document.querySelectorAll(
-    "main section[id]"
-  );
+  const buttons = document.querySelectorAll(".button");
 
-const desktopLinks =
-  document.querySelectorAll(
-    ".desktop-nav a"
-  );
+  if (window.matchMedia("(pointer: fine)").matches) {
+
+    buttons.forEach(button => {
+
+      button.addEventListener("mousemove", event => {
+        const rect = button.getBoundingClientRect();
+
+        const x =
+          event.clientX -
+          rect.left -
+          rect.width / 2;
+
+        const y =
+          event.clientY -
+          rect.top -
+          rect.height / 2;
+
+        button.style.transform =
+          `translate(${x * 0.08}px, ${y * 0.12}px)`;
+      });
+
+      button.addEventListener("mouseleave", () => {
+        button.style.transform =
+          "translate(0, 0)";
+      });
+
+    });
+  }
 
 
-function updateActiveNavigation() {
+  /* =========================================================
+     9. ANIMATED KPI NUMBERS
+     ========================================================= */
 
-  let currentSection = "";
+  const impactNumbers =
+    document.querySelectorAll(".impact-number");
 
-  sections.forEach(
-    function (section) {
+  const animateKPI = element => {
 
-      const sectionTop =
-        section.offsetTop - 140;
+    if (element.dataset.animated === "true") return;
 
-      if (
-        window.scrollY >=
-        sectionTop
-      ) {
+    const original = element.textContent.trim();
 
-        currentSection =
-          section.getAttribute("id");
+    let start = 0;
+    let end = null;
+    let prefix = "";
+    let suffix = "";
 
+    if (original.includes("520")) {
+      end = 520;
+      prefix = "~£";
+      suffix = "K";
+    }
+
+    else if (original.includes("19")) {
+      end = 19;
+      suffix = " KPIs";
+    }
+
+    if (end === null) return;
+
+    element.dataset.animated = "true";
+
+    const duration = 1300;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+
+      const elapsed =
+        currentTime - startTime;
+
+      const progress =
+        Math.min(elapsed / duration, 1);
+
+      const eased =
+        1 - Math.pow(1 - progress, 3);
+
+      const current =
+        Math.round(start + (end - start) * eased);
+
+      element.textContent =
+        `${prefix}${current}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = original;
       }
+    }
 
+    requestAnimationFrame(update);
+  };
+
+
+  const kpiObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateKPI(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.6
     }
   );
 
+  impactNumbers.forEach(number => {
+    kpiObserver.observe(number);
+  });
 
-  desktopLinks.forEach(
-    function (link) {
 
-      link.classList.remove(
-        "active"
+  /* =========================================================
+     10. HERO PARTICLE NETWORK
+     ========================================================= */
+
+  if (hero) {
+
+    const canvas = document.createElement("canvas");
+
+    canvas.className = "hero-network";
+
+    hero.prepend(canvas);
+
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+
+    let animationFrame;
+
+    const mouse = {
+      x: null,
+      y: null
+    };
+
+
+    function resizeCanvas() {
+
+      const rect =
+        hero.getBoundingClientRect();
+
+      canvas.width =
+        rect.width * window.devicePixelRatio;
+
+      canvas.height =
+        rect.height * window.devicePixelRatio;
+
+      canvas.style.width =
+        `${rect.width}px`;
+
+      canvas.style.height =
+        `${rect.height}px`;
+
+      ctx.setTransform(
+        window.devicePixelRatio,
+        0,
+        0,
+        window.devicePixelRatio,
+        0,
+        0
       );
 
-      const destination =
-        link
-          .getAttribute("href")
-          .replace("#", "");
+      createParticles();
+    }
 
 
-      if (
-        destination ===
-        currentSection
-      ) {
+    function createParticles() {
 
-        link.classList.add(
-          "active"
+      particles = [];
+
+      const width =
+        hero.clientWidth;
+
+      const height =
+        hero.clientHeight;
+
+      const particleCount =
+        Math.min(
+          45,
+          Math.max(
+            20,
+            Math.floor(width / 30)
+          )
         );
 
+      for (let i = 0; i < particleCount; i++) {
+
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+
+          vx:
+            (Math.random() - 0.5) * 0.18,
+
+          vy:
+            (Math.random() - 0.5) * 0.18,
+
+          radius:
+            Math.random() * 1.4 + 0.5
+        });
+      }
+    }
+
+
+    hero.addEventListener("mousemove", event => {
+
+      const rect =
+        hero.getBoundingClientRect();
+
+      mouse.x =
+        event.clientX - rect.left;
+
+      mouse.y =
+        event.clientY - rect.top;
+    });
+
+
+    hero.addEventListener("mouseleave", () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+
+    function drawNetwork() {
+
+      const width =
+        hero.clientWidth;
+
+      const height =
+        hero.clientHeight;
+
+      ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+      );
+
+
+      particles.forEach(particle => {
+
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+
+        if (
+          particle.x < 0 ||
+          particle.x > width
+        ) {
+          particle.vx *= -1;
+        }
+
+
+        if (
+          particle.y < 0 ||
+          particle.y > height
+        ) {
+          particle.vy *= -1;
+        }
+
+
+        if (
+          mouse.x !== null &&
+          mouse.y !== null
+        ) {
+
+          const dx =
+            mouse.x - particle.x;
+
+          const dy =
+            mouse.y - particle.y;
+
+          const distance =
+            Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 140) {
+
+            particle.x -= dx * 0.0007;
+            particle.y -= dy * 0.0007;
+          }
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          "rgba(23, 103, 165, 0.35)";
+
+        ctx.fill();
+      });
+
+
+      for (
+        let i = 0;
+        i < particles.length;
+        i++
+      ) {
+
+        for (
+          let j = i + 1;
+          j < particles.length;
+          j++
+        ) {
+
+          const dx =
+            particles[i].x -
+            particles[j].x;
+
+          const dy =
+            particles[i].y -
+            particles[j].y;
+
+          const distance =
+            Math.sqrt(dx * dx + dy * dy);
+
+
+          if (distance < 120) {
+
+            const opacity =
+              (1 - distance / 120) * 0.13;
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+              particles[i].x,
+              particles[i].y
+            );
+
+            ctx.lineTo(
+              particles[j].x,
+              particles[j].y
+            );
+
+            ctx.strokeStyle =
+              `rgba(23, 103, 165, ${opacity})`;
+
+            ctx.lineWidth = 1;
+
+            ctx.stroke();
+          }
+        }
       }
 
+
+      animationFrame =
+        requestAnimationFrame(drawNetwork);
     }
-  );
-
-}
 
 
-window.addEventListener(
-  "scroll",
-  updateActiveNavigation
-);
+    resizeCanvas();
+    drawNetwork();
 
 
-updateActiveNavigation();
+    window.addEventListener(
+      "resize",
+      resizeCanvas
+    );
 
 
-/* ==================================
-   AUTOMATIC COPYRIGHT YEAR
-================================== */
+    document.addEventListener(
+      "visibilitychange",
+      () => {
 
-const currentYear =
-  document.getElementById(
-    "currentYear"
-  );
+        if (document.hidden) {
+          cancelAnimationFrame(
+            animationFrame
+          );
+        } else {
+          drawNetwork();
+        }
+      }
+    );
+  }
 
 
-if (currentYear) {
+  /* =========================================================
+     11. TIMELINE PROGRESS
+     ========================================================= */
 
-  currentYear.textContent =
-    new Date().getFullYear();
+  const timeline =
+    document.querySelector(".timeline");
 
-}
+  if (timeline) {
+
+    const timelineProgress =
+      document.createElement("div");
+
+    timelineProgress.className =
+      "timeline-progress";
+
+    timeline.appendChild(
+      timelineProgress
+    );
+
+
+    function updateTimeline() {
+
+      const rect =
+        timeline.getBoundingClientRect();
+
+      const viewportHeight =
+        window.innerHeight;
+
+      const start =
+        viewportHeight * 0.75;
+
+      const travelled =
+        start - rect.top;
+
+      const progress =
+        Math.max(
+          0,
+          Math.min(
+            travelled / rect.height,
+            1
+          )
+        );
+
+      timelineProgress.style.height =
+        `${progress * 100}%`;
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateTimeline,
+      {
+        passive: true
+      }
+    );
+
+    updateTimeline();
+  }
+
+
+  /* =========================================================
+     12. SECTION LABEL ANIMATION
+     ========================================================= */
+
+  const labels =
+    document.querySelectorAll(".section-label");
+
+  const labelObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              "label-visible"
+            );
+
+            labelObserver.unobserve(
+              entry.target
+            );
+          }
+        });
+
+      },
+      {
+        threshold: 0.5
+      }
+    );
+
+
+  labels.forEach(label => {
+    label.classList.add(
+      "animated-label"
+    );
+
+    labelObserver.observe(label);
+  });
+
+
+  /* =========================================================
+     13. RESPECT ACCESSIBILITY SETTINGS
+     ========================================================= */
+
+  const reducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+  if (reducedMotion.matches) {
+
+    document.documentElement.classList.add(
+      "reduce-motion"
+    );
+  }
+
+});
