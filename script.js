@@ -30,7 +30,7 @@ if (currentYear) {
 
 
 /* =========================================================
-   3. MOBILE NAVIGATION
+   3. MOBILE MENU
 ========================================================= */
 
 const mobileMenuButton =
@@ -54,15 +54,15 @@ if (
         "click",
         () => {
 
-            const isOpen =
-                mainNav
-                    .classList
-                    .toggle("open");
+            const open =
+                mainNav.classList.toggle(
+                    "open"
+                );
 
 
             mobileMenuButton.setAttribute(
                 "aria-expanded",
-                String(isOpen)
+                String(open)
             );
 
         }
@@ -77,16 +77,15 @@ if (
                 "click",
                 () => {
 
-                    mainNav
-                        .classList
-                        .remove("open");
+                    mainNav.classList.remove(
+                        "open"
+                    );
 
 
-                    mobileMenuButton
-                        .setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+                    mobileMenuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
                 }
             );
@@ -97,7 +96,7 @@ if (
 
 
 /* =========================================================
-   4. SCROLL REVEAL
+   4. REVEAL ON SCROLL
 ========================================================= */
 
 const revealElements =
@@ -132,15 +131,14 @@ if (reducedMotion) {
                             entry.isIntersecting
                         ) {
 
-                            entry.target
-                                .classList
-                                .add("visible");
+                            entry.target.classList.add(
+                                "visible"
+                            );
 
 
-                            revealObserver
-                                .unobserve(
-                                    entry.target
-                                );
+                            revealObserver.unobserve(
+                                entry.target
+                            );
 
                         }
 
@@ -150,9 +148,9 @@ if (reducedMotion) {
             },
 
             {
-                threshold: 0.12,
+                threshold: 0.1,
                 rootMargin:
-                    "0px 0px -35px 0px"
+                    "0px 0px -28px 0px"
             }
 
         );
@@ -265,18 +263,6 @@ function animateCounter(counter) {
             );
 
 
-        /*
-           This works in BOTH directions:
-
-           0 -> 520
-
-           12 -> 4
-
-           8 -> 4
-
-           0 -> 19
-        */
-
         const value =
             Math.round(
 
@@ -342,10 +328,9 @@ const counterObserver =
                         );
 
 
-                        counterObserver
-                            .unobserve(
-                                entry.target
-                            );
+                        counterObserver.unobserve(
+                            entry.target
+                        );
 
                     }
 
@@ -355,7 +340,7 @@ const counterObserver =
         },
 
         {
-            threshold: 0.45
+            threshold: 0.4
         }
 
     );
@@ -391,7 +376,7 @@ const navigationLinks =
 function updateActiveNavigation() {
 
     const position =
-        window.scrollY + 170;
+        window.scrollY + 150;
 
 
     let activeSection =
@@ -465,7 +450,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   8. HERO PORTRAIT PARALLAX
+   8. PORTRAIT PARALLAX
 ========================================================= */
 
 const portraitSystem =
@@ -506,7 +491,7 @@ if (
                     window.innerWidth -
                     0.5
                 ) *
-                7;
+                6;
 
 
             portraitTargetY =
@@ -515,7 +500,7 @@ if (
                     window.innerHeight -
                     0.5
                 ) *
-                7;
+                6;
 
         },
         {
@@ -536,7 +521,7 @@ if (
                     portraitTargetX -
                     portraitCurrentX
                 ) *
-                0.045;
+                0.04;
 
 
             portraitCurrentY +=
@@ -544,7 +529,7 @@ if (
                     portraitTargetY -
                     portraitCurrentY
                 ) *
-                0.045;
+                0.04;
 
 
             portraitSystem.style.transform =
@@ -575,7 +560,7 @@ if (
 
 
 /* =========================================================
-   9. INTERACTIVE BACKGROUND PARTICLES
+   9. INTERACTIVE PARTICLE BACKGROUND
 ========================================================= */
 
 const canvas =
@@ -593,12 +578,12 @@ if (
         canvas.getContext("2d");
 
 
-    let particles = [];
-
     let width = 0;
     let height = 0;
 
     let pixelRatio = 1;
+
+    let particles = [];
 
     let animationFrame = null;
 
@@ -608,7 +593,7 @@ if (
         x: null,
         y: null,
 
-        radius: 135
+        radius: 160
 
     };
 
@@ -668,7 +653,7 @@ if (
 
 
     /* -----------------------------------------------------
-       PARTICLE
+       PARTICLE CLASS
     ----------------------------------------------------- */
 
     class Particle {
@@ -694,16 +679,20 @@ if (
 
             this.size =
                 Math.random() *
-                1.6 +
-                0.6;
+                1.7 +
+                0.7;
 
+
+            /*
+                Intentionally slow ambient motion.
+            */
 
             this.velocityX =
                 (
                     Math.random() -
                     0.5
                 ) *
-                0.24;
+                0.20;
 
 
             this.velocityY =
@@ -711,25 +700,22 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.24;
+                0.20;
 
-
-            /*
-               Extra motion generated by
-               the cursor interaction.
-            */
 
             this.forceX = 0;
             this.forceY = 0;
+
+
+            this.opacity =
+                Math.random() *
+                0.15 +
+                0.23;
 
         }
 
 
         update() {
-
-            /*
-               Natural ambient drift.
-            */
 
             this.x +=
                 this.velocityX +
@@ -742,21 +728,19 @@ if (
 
 
             /*
-               Gradually reduce the cursor force,
-               so particles settle back into
-               normal movement.
+                Cursor force fades away gradually.
             */
 
             this.forceX *=
-                0.91;
+                0.90;
 
 
             this.forceY *=
-                0.91;
+                0.90;
 
 
             /*
-               Cursor repulsion.
+                Gentle cursor interaction.
             */
 
             if (
@@ -795,13 +779,18 @@ if (
                         mouse.radius;
 
 
+                    /*
+                        Repulsion is intentionally
+                        subtle rather than dramatic.
+                    */
+
                     this.forceX +=
                         (
                             dx /
                             distance
                         ) *
                         strength *
-                        0.18;
+                        0.26;
 
 
                     this.forceY +=
@@ -810,7 +799,7 @@ if (
                             distance
                         ) *
                         strength *
-                        0.18;
+                        0.26;
 
                 }
 
@@ -818,7 +807,7 @@ if (
 
 
             /*
-               Wrap particles around the screen.
+                Wrap around screen.
             */
 
             if (
@@ -880,7 +869,12 @@ if (
 
 
             context.fillStyle =
-                "rgba(8, 120, 189, 0.22)";
+                `rgba(
+                    22,
+                    116,
+                    168,
+                    ${this.opacity}
+                )`;
 
 
             context.fill();
@@ -907,13 +901,9 @@ if (
         let count =
             Math.floor(
                 screenArea /
-                25000
+                22000
             );
 
-
-        /*
-           Keep mobile lighter.
-        */
 
         if (
             width < 760
@@ -921,8 +911,11 @@ if (
 
             count =
                 Math.min(
-                    count,
-                    28
+                    Math.max(
+                        count,
+                        20
+                    ),
+                    30
                 );
 
         } else {
@@ -931,18 +924,18 @@ if (
                 Math.min(
                     Math.max(
                         count,
-                        38
+                        45
                     ),
-                    70
+                    72
                 );
 
         }
 
 
         for (
-            let i = 0;
-            i < count;
-            i++
+            let index = 0;
+            index < count;
+            index++
         ) {
 
             particles.push(
@@ -955,15 +948,15 @@ if (
 
 
     /* -----------------------------------------------------
-       CONNECTION LINES
+       CONNECT NEARBY PARTICLES
     ----------------------------------------------------- */
 
     function connectParticles() {
 
         const connectionDistance =
             width < 760
-                ? 80
-                : 115;
+                ? 85
+                : 120;
 
 
         for (
@@ -1006,7 +999,7 @@ if (
                             distance /
                             connectionDistance
                         ) *
-                        0.075;
+                        0.12;
 
 
                     context.beginPath();
@@ -1026,15 +1019,15 @@ if (
 
                     context.strokeStyle =
                         `rgba(
-                            8,
-                            120,
-                            189,
+                            22,
+                            116,
+                            168,
                             ${opacity}
                         )`;
 
 
                     context.lineWidth =
-                        0.6;
+                        0.65;
 
 
                     context.stroke();
@@ -1049,7 +1042,95 @@ if (
 
 
     /* -----------------------------------------------------
-       ANIMATION
+       CURSOR HALO CONNECTION
+    ----------------------------------------------------- */
+
+    function connectCursor() {
+
+        if (
+            mouse.x === null ||
+            mouse.y === null
+        ) {
+
+            return;
+
+        }
+
+
+        particles.forEach(
+            particle => {
+
+                const dx =
+                    particle.x -
+                    mouse.x;
+
+
+                const dy =
+                    particle.y -
+                    mouse.y;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance <
+                    105
+                ) {
+
+                    const opacity =
+                        (
+                            1 -
+                            distance /
+                            105
+                        ) *
+                        0.12;
+
+
+                    context.beginPath();
+
+
+                    context.moveTo(
+                        mouse.x,
+                        mouse.y
+                    );
+
+
+                    context.lineTo(
+                        particle.x,
+                        particle.y
+                    );
+
+
+                    context.strokeStyle =
+                        `rgba(
+                            22,
+                            116,
+                            168,
+                            ${opacity}
+                        )`;
+
+
+                    context.lineWidth =
+                        0.55;
+
+
+                    context.stroke();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       ANIMATION LOOP
     ----------------------------------------------------- */
 
     function animateParticles() {
@@ -1075,6 +1156,8 @@ if (
 
         connectParticles();
 
+        connectCursor();
+
 
         animationFrame =
             requestAnimationFrame(
@@ -1085,13 +1168,17 @@ if (
 
 
     /* -----------------------------------------------------
-       MOUSE INTERACTION
+       POINTER INTERACTION
     ----------------------------------------------------- */
 
-    if (
+    const finePointer =
         window.matchMedia(
-            "(pointer: fine)"
-        ).matches
+            "(hover: hover) and (pointer: fine)"
+        );
+
+
+    if (
+        finePointer.matches
     ) {
 
         window.addEventListener(
@@ -1152,7 +1239,7 @@ if (
 
 
     /* -----------------------------------------------------
-       SAVE CPU WHEN TAB IS HIDDEN
+       PAUSE WHEN TAB HIDDEN
     ----------------------------------------------------- */
 
     document.addEventListener(
@@ -1185,7 +1272,7 @@ if (
 
 
 /* =========================================================
-   10. CLOSE MOBILE MENU ON RESIZE
+   10. CLOSE MOBILE NAV ON DESKTOP RESIZE
 ========================================================= */
 
 window.addEventListener(
@@ -1207,11 +1294,10 @@ window.addEventListener(
                 mobileMenuButton
             ) {
 
-                mobileMenuButton
-                    .setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                mobileMenuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
             }
 
