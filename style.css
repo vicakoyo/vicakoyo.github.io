@@ -1858,7 +1858,7 @@ button {
 
     position: relative;
 
-    padding: 78px 0;
+    padding: 70px 0 62px;
 
     color: var(--white);
 
@@ -1876,7 +1876,7 @@ button {
 
     max-width: 690px;
 
-    margin-bottom: 34px;
+    margin-bottom: 30px;
 
 }
 
@@ -1909,14 +1909,37 @@ button {
 }
 
 
+/*
+   DESKTOP CONTACT LAYOUT
+
+   Email       WhatsApp
+         LinkedIn
+
+   The third card is deliberately centred.
+*/
+
 .contact-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2, minmax(0, 1fr));
 
     gap: 12px;
+
+}
+
+
+.contact-grid .contact-card:nth-child(3) {
+
+    grid-column: 1 / -1;
+
+    width:
+        calc(
+            50% - 6px
+        );
+
+    justify-self: center;
 
 }
 
@@ -1948,7 +1971,8 @@ button {
     transition:
         transform 0.25s ease,
         background 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 
 }
 
@@ -1962,6 +1986,10 @@ button {
 
     background:
         rgba(255, 255, 255, 0.09);
+
+    box-shadow:
+        0 12px 28px
+        rgba(5, 27, 42, 0.12);
 
 }
 
@@ -2058,11 +2086,13 @@ button {
 
     align-items: center;
 
+    justify-content: center;
+
     flex-wrap: wrap;
 
     gap: 8px;
 
-    margin-top: 24px;
+    margin-top: 22px;
 
     color:
         rgba(255, 255, 255, 0.6);
@@ -2442,6 +2472,26 @@ button {
     }
 
 
+    /* Restore full-width LinkedIn card on mobile */
+
+    .contact-grid .contact-card:nth-child(3) {
+
+        grid-column: auto;
+
+        width: 100%;
+
+        justify-self: stretch;
+
+    }
+
+
+    .contact-section {
+
+        padding: 61px 0 54px;
+
+    }
+
+
     .impact-card,
     .expertise-card,
     .case-card {
@@ -2499,6 +2549,13 @@ button {
         align-items: flex-start;
 
         padding: 24px;
+
+    }
+
+
+    .availability {
+
+        justify-content: flex-start;
 
     }
 
