@@ -668,12 +668,12 @@ a {
 
 .expertise-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
 .expertise-card {
-    min-height: 190px;
+    min-height: 205px;
     padding: 23px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -713,6 +713,11 @@ a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 17px;
+}
+
+.case-card.case-wide {
+    grid-column: 1 / -1;
+    min-height: 325px;
 }
 
 .case-card {
@@ -1448,6 +1453,10 @@ a {
     .contact-grid,
     .case-modal-grid {
         grid-template-columns: 1fr;
+    }
+
+    .case-card.case-wide {
+        grid-column: auto;
     }
 
     .contact-grid .contact-card:nth-child(3) {
