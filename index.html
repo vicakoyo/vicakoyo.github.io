@@ -27,10 +27,6 @@
 
 <body>
 
-    <!-- =====================================================
-         ANIMATED BACKGROUND
-    ====================================================== -->
-
     <canvas
         id="particleCanvas"
         aria-hidden="true"
@@ -51,11 +47,6 @@
         aria-hidden="true"
     ></div>
 
-
-
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
 
     <header class="site-header">
 
@@ -90,33 +81,13 @@
                 aria-label="Main navigation"
             >
 
-                <a href="#impact">
-                    Impact
-                </a>
-
-                <a href="#expertise">
-                    Expertise
-                </a>
-
-                <a href="#case-studies">
-                    Case Studies
-                </a>
-
-                <a href="#experience">
-                    Experience
-                </a>
-
-                <a href="#education">
-                    Education
-                </a>
-
-                <a href="#technology">
-                    Technology
-                </a>
-
-                <a href="#contact">
-                    Contact
-                </a>
+                <a href="#impact">Impact</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#technology">Technology</a>
+                <a href="#contact">Contact</a>
 
             </nav>
 
@@ -126,16 +97,7 @@
 
 
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
     <main>
-
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
 
         <section
             id="home"
@@ -144,25 +106,16 @@
 
             <div class="container hero-grid">
 
-
-                <!-- HERO CONTENT -->
-
                 <div class="hero-content reveal">
 
                     <p class="eyebrow hero-eyebrow">
 
                         Operations
-
                         <span>•</span>
-
                         Supply Chain
-
                         <span>•</span>
-
                         Quality
-
                         <span>•</span>
-
                         Process Improvement
 
                     </p>
@@ -203,14 +156,14 @@
                         </a>
 
 
-                       <a
-    href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
-    class="button button-secondary"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    View CV
-</a>
+                        <a
+                            href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
+                            class="button button-secondary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View CV
+                        </a>
 
 
                         <a
@@ -268,9 +221,6 @@
                 </div>
 
 
-
-                <!-- HERO VISUAL -->
-
                 <div class="hero-visual reveal">
 
                     <div class="portrait-system">
@@ -326,10 +276,6 @@
 
 
 
-        <!-- =================================================
-             IMPACT
-        ================================================== -->
-
         <section
             id="impact"
             class="section section-soft"
@@ -357,18 +303,16 @@
 
                 <div class="impact-grid">
 
-
-                    <!-- IMPACT 01 -->
-
-                    <a
-                        href="#case-logistics"
+                    <button
+                        type="button"
                         class="impact-card impact-link reveal"
+                        data-case="logistics"
+                        aria-haspopup="dialog"
                     >
 
                         <span class="card-number">
                             01
                         </span>
-
 
                         <div class="metric">
 
@@ -386,36 +330,32 @@
 
                         </div>
 
-
                         <h3>
                             Annual logistics savings
                         </h3>
-
 
                         <p>
                             Warehouse, 3PL and final-mile optimisation.
                         </p>
 
-
                         <span class="impact-cta">
-                            View case study →
+                            Explore case study →
                         </span>
 
-                    </a>
+                    </button>
 
 
 
-                    <!-- IMPACT 02 -->
-
-                    <a
-                        href="#case-returns"
+                    <button
+                        type="button"
                         class="impact-card impact-link reveal"
+                        data-case="returns"
+                        aria-haspopup="dialog"
                     >
 
                         <span class="card-number">
                             02
                         </span>
-
 
                         <div class="metric transition-metric">
 
@@ -438,34 +378,33 @@
 
                         </div>
 
-
                         <h3>
                             Returns reduction
                         </h3>
-
 
                         <p>
                             Supplier quality, packaging, handling
                             and reverse-logistics improvement.
                         </p>
 
-
                         <span class="impact-cta">
-                            View case study →
+                            Explore case study →
                         </span>
 
-                    </a>
+                    </button>
 
 
 
-                    <!-- IMPACT 03 -->
-
-                    <article class="impact-card reveal">
+                    <button
+                        type="button"
+                        class="impact-card impact-link reveal"
+                        data-case="manufacturing"
+                        aria-haspopup="dialog"
+                    >
 
                         <span class="card-number">
                             03
                         </span>
-
 
                         <div class="metric transition-metric">
 
@@ -488,32 +427,33 @@
 
                         </div>
 
-
                         <h3>
                             Manufacturing quality improvement
                         </h3>
-
 
                         <p>
                             Stronger process controls, quality-at-source
                             practices and structured defect analysis.
                         </p>
 
-                    </article>
+                        <span class="impact-cta">
+                            Explore case study →
+                        </span>
+
+                    </button>
 
 
 
-                    <!-- IMPACT 04 -->
-
-                    <a
-                        href="#case-leadership"
+                    <button
+                        type="button"
                         class="impact-card impact-link reveal"
+                        data-case="leadership"
+                        aria-haspopup="dialog"
                     >
 
                         <span class="card-number">
                             04
                         </span>
-
 
                         <div class="metric">
 
@@ -527,11 +467,9 @@
 
                         </div>
 
-
                         <h3>
                             Leadership KPIs
                         </h3>
-
 
                         <p>
                             Integrated operating visibility across
@@ -539,12 +477,11 @@
                             commercial performance.
                         </p>
 
-
                         <span class="impact-cta">
-                            View case study →
+                            Explore case study →
                         </span>
 
-                    </a>
+                    </button>
 
                 </div>
 
@@ -553,10 +490,6 @@
         </section>
 
 
-
-        <!-- =================================================
-             EXPERTISE
-        ================================================== -->
 
         <section
             id="expertise"
@@ -585,7 +518,6 @@
 
 
                 <div class="expertise-grid">
-
 
                     <article class="expertise-card reveal">
 
@@ -709,10 +641,6 @@
 
 
 
-        <!-- =================================================
-             CASE STUDIES
-        ================================================== -->
-
         <section
             id="case-studies"
             class="section case-section"
@@ -731,8 +659,8 @@
                     </h2>
 
                     <p>
-                        Examples showing the problem, the operating response
-                        and the resulting measurable outcome.
+                        Short evidence-led summaries. Open any card for the
+                        fuller problem, analysis, action, systems and result.
                     </p>
 
                 </div>
@@ -740,12 +668,13 @@
 
                 <div class="case-grid">
 
-
-                    <!-- CASE STUDY 01 -->
-
                     <article
                         id="case-logistics"
-                        class="case-card reveal"
+                        class="case-card reveal case-trigger"
+                        data-case="logistics"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
                     >
 
                         <div class="case-top">
@@ -760,11 +689,9 @@
 
                         </div>
 
-
                         <h3>
                             Restructuring logistics costs
                         </h3>
-
 
                         <div class="case-section-block">
 
@@ -780,22 +707,20 @@
 
                         </div>
 
-
                         <div class="case-section-block">
 
                             <span class="case-label">
-                                Action
+                                Response
                             </span>
 
                             <p>
                                 Reviewed rate structures, benchmarked
-                                alternative providers, supported commercial
+                                alternatives, supported commercial
                                 negotiations and coordinated transition
                                 to a more efficient logistics model.
                             </p>
 
                         </div>
-
 
                         <div class="case-result">
 
@@ -809,15 +734,21 @@
 
                         </div>
 
+                        <span class="case-open">
+                            Open full breakdown ↗
+                        </span>
+
                     </article>
 
 
 
-                    <!-- CASE STUDY 02 -->
-
                     <article
                         id="case-returns"
-                        class="case-card reveal"
+                        class="case-card reveal case-trigger"
+                        data-case="returns"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
                     >
 
                         <div class="case-top">
@@ -832,11 +763,9 @@
 
                         </div>
 
-
                         <h3>
                             Reducing product returns
                         </h3>
-
 
                         <div class="case-section-block">
 
@@ -852,11 +781,10 @@
 
                         </div>
 
-
                         <div class="case-section-block">
 
                             <span class="case-label">
-                                Action
+                                Response
                             </span>
 
                             <p>
@@ -867,7 +795,6 @@
                             </p>
 
                         </div>
-
 
                         <div class="case-result">
 
@@ -881,15 +808,93 @@
 
                         </div>
 
+                        <span class="case-open">
+                            Open full breakdown ↗
+                        </span>
+
                     </article>
 
 
 
-                    <!-- CASE STUDY 03 -->
+                    <article
+                        id="case-manufacturing"
+                        class="case-card reveal case-trigger"
+                        data-case="manufacturing"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
+                    >
+
+                        <div class="case-top">
+
+                            <span>
+                                Manufacturing Quality
+                            </span>
+
+                            <span>
+                                Auto Springs East Africa
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Reducing U-bolt rejection
+                        </h3>
+
+                        <div class="case-section-block">
+
+                            <span class="case-label">
+                                Problem
+                            </span>
+
+                            <p>
+                                Rejection performance required stronger
+                                process control and structured analysis.
+                            </p>
+
+                        </div>
+
+                        <div class="case-section-block">
+
+                            <span class="case-label">
+                                Response
+                            </span>
+
+                            <p>
+                                Applied production quality controls and
+                                structured tools including SPC, PFMEA,
+                                MSA and corrective-action methods.
+                            </p>
+
+                        </div>
+
+                        <div class="case-result">
+
+                            <strong>
+                                ~4% → ~2%
+                            </strong>
+
+                            <span>
+                                U-bolt rejection reduction
+                            </span>
+
+                        </div>
+
+                        <span class="case-open">
+                            Open full breakdown ↗
+                        </span>
+
+                    </article>
+
+
 
                     <article
                         id="case-leadership"
-                        class="case-card reveal"
+                        class="case-card reveal case-trigger"
+                        data-case="leadership"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
                     >
 
                         <div class="case-top">
@@ -904,11 +909,9 @@
 
                         </div>
 
-
                         <h3>
                             Building leadership visibility
                         </h3>
-
 
                         <div class="case-section-block">
 
@@ -924,11 +927,10 @@
 
                         </div>
 
-
                         <div class="case-section-block">
 
                             <span class="case-label">
-                                Action
+                                Response
                             </span>
 
                             <p>
@@ -938,7 +940,6 @@
                             </p>
 
                         </div>
-
 
                         <div class="case-result">
 
@@ -952,6 +953,10 @@
 
                         </div>
 
+                        <span class="case-open">
+                            Open full breakdown ↗
+                        </span>
+
                     </article>
 
                 </div>
@@ -961,10 +966,6 @@
         </section>
 
 
-
-        <!-- =================================================
-             EXPERIENCE
-        ================================================== -->
 
         <section
             id="experience"
@@ -988,13 +989,11 @@
 
                 <div class="timeline">
 
-
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
                             2025–2026
                         </div>
-
 
                         <div class="timeline-content">
 
@@ -1018,13 +1017,11 @@
                     </article>
 
 
-
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
                             2022–2026
                         </div>
-
 
                         <div class="timeline-content">
 
@@ -1048,13 +1045,11 @@
                     </article>
 
 
-
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
                             2021–2022
                         </div>
-
 
                         <div class="timeline-content">
 
@@ -1078,13 +1073,11 @@
                     </article>
 
 
-
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
                             2020–2021
                         </div>
-
 
                         <div class="timeline-content">
 
@@ -1107,13 +1100,11 @@
                     </article>
 
 
-
                     <article class="timeline-item reveal">
 
                         <div class="timeline-date">
                             2018–2020
                         </div>
-
 
                         <div class="timeline-content">
 
@@ -1144,10 +1135,6 @@
 
 
 
-        <!-- =================================================
-             EDUCATION
-        ================================================== -->
-
         <section
             id="education"
             class="section section-soft"
@@ -1170,7 +1157,6 @@
 
                 <div class="education-grid">
 
-
                     <article class="education-card reveal">
 
                         <span class="education-year">
@@ -1187,11 +1173,10 @@
                         </p>
 
                         <small>
-                            Second Class Honours
+                            Second Class Honours, Lower Division
                         </small>
 
                     </article>
-
 
 
                     <article class="education-card reveal">
@@ -1219,10 +1204,6 @@
         </section>
 
 
-
-        <!-- =================================================
-             TECHNOLOGY
-        ================================================== -->
 
         <section
             id="technology"
@@ -1252,7 +1233,6 @@
 
                 <div class="technology-grid">
 
-
                     <div class="technology-group reveal">
 
                         <strong>
@@ -1274,7 +1254,6 @@
                     </div>
 
 
-
                     <div class="technology-group reveal">
 
                         <strong>
@@ -1292,7 +1271,6 @@
                         </div>
 
                     </div>
-
 
 
                     <div class="technology-group reveal">
@@ -1356,10 +1334,6 @@
 
 
 
-        <!-- =================================================
-             CONTACT
-        ================================================== -->
-
         <section
             id="contact"
             class="contact-section"
@@ -1388,9 +1362,6 @@
 
 
                 <div class="contact-grid">
-
-
-                    <!-- EMAIL -->
 
                     <a
                         class="contact-card reveal"
@@ -1434,8 +1405,6 @@
 
                     </a>
 
-
-                    <!-- WHATSAPP -->
 
                     <a
                         class="contact-card reveal"
@@ -1481,9 +1450,6 @@
 
                     </a>
 
-
-
-                    <!-- LINKEDIN -->
 
                     <a
                         class="contact-card reveal"
@@ -1556,10 +1522,6 @@
 
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
     <footer class="site-footer">
 
         <div class="container footer-content">
@@ -1579,6 +1541,99 @@
         </div>
 
     </footer>
+
+
+    <!-- CASE STUDY MODAL -->
+    <div
+        id="caseModal"
+        class="case-modal"
+        aria-hidden="true"
+    >
+        <div
+            class="case-modal-backdrop"
+            data-close-modal
+        ></div>
+
+        <section
+            class="case-modal-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="caseModalTitle"
+            tabindex="-1"
+        >
+
+            <button
+                type="button"
+                class="case-modal-close"
+                aria-label="Close case study"
+                data-close-modal
+            >
+                ×
+            </button>
+
+            <div class="case-modal-kicker" id="caseModalKicker"></div>
+
+            <h2 id="caseModalTitle"></h2>
+
+            <p class="case-modal-summary" id="caseModalSummary"></p>
+
+            <div class="case-modal-grid">
+
+                <div class="case-modal-block">
+                    <span>Problem</span>
+                    <p id="caseModalProblem"></p>
+                </div>
+
+                <div class="case-modal-block">
+                    <span>Analysis</span>
+                    <p id="caseModalAnalysis"></p>
+                </div>
+
+                <div class="case-modal-block">
+                    <span>Action</span>
+                    <p id="caseModalAction"></p>
+                </div>
+
+                <div class="case-modal-block">
+                    <span>Systems / Methods</span>
+                    <p id="caseModalTools"></p>
+                </div>
+
+                <div class="case-modal-block case-modal-result-block">
+                    <span>Result</span>
+                    <strong id="caseModalResult"></strong>
+                    <p id="caseModalResultDetail"></p>
+                </div>
+
+                <div class="case-modal-block">
+                    <span>What this demonstrates</span>
+                    <p id="caseModalLearning"></p>
+                </div>
+
+            </div>
+
+            <div class="case-modal-footer">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    data-close-modal
+                >
+                    Close
+                </button>
+
+                <a
+                    href="#contact"
+                    class="button button-primary"
+                    id="caseModalContact"
+                >
+                    Discuss this work
+                </a>
+
+            </div>
+
+        </section>
+    </div>
 
 
     <script src="script.js"></script>
