@@ -16,16 +16,11 @@ const reducedMotion =
 ========================================================= */
 
 const currentYear =
-    document.getElementById(
-        "currentYear"
-    );
-
+    document.getElementById("currentYear");
 
 if (currentYear) {
-
     currentYear.textContent =
         new Date().getFullYear();
-
 }
 
 
@@ -34,31 +29,19 @@ if (currentYear) {
 ========================================================= */
 
 const mobileMenuButton =
-    document.getElementById(
-        "mobileMenuButton"
-    );
-
+    document.getElementById("mobileMenuButton");
 
 const mainNav =
-    document.getElementById(
-        "mainNav"
-    );
+    document.getElementById("mainNav");
 
-
-if (
-    mobileMenuButton &&
-    mainNav
-) {
+if (mobileMenuButton && mainNav) {
 
     mobileMenuButton.addEventListener(
         "click",
         () => {
 
             const open =
-                mainNav.classList.toggle(
-                    "open"
-                );
-
+                mainNav.classList.toggle("open");
 
             mobileMenuButton.setAttribute(
                 "aria-expanded",
@@ -68,7 +51,6 @@ if (
         }
     );
 
-
     mainNav
         .querySelectorAll("a")
         .forEach(link => {
@@ -77,10 +59,7 @@ if (
                 "click",
                 () => {
 
-                    mainNav.classList.remove(
-                        "open"
-                    );
-
+                    mainNav.classList.remove("open");
 
                     mobileMenuButton.setAttribute(
                         "aria-expanded",
@@ -100,21 +79,12 @@ if (
 ========================================================= */
 
 const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
+    document.querySelectorAll(".reveal");
 
 if (reducedMotion) {
 
     revealElements.forEach(
-        element => {
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
+        element => element.classList.add("visible")
     );
 
 } else {
@@ -127,19 +97,14 @@ if (reducedMotion) {
                 entries.forEach(
                     entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                        if (entry.isIntersecting) {
 
                             entry.target
                                 .classList
                                 .add("visible");
 
-
                             revealObserver
-                                .unobserve(
-                                    entry.target
-                                );
+                                .unobserve(entry.target);
 
                         }
 
@@ -150,22 +115,13 @@ if (reducedMotion) {
 
             {
                 threshold: 0.1,
-
-                rootMargin:
-                    "0px 0px -28px 0px"
+                rootMargin: "0px 0px -28px 0px"
             }
 
         );
 
-
     revealElements.forEach(
-        element => {
-
-            revealObserver.observe(
-                element
-            );
-
-        }
+        element => revealObserver.observe(element)
     );
 
 }
@@ -176,14 +132,10 @@ if (reducedMotion) {
 ========================================================= */
 
 const counters =
-    document.querySelectorAll(
-        ".counter"
-    );
-
+    document.querySelectorAll(".counter");
 
 const COUNTER_DURATION =
     1500;
-
 
 function easeOutCubic(progress) {
 
@@ -197,38 +149,30 @@ function easeOutCubic(progress) {
 
 }
 
-
 function animateCounter(counter) {
 
     if (
         counter.dataset.animated ===
         "true"
     ) {
-
         return;
-
     }
-
 
     counter.dataset.animated =
         "true";
-
 
     const start =
         Number(
             counter.dataset.start || 0
         );
 
-
     const target =
         Number(
             counter.dataset.target
         );
 
-
     const suffix =
         counter.dataset.suffix || "";
-
 
     if (reducedMotion) {
 
@@ -239,17 +183,14 @@ function animateCounter(counter) {
 
     }
 
-
     const startTime =
         performance.now();
-
 
     function update(currentTime) {
 
         const elapsed =
             currentTime -
             startTime;
-
 
         const progress =
             Math.min(
@@ -258,39 +199,25 @@ function animateCounter(counter) {
                 1
             );
 
-
         const eased =
-            easeOutCubic(
-                progress
-            );
-
+            easeOutCubic(progress);
 
         const value =
             Math.round(
-
                 start +
-
                 (
                     target -
                     start
                 ) *
-
                 eased
-
             );
-
 
         counter.textContent =
             `${value}${suffix}`;
 
+        if (progress < 1) {
 
-        if (
-            progress < 1
-        ) {
-
-            requestAnimationFrame(
-                update
-            );
+            requestAnimationFrame(update);
 
         } else {
 
@@ -301,17 +228,9 @@ function animateCounter(counter) {
 
     }
 
-
-    requestAnimationFrame(
-        update
-    );
+    requestAnimationFrame(update);
 
 }
-
-
-/* =========================================================
-   COUNTER OBSERVER
-========================================================= */
 
 const counterObserver =
     new IntersectionObserver(
@@ -321,19 +240,12 @@ const counterObserver =
             entries.forEach(
                 entry => {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                    if (entry.isIntersecting) {
 
-                        animateCounter(
-                            entry.target
-                        );
-
+                        animateCounter(entry.target);
 
                         counterObserver
-                            .unobserve(
-                                entry.target
-                            );
+                            .unobserve(entry.target);
 
                     }
 
@@ -348,15 +260,8 @@ const counterObserver =
 
     );
 
-
 counters.forEach(
-    counter => {
-
-        counterObserver.observe(
-            counter
-        );
-
-    }
+    counter => counterObserver.observe(counter)
 );
 
 
@@ -369,22 +274,18 @@ const sections =
         "main section[id]"
     );
 
-
 const navigationLinks =
     document.querySelectorAll(
         ".main-nav a"
     );
-
 
 function updateActiveNavigation() {
 
     const position =
         window.scrollY + 150;
 
-
     let activeSection =
         "";
-
 
     sections.forEach(
         section => {
@@ -392,11 +293,9 @@ function updateActiveNavigation() {
             const top =
                 section.offsetTop;
 
-
             const bottom =
                 top +
                 section.offsetHeight;
-
 
             if (
                 position >= top &&
@@ -411,23 +310,17 @@ function updateActiveNavigation() {
         }
     );
 
-
     navigationLinks.forEach(
         link => {
 
-            link.classList.remove(
-                "active"
-            );
-
+            link.classList.remove("active");
 
             if (
                 link.getAttribute("href") ===
                 `#${activeSection}`
             ) {
 
-                link.classList.add(
-                    "active"
-                );
+                link.classList.add("active");
 
             }
 
@@ -436,7 +329,6 @@ function updateActiveNavigation() {
 
 }
 
-
 window.addEventListener(
     "scroll",
     updateActiveNavigation,
@@ -444,7 +336,6 @@ window.addEventListener(
         passive: true
     }
 );
-
 
 window.addEventListener(
     "load",
@@ -457,17 +348,12 @@ window.addEventListener(
 ========================================================= */
 
 const portraitSystem =
-    document.querySelector(
-        ".portrait-system"
-    );
-
+    document.querySelector(".portrait-system");
 
 let portraitTargetX = 0;
 let portraitTargetY = 0;
-
 let portraitCurrentX = 0;
 let portraitCurrentY = 0;
-
 
 if (
     portraitSystem &&
@@ -479,14 +365,10 @@ if (
         event => {
 
             if (
-                window.innerWidth <=
-                760
+                window.innerWidth <= 760
             ) {
-
                 return;
-
             }
-
 
             portraitTargetX =
                 (
@@ -495,7 +377,6 @@ if (
                     0.5
                 ) *
                 6;
-
 
             portraitTargetY =
                 (
@@ -511,12 +392,10 @@ if (
         }
     );
 
-
     function animatePortrait() {
 
         if (
-            window.innerWidth >
-            760
+            window.innerWidth > 760
         ) {
 
             portraitCurrentX +=
@@ -526,7 +405,6 @@ if (
                 ) *
                 0.04;
 
-
             portraitCurrentY +=
                 (
                     portraitTargetY -
@@ -534,13 +412,8 @@ if (
                 ) *
                 0.04;
 
-
             portraitSystem.style.transform =
-                `translate3d(
-                    ${portraitCurrentX}px,
-                    ${portraitCurrentY}px,
-                    0
-                )`;
+                `translate3d(${portraitCurrentX}px, ${portraitCurrentY}px, 0)`;
 
         } else {
 
@@ -549,13 +422,11 @@ if (
 
         }
 
-
         requestAnimationFrame(
             animatePortrait
         );
 
     }
-
 
     animatePortrait();
 
@@ -563,63 +434,338 @@ if (
 
 
 /* =========================================================
-   CASE STUDY HIGHLIGHT
+   CASE STUDY MODAL DATA
 ========================================================= */
 
-const caseLinks =
-    document.querySelectorAll(
-        ".impact-link"
+const caseStudyData = {
+
+    logistics: {
+        kicker: "Supply Chain • Rattan Direct",
+        title: "Restructuring logistics costs",
+        summary:
+            "A cost-structure improvement programme across warehousing, 3PL and final-mile delivery.",
+        problem:
+            "Warehousing, storage and delivery cost structures were creating significant logistics expense and required a more commercially efficient operating model.",
+        analysis:
+            "The work involved reviewing rate cards and invoice categories, comparing alternative logistics arrangements, examining storage and delivery cost drivers, and identifying where commercial structure and operating design were creating avoidable cost.",
+        action:
+            "Supported the warehouse and 3PL transition, coordinated operational migration activity, reviewed commercial terms and helped reshape final-mile arrangements while maintaining service continuity.",
+        tools:
+            "Rate-card comparison, invoice-category analysis, operational benchmarking, supplier and 3PL reviews, cross-functional transition planning and executive reporting.",
+        result:
+            "~£520K annual savings",
+        resultDetail:
+            "Approximately £400K in warehouse and 3PL savings plus approximately £120K in final-mile savings.",
+        learning:
+            "Demonstrates commercial judgement, cost analysis, provider management and the ability to convert operational detail into a material business outcome."
+    },
+
+    returns: {
+        kicker: "Quality + Reverse Logistics • Rattan Direct",
+        title: "Reducing product returns",
+        summary:
+            "A cross-functional quality improvement effort spanning supplier quality, packaging, handling, delivery and reverse logistics.",
+        problem:
+            "Returns were being driven by multiple failure modes across the product journey, including product defects, packaging weaknesses, handling damage and delivery-related issues.",
+        analysis:
+            "Return data and recurring defect patterns were reviewed alongside customer evidence, warehouse observations, delivery issues and supplier-quality findings to distinguish where failures were occurring and where controls needed strengthening.",
+        action:
+            "Coordinated supplier-quality actions, packaging improvements, delivery-quality reviews and reverse-logistics interventions, while using evidence from customer photos and operational reviews to drive accountability.",
+        tools:
+            "Return-cause analysis, supplier reviews, quality evidence, packaging and handling reviews, monthly logistics-quality reviews and corrective-action tracking.",
+        result:
+            "Returns reduced from ~12% to ~4% by CBM",
+        resultDetail:
+            "The reduction was achieved through combined quality, packaging and logistics improvements rather than a single isolated intervention.",
+        learning:
+            "Demonstrates end-to-end problem solving: using data to identify causes, then coordinating multiple functions to reduce operational failure."
+    },
+
+    manufacturing: {
+        kicker: "Manufacturing Quality • Auto Springs East Africa",
+        title: "Reducing U-bolt rejection",
+        summary:
+            "A manufacturing-quality improvement effort using structured quality methods to improve rejection performance.",
+        problem:
+            "U-bolt rejection performance required stronger process control, more disciplined measurement and structured analysis of recurring quality variation.",
+        analysis:
+            "Quality performance was assessed through production inspection and structured quality tools to understand process capability, failure modes and measurement reliability.",
+        action:
+            "Applied and supported production quality controls, SPC, PFMEA, MSA, corrective-action practices and ISO 9001 documentation while working with production teams on defect reduction.",
+        tools:
+            "SPC, PFMEA, MSA, inspection controls, corrective action and ISO 9001 quality documentation.",
+        result:
+            "U-bolt rejection reduced from ~4% to ~2%",
+        resultDetail:
+            "The improvement came from stronger process controls and structured manufacturing-quality discipline.",
+        learning:
+            "Demonstrates an engineering-quality foundation and the ability to apply structured methods to measurable production improvement."
+    },
+
+    leadership: {
+        kicker: "Business Operations • Optimise Outsourcing",
+        title: "Building leadership visibility",
+        summary:
+            "A management-information system designed to create clearer ownership and operating rhythm across senior leadership.",
+        problem:
+            "Leadership needed a consistent view of customer, workforce, recruitment and commercial performance, with clearer accountability around priorities and emerging issues.",
+        analysis:
+            "The challenge was not simply producing more reports. It was selecting a manageable set of indicators and integrating them into an operating cadence where leaders could review exceptions, assign ownership and act.",
+        action:
+            "Designed a 19-KPI leadership scorecard and integrated it into SLT L10 meetings, quarterly planning, accountability structures and executive reporting.",
+        tools:
+            "EOS operating rhythm, KPI scorecards, executive packs, Microsoft 365, SharePoint, structured meeting cadence and accountability tracking.",
+        result:
+            "19 KPIs integrated into leadership reporting",
+        resultDetail:
+            "The scorecard supported clearer visibility, ownership and management discussion around performance and priorities.",
+        learning:
+            "Demonstrates operating-system thinking: connecting measures, meetings, accountability and decision-making rather than treating reporting as a standalone task."
+    }
+
+};
+
+
+/* =========================================================
+   CASE STUDY MODAL
+========================================================= */
+
+const caseModal =
+    document.getElementById("caseModal");
+
+const caseModalPanel =
+    caseModal
+        ? caseModal.querySelector(".case-modal-panel")
+        : null;
+
+const caseModalKicker =
+    document.getElementById("caseModalKicker");
+
+const caseModalTitle =
+    document.getElementById("caseModalTitle");
+
+const caseModalSummary =
+    document.getElementById("caseModalSummary");
+
+const caseModalProblem =
+    document.getElementById("caseModalProblem");
+
+const caseModalAnalysis =
+    document.getElementById("caseModalAnalysis");
+
+const caseModalAction =
+    document.getElementById("caseModalAction");
+
+const caseModalTools =
+    document.getElementById("caseModalTools");
+
+const caseModalResult =
+    document.getElementById("caseModalResult");
+
+const caseModalResultDetail =
+    document.getElementById("caseModalResultDetail");
+
+const caseModalLearning =
+    document.getElementById("caseModalLearning");
+
+const caseModalContact =
+    document.getElementById("caseModalContact");
+
+let lastModalTrigger = null;
+
+
+function populateCaseModal(caseKey) {
+
+    const data =
+        caseStudyData[caseKey];
+
+    if (!data) {
+        return false;
+    }
+
+    caseModalKicker.textContent =
+        data.kicker;
+
+    caseModalTitle.textContent =
+        data.title;
+
+    caseModalSummary.textContent =
+        data.summary;
+
+    caseModalProblem.textContent =
+        data.problem;
+
+    caseModalAnalysis.textContent =
+        data.analysis;
+
+    caseModalAction.textContent =
+        data.action;
+
+    caseModalTools.textContent =
+        data.tools;
+
+    caseModalResult.textContent =
+        data.result;
+
+    caseModalResultDetail.textContent =
+        data.resultDetail;
+
+    caseModalLearning.textContent =
+        data.learning;
+
+    return true;
+
+}
+
+
+function openCaseModal(caseKey, trigger) {
+
+    if (
+        !caseModal ||
+        !caseModalPanel ||
+        !populateCaseModal(caseKey)
+    ) {
+        return;
+    }
+
+    lastModalTrigger =
+        trigger || document.activeElement;
+
+    caseModal.classList.add("open");
+
+    caseModal.setAttribute(
+        "aria-hidden",
+        "false"
     );
 
+    document.body.classList.add(
+        "modal-open"
+    );
 
-caseLinks.forEach(link => {
+    window.setTimeout(
+        () => caseModalPanel.focus(),
+        30
+    );
 
-    link.addEventListener(
-        "click",
-        () => {
-
-            const targetSelector =
-                link.getAttribute("href");
+}
 
 
-            const target =
-                document.querySelector(
-                    targetSelector
+function closeCaseModal() {
+
+    if (!caseModal) {
+        return;
+    }
+
+    caseModal.classList.remove("open");
+
+    caseModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+    if (
+        lastModalTrigger &&
+        typeof lastModalTrigger.focus === "function"
+    ) {
+
+        lastModalTrigger.focus();
+
+    }
+
+}
+
+
+document
+    .querySelectorAll("[data-case]")
+    .forEach(trigger => {
+
+        trigger.addEventListener(
+            "click",
+            () => {
+
+                const caseKey =
+                    trigger.dataset.case;
+
+                openCaseModal(
+                    caseKey,
+                    trigger
                 );
 
-
-            if (!target) {
-                return;
             }
+        );
 
+        if (
+            trigger.getAttribute("role") === "button"
+        ) {
 
-            setTimeout(
-                () => {
+            trigger.addEventListener(
+                "keydown",
+                event => {
 
-                    target.classList.add(
-                        "case-highlight"
-                    );
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
 
+                        event.preventDefault();
 
-                    setTimeout(
-                        () => {
+                        openCaseModal(
+                            trigger.dataset.case,
+                            trigger
+                        );
 
-                            target.classList.remove(
-                                "case-highlight"
-                            );
+                    }
 
-                        },
-                        1300
-                    );
-
-                },
-                500
+                }
             );
 
         }
+
+    });
+
+
+document
+    .querySelectorAll("[data-close-modal]")
+    .forEach(closeControl => {
+
+        closeControl.addEventListener(
+            "click",
+            closeCaseModal
+        );
+
+    });
+
+
+if (caseModalContact) {
+
+    caseModalContact.addEventListener(
+        "click",
+        closeCaseModal
     );
 
-});
+}
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            caseModal &&
+            caseModal.classList.contains("open")
+        ) {
+
+            closeCaseModal();
+
+        }
+
+    }
+);
 
 
 /* =========================================================
@@ -627,10 +773,7 @@ caseLinks.forEach(link => {
 ========================================================= */
 
 const canvas =
-    document.getElementById(
-        "particleCanvas"
-    );
-
+    document.getElementById("particleCanvas");
 
 if (
     canvas &&
@@ -640,40 +783,26 @@ if (
     const context =
         canvas.getContext("2d");
 
-
     let width = 0;
     let height = 0;
-
     let pixelRatio = 1;
-
     let particles = [];
-
     let animationFrame = null;
 
-
     const mouse = {
-
         x: null,
         y: null,
-
         radius: 170
-
     };
 
-
-    /* -----------------------------------------------------
-       RESIZE
-    ----------------------------------------------------- */
 
     function resizeCanvas() {
 
         width =
             window.innerWidth;
 
-
         height =
             window.innerHeight;
-
 
         pixelRatio =
             Math.min(
@@ -681,24 +810,19 @@ if (
                 2
             );
 
-
         canvas.width =
             width *
             pixelRatio;
-
 
         canvas.height =
             height *
             pixelRatio;
 
-
         canvas.style.width =
             `${width}px`;
 
-
         canvas.style.height =
             `${height}px`;
-
 
         context.setTransform(
             pixelRatio,
@@ -709,22 +833,15 @@ if (
             0
         );
 
-
         createParticles();
 
     }
 
 
-    /* -----------------------------------------------------
-       PARTICLE
-    ----------------------------------------------------- */
-
     class Particle {
 
         constructor() {
-
             this.reset();
-
         }
 
 
@@ -734,17 +851,14 @@ if (
                 Math.random() *
                 width;
 
-
             this.y =
                 Math.random() *
                 height;
-
 
             this.size =
                 Math.random() *
                 1.8 +
                 0.8;
-
 
             this.velocityX =
                 (
@@ -753,7 +867,6 @@ if (
                 ) *
                 0.18;
 
-
             this.velocityY =
                 (
                     Math.random() -
@@ -761,10 +874,8 @@ if (
                 ) *
                 0.18;
 
-
             this.forceX = 0;
             this.forceY = 0;
-
 
             this.opacity =
                 Math.random() *
@@ -780,15 +891,12 @@ if (
                 this.velocityX +
                 this.forceX;
 
-
             this.y +=
                 this.velocityY +
                 this.forceY;
 
-
             this.forceX *=
                 0.90;
-
 
             this.forceY *=
                 0.90;
@@ -803,18 +911,15 @@ if (
                     this.x -
                     mouse.x;
 
-
                 const dy =
                     this.y -
                     mouse.y;
-
 
                 const distance =
                     Math.sqrt(
                         dx * dx +
                         dy * dy
                     );
-
 
                 if (
                     distance <
@@ -829,7 +934,6 @@ if (
                         ) /
                         mouse.radius;
 
-
                     this.forceX +=
                         (
                             dx /
@@ -837,7 +941,6 @@ if (
                         ) *
                         strength *
                         0.28;
-
 
                     this.forceY +=
                         (
@@ -852,45 +955,20 @@ if (
             }
 
 
-            if (
-                this.x < -20
-            ) {
-
-                this.x =
-                    width + 20;
-
+            if (this.x < -20) {
+                this.x = width + 20;
             }
 
-
-            if (
-                this.x >
-                width + 20
-            ) {
-
-                this.x =
-                    -20;
-
+            if (this.x > width + 20) {
+                this.x = -20;
             }
 
-
-            if (
-                this.y < -20
-            ) {
-
-                this.y =
-                    height + 20;
-
+            if (this.y < -20) {
+                this.y = height + 20;
             }
 
-
-            if (
-                this.y >
-                height + 20
-            ) {
-
-                this.y =
-                    -20;
-
+            if (this.y > height + 20) {
+                this.y = -20;
             }
 
         }
@@ -900,7 +978,6 @@ if (
 
             context.beginPath();
 
-
             context.arc(
                 this.x,
                 this.y,
@@ -909,15 +986,8 @@ if (
                 Math.PI * 2
             );
 
-
             context.fillStyle =
-                `rgba(
-                    22,
-                    116,
-                    168,
-                    ${this.opacity}
-                )`;
-
+                `rgba(22, 116, 168, ${this.opacity})`;
 
             context.fill();
 
@@ -926,19 +996,13 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       CREATE PARTICLES
-    ----------------------------------------------------- */
-
     function createParticles() {
 
         particles = [];
 
-
         const screenArea =
             width *
             height;
-
 
         let count =
             Math.floor(
@@ -946,10 +1010,7 @@ if (
                 21000
             );
 
-
-        if (
-            width < 760
-        ) {
+        if (width < 760) {
 
             count =
                 Math.min(
@@ -973,7 +1034,6 @@ if (
 
         }
 
-
         for (
             let index = 0;
             index < count;
@@ -989,17 +1049,12 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       PARTICLE CONNECTIONS
-    ----------------------------------------------------- */
-
     function connectParticles() {
 
         const connectionDistance =
             width < 760
                 ? 86
                 : 122;
-
 
         for (
             let i = 0;
@@ -1017,18 +1072,15 @@ if (
                     particles[i].x -
                     particles[j].x;
 
-
                 const dy =
                     particles[i].y -
                     particles[j].y;
-
 
                 const distance =
                     Math.sqrt(
                         dx * dx +
                         dy * dy
                     );
-
 
                 if (
                     distance <
@@ -1043,34 +1095,23 @@ if (
                         ) *
                         0.14;
 
-
                     context.beginPath();
-
 
                     context.moveTo(
                         particles[i].x,
                         particles[i].y
                     );
 
-
                     context.lineTo(
                         particles[j].x,
                         particles[j].y
                     );
 
-
                     context.strokeStyle =
-                        `rgba(
-                            22,
-                            116,
-                            168,
-                            ${opacity}
-                        )`;
-
+                        `rgba(22, 116, 168, ${opacity})`;
 
                     context.lineWidth =
                         0.65;
-
 
                     context.stroke();
 
@@ -1083,21 +1124,14 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       CURSOR CONNECTION
-    ----------------------------------------------------- */
-
     function connectCursor() {
 
         if (
             mouse.x === null ||
             mouse.y === null
         ) {
-
             return;
-
         }
-
 
         particles.forEach(
             particle => {
@@ -1106,18 +1140,15 @@ if (
                     particle.x -
                     mouse.x;
 
-
                 const dy =
                     particle.y -
                     mouse.y;
-
 
                 const distance =
                     Math.sqrt(
                         dx * dx +
                         dy * dy
                     );
-
 
                 if (
                     distance <
@@ -1132,34 +1163,23 @@ if (
                         ) *
                         0.17;
 
-
                     context.beginPath();
-
 
                     context.moveTo(
                         mouse.x,
                         mouse.y
                     );
 
-
                     context.lineTo(
                         particle.x,
                         particle.y
                     );
 
-
                     context.strokeStyle =
-                        `rgba(
-                            22,
-                            116,
-                            168,
-                            ${opacity}
-                        )`;
-
+                        `rgba(22, 116, 168, ${opacity})`;
 
                     context.lineWidth =
                         0.55;
-
 
                     context.stroke();
 
@@ -1171,10 +1191,6 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       ANIMATION
-    ----------------------------------------------------- */
-
     function animateParticles() {
 
         context.clearRect(
@@ -1184,22 +1200,17 @@ if (
             height
         );
 
-
         particles.forEach(
             particle => {
 
                 particle.update();
-
                 particle.draw();
 
             }
         );
 
-
         connectParticles();
-
         connectCursor();
-
 
         animationFrame =
             requestAnimationFrame(
@@ -1209,19 +1220,12 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       POINTER
-    ----------------------------------------------------- */
-
     const finePointer =
         window.matchMedia(
             "(hover: hover) and (pointer: fine)"
         );
 
-
-    if (
-        finePointer.matches
-    ) {
+    if (finePointer.matches) {
 
         window.addEventListener(
             "mousemove",
@@ -1229,7 +1233,6 @@ if (
 
                 mouse.x =
                     event.clientX;
-
 
                 mouse.y =
                     event.clientY;
@@ -1240,13 +1243,11 @@ if (
             }
         );
 
-
         document.addEventListener(
             "mouseleave",
             () => {
 
                 mouse.x = null;
-
                 mouse.y = null;
 
             }
@@ -1255,12 +1256,7 @@ if (
     }
 
 
-    /* -----------------------------------------------------
-       RESIZE
-    ----------------------------------------------------- */
-
     let resizeTimer;
-
 
     window.addEventListener(
         "resize",
@@ -1269,7 +1265,6 @@ if (
             clearTimeout(
                 resizeTimer
             );
-
 
             resizeTimer =
                 setTimeout(
@@ -1281,17 +1276,11 @@ if (
     );
 
 
-    /* -----------------------------------------------------
-       TAB VISIBILITY
-    ----------------------------------------------------- */
-
     document.addEventListener(
         "visibilitychange",
         () => {
 
-            if (
-                document.hidden
-            ) {
+            if (document.hidden) {
 
                 cancelAnimationFrame(
                     animationFrame
@@ -1308,7 +1297,6 @@ if (
 
 
     resizeCanvas();
-
     animateParticles();
 
 }
@@ -1328,14 +1316,9 @@ window.addEventListener(
             mainNav
         ) {
 
-            mainNav.classList.remove(
-                "open"
-            );
+            mainNav.classList.remove("open");
 
-
-            if (
-                mobileMenuButton
-            ) {
+            if (mobileMenuButton) {
 
                 mobileMenuButton.setAttribute(
                     "aria-expanded",
