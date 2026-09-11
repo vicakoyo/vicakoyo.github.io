@@ -272,7 +272,7 @@ a {
 
 
 /* =========================================================
-   ANIMATED BRAND
+   ANIMATED NAME
 ========================================================= */
 
 .brand {
@@ -463,7 +463,7 @@ a {
 
     align-items: center;
 
-    padding: 46px 0 54px;
+    padding: 38px 0 46px;
 
     overflow: hidden;
 
@@ -554,6 +554,10 @@ a {
     line-height: 1.72;
 }
 
+
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
 
 .hero-actions {
 
@@ -682,7 +686,73 @@ a {
 
 
 /* =========================================================
-   HERO PORTRAIT SYSTEM
+   HERO PROOF NUMBERS
+========================================================= */
+
+.hero-proof {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 34px;
+
+    margin-top: 42px;
+}
+
+
+.hero-proof-item {
+
+    position: relative;
+
+    min-width: 112px;
+}
+
+
+.hero-proof-item + .hero-proof-item {
+
+    padding-left: 28px;
+
+    border-left:
+        1px solid
+        rgba(18, 53, 77, 0.12);
+}
+
+
+.hero-proof-item strong {
+
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 1.42rem;
+
+    line-height: 1;
+
+    font-weight: 770;
+
+    letter-spacing: -0.035em;
+}
+
+
+.hero-proof-item span {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 0.63rem;
+
+    line-height: 1.35;
+
+    font-weight: 520;
+}
+
+
+/* =========================================================
+   HERO PORTRAIT
 ========================================================= */
 
 .hero-visual {
@@ -861,7 +931,9 @@ a {
 
     min-width: 105px;
 
-    padding: 10px 12px;
+    padding: 10px 13px;
+
+    text-align: center;
 
     border:
         1px solid var(--border);
@@ -892,61 +964,45 @@ a {
 
     display: block;
 
-    padding-right: 13px;
-
-    color: var(--navy);
-
     font-size: 0.67rem;
 
-    font-weight: 740;
+    font-weight: 770;
 }
 
 
-.skill-dot {
+/* Individual text colours */
 
-    position: absolute;
-
-    top: 11px;
-
-    right: 10px;
-
-    width: 7px;
-
-    height: 7px;
-
-    border-radius: 50%;
+.skill-operations strong {
+    color: var(--blue);
 }
 
 
-.skill-dot-blue {
-    background: var(--blue);
+.skill-supply strong {
+    color: #b97916;
 }
 
 
-.skill-dot-amber {
-    background: var(--amber);
+.skill-process strong {
+    color: var(--cyan);
 }
 
 
-.skill-dot-teal {
-    background: var(--teal);
+.skill-quality strong {
+    color: var(--teal);
 }
 
 
-.skill-dot-cyan {
-    background: var(--cyan);
+.skill-eos strong {
+    color: var(--orange);
 }
 
 
-.skill-dot-orange {
-    background: var(--orange);
+.skill-automation strong {
+    color: var(--violet);
 }
 
 
-.skill-dot-violet {
-    background: var(--violet);
-}
-
+/* Floating positions */
 
 .skill-operations {
 
@@ -1028,7 +1084,7 @@ a {
 
 .hero-visual-meta {
 
-    margin-top: 34px;
+    margin-top: 38px;
 
     display: flex;
 
@@ -1036,34 +1092,39 @@ a {
 
     justify-content: center;
 
-    gap: 7px;
+    gap: 20px;
 
     white-space: nowrap;
 
     color: #617b8c;
 
-    font-size:
-        clamp(
-            0.74rem,
-            0.9vw,
-            0.84rem
-        );
+    font-size: 0.8rem;
 
     font-weight: 650;
-
-    letter-spacing: -0.005em;
 }
 
 
-.meta-divider {
+.meta-item {
 
-    color:
-        rgba(
-            18,
-            53,
-            77,
-            0.27
-        );
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.meta-icon {
+
+    width: 15px;
+
+    height: 15px;
+
+    flex-shrink: 0;
+
+    fill: currentColor;
+
+    opacity: 0.78;
 }
 
 
@@ -1073,15 +1134,13 @@ a {
 
     align-items: center;
 
-    gap: 5px;
+    gap: 7px;
 
     color: var(--teal-dark);
 }
 
 
 .availability-dot {
-
-    position: relative;
 
     width: 7px;
 
@@ -3208,7 +3267,7 @@ a {
 
         flex-direction: column;
 
-        gap: 24px;
+        gap: 26px;
     }
 
 
@@ -3261,6 +3320,66 @@ a {
     }
 
 
+    /* =====================================================
+       HERO PROOF MOBILE
+    ===================================================== */
+
+    .hero-proof {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 0;
+
+        margin-top: 32px;
+    }
+
+
+    .hero-proof-item {
+
+        flex: 1;
+
+        min-width: 0;
+
+        padding-right: 7px;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+
+        margin-left: 10px;
+
+        padding-left: 10px;
+
+        border-left:
+            1px solid
+            rgba(18, 53, 77, 0.12);
+    }
+
+
+    .hero-proof-item strong {
+
+        font-size: 1.12rem;
+    }
+
+
+    .hero-proof-item span {
+
+        margin-top: 5px;
+
+        font-size: 0.53rem;
+
+        line-height: 1.3;
+    }
+
+
+    /* =====================================================
+       PORTRAIT MOBILE
+    ===================================================== */
+
     .portrait-system {
 
         width:
@@ -3309,24 +3428,12 @@ a {
 
         min-width: 92px;
 
-        padding: 8px 9px;
+        padding: 8px 10px;
     }
 
 
     .skill-float strong {
         font-size: 0.59rem;
-    }
-
-
-    .skill-dot {
-
-        width: 6px;
-
-        height: 6px;
-
-        top: 10px;
-
-        right: 9px;
     }
 
 
@@ -3396,35 +3503,47 @@ a {
     }
 
 
+    /* =====================================================
+       META MOBILE
+    ===================================================== */
+
     .hero-visual-meta {
 
         width: 100%;
 
-        margin-top: 32px;
+        margin-top: 34px;
 
-        gap: 4px;
+        display: flex;
+
+        align-items: center;
 
         justify-content: center;
 
+        gap: 12px;
+
         white-space: nowrap;
 
-        color: #617b8c;
-
-        font-size:
-            clamp(
-                0.64rem,
-                2.7vw,
-                0.76rem
-            );
+        font-size: 0.68rem;
 
         font-weight: 650;
+    }
 
-        letter-spacing: -0.018em;
+
+    .meta-item {
+        gap: 5px;
+    }
+
+
+    .meta-icon {
+
+        width: 13px;
+
+        height: 13px;
     }
 
 
     .availability-meta {
-        gap: 4px;
+        gap: 5px;
     }
 
 
@@ -3699,7 +3818,7 @@ a {
 
 
     /* =====================================================
-       OTHER MOBILE ELEMENTS
+       OTHER MOBILE
     ===================================================== */
 
     .work-card {
@@ -3836,26 +3955,58 @@ a {
     }
 
 
+    /* Keep proof numbers readable */
+
+    .hero-proof {
+
+        margin-top: 30px;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+
+        margin-left: 8px;
+
+        padding-left: 8px;
+    }
+
+
+    .hero-proof-item strong {
+
+        font-size: 1.03rem;
+    }
+
+
+    .hero-proof-item span {
+
+        font-size: 0.49rem;
+    }
+
+
+    /* Keep meta line on one line */
+
     .hero-visual-meta {
 
-        width: 100%;
+        margin-top: 34px;
 
-        margin-top: 32px;
-
-        gap: 3px;
-
-        justify-content: center;
-
-        white-space: nowrap;
+        gap: 9px;
 
         font-size:
             clamp(
-                0.62rem,
-                2.65vw,
-                0.72rem
+                0.59rem,
+                2.55vw,
+                0.68rem
             );
 
-        letter-spacing: -0.022em;
+        letter-spacing: -0.012em;
+    }
+
+
+    .meta-icon {
+
+        width: 12px;
+
+        height: 12px;
     }
 
 
@@ -3971,6 +4122,19 @@ a {
 
     .hero h1 {
         font-size: 1.65rem;
+    }
+
+
+    .hero-proof-item span {
+        font-size: 0.45rem;
+    }
+
+
+    .hero-visual-meta {
+
+        gap: 6px;
+
+        font-size: 0.56rem;
     }
 
 }
