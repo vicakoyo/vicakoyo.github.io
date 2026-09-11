@@ -1,2072 +1,2379 @@
-<!DOCTYPE html>
-<html lang="en">
+"use strict";
 
-<head>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
-    <meta
-        name="description"
-        content="Professional portfolio of Victor Akoyo — Operations, Business Operations, Supply Chain, Quality, Process Improvement and AI-enabled operations."
-    >
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    <title>
-        Victor Akoyo | Operations, Supply Chain & AI-Enabled Operations
-    </title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-</head>
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
 
+const currentYear =
+    document.getElementById(
+        "currentYear"
+    );
 
-<body>
 
-    <!-- =====================================================
-         ANIMATED BACKGROUND
-    ====================================================== -->
+if (currentYear) {
 
-    <canvas
-        id="particleCanvas"
-        aria-hidden="true"
-    ></canvas>
+    currentYear.textContent =
+        new Date().getFullYear();
 
+}
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
 
-    <header class="site-header">
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-        <div class="nav-container">
+const mobileMenuButton =
+    document.getElementById(
+        "mobileMenuButton"
+    );
 
-            <a
-                href="#home"
-                class="brand"
-                aria-label="Victor Akoyo home"
-            >
-                Victor Akoyo
-            </a>
 
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
 
-            <button
-                id="mobileMenuButton"
-                class="mobile-menu-button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mainNav"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
 
+if (
+    mobileMenuButton &&
+    mainNav
+) {
 
-            <nav
-                id="mainNav"
-                class="main-nav"
-                aria-label="Main navigation"
-            >
 
-                <a href="#impact">
-                    Impact
-                </a>
+    mobileMenuButton.addEventListener(
+        "click",
+        () => {
 
-                <a href="#expertise">
-                    Expertise
-                </a>
 
-                <a href="#selected-work">
-                    Selected Work
-                </a>
+            const open =
+                mainNav.classList.toggle(
+                    "open"
+                );
 
-                <a href="#automation">
-                    Automation
-                </a>
 
-                <a href="#experience">
-                    Experience
-                </a>
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                String(open)
+            );
 
-                <a href="#contact">
-                    Contact
-                </a>
 
-            </nav>
+        }
+    );
 
-        </div>
 
-    </header>
+    mainNav
+        .querySelectorAll("a")
+        .forEach(link => {
 
 
-    <main>
+            link.addEventListener(
+                "click",
+                () => {
 
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
+                    mainNav.classList.remove(
+                        "open"
+                    );
 
-        <section
-            class="hero"
-            id="home"
-        >
 
-            <div class="container hero-grid">
+                    mobileMenuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
 
-                <!-- HERO MESSAGE -->
+                }
+            );
 
-                <div class="hero-content reveal">
 
-                    <h1>
-                        Building stronger operations.
-                    </h1>
+        });
 
-                    <p class="hero-positioning">
-                        Operations and Business Operations professional turning
-                        complexity into measurable improvement across supply chain,
-                        quality, process execution and AI-enabled systems. I build
-                        practical operating rhythms, visibility and workflows that
-                        help teams reduce cost, improve quality and make better
-                        decisions.
-                    </p>
 
+}
 
-                    <div class="hero-actions">
 
-                        <a
-                            href="#selected-work"
-                            class="button button-primary"
-                        >
-                            View Selected Work
-                        </a>
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation"
-                            class="button button-teal"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Automation Portfolio
-                        </a>
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
-                        <a
-                            href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View CV
-                        </a>
 
-                    </div>
+if (reducedMotion) {
 
 
-                    <!-- HERO EVIDENCE -->
+    revealElements.forEach(
+        element => {
 
-                    <div class="hero-proof">
 
-                        <div class="hero-proof-item">
-                            <strong>
-                                £520k
-                            </strong>
+            element.classList.add(
+                "visible"
+            );
 
-                            <span>
-                                Annual logistics savings
-                            </span>
-                        </div>
 
+        }
+    );
 
-                        <div class="hero-proof-item">
-                            <strong>
-                                1,000+
-                            </strong>
 
-                            <span>
-                                SKUs managed
-                            </span>
-                        </div>
+} else {
 
 
-                        <div class="hero-proof-item">
-                            <strong>
-                                19
-                            </strong>
+    const revealObserver =
+        new IntersectionObserver(
 
-                            <span>
-                                Leadership KPIs
-                            </span>
-                        </div>
 
-                    </div>
+            entries => {
 
-                </div>
 
+                entries.forEach(
+                    entry => {
 
-                <!-- HERO VISUAL -->
 
-                <div class="hero-visual reveal">
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-                    <div class="portrait-system">
 
+                            entry.target
+                                .classList
+                                .add(
+                                    "visible"
+                                );
 
-                        <!-- ORBITS -->
 
-                        <span
-                            class="hero-orbit hero-orbit-one"
-                            aria-hidden="true"
-                        ></span>
+                            revealObserver
+                                .unobserve(
+                                    entry.target
+                                );
 
-                        <span
-                            class="hero-orbit hero-orbit-two"
-                            aria-hidden="true"
-                        ></span>
 
+                        }
 
-                        <!-- PULSE RINGS -->
 
-                        <span
-                            class="hero-pulse"
-                            aria-hidden="true"
-                        ></span>
+                    }
+                );
 
-                        <span
-                            class="hero-pulse pulse-two"
-                            aria-hidden="true"
-                        ></span>
 
+            },
 
-                        <!-- FLOATING CAPABILITY CARDS -->
 
-                        <div class="skill-float skill-operations">
-                            <strong>
-                                Operations
-                            </strong>
-                        </div>
+            {
+                threshold: 0.1,
 
+                rootMargin:
+                    "0px 0px -25px 0px"
+            }
 
-                        <div class="skill-float skill-supply">
-                            <strong>
-                                Supply Chain
-                            </strong>
-                        </div>
 
+        );
 
-                        <div class="skill-float skill-process">
-                            <strong>
-                                Process
-                            </strong>
-                        </div>
 
+    revealElements.forEach(
+        element => {
 
-                        <div class="skill-float skill-quality">
-                            <strong>
-                                Quality
-                            </strong>
-                        </div>
 
+            revealObserver.observe(
+                element
+            );
 
-                        <div class="skill-float skill-eos">
-                            <strong>
-                                EOS
-                            </strong>
-                        </div>
 
+        }
+    );
 
-                        <div class="skill-float skill-automation">
-                            <strong>
-                                Automation
-                            </strong>
-                        </div>
 
+}
 
-                        <!-- PORTRAIT -->
 
-                        <div class="portrait-ring">
+/* =========================================================
+   £520K COUNTER
+========================================================= */
 
-                            <div class="portrait-frame">
+const counters =
+    document.querySelectorAll(
+        ".counter"
+    );
 
-                                <img
-                                    src="victor-akoyo-portrait.png.jpeg"
-                                    alt="Victor Akoyo"
-                                    class="profile-photo"
-                                >
 
-                            </div>
+const COUNTER_DURATION =
+    1400;
 
-                        </div>
 
-                    </div>
+function easeOutCubic(
+    progress
+) {
 
 
-                    <!-- EXPERIENCE / LOCATION / AVAILABILITY -->
+    return (
 
-                    <div class="hero-visual-meta">
+        1 -
 
+        Math.pow(
+            1 - progress,
+            3
+        )
 
-                        <span class="meta-item">
+    );
 
-                            <svg
-                                class="meta-icon"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9 6V5a3 3 0 0 1 6 0v1h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4Zm2 0h2V5a1 1 0 0 0-2 0v1Zm-6 5h14V8H5v3Zm0 2v4h14v-4h-5v1h-4v-1H5Z"
-                                />
-                            </svg>
 
-                            <span>
-                                8 years
-                            </span>
+}
 
-                        </span>
 
+function animateCounter(
+    counter
+) {
 
-                        <span class="meta-item">
 
-                            <svg
-                                class="meta-icon"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
-                                />
-                            </svg>
+    if (
+        counter.dataset.animated ===
+        "true"
+    ) {
 
-                            <span>
-                                Nairobi, KE
-                            </span>
+        return;
 
-                        </span>
+    }
 
 
-                        <span class="availability-meta">
+    counter.dataset.animated =
+        "true";
 
-                            <span
-                                class="availability-dot"
-                                aria-hidden="true"
-                            ></span>
 
-                            <span>
-                                Available
-                            </span>
+    const start =
+        Number(
+            counter.dataset.start ||
+            0
+        );
 
-                        </span>
 
-                    </div>
+    const target =
+        Number(
+            counter.dataset.target
+        );
 
-                </div>
 
-            </div>
+    if (reducedMotion) {
 
-        </section>
 
+        counter.textContent =
+            target;
 
-        <!-- =====================================================
-             SELECTED IMPACT
-        ====================================================== -->
 
-        <section
-            id="impact"
-            class="section section-soft"
-        >
+        return;
 
-            <div class="container">
+    }
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        Selected Impact
-                    </h2>
+    const startTime =
+        performance.now();
 
-                    <p class="section-tagline">
-                        Evidence over adjectives.
-                    </p>
 
-                </div>
+    function update(
+        currentTime
+    ) {
 
 
-                <div
-                    id="impactGrid"
-                    class="impact-grid"
-                >
+        const elapsed =
+            currentTime -
+            startTime;
 
 
-                    <!-- IMPACT 01 -->
+        const progress =
+            Math.min(
+                elapsed /
+                COUNTER_DURATION,
+                1
+            );
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="logistics"
-                        aria-haspopup="dialog"
-                    >
 
-                        <span class="card-number">
-                            01
-                        </span>
+        const eased =
+            easeOutCubic(
+                progress
+            );
 
-                        <div class="metric">
-                            <span>£</span>
 
-                            <span
-                                class="counter"
-                                data-start="0"
-                                data-target="520"
-                            >
-                                0
-                            </span>
+        const value =
+            Math.round(
 
-                            <span>k</span>
-                        </div>
+                start +
 
-                        <h3>
-                            Annual logistics savings
-                        </h3>
+                (
+                    target -
+                    start
+                ) *
 
-                        <p>
-                            Warehouse, 3PL and final-mile optimisation.
-                        </p>
+                eased
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+            );
 
-                    </button>
 
+        counter.textContent =
+            value;
 
-                    <!-- IMPACT 02 -->
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="quality"
-                        aria-haspopup="dialog"
-                    >
+        if (
+            progress < 1
+        ) {
 
-                        <span class="card-number">
-                            02
-                        </span>
 
-                        <div class="metric transition-metric">
+            requestAnimationFrame(
+                update
+            );
 
-                            <span>
-                                12%
-                            </span>
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+        } else {
 
-                            <span>
-                                4%
-                            </span>
 
-                        </div>
+            counter.textContent =
+                target;
 
-                        <h3>
-                            Returns reduction
-                        </h3>
 
-                        <p>
-                            Supplier quality, packaging, handling
-                            and reverse-logistics improvement.
-                        </p>
+        }
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
 
-                    </button>
+    }
 
 
-                    <!-- IMPACT 03 -->
+    requestAnimationFrame(
+        update
+    );
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="manufacturing"
-                        aria-haspopup="dialog"
-                    >
 
-                        <span class="card-number">
-                            03
-                        </span>
+}
 
-                        <div class="metric transition-metric">
 
-                            <span>
-                                4%
-                            </span>
+if (counters.length) {
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
 
-                            <span>
-                                2%
-                            </span>
+    const counterObserver =
+        new IntersectionObserver(
 
-                        </div>
 
-                        <h3>
-                            U-bolt rejection reduction
-                        </h3>
+            entries => {
 
-                        <p>
-                            SPC, PFMEA, MSA, process control
-                            and corrective action.
-                        </p>
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+                entries.forEach(
+                    entry => {
 
-                    </button>
 
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-                    <!-- IMPACT 04 -->
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="complaints"
-                        aria-haspopup="dialog"
-                    >
+                            animateCounter(
+                                entry.target
+                            );
 
-                        <span class="card-number">
-                            04
-                        </span>
 
-                        <div class="metric transition-metric">
+                            counterObserver
+                                .unobserve(
+                                    entry.target
+                                );
 
-                            <span>
-                                12%
-                            </span>
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+                        }
 
-                            <span>
-                                5%
-                            </span>
 
-                        </div>
+                    }
+                );
 
-                        <h3>
-                            Customer complaints reduction
-                        </h3>
 
-                        <p>
-                            Manufacturing-quality controls and
-                            stronger corrective-action discipline.
-                        </p>
+            },
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
 
-                    </button>
+            {
+                threshold: 0.35
+            }
 
-                </div>
 
-            </div>
+        );
 
-        </section>
 
+    counters.forEach(
+        counter => {
 
-        <!-- =====================================================
-             HOW I CREATE VALUE
-        ====================================================== -->
 
-        <section
-            id="expertise"
-            class="section"
-        >
+            counterObserver.observe(
+                counter
+            );
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+        }
+    );
 
-                    <h2 class="section-title">
-                        How I Create Value
-                    </h2>
 
-                    <p class="section-tagline">
-                        Operations from problem to execution.
-                    </p>
+}
 
-                </div>
 
+/* =========================================================
+   ONE-TIME IMPACT CARD POP
+========================================================= */
 
-                <div class="value-grid">
+const impactGrid =
+    document.getElementById(
+        "impactGrid"
+    );
 
 
-                    <article class="value-card value-blue reveal">
+const impactCards =
+    document.querySelectorAll(
+        ".impact-card"
+    );
 
-                        <span class="value-index">
-                            01
-                        </span>
 
-                        <h3>
-                            Operations & Business Operations
-                        </h3>
+let impactAnimationPlayed =
+    false;
 
-                        <p>
-                            Operating cadence, KPI governance,
-                            EOS execution, cross-functional coordination,
-                            SOPs, executive reporting, issue resolution,
-                            service continuity and accountability.
-                        </p>
 
-                    </article>
+function playImpactHint() {
 
 
-                    <article class="value-card value-amber reveal">
+    if (
+        reducedMotion ||
+        impactAnimationPlayed
+    ) {
 
-                        <span class="value-index">
-                            02
-                        </span>
+        return;
 
-                        <h3>
-                            Supply Chain & Commercial Operations
-                        </h3>
+    }
 
-                        <p>
-                            International sourcing, demand planning,
-                            supplier management, freight, 3PLs,
-                            warehousing, final mile, inventory,
-                            negotiation and commercial cost improvement.
-                        </p>
 
-                    </article>
+    impactAnimationPlayed =
+        true;
 
 
-                    <article class="value-card value-teal reveal">
+    impactCards.forEach(
+        (
+            card,
+            index
+        ) => {
 
-                        <span class="value-index">
-                            03
-                        </span>
 
-                        <h3>
-                            Quality & Continuous Improvement
-                        </h3>
+            const delay =
+                170 +
+                index * 150;
 
-                        <p>
-                            Supplier and manufacturing quality,
-                            CAPA, root-cause analysis, SPC,
-                            PFMEA, MSA, inspection systems,
-                            5S, product improvement and
-                            customer-issue reduction.
-                        </p>
 
-                    </article>
+            window.setTimeout(
+                () => {
 
 
-                    <article class="value-card value-violet reveal">
+                    card.classList.add(
+                        "attention-pop"
+                    );
 
-                        <span class="value-index">
-                            04
-                        </span>
 
-                        <h3>
-                            AI-Enabled Operations & Business Systems
-                        </h3>
+                    window.setTimeout(
+                        () => {
 
-                        <p>
-                            Workflow automation, Microsoft 365,
-                            AI-assisted reporting, CRM integration,
-                            operational intelligence and practical
-                            use of n8n, Make.com and business APIs.
-                        </p>
 
-                    </article>
+                            card.classList.remove(
+                                "attention-pop"
+                            );
 
-                </div>
 
-            </div>
+                        },
+                        850
+                    );
 
-        </section>
 
+                },
+                delay
+            );
 
-        <!-- =====================================================
-             SELECTED WORK
-        ====================================================== -->
 
-        <section
-            id="selected-work"
-            class="section selected-work-section"
-        >
+        }
+    );
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+}
 
-                    <h2 class="section-title">
-                        Selected Work
-                    </h2>
 
-                    <p class="section-tagline">
-                        Evidence from real operating problems.
-                    </p>
+if (
+    impactGrid &&
+    !reducedMotion
+) {
 
-                </div>
 
+    const impactHintObserver =
+        new IntersectionObserver(
 
-                <!-- =================================================
-                     CHINA FEATURE
-                ================================================== -->
 
-                <article
-                    class="china-feature reveal case-trigger"
-                    data-case="china"
-                    tabindex="0"
-                    role="button"
-                    aria-haspopup="dialog"
-                >
+            entries => {
 
-                    <div class="china-feature-images">
 
-                        <div class="china-main-wrapper">
+                entries.forEach(
+                    entry => {
 
-                            <img
-                                src="images/china/china-vivid-supplier-visit.webp"
-                                alt="Victor Akoyo outside the Vivid supplier factory in China"
-                                loading="lazy"
-                                class="china-main-image"
-                            >
 
-                        </div>
+                        if (
+                            entry.isIntersecting
+                        ) {
 
 
-                        <div class="china-side-images">
+                            window.setTimeout(
+                                playImpactHint,
+                                350
+                            );
 
-                            <img
-                                src="images/china/china-product-quality-review.webp"
-                                alt="Victor reviewing a woven outdoor furniture product during a China supplier visit"
-                                loading="lazy"
-                            >
 
-                            <img
-                                src="images/china/china-aluminium-frame-production.webp"
-                                alt="Aluminium outdoor furniture frames during production at a supplier factory in China"
-                                loading="lazy"
-                            >
+                            impactHintObserver
+                                .unobserve(
+                                    entry.target
+                                );
 
-                        </div>
 
-                    </div>
+                        }
 
 
-                    <div class="china-feature-content">
+                    }
+                );
 
-                        <div class="work-meta">
 
-                            <span>
-                                International Supplier Development
-                            </span>
+            },
 
-                            <span>
-                                China • March 2025
-                            </span>
 
-                        </div>
+            {
+                threshold: 0.38
+            }
 
 
-                        <h3>
-                            Supplier continuity &
-                            manufacturing development
-                        </h3>
+        );
 
 
-                        <p>
-                            Supported supplier-continuity negotiations,
-                            studied mature supplier operations and helped
-                            formalise quality and process controls at an
-                            early-stage Hunan furniture operation.
-                        </p>
+    impactHintObserver.observe(
+        impactGrid
+    );
 
 
-                        <div class="tag-row">
+}
 
-                            <span>
-                                Supplier negotiation
-                            </span>
 
-                            <span>
-                                Factory process
-                            </span>
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
-                            <span>
-                                Quality systems
-                            </span>
+const navigationLinks =
+    document.querySelectorAll(
+        ".main-nav a"
+    );
 
-                            <span>
-                                5S
-                            </span>
 
-                        </div>
+const navigationSections =
+    Array.from(
+        navigationLinks
+    )
+    .map(
+        link => {
 
 
-                        <span class="work-card-link">
-                            Open China case study ↗
-                        </span>
+            const selector =
+                link.getAttribute(
+                    "href"
+                );
 
-                    </div>
 
-                </article>
+            return document
+                .querySelector(
+                    selector
+                );
 
 
-                <!-- =================================================
-                     SECONDARY WORK
-                ================================================== -->
+        }
+    )
+    .filter(Boolean);
 
-                <div class="work-grid-secondary">
 
+function updateActiveNavigation() {
 
-                    <!-- LOGISTICS -->
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="logistics"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    const position =
+        window.scrollY +
+        150;
 
-                        <div class="work-meta">
 
-                            <span>
-                                Supply Chain Transformation
-                            </span>
+    let activeSection =
+        "";
 
-                            <span>
-                                Rattan Direct
-                            </span>
 
-                        </div>
+    navigationSections.forEach(
+        section => {
 
 
-                        <h3>
-                            Restructuring warehousing and
-                            final-mile operations
-                        </h3>
+            const top =
+                section.offsetTop;
 
 
-                        <p>
-                            Reworked logistics economics across storage,
-                            unloading, picking and final-mile delivery,
-                            then led the transition into a more efficient
-                            3PL model.
-                        </p>
+            const bottom =
+                top +
+                section.offsetHeight;
 
 
-                        <div class="work-stat-row">
+            if (
+                position >= top &&
+                position < bottom
+            ) {
 
-                            <div>
-                                <strong>
-                                    ~£520k
-                                </strong>
 
-                                <span>
-                                    annual savings
-                                </span>
-                            </div>
+                activeSection =
+                    section.id;
 
 
-                            <div>
-                                <strong>
-                                    1,000+
-                                </strong>
+            }
 
-                                <span>
-                                    SKUs
-                                </span>
-                            </div>
 
+        }
+    );
 
-                            <div>
-                                <strong>
-                                    ~60
-                                </strong>
 
-                                <span>
-                                    peak containers/month
-                                </span>
-                            </div>
+    navigationLinks.forEach(
+        link => {
 
-                        </div>
 
+            link.classList.remove(
+                "active"
+            );
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
 
-                    </article>
+            if (
+                link.getAttribute(
+                    "href"
+                ) ===
+                `#${activeSection}`
+            ) {
 
 
-                    <!-- EOS -->
+                link.classList.add(
+                    "active"
+                );
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="eos"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
 
-                        <div class="work-meta">
+            }
 
-                            <span>
-                                Business Operations
-                            </span>
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+        }
+    );
 
-                        </div>
 
+}
 
-                        <h3>
-                            Embedding an operating system for execution
-                        </h3>
 
+window.addEventListener(
 
-                        <p>
-                            Functioned as the internal EOS Integrator,
-                            translating leadership priorities into
-                            VTO reviews, Rocks, scorecards, Level 10s,
-                            Issues/IDS and follow-through.
-                        </p>
+    "scroll",
 
+    updateActiveNavigation,
 
-                        <div class="mini-flow">
+    {
+        passive: true
+    }
 
-                            <span>
-                                Vision
-                            </span>
+);
 
-                            <b>→</b>
 
-                            <span>
-                                Rocks
-                            </span>
+window.addEventListener(
 
-                            <b>→</b>
+    "load",
 
-                            <span>
-                                Scorecard
-                            </span>
+    updateActiveNavigation
 
-                            <b>→</b>
+);
 
-                            <span>
-                                IDS
-                            </span>
 
-                            <b>→</b>
+/* =========================================================
+   CASE STUDY DATA
+========================================================= */
 
-                            <span>
-                                Action
-                            </span>
+const caseStudyData = {
 
-                        </div>
 
+    logistics: {
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
 
-                    </article>
+        kicker:
+            "Supply Chain Transformation • Rattan Direct",
 
 
-                    <!-- QUALITY -->
+        title:
+            "Restructuring warehousing and final-mile operations",
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="quality"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
 
-                        <div class="work-meta">
+        summary:
+            "A commercial and operational transformation across warehousing, 3PL and final-mile delivery that materially changed the logistics cost base.",
 
-                            <span>
-                                Quality + Product Improvement
-                            </span>
 
-                            <span>
-                                Rattan Direct
-                            </span>
+        problem:
+            "Warehousing, storage, unloading, picking and delivery structures were creating significant cost and operational friction. The business needed a more efficient logistics model without losing service continuity.",
 
-                        </div>
 
+        analysis:
+            "Historical rate cards, invoice structures, storage models, unloading charges, picking methods and final-mile costs were compared across providers. The review focused on the commercial drivers underneath the headline rates rather than treating logistics as one blended cost.",
 
-                        <h3>
-                            Reducing returns through product
-                            and process improvement
-                        </h3>
 
+        action:
+            "Benchmarked providers, negotiated commercial terms and SLAs, redesigned parts of the picking-cost model, challenged invoice structures and led the operational transition from Denholm into a more efficient ArrowXL/RXL model while managing inbound continuity.",
 
-                        <p>
-                            Connected customer evidence,
-                            supplier quality, packaging, handling,
-                            delivery and product design changes
-                            to reduce returns by cubic volume.
-                        </p>
 
+        tools:
+            "Rate-card and invoice analysis, 3PL commercial negotiation, SLA review, warehouse capacity planning, transition governance, executive reporting and operational issue management.",
 
-                        <div class="single-stat">
 
-                            <strong>
-                                12% → 4%
-                            </strong>
+        result:
+            "~£520K annual logistics savings",
 
-                            <span>
-                                returns by CBM
-                            </span>
 
-                        </div>
+        resultDetail:
+            "Approximately £400K in warehouse/3PL savings plus approximately £120K in final-mile savings.",
 
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+        learning:
+            "Demonstrates commercial judgement, provider management, negotiation, operating-model redesign and the ability to turn detailed cost analysis into a material business outcome."
 
-                    </article>
 
+    },
 
-                    <!-- AUTOMATION -->
 
-                    <article
-                        class="work-card work-card-ai reveal case-trigger"
-                        data-case="automation"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    china: {
 
-                        <div class="work-meta">
 
-                            <span>
-                                AI-Enabled Operations
-                            </span>
+        kicker:
+            "International Supplier & Manufacturing Development • China • March 2025",
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
 
-                        </div>
+        title:
+            "Supplier continuity and early-stage manufacturing formalisation",
 
 
-                        <h3>
-                            From leadership meeting transcript
-                            to management intelligence
-                        </h3>
+        summary:
+            "A two-week China trip combining supplier engagement, business-continuity negotiation, manufacturing learning and practical quality/process formalisation at an early-stage Hunan furniture operation.",
 
 
-                        <p>
-                            Built a live workflow that retrieved
-                            leadership meeting information, applied
-                            AI-assisted analysis and returned structured
-                            reporting to Microsoft Teams.
-                        </p>
+        problem:
+            "Rattan Direct was navigating a difficult cash-flow period while relying on key Chinese suppliers for 2025 production. At the same time, a new Hunan operation intended initially to supply Rattan Direct was producing but still operating with relatively informal work instructions and process controls.",
 
 
-                        <div class="mini-flow mini-flow-teal">
+        analysis:
+            "The first week was used to observe established supplier practices across factory layout, workstations, manufacturing processes, work instructions, quality checks, health and safety, packaging and logistics. Customer-return evidence and known product issues were also used to compare expected quality with what was being produced.",
 
-                            <span>
-                                SharePoint
-                            </span>
 
-                            <b>→</b>
+        action:
+            "Supported Robert Fernandez and sourcing consultant Vincent/Du Wang during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, physically created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
 
-                            <span>
-                                Graph
-                            </span>
 
-                            <b>→</b>
+        tools:
+            "Supplier review, approved samples, customer photographs and complaint evidence, product knowledge, visual inspection, QC documentation, work instructions, 5S, process mapping, packaging standards and factory-floor observation.",
 
-                            <span>
-                                AI
-                            </span>
 
-                            <b>→</b>
+        result:
+            "Supplier production restarted and process controls were strengthened",
 
-                            <span>
-                                Teams
-                            </span>
 
-                        </div>
+        resultDetail:
+            "Vivid agreed to resume 2025 production after the negotiation, with aluminium frames already being worked on before the visit ended. The Hunan team adopted the quality and process recommendations.",
 
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+        learning:
+            "Demonstrates direct international supplier exposure, business-continuity support, manufacturing-process understanding, quality-at-source thinking and practical early-stage factory-process formalisation.",
 
-                    </article>
 
-                </div>
+        gallery: [
 
-            </div>
 
-        </section>
+            {
 
+                src:
+                    "images/china/china-vivid-supplier-visit.webp",
 
-        <!-- =====================================================
-             AI-ENABLED OPERATIONS & AUTOMATION
-        ====================================================== -->
+                alt:
+                    "Victor Akoyo outside the Vivid supplier factory in China"
 
-        <section
-            id="automation"
-            class="section automation-section"
-        >
+            },
 
-            <div class="container">
 
+            {
 
-                <div class="automation-heading reveal">
+                src:
+                    "images/china/china-product-quality-review.webp",
 
-                    <div>
+                alt:
+                    "Victor reviewing a woven outdoor furniture product during a China supplier visit"
 
-                        <h2 class="section-title">
-                            AI-Enabled Operations & Automation
-                        </h2>
+            },
 
-                        <p class="section-tagline">
-                            Technology as part of the operating system.
-                        </p>
 
-                    </div>
+            {
 
+                src:
+                    "images/china/china-aluminium-frame-production.webp",
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="button button-teal"
-                    >
-                        View Full GitHub Portfolio
-                    </a>
+                alt:
+                    "Aluminium outdoor furniture frames during production at a supplier factory"
 
-                </div>
+            },
 
 
-                <div class="automation-grid">
+            {
 
+                src:
+                    "images/china/china-frame-welding-process.webp",
 
-                    <!-- AUTOMATION 01 -->
+                alt:
+                    "Welding equipment and aluminium furniture frames during production"
 
-                    <article class="automation-card reveal">
+            },
 
-                        <span class="automation-number">
-                            01
-                        </span>
 
+            {
 
-                        <div class="automation-icon">
-                            MI
-                        </div>
+                src:
+                    "images/china/china-weaving-quality-detail.webp",
 
+                alt:
+                    "Close-up of woven furniture showing the weaving process and quality detail"
 
-                        <h3>
-                            Executive Meeting Intelligence
-                        </h3>
+            },
 
 
-                        <p>
-                            Converts recurring leadership meeting
-                            information into structured AI-assisted
-                            reporting using Microsoft 365 retrieval,
-                            workflow state and Teams delivery.
-                        </p>
+            {
 
+                src:
+                    "images/china/china-finished-outdoor-furniture.webp",
 
-                        <div class="automation-stack">
-                            Make.com • SharePoint • Microsoft Graph •
-                            OpenAI • Teams
-                        </div>
+                alt:
+                    "Finished woven outdoor furniture at a China supplier"
 
+            }
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/02-executive-meeting-intelligence"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
 
-                    </article>
+        ]
 
 
-                    <!-- AUTOMATION 02 -->
+    },
 
-                    <article class="automation-card reveal">
 
-                        <span class="automation-number">
-                            02
-                        </span>
+    eos: {
 
 
-                        <div class="automation-icon automation-icon-amber">
-                            OI
-                        </div>
+        kicker:
+            "Business Operations • Optimise Outsourcing",
 
 
-                        <h3>
-                            Operational AI Intelligence
-                        </h3>
+        title:
+            "Embedding an operating system for execution",
 
 
-                        <p>
-                            A two-stage Collector and Publisher
-                            system designed to connect operational
-                            problems with relevant AI developments
-                            and produce a curated weekly intelligence
-                            update.
-                        </p>
+        summary:
+            "Internal EOS Integrator ownership across planning, meeting cadence, Rocks, scorecards, accountability and issue follow-through.",
 
 
-                        <div class="automation-stack">
-                            Make.com • AI Web Search • Data Store •
-                            AI Toolkit • Teams
-                        </div>
+        problem:
+            "A growing business needed a repeatable mechanism for turning leadership priorities into visible commitments, weekly follow-through and cross-functional accountability.",
 
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/06-operational-ai-intelligence"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+        analysis:
+            "The requirement was broader than running meetings. Vision, quarterly priorities, scorecards, Issues/IDS, current and future accountabilities and department-level execution needed to connect to one operating rhythm.",
 
-                    </article>
 
+        action:
+            "Functioned as the internal Integrator: owned the quarterly VTO review cadence, ran SLT Level 10 meetings, managed company and departmental Rocks in Sage HR using RAG status, created and maintained current/future Accountability Charts, owned the Issues List and Microsoft Teams Planner follow-up, operated daily huddles and other tactical meeting rhythms, and ran the weekly Win the Week execution practice.",
 
-                    <!-- AUTOMATION 03 -->
 
-                    <article class="automation-card reveal">
+        tools:
+            "EOS/VTO, Level 10s, IDS, quarterly Rocks, Sage HR RAG tracking, current/future Accountability Charts, Microsoft Teams Planner, KPI scorecards, daily huddles, cash-flow tactical reviews and quarterly organisational check-ups.",
 
-                        <span class="automation-number">
-                            03
-                        </span>
 
+        result:
+            "A structured cross-functional execution rhythm",
 
-                        <div class="automation-icon automation-icon-violet">
-                            VO
-                        </div>
 
+        resultDetail:
+            "Leadership priorities were connected to weekly measures, quarterly Rocks, issue-solving, ownership and recurring review rather than left as isolated plans.",
 
-                        <h3>
-                            VORA Personal Operations Assistant
-                        </h3>
 
+        learning:
+            "Demonstrates operating-system thinking: connecting vision, measures, meetings, accountability and decision-making. Strategic content was collaboratively authored; the operating cadence and Integrator mechanism were the core area of ownership."
 
-                        <p>
-                            A WhatsApp-based assistant combining
-                            text and audio, transcription,
-                            conversational memory, structured context,
-                            controlled tools, commitments, check-ins
-                            and external search.
-                        </p>
 
+    },
 
-                        <div class="automation-stack">
-                            n8n • WhatsApp • Anthropic • Groq •
-                            Structured Tools • Tavily
-                        </div>
 
+    quality: {
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/04-vora-personal-assistant"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
 
-                    </article>
+        kicker:
+            "Quality + Product Improvement • Rattan Direct",
 
-                </div>
 
+        title:
+            "Reducing returns through product and process improvement",
 
-                <div class="automation-more reveal">
 
-                    <strong>
-                        Also documented:
-                    </strong>
+        summary:
+            "A cross-functional quality improvement effort spanning supplier quality, packaging, handling, delivery, reverse logistics and product-design changes.",
 
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/01-daily-ai-briefing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Daily AI Briefing
-                    </a>
+        problem:
+            "Returns were being driven by several failure modes across the product journey, including defects, packaging weaknesses, handling damage and delivery-related issues.",
 
 
-                    <span>
-                        •
-                    </span>
+        analysis:
+            "Return data, recurring defect patterns, customer photographs, warehouse observations, delivery issues and supplier-quality findings were used to distinguish where failures were occurring and where controls or product changes were needed.",
 
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/03-crm-campaign-routing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        CRM Campaign Routing
-                    </a>
+        action:
+            "Coordinated supplier-quality actions, packaging improvements, delivery-quality reviews and reverse-logistics interventions. Product-design changes included moving some feet from plastic to aluminium where transit damage was recurring. China supplier visits also allowed customer evidence to be taken back into manufacturing discussions.",
 
 
-                    <span>
-                        •
-                    </span>
+        tools:
+            "Return-cause analysis, supplier reviews, customer evidence, packaging reviews, logistics-quality reviews, corrective-action tracking and product-design feedback.",
 
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/05-it-support-triage"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        IT Support Triage
-                    </a>
+        result:
+            "Returns reduced from ~12% to ~4% by CBM",
 
-                </div>
 
-            </div>
+        resultDetail:
+            "The improvement came from combined supplier, packaging, handling, product and logistics interventions rather than one isolated change.",
 
-        </section>
 
+        learning:
+            "Demonstrates end-to-end quality thinking: following failure from customer experience back through product, supplier, warehouse and delivery processes."
 
-        <!-- =====================================================
-             EXPERIENCE
-        ====================================================== -->
 
-        <section
-            id="experience"
-            class="section"
-        >
+    },
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+    automation: {
 
-                    <h2 class="section-title">
-                        Experience
-                    </h2>
 
-                    <p class="section-tagline">
-                        Engineering foundation. Operations career.
-                    </p>
+        kicker:
+            "AI-Enabled Operations • Optimise Outsourcing",
 
-                </div>
 
+        title:
+            "From leadership meeting transcript to management intelligence",
 
-                <div class="timeline">
 
+        summary:
+            "A live workflow that converted recurring senior-leadership meeting information into structured AI-assisted reports and returned them to Microsoft Teams.",
 
-                    <!-- OPTIMISE -->
 
-                    <article class="timeline-item reveal">
+        problem:
+            "SLT Level 10 meetings generated transcripts that required repetitive manual review, structuring and reporting before the main issues, actions and insights could be shared consistently.",
 
-                        <div class="timeline-date">
-                            2025–2026
-                        </div>
 
+        analysis:
+            "The workflow needed to fit the existing Microsoft 365 environment, retrieve the right meeting and transcript information, apply a repeatable analysis structure, manage processing state and return the result to the same operating context.",
 
-                        <div class="timeline-content">
 
-                            <h3>
-                                Operations Manager & EOS Integrator
-                            </h3>
+        action:
+            "Built a Make.com workflow using SharePoint monitoring, HTTP/Microsoft Graph retrieval, iteration, meeting/transcript retrieval, OpenAI analysis, Markdown formatting, Teams delivery and Data Store checks/updates to control repeat processing.",
 
-                            <h4>
-                                Optimise Outsourcing
-                            </h4>
 
-                            <p>
-                                Cross-functional Operations Manager and
-                                internal EOS Integrator, translating
-                                leadership priorities into execution through
-                                VTO planning, quarterly Rocks, current/future
-                                Accountability Charts, SLT and departmental
-                                Level 10s, leadership scorecards, cash-flow
-                                and finance reviews, Issues/IDS and
-                                AI-enabled workflow automation.
-                            </p>
+        tools:
+            "Make.com, SharePoint, Microsoft Graph/HTTP, OpenAI, Markdown, Microsoft Teams, Make Data Store and structured reporting logic.",
 
-                        </div>
 
-                    </article>
+        result:
+            "Live workflow used on real SLT Level 10 meetings",
 
 
-                    <!-- RATTAN DIRECT -->
+        resultDetail:
+            "Converted a recurring manual reporting task into a repeatable workflow embedded in the existing leadership operating rhythm.",
 
-                    <article class="timeline-item reveal">
 
-                        <div class="timeline-date">
-                            2022–2026
-                        </div>
+        learning:
+            "Demonstrates practical workflow automation and the ability to connect AI to a real operating need while keeping AI as one component of a wider business process."
 
 
-                        <div class="timeline-content">
+    },
 
-                            <h3>
-                                Supply Chain, Quality Control &
-                                Technical Manager
-                            </h3>
 
-                            <h4>
-                                Rattan Direct
-                            </h4>
+    manufacturing: {
 
-                            <p>
-                                Led international supply chain, logistics,
-                                quality and technical operations across a
-                                China-based supplier network, 1,000+ SKUs
-                                and UK logistics operations. Scope included
-                                demand planning, supplier quality, commercial
-                                negotiation, warehousing, freight, final mile,
-                                returns, product improvement and direct
-                                supplier/factory engagement in China.
-                            </p>
 
-                        </div>
+        kicker:
+            "Manufacturing Quality • Auto Springs East Africa",
 
-                    </article>
 
+        title:
+            "Reducing U-bolt rejection",
 
-                    <!-- TILE & CARPET -->
 
-                    <article class="timeline-item reveal">
+        summary:
+            "A manufacturing-quality improvement effort using structured quality methods to strengthen process control and reduce rejection.",
 
-                        <div class="timeline-date">
-                            2021–2022
-                        </div>
 
+        problem:
+            "U-bolt rejection performance required stronger process control, measurement discipline and structured analysis of recurring variation.",
 
-                        <div class="timeline-content">
 
-                            <h3>
-                                Quality Team Lead
-                            </h3>
+        analysis:
+            "Production quality performance was assessed through inspection data and structured quality tools to understand failure modes, measurement reliability and process conditions contributing to rejection.",
 
-                            <h4>
-                                Tile & Carpet Centre
-                            </h4>
 
-                            <p>
-                                Led manufacturing-quality controls,
-                                inspection, corrective action and complaint
-                                improvement, reducing customer complaints
-                                from approximately 12% to 5% while
-                                maintaining KEBS audit compliance.
-                            </p>
+        action:
+            "Applied production quality controls, SPC, PFMEA, MSA and corrective-action practices while working with production teams to strengthen forming controls, checking methods and defect prevention.",
 
-                        </div>
 
-                    </article>
+        tools:
+            "SPC, PFMEA, MSA, control plans, production inspection, corrective action and ISO 9001 quality documentation.",
 
 
-                    <!-- AUTO SPRINGS -->
+        result:
+            "U-bolt rejection reduced from ~4% to ~2%",
 
-                    <article class="timeline-item reveal">
 
-                        <div class="timeline-date">
-                            2020–2021
-                        </div>
+        resultDetail:
+            "The improvement came from stronger process controls, measurement discipline and structured manufacturing-quality improvement.",
 
 
-                        <div class="timeline-content">
+        learning:
+            "Demonstrates an engineering-quality foundation and practical use of structured quality tools to produce measurable manufacturing improvement."
 
-                            <h3>
-                                Quality Control Engineer
-                            </h3>
 
-                            <h4>
-                                Auto Springs East Africa PLC
-                            </h4>
+    },
 
-                            <p>
-                                Automotive manufacturing quality using SPC,
-                                PFMEA, MSA, control plans and corrective
-                                action, including reduction of U-bolt
-                                rejection from approximately 4% to 2%.
-                            </p>
 
-                        </div>
+    complaints: {
 
-                    </article>
 
+        kicker:
+            "Quality Leadership • Tile & Carpet Centre",
 
-                    <!-- COCA-COLA -->
 
-                    <article class="timeline-item reveal">
+        title:
+            "Reducing customer complaints",
 
-                        <div class="timeline-date">
-                            2018–2020
-                        </div>
 
+        summary:
+            "A manufacturing-quality improvement effort that strengthened inspection, corrective action and production-quality discipline.",
 
-                        <div class="timeline-content">
 
-                            <h3>
-                                Electrical Engineer
-                            </h3>
+        problem:
+            "Customer complaints were running at an elevated level and required better control of recurring defects and more disciplined follow-through.",
 
-                            <h4>
-                                Coca-Cola Beverages Africa
-                            </h4>
 
-                            <p>
-                                FMCG production engineering, preventive
-                                and reactive maintenance, utilities,
-                                SAP PM, troubleshooting, line efficiency
-                                and specialist-vendor overhaul coordination.
-                            </p>
+        analysis:
+            "Complaint patterns, production issues and inspection findings were used to identify recurring causes and where manufacturing-quality controls needed to be strengthened.",
 
-                        </div>
 
-                    </article>
+        action:
+            "Led quality inspection and corrective-action activity, worked with production teams on recurring defects, strengthened quality controls and maintained audit readiness.",
 
-                </div>
 
-            </div>
+        tools:
+            "Complaint analysis, production inspection, root-cause analysis, corrective action, quality audits and KEBS compliance controls.",
 
-        </section>
 
+        result:
+            "Customer complaints reduced from ~12% to ~5%",
 
-        <!-- =====================================================
-             SYSTEMS & TECHNICAL CAPABILITY
-        ====================================================== -->
 
-        <section
-            id="technology"
-            class="section section-soft"
-        >
+        resultDetail:
+            "The reduction was achieved while maintaining 100% KEBS audit compliance.",
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+        learning:
+            "Demonstrates quality leadership, structured problem solving and the ability to convert customer-quality signals into production improvement."
 
-                    <h2 class="section-title">
-                        Systems & Technical Capability
-                    </h2>
 
-                    <p class="section-tagline">
-                        Business systems used to strengthen operations.
-                    </p>
+    }
 
-                </div>
 
+};
 
-                <div class="capability-grid">
 
+/* =========================================================
+   MODAL ELEMENTS
+========================================================= */
 
-                    <article class="capability-card reveal">
+const caseModal =
+    document.getElementById(
+        "caseModal"
+    );
 
-                        <span class="capability-kicker">
-                            Operational Systems
-                        </span>
 
-                        <h3>
-                            Enterprise & business platforms
-                        </h3>
+const caseModalPanel =
+    caseModal
+        ? caseModal.querySelector(
+            ".case-modal-panel"
+        )
+        : null;
 
-                        <p>
-                            SAP PM, OrderWise, Xero, eDesk,
-                            Sage HR, Microsoft 365,
-                            SharePoint and Teams.
-                        </p>
 
-                    </article>
+const caseModalKicker =
+    document.getElementById(
+        "caseModalKicker"
+    );
 
 
-                    <article class="capability-card reveal">
+const caseModalTitle =
+    document.getElementById(
+        "caseModalTitle"
+    );
 
-                        <span class="capability-kicker">
-                            Analytics & Management Information
-                        </span>
 
-                        <h3>
-                            Operational visibility
-                        </h3>
+const caseModalSummary =
+    document.getElementById(
+        "caseModalSummary"
+    );
 
-                        <p>
-                            Excel, practical Power BI,
-                            KPI scorecards, forecasting,
-                            cost analysis, reconciliations
-                            and executive reporting.
-                        </p>
 
-                    </article>
+const caseModalProblem =
+    document.getElementById(
+        "caseModalProblem"
+    );
 
 
-                    <article class="capability-card reveal">
+const caseModalAnalysis =
+    document.getElementById(
+        "caseModalAnalysis"
+    );
 
-                        <span class="capability-kicker">
-                            Workflow Automation
-                        </span>
 
-                        <h3>
-                            Practical business automation
-                        </h3>
+const caseModalAction =
+    document.getElementById(
+        "caseModalAction"
+    );
 
-                        <p>
-                            Make.com, n8n, Power Automate,
-                            Microsoft Graph, webhooks,
-                            OpenAI APIs and structured
-                            workflow design.
-                        </p>
 
-                    </article>
+const caseModalTools =
+    document.getElementById(
+        "caseModalTools"
+    );
 
 
-                    <article
-                        class="capability-card capability-card-developing reveal"
-                    >
+const caseModalResult =
+    document.getElementById(
+        "caseModalResult"
+    );
 
-                        <span class="capability-kicker">
-                            Developing Technical Foundations
-                        </span>
 
-                        <h3>
-                            Building greater independence
-                        </h3>
+const caseModalResultDetail =
+    document.getElementById(
+        "caseModalResultDetail"
+    );
 
-                        <p>
-                            JSON, REST APIs, authentication/OAuth,
-                            Git/GitHub, Python and more advanced
-                            error-handling patterns.
-                        </p>
 
-                    </article>
+const caseModalLearning =
+    document.getElementById(
+        "caseModalLearning"
+    );
 
-                </div>
 
-            </div>
+const caseModalContact =
+    document.getElementById(
+        "caseModalContact"
+    );
 
-        </section>
 
+const caseModalMedia =
+    document.getElementById(
+        "caseModalMedia"
+    );
 
-        <!-- =====================================================
-             EDUCATION & CERTIFICATIONS
-        ====================================================== -->
 
-        <section
-            id="education"
-            class="section"
-        >
+let lastModalTrigger =
+    null;
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+/* =========================================================
+   POPULATE MODAL
+========================================================= */
 
-                    <h2 class="section-title">
-                        Education & Certifications
-                    </h2>
+function populateCaseModal(
+    caseKey
+) {
 
-                </div>
 
+    const data =
+        caseStudyData[
+            caseKey
+        ];
 
-                <div class="education-grid">
 
+    if (!data) {
 
-                    <article class="education-card reveal">
+        return false;
 
-                        <span class="education-year">
-                            2018
-                        </span>
+    }
 
 
-                        <h3>
-                            BSc Control & Instrumentation
-                        </h3>
+    caseModalKicker.textContent =
+        data.kicker;
 
 
-                        <p>
-                            Jomo Kenyatta University of Agriculture
-                            and Technology
-                        </p>
+    caseModalTitle.textContent =
+        data.title;
 
 
-                        <small>
-                            Second Class Honours
-                        </small>
+    caseModalSummary.textContent =
+        data.summary;
 
-                    </article>
 
+    caseModalProblem.textContent =
+        data.problem;
 
-                    <article class="education-card reveal">
 
-                        <span class="education-year">
-                            Professional Certifications
-                        </span>
+    caseModalAnalysis.textContent =
+        data.analysis;
 
 
-                        <h3>
-                            Operations, Service & Quality
-                        </h3>
+    caseModalAction.textContent =
+        data.action;
 
 
-                        <p>
-                            ITIL 4 • Scrum • ISO 9001 Internal Auditor
-                        </p>
+    caseModalTools.textContent =
+        data.tools;
 
-                    </article>
 
-                </div>
+    caseModalResult.textContent =
+        data.result;
 
-            </div>
 
-        </section>
+    caseModalResultDetail.textContent =
+        data.resultDetail;
 
 
-        <!-- =====================================================
-             CONTACT
-        ====================================================== -->
+    caseModalLearning.textContent =
+        data.learning;
 
-        <section
-            id="contact"
-            class="contact-section"
-        >
 
-            <div class="container">
+    if (caseModalMedia) {
 
 
-                <div class="contact-heading reveal">
+        caseModalMedia.innerHTML =
+            "";
 
-                    <h2>
-                        Let's connect.
-                    </h2>
 
+        if (
+            Array.isArray(
+                data.gallery
+            ) &&
+            data.gallery.length
+        ) {
 
-                    <p>
-                        For relevant opportunities across Operations,
-                        Business Operations, Supply Chain, Quality,
-                        Process Improvement and AI-enabled Operations,
-                        choose the easiest way to reach me.
-                    </p>
 
-                </div>
+            const gallery =
+                document.createElement(
+                    "div"
+                );
 
 
-                <div class="contact-grid">
+            gallery.className =
+                "china-gallery";
 
 
-                    <!-- EMAIL -->
+            data.gallery.forEach(
+                item => {
 
-                    <a
-                        class="contact-card reveal"
-                        href="mailto:vicakoyo2@gmail.com"
-                    >
 
-                        <div class="contact-icon">
-                            ✉
-                        </div>
+                    const figure =
+                        document.createElement(
+                            "figure"
+                        );
 
 
-                        <div class="contact-info">
+                    const image =
+                        document.createElement(
+                            "img"
+                        );
 
-                            <span class="contact-label">
-                                Email
-                            </span>
 
-                            <strong>
-                                vicakoyo2@gmail.com
-                            </strong>
+                    image.src =
+                        item.src;
 
-                        </div>
 
+                    image.alt =
+                        item.alt;
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+                    image.loading =
+                        "lazy";
 
 
-                    <!-- WHATSAPP -->
+                    figure.appendChild(
+                        image
+                    );
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://wa.me/254797590490"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
 
-                        <div class="contact-icon">
-                            ◉
-                        </div>
+                    gallery.appendChild(
+                        figure
+                    );
 
 
-                        <div class="contact-info">
+                }
+            );
 
-                            <span class="contact-label">
-                                WhatsApp
-                            </span>
 
-                            <strong>
-                                Message Me
-                            </strong>
+            caseModalMedia.appendChild(
+                gallery
+            );
 
-                        </div>
 
+            caseModalMedia.hidden =
+                false;
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+        } else {
 
 
-                    <!-- LINKEDIN -->
+            caseModalMedia.hidden =
+                true;
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://www.linkedin.com/in/victorakoyo/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
 
-                        <div class="contact-icon">
-                            in
-                        </div>
+        }
 
 
-                        <div class="contact-info">
+    }
 
-                            <span class="contact-label">
-                                LinkedIn
-                            </span>
 
-                            <strong>
-                                Connect on LinkedIn
-                            </strong>
+    return true;
 
-                        </div>
 
+}
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+/* =========================================================
+   OPEN / CLOSE MODAL
+========================================================= */
 
-                </div>
+function openCaseModal(
+    caseKey,
+    trigger
+) {
 
-            </div>
 
-        </section>
+    if (
+        !caseModal ||
+        !caseModalPanel ||
+        !populateCaseModal(
+            caseKey
+        )
+    ) {
 
-    </main>
+        return;
 
+    }
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
-    <footer class="site-footer">
+    lastModalTrigger =
+        trigger ||
+        document.activeElement;
 
-        <div class="container footer-content">
 
-            <span>
-                © <span id="currentYear"></span> Victor Akoyo
-            </span>
+    caseModal.classList.add(
+        "open"
+    );
 
 
-            <span>
-                Operations • Supply Chain • Quality • AI-Enabled Operations
-            </span>
+    caseModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
 
 
-            <a href="#home">
-                Back to top ↑
-            </a>
+    document.body.classList.add(
+        "modal-open"
+    );
 
-        </div>
 
-    </footer>
+    window.setTimeout(
+        () => {
 
 
-    <!-- =====================================================
-         CASE STUDY MODAL
-    ====================================================== -->
+            caseModalPanel.focus();
 
-    <div
-        id="caseModal"
-        class="case-modal"
-        aria-hidden="true"
-    >
 
+        },
+        30
+    );
 
-        <div
-            class="case-modal-backdrop"
-            data-close-modal
-        ></div>
 
+}
 
-        <section
-            class="case-modal-panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="caseModalTitle"
-            tabindex="-1"
-        >
 
+function closeCaseModal() {
 
-            <button
-                type="button"
-                class="case-modal-close"
-                aria-label="Close case study"
-                data-close-modal
-            >
-                ×
-            </button>
 
+    if (!caseModal) {
 
-            <div
-                class="case-modal-kicker"
-                id="caseModalKicker"
-            ></div>
+        return;
 
+    }
 
-            <h2 id="caseModalTitle"></h2>
 
+    caseModal.classList.remove(
+        "open"
+    );
 
-            <p
-                class="case-modal-summary"
-                id="caseModalSummary"
-            ></p>
 
+    caseModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
-            <div
-                id="caseModalMedia"
-                class="case-modal-media"
-                hidden
-            ></div>
 
+    document.body.classList.remove(
+        "modal-open"
+    );
 
-            <div class="case-modal-grid">
 
+    if (
+        lastModalTrigger &&
+        typeof
+            lastModalTrigger.focus ===
+            "function"
+    ) {
 
-                <div class="case-modal-block">
 
-                    <span>
-                        Context / Problem
-                    </span>
+        lastModalTrigger.focus();
 
-                    <p id="caseModalProblem"></p>
 
-                </div>
+    }
 
 
-                <div class="case-modal-block">
+}
 
-                    <span>
-                        Analysis
-                    </span>
 
-                    <p id="caseModalAnalysis"></p>
+/* =========================================================
+   CASE TRIGGERS
+========================================================= */
 
-                </div>
+document
+    .querySelectorAll(
+        "[data-case]"
+    )
+    .forEach(
+        trigger => {
 
 
-                <div class="case-modal-block">
+            trigger.addEventListener(
+                "click",
+                () => {
 
-                    <span>
-                        Action
-                    </span>
 
-                    <p id="caseModalAction"></p>
+                    openCaseModal(
+                        trigger.dataset.case,
+                        trigger
+                    );
 
-                </div>
 
+                }
+            );
 
-                <div class="case-modal-block">
 
-                    <span>
-                        Systems / Methods
-                    </span>
+            if (
+                trigger.getAttribute(
+                    "role"
+                ) ===
+                "button"
+            ) {
 
-                    <p id="caseModalTools"></p>
 
-                </div>
+                trigger.addEventListener(
+                    "keydown",
+                    event => {
 
 
-                <div
-                    class="case-modal-block case-modal-result-block"
-                >
+                        if (
+                            event.key ===
+                                "Enter" ||
+                            event.key ===
+                                " "
+                        ) {
 
-                    <span>
-                        Result
-                    </span>
 
-                    <strong id="caseModalResult"></strong>
+                            event.preventDefault();
 
-                    <p id="caseModalResultDetail"></p>
 
-                </div>
+                            openCaseModal(
+                                trigger.dataset.case,
+                                trigger
+                            );
 
 
-                <div class="case-modal-block">
+                        }
 
-                    <span>
-                        What this demonstrates
-                    </span>
 
-                    <p id="caseModalLearning"></p>
+                    }
+                );
 
-                </div>
 
-            </div>
+            }
 
 
-            <div class="case-modal-footer">
+        }
+    );
 
 
-                <button
-                    type="button"
-                    class="button button-secondary"
-                    data-close-modal
-                >
-                    Close
-                </button>
+/* =========================================================
+   MODAL CLOSE CONTROLS
+========================================================= */
 
+document
+    .querySelectorAll(
+        "[data-close-modal]"
+    )
+    .forEach(
+        closeControl => {
 
-                <a
-                    href="#contact"
-                    class="button button-primary"
-                    id="caseModalContact"
-                >
-                    Discuss this work
-                </a>
 
-            </div>
+            closeControl.addEventListener(
+                "click",
+                closeCaseModal
+            );
 
-        </section>
 
-    </div>
+        }
+    );
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+if (caseModalContact) {
 
-    <script src="script.js"></script>
 
-</body>
+    caseModalContact.addEventListener(
+        "click",
+        closeCaseModal
+    );
 
-</html>
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+
+        if (
+            event.key ===
+                "Escape" &&
+            caseModal &&
+            caseModal.classList.contains(
+                "open"
+            )
+        ) {
+
+
+            closeCaseModal();
+
+
+        }
+
+
+    }
+);
+
+
+/* =========================================================
+   MOLECULE / ATOM BACKGROUND
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+
+if (
+    canvas &&
+    !reducedMotion
+) {
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    let width = 0;
+
+    let height = 0;
+
+    let pixelRatio = 1;
+
+    let particles = [];
+
+    let animationFrame = null;
+
+    let resizeTimer = null;
+
+
+    const pointer = {
+
+        x: null,
+
+        y: null,
+
+        innerRadius: 48,
+
+        outerRadius: 145
+
+    };
+
+
+    function getPointerFade(
+        x,
+        y
+    ) {
+
+
+        if (
+            pointer.x === null ||
+            pointer.y === null
+        ) {
+
+            return 1;
+
+        }
+
+
+        const dx =
+            x -
+            pointer.x;
+
+
+        const dy =
+            y -
+            pointer.y;
+
+
+        const distance =
+            Math.sqrt(
+                dx * dx +
+                dy * dy
+            );
+
+
+        if (
+            distance <=
+            pointer.innerRadius
+        ) {
+
+            return 0;
+
+        }
+
+
+        if (
+            distance >=
+            pointer.outerRadius
+        ) {
+
+            return 1;
+
+        }
+
+
+        return (
+
+            (
+                distance -
+                pointer.innerRadius
+            ) /
+
+            (
+                pointer.outerRadius -
+                pointer.innerRadius
+            )
+
+        );
+
+
+    }
+
+
+    class Particle {
+
+
+        constructor() {
+
+            this.reset();
+
+        }
+
+
+        reset() {
+
+
+            this.x =
+                Math.random() *
+                width;
+
+
+            this.y =
+                Math.random() *
+                height;
+
+
+            this.radius =
+                Math.random() *
+                1.25 +
+                0.8;
+
+
+            this.speedX =
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                0.12;
+
+
+            this.speedY =
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                0.12;
+
+
+            this.opacity =
+                Math.random() *
+                0.16 +
+                0.14;
+
+
+            const tone =
+                Math.random();
+
+
+            if (
+                tone > 0.84
+            ) {
+
+
+                this.tone =
+                    "teal";
+
+
+            } else if (
+                tone > 0.73
+            ) {
+
+
+                this.tone =
+                    "amber";
+
+
+            } else {
+
+
+                this.tone =
+                    "blue";
+
+
+            }
+
+
+        }
+
+
+        update() {
+
+
+            this.x +=
+                this.speedX;
+
+
+            this.y +=
+                this.speedY;
+
+
+            if (
+                this.x < -20
+            ) {
+
+
+                this.x =
+                    width + 20;
+
+
+            }
+
+
+            if (
+                this.x >
+                width + 20
+            ) {
+
+
+                this.x =
+                    -20;
+
+
+            }
+
+
+            if (
+                this.y < -20
+            ) {
+
+
+                this.y =
+                    height + 20;
+
+
+            }
+
+
+            if (
+                this.y >
+                height + 20
+            ) {
+
+
+                this.y =
+                    -20;
+
+
+            }
+
+
+        }
+
+
+        draw() {
+
+
+            const pointerFade =
+                getPointerFade(
+                    this.x,
+                    this.y
+                );
+
+
+            const alpha =
+                this.opacity *
+                pointerFade;
+
+
+            if (
+                alpha <= 0.005
+            ) {
+
+                return;
+
+            }
+
+
+            let fill;
+
+
+            if (
+                this.tone ===
+                "teal"
+            ) {
+
+
+                fill =
+                    `rgba(22, 140, 133, ${alpha})`;
+
+
+            } else if (
+                this.tone ===
+                "amber"
+            ) {
+
+
+                fill =
+                    `rgba(213, 148, 50, ${alpha * 0.76})`;
+
+
+            } else {
+
+
+                fill =
+                    `rgba(22, 116, 168, ${alpha})`;
+
+
+            }
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                this.x,
+                this.y,
+                this.radius,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                fill;
+
+
+            ctx.fill();
+
+
+        }
+
+
+    }
+
+
+    function createParticles() {
+
+
+        particles = [];
+
+
+        const area =
+            width *
+            height;
+
+
+        let count =
+            Math.floor(
+                area /
+                19000
+            );
+
+
+        if (
+            width < 760
+        ) {
+
+
+            count =
+                Math.min(
+                    Math.max(
+                        count,
+                        25
+                    ),
+                    34
+                );
+
+
+        } else {
+
+
+            count =
+                Math.min(
+                    Math.max(
+                        count,
+                        52
+                    ),
+                    82
+                );
+
+
+        }
+
+
+        for (
+            let i = 0;
+            i < count;
+            i++
+        ) {
+
+
+            particles.push(
+                new Particle()
+            );
+
+
+        }
+
+
+    }
+
+
+    function connectParticles() {
+
+
+        const maxDistance =
+            width < 760
+                ? 95
+                : 128;
+
+
+        for (
+            let i = 0;
+            i <
+            particles.length;
+            i++
+        ) {
+
+
+            for (
+                let j =
+                    i + 1;
+                j <
+                particles.length;
+                j++
+            ) {
+
+
+                const particleA =
+                    particles[i];
+
+
+                const particleB =
+                    particles[j];
+
+
+                const dx =
+                    particleA.x -
+                    particleB.x;
+
+
+                const dy =
+                    particleA.y -
+                    particleB.y;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance <
+                    maxDistance
+                ) {
+
+
+                    const fadeA =
+                        getPointerFade(
+                            particleA.x,
+                            particleA.y
+                        );
+
+
+                    const fadeB =
+                        getPointerFade(
+                            particleB.x,
+                            particleB.y
+                        );
+
+
+                    const cursorFade =
+                        Math.min(
+                            fadeA,
+                            fadeB
+                        );
+
+
+                    if (
+                        cursorFade <=
+                        0.01
+                    ) {
+
+                        continue;
+
+                    }
+
+
+                    const opacity =
+                        (
+                            1 -
+                            distance /
+                            maxDistance
+                        ) *
+                        0.105 *
+                        cursorFade;
+
+
+                    ctx.beginPath();
+
+
+                    ctx.moveTo(
+                        particleA.x,
+                        particleA.y
+                    );
+
+
+                    ctx.lineTo(
+                        particleB.x,
+                        particleB.y
+                    );
+
+
+                    ctx.strokeStyle =
+                        `rgba(22, 116, 168, ${opacity})`;
+
+
+                    ctx.lineWidth =
+                        0.65;
+
+
+                    ctx.stroke();
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    function resizeCanvas() {
+
+
+        width =
+            window.innerWidth;
+
+
+        height =
+            window.innerHeight;
+
+
+        pixelRatio =
+            Math.min(
+                window.devicePixelRatio ||
+                1,
+                2
+            );
+
+
+        canvas.width =
+            width *
+            pixelRatio;
+
+
+        canvas.height =
+            height *
+            pixelRatio;
+
+
+        canvas.style.width =
+            `${width}px`;
+
+
+        canvas.style.height =
+            `${height}px`;
+
+
+        ctx.setTransform(
+            pixelRatio,
+            0,
+            0,
+            pixelRatio,
+            0,
+            0
+        );
+
+
+        createParticles();
+
+
+    }
+
+
+    function animateParticles() {
+
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        particles.forEach(
+            particle => {
+
+
+                particle.update();
+
+                particle.draw();
+
+
+            }
+        );
+
+
+        connectParticles();
+
+
+        animationFrame =
+            requestAnimationFrame(
+                animateParticles
+            );
+
+
+    }
+
+
+    const finePointer =
+        window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        );
+
+
+    if (
+        finePointer.matches
+    ) {
+
+
+        window.addEventListener(
+            "mousemove",
+            event => {
+
+
+                pointer.x =
+                    event.clientX;
+
+
+                pointer.y =
+                    event.clientY;
+
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+
+                pointer.x =
+                    null;
+
+
+                pointer.y =
+                    null;
+
+
+            }
+        );
+
+
+    }
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    resizeCanvas,
+                    160
+                );
+
+
+        }
+    );
+
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+
+            if (
+                document.hidden
+            ) {
+
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+
+            } else {
+
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+
+                animateParticles();
+
+
+            }
+
+
+        }
+    );
+
+
+    resizeCanvas();
+
+    animateParticles();
+
+
+}
+
+
+/* =========================================================
+   DESKTOP RESIZE CLEANUP
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+
+        if (
+            window.innerWidth >
+                760 &&
+            mainNav
+        ) {
+
+
+            mainNav.classList.remove(
+                "open"
+            );
+
+
+            if (
+                mobileMenuButton
+            ) {
+
+
+                mobileMenuButton
+                    .setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+            }
+
+
+        }
+
+
+    }
+);
