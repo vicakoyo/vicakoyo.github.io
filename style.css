@@ -5803,3 +5803,65 @@ a {
         font-weight: 475;
     }
 }
+/* =========================================================
+   MOBILE HERO — SMALL FINAL REFINEMENTS
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Slightly increase paragraph size */
+    .hero-positioning {
+        font-size: clamp(0.83rem, 3.35vw, 0.93rem);
+        line-height: 1.55;
+        color: #475569;
+        font-weight: 475;
+    }
+
+
+    /* Make the CTA group slightly narrower */
+    .hero-actions {
+        width: 92%;
+        margin-top: 25px;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+
+    /* Keep the buttons the same height, just less wide overall */
+    .hero-actions .button,
+    .hero-actions .button-primary,
+    .hero-actions .button-teal,
+    .hero-actions .button-secondary {
+        min-height: 39px;
+    }
+
+
+    /* Fill the remaining phone viewport with white */
+    .hero {
+        min-height: calc(100dvh - 68px);
+        height: auto;
+
+        background: #ffffff;
+
+        padding-bottom: 56px;
+        margin-bottom: 0;
+    }
+}
+
+
+/* Slight extra protection for normal phone widths */
+@media (max-width: 480px) {
+
+    .hero-positioning {
+        font-size: clamp(0.82rem, 3.3vw, 0.91rem);
+    }
+
+    .hero-actions {
+        width: 92%;
+    }
+
+    .hero {
+        min-height: calc(100dvh - 68px);
+        padding-bottom: 60px;
+    }
+}
