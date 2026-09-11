@@ -2,25 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <meta
         name="description"
         content="Professional portfolio of Victor Akoyo — Operations, Business Operations, Supply Chain, Quality, Process Improvement and AI-enabled operations."
     >
-    <title>Victor Akoyo | Operations, Supply Chain & AI-Enabled Operations</title>
+
+    <title>
+        Victor Akoyo | Operations, Supply Chain & AI-Enabled Operations
+    </title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <canvas id="particleCanvas" aria-hidden="true"></canvas>
-    <div class="background-grid" aria-hidden="true"></div>
-    <div class="background-glow glow-one" aria-hidden="true"></div>
-    <div class="background-glow glow-two" aria-hidden="true"></div>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header class="site-header">
         <div class="nav-container">
-            <a href="#home" class="brand" aria-label="Victor Akoyo home">
-                Victor Akoyo<span class="brand-dot">.</span>
+
+            <a href="#home" class="brand-block">
+                <strong class="brand">
+                    Victor Akoyo<span class="brand-dot">.</span>
+                </strong>
+
+                <span class="brand-meta">
+                    Nairobi, Kenya • Available
+                </span>
             </a>
 
             <button
@@ -30,10 +46,16 @@
                 aria-expanded="false"
                 aria-controls="mainNav"
             >
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
-            <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+            <nav
+                id="mainNav"
+                class="main-nav"
+                aria-label="Main navigation"
+            >
                 <a href="#impact">Impact</a>
                 <a href="#expertise">Expertise</a>
                 <a href="#selected-work">Selected Work</a>
@@ -41,34 +63,43 @@
                 <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
             </nav>
+
         </div>
     </header>
 
+
     <main>
-        <!-- HERO -->
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+
         <section id="home" class="hero">
+
             <div class="container hero-grid">
+
                 <div class="hero-content reveal">
-                    <p class="eyebrow hero-eyebrow">
-                        Operations <span>•</span> Business Operations <span>•</span>
-                        Supply Chain <span>•</span> Quality
-                    </p>
 
-                    <div class="hero-heading">
-                        <h1>Building stronger operations.</h1>
-                        <p>Turning complexity into execution, visibility and measurable improvement.</p>
-                    </div>
+                    <h1>
+                        Building stronger operations.
+                    </h1>
 
-                    <p class="hero-description">
-                        Operations and Business Operations professional with approximately eight years of
-                        cross-functional experience across international supply chain, quality, manufacturing,
-                        process improvement, commercial operations and leadership systems. I combine established
-                        operational experience with practical AI and workflow automation to improve execution,
-                        information flow and decision-making.
+                    <p class="hero-positioning">
+                        Operations and Business Operations professional
+                        turning complexity into measurable improvement
+                        across supply chain, quality, process execution
+                        and AI-enabled systems.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#selected-work" class="button button-primary">View Selected Work</a>
+
+                        <a
+                            href="#selected-work"
+                            class="button button-primary"
+                        >
+                            View Selected Work
+                        </a>
+
                         <a
                             href="https://github.com/vicakoyo/victor-ai-automation"
                             class="button button-teal"
@@ -77,6 +108,7 @@
                         >
                             Automation Portfolio
                         </a>
+
                         <a
                             href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
                             class="button button-secondary"
@@ -85,320 +117,749 @@
                         >
                             View CV
                         </a>
-                        <a href="#contact" class="button button-secondary">Contact Me</a>
+
                     </div>
 
-                    <div class="hero-meta">
-                        <div class="meta-item">
-                            <strong>~8 years</strong>
-                            <span>Cross-functional experience</span>
-                        </div>
-                        <div class="meta-item">
-                            <strong>UK • Kenya • China</strong>
-                            <span>International operating exposure</span>
-                        </div>
-                        <div class="meta-item">
-                            <strong>Immediately available</strong>
-                            <span>Nairobi, Kenya</span>
-                        </div>
-                    </div>
                 </div>
 
+
                 <div class="hero-visual reveal">
+
                     <div class="portrait-system">
-                        <div class="hero-pulse pulse-one"></div>
-                        <div class="hero-pulse pulse-two"></div>
-                        <div class="hero-orbit hero-orbit-one"></div>
-                        <div class="hero-orbit hero-orbit-two"></div>
+
+                        <div
+                            class="hero-pulse pulse-one"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="hero-pulse pulse-two"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="hero-orbit hero-orbit-one"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="hero-orbit hero-orbit-two"
+                            aria-hidden="true"
+                        ></div>
+
 
                         <div class="portrait-ring">
+
                             <div class="portrait-frame">
+
                                 <img
                                     src="victor-akoyo-portrait.png.jpeg"
                                     alt="Victor Akoyo"
                                     class="profile-photo"
                                 >
+
                             </div>
+
                         </div>
+
 
                         <div class="skill-float skill-operations">
-                            <span class="skill-dot skill-dot-blue"></span>
+                            <span
+                                class="skill-dot skill-dot-blue"
+                            ></span>
                             <strong>Operations</strong>
-                            <small>Execution</small>
                         </div>
+
 
                         <div class="skill-float skill-supply">
-                            <span class="skill-dot skill-dot-amber"></span>
+                            <span
+                                class="skill-dot skill-dot-amber"
+                            ></span>
                             <strong>Supply Chain</strong>
-                            <small>Commercial impact</small>
                         </div>
+
 
                         <div class="skill-float skill-quality">
-                            <span class="skill-dot skill-dot-teal"></span>
+                            <span
+                                class="skill-dot skill-dot-teal"
+                            ></span>
                             <strong>Quality</strong>
-                            <small>Control & improvement</small>
                         </div>
+
 
                         <div class="skill-float skill-process">
-                            <span class="skill-dot skill-dot-cyan"></span>
+                            <span
+                                class="skill-dot skill-dot-cyan"
+                            ></span>
                             <strong>Process</strong>
-                            <small>Continuous improvement</small>
                         </div>
+
 
                         <div class="skill-float skill-eos">
-                            <span class="skill-dot skill-dot-orange"></span>
+                            <span
+                                class="skill-dot skill-dot-orange"
+                            ></span>
                             <strong>EOS</strong>
-                            <small>Operating rhythm</small>
                         </div>
+
 
                         <div class="skill-float skill-automation">
-                            <span class="skill-dot skill-dot-violet"></span>
+                            <span
+                                class="skill-dot skill-dot-violet"
+                            ></span>
                             <strong>Automation</strong>
-                            <small>AI-enabled operations</small>
                         </div>
+
                     </div>
 
-                    <div class="hero-status">
-                        <span class="status-dot"></span>
-                        <div>
-                            <strong>Operations-led. Technology-enabled.</strong>
-                            <small>Practical systems that strengthen the work</small>
-                        </div>
-                    </div>
                 </div>
+
             </div>
+
         </section>
 
-        <!-- IMPACT -->
-        <section id="impact" class="section section-soft">
+
+        <!-- =========================================
+             IMPACT
+        ========================================== -->
+
+        <section
+            id="impact"
+            class="section section-soft"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">Selected Impact</p>
-                    <h2>Evidence over adjectives.</h2>
-                    <p>
-                        Selected outcomes across logistics, product quality and manufacturing improvement.
+
+                    <h2 class="section-title">
+                        Selected Impact
+                    </h2>
+
+                    <p class="section-tagline">
+                        Evidence over adjectives.
                     </p>
+
                 </div>
+
 
                 <div class="impact-grid">
-                    <button type="button" class="impact-card impact-link reveal" data-case="logistics" aria-haspopup="dialog">
+
+                    <button
+                        type="button"
+                        class="impact-card impact-link reveal"
+                        data-case="logistics"
+                        aria-haspopup="dialog"
+                    >
+
                         <span class="card-number">01</span>
+
                         <div class="metric">
-                            <span>£</span><span class="counter" data-start="0" data-target="520">0</span><span>k</span>
+                            <span>£</span>
+                            <span
+                                class="counter"
+                                data-start="0"
+                                data-target="520"
+                            >
+                                0
+                            </span>
+                            <span>k</span>
                         </div>
-                        <h3>Annual logistics savings</h3>
-                        <p>Warehouse, 3PL and final-mile optimisation.</p>
-                        <span class="impact-cta">Explore case study →</span>
+
+                        <h3>
+                            Annual logistics savings
+                        </h3>
+
+                        <p>
+                            Warehouse, 3PL and final-mile optimisation.
+                        </p>
+
+                        <span class="impact-cta">
+                            Explore case study →
+                        </span>
+
                     </button>
 
-                    <button type="button" class="impact-card impact-link reveal" data-case="quality" aria-haspopup="dialog">
+
+                    <button
+                        type="button"
+                        class="impact-card impact-link reveal"
+                        data-case="quality"
+                        aria-haspopup="dialog"
+                    >
+
                         <span class="card-number">02</span>
+
                         <div class="metric transition-metric">
-                            <span>12%</span><span class="metric-arrow">→</span><span>4%</span>
+                            <span>12%</span>
+                            <span class="metric-arrow">→</span>
+                            <span>4%</span>
                         </div>
-                        <h3>Returns reduction</h3>
-                        <p>Supplier quality, packaging, handling and reverse-logistics improvement.</p>
-                        <span class="impact-cta">Explore case study →</span>
+
+                        <h3>
+                            Returns reduction
+                        </h3>
+
+                        <p>
+                            Supplier quality, packaging, handling and
+                            reverse-logistics improvement.
+                        </p>
+
+                        <span class="impact-cta">
+                            Explore case study →
+                        </span>
+
                     </button>
 
-                    <button type="button" class="impact-card impact-link reveal" data-case="manufacturing" aria-haspopup="dialog">
+
+                    <button
+                        type="button"
+                        class="impact-card impact-link reveal"
+                        data-case="manufacturing"
+                        aria-haspopup="dialog"
+                    >
+
                         <span class="card-number">03</span>
+
                         <div class="metric transition-metric">
-                            <span>4%</span><span class="metric-arrow">→</span><span>2%</span>
+                            <span>4%</span>
+                            <span class="metric-arrow">→</span>
+                            <span>2%</span>
                         </div>
-                        <h3>U-bolt rejection reduction</h3>
-                        <p>SPC, PFMEA, MSA, process control and corrective action.</p>
-                        <span class="impact-cta">Explore case study →</span>
+
+                        <h3>
+                            U-bolt rejection reduction
+                        </h3>
+
+                        <p>
+                            SPC, PFMEA, MSA, process control and
+                            corrective action.
+                        </p>
+
+                        <span class="impact-cta">
+                            Explore case study →
+                        </span>
+
                     </button>
 
-                    <button type="button" class="impact-card impact-link reveal" data-case="complaints" aria-haspopup="dialog">
+
+                    <button
+                        type="button"
+                        class="impact-card impact-link reveal"
+                        data-case="complaints"
+                        aria-haspopup="dialog"
+                    >
+
                         <span class="card-number">04</span>
+
                         <div class="metric transition-metric">
-                            <span>12%</span><span class="metric-arrow">→</span><span>5%</span>
+                            <span>12%</span>
+                            <span class="metric-arrow">→</span>
+                            <span>5%</span>
                         </div>
-                        <h3>Customer complaints reduction</h3>
-                        <p>Manufacturing-quality controls and stronger corrective-action discipline.</p>
-                        <span class="impact-cta">Explore case study →</span>
+
+                        <h3>
+                            Customer complaints reduction
+                        </h3>
+
+                        <p>
+                            Manufacturing-quality controls and stronger
+                            corrective-action discipline.
+                        </p>
+
+                        <span class="impact-cta">
+                            Explore case study →
+                        </span>
+
                     </button>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- EXPERTISE -->
-        <section id="expertise" class="section">
+
+        <!-- =========================================
+             EXPERTISE
+        ========================================== -->
+
+        <section
+            id="expertise"
+            class="section"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">How I Create Value</p>
-                    <h2>Operations from problem to execution.</h2>
-                    <p>
-                        Four connected strengths shaped by engineering, quality, supply chain, business operations
-                        and practical technology-enabled improvement.
+
+                    <h2 class="section-title">
+                        How I Create Value
+                    </h2>
+
+                    <p class="section-tagline">
+                        Operations from problem to execution.
                     </p>
+
                 </div>
+
 
                 <div class="value-grid">
-                    <article class="value-card value-blue reveal">
+
+                    <article
+                        class="value-card value-blue reveal"
+                    >
+
                         <span class="value-index">01</span>
-                        <h3>Operations & Business Operations</h3>
+
+                        <h3>
+                            Operations & Business Operations
+                        </h3>
+
                         <p>
-                            Operating cadence, KPI governance, EOS execution, cross-functional coordination,
-                            SOPs, executive reporting, issue resolution, service continuity and accountability.
+                            Operating cadence, KPI governance, EOS
+                            execution, cross-functional coordination,
+                            SOPs, executive reporting, issue resolution,
+                            service continuity and accountability.
                         </p>
+
                     </article>
 
-                    <article class="value-card value-amber reveal">
+
+                    <article
+                        class="value-card value-amber reveal"
+                    >
+
                         <span class="value-index">02</span>
-                        <h3>Supply Chain & Commercial Operations</h3>
+
+                        <h3>
+                            Supply Chain & Commercial Operations
+                        </h3>
+
                         <p>
-                            International sourcing, demand planning, supplier management, freight, 3PLs,
-                            warehousing, final mile, inventory, negotiation and commercial cost improvement.
+                            International sourcing, demand planning,
+                            supplier management, freight, 3PLs,
+                            warehousing, final mile, inventory,
+                            negotiation and commercial cost improvement.
                         </p>
+
                     </article>
 
-                    <article class="value-card value-teal reveal">
+
+                    <article
+                        class="value-card value-teal reveal"
+                    >
+
                         <span class="value-index">03</span>
-                        <h3>Quality & Continuous Improvement</h3>
+
+                        <h3>
+                            Quality & Continuous Improvement
+                        </h3>
+
                         <p>
-                            Supplier and manufacturing quality, CAPA, root-cause analysis, SPC, PFMEA, MSA,
-                            inspection systems, 5S, product improvement and customer-issue reduction.
+                            Supplier and manufacturing quality, CAPA,
+                            root-cause analysis, SPC, PFMEA, MSA,
+                            inspection systems, 5S, product improvement
+                            and customer-issue reduction.
                         </p>
+
                     </article>
 
-                    <article class="value-card value-violet reveal">
+
+                    <article
+                        class="value-card value-violet reveal"
+                    >
+
                         <span class="value-index">04</span>
-                        <h3>AI-Enabled Operations & Business Systems</h3>
+
+                        <h3>
+                            AI-Enabled Operations & Business Systems
+                        </h3>
+
                         <p>
-                            Workflow automation, Microsoft 365, AI-assisted reporting, CRM integration,
-                            operational intelligence and practical use of n8n, Make.com and business APIs.
+                            Workflow automation, Microsoft 365,
+                            AI-assisted reporting, CRM integration,
+                            operational intelligence and practical use
+                            of n8n, Make.com and business APIs.
                         </p>
+
                     </article>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- SELECTED WORK -->
-        <section id="selected-work" class="section selected-work-section">
+
+        <!-- =========================================
+             SELECTED WORK
+        ========================================== -->
+
+        <section
+            id="selected-work"
+            class="section selected-work-section"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">Selected Work</p>
-                    <h2>Five operating problems. Five different kinds of evidence.</h2>
-                    <p>
-                        Commercial transformation, international supplier development, operating-system leadership,
-                        quality improvement and AI-enabled reporting.
+
+                    <h2 class="section-title">
+                        Selected Work
+                    </h2>
+
+                    <p class="section-tagline">
+                        Evidence from real operating problems.
                     </p>
+
                 </div>
 
-                <div class="selected-work-grid">
-                    <article class="work-card work-card-featured reveal case-trigger" data-case="logistics" tabindex="0" role="button" aria-haspopup="dialog">
-                        <div class="work-card-accent"></div>
-                        <div class="work-card-top">
-                            <span>Supply Chain Transformation</span>
-                            <span>Rattan Direct</span>
-                        </div>
-                        <h3>Restructuring warehousing and final-mile operations</h3>
-                        <p>
-                            Reworked logistics economics across storage, unloading, picking and last-mile delivery,
-                            then led the transition into a more efficient 3PL model.
-                        </p>
-                        <div class="work-card-stats">
-                            <div><strong>~£520k</strong><span>annual savings</span></div>
-                            <div><strong>1,000+</strong><span>SKUs</span></div>
-                            <div><strong>~60</strong><span>peak containers/month</span></div>
-                        </div>
-                        <span class="work-card-link">Open case study ↗</span>
-                    </article>
 
-                    <article class="work-card china-card reveal case-trigger" data-case="china" tabindex="0" role="button" aria-haspopup="dialog">
-                        <div class="china-preview">
-                            <img src="images/china/china-vivid-supplier-visit.webp" alt="Victor Akoyo outside the Vivid supplier factory in China" loading="lazy">
-                            <div class="china-preview-stack">
-                                <img src="images/china/china-product-quality-review.webp" alt="Victor reviewing a woven outdoor furniture product at a China supplier" loading="lazy">
-                                <img src="images/china/china-aluminium-frame-production.webp" alt="Aluminium outdoor furniture frames in production at a supplier factory in China" loading="lazy">
+                <!-- CHINA FEATURE -->
+
+                <article
+                    class="china-feature reveal case-trigger"
+                    data-case="china"
+                    tabindex="0"
+                    role="button"
+                    aria-haspopup="dialog"
+                >
+
+                    <div class="china-feature-images">
+
+                        <img
+                            src="images/china/china-vivid-supplier-visit.webp"
+                            alt="Victor Akoyo outside the Vivid supplier factory in China"
+                            loading="lazy"
+                            class="china-main-image"
+                        >
+
+                        <div class="china-side-images">
+
+                            <img
+                                src="images/china/china-product-quality-review.webp"
+                                alt="Victor reviewing a woven outdoor furniture product during a China supplier visit"
+                                loading="lazy"
+                            >
+
+                            <img
+                                src="images/china/china-aluminium-frame-production.webp"
+                                alt="Aluminium outdoor furniture frames during production at a supplier factory in China"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="china-feature-content">
+
+                        <div class="work-meta">
+
+                            <span>
+                                International Supplier Development
+                            </span>
+
+                            <span>
+                                China • March 2025
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Supplier continuity &
+                            manufacturing development
+                        </h3>
+
+                        <p>
+                            Supported supplier-continuity negotiations,
+                            studied mature supplier operations and
+                            helped formalise quality and process
+                            controls at an early-stage Hunan furniture
+                            operation.
+                        </p>
+
+
+                        <div class="tag-row">
+
+                            <span>Supplier negotiation</span>
+                            <span>Factory process</span>
+                            <span>Quality systems</span>
+                            <span>5S</span>
+
+                        </div>
+
+
+                        <span class="work-card-link">
+                            Open China case study ↗
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- OTHER CASES -->
+
+                <div class="work-grid-secondary">
+
+
+                    <article
+                        class="work-card reveal case-trigger"
+                        data-case="logistics"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
+                    >
+
+                        <div class="work-meta">
+
+                            <span>
+                                Supply Chain Transformation
+                            </span>
+
+                            <span>
+                                Rattan Direct
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Restructuring warehousing and
+                            final-mile operations
+                        </h3>
+
+                        <p>
+                            Reworked logistics economics across
+                            storage, unloading, picking and final-mile
+                            delivery, then led the transition into a
+                            more efficient 3PL model.
+                        </p>
+
+
+                        <div class="work-stat-row">
+
+                            <div>
+                                <strong>~£520k</strong>
+                                <span>annual savings</span>
                             </div>
-                        </div>
-                        <div class="work-card-body">
-                            <div class="work-card-top">
-                                <span>International Supplier Development</span>
-                                <span>China • March 2025</span>
+
+                            <div>
+                                <strong>1,000+</strong>
+                                <span>SKUs</span>
                             </div>
-                            <h3>Supplier continuity & manufacturing development</h3>
-                            <p>
-                                Supported supplier-continuity negotiations, studied mature supplier operations and
-                                helped formalise quality and process controls at an early-stage Hunan furniture operation.
-                            </p>
-                            <div class="tag-row">
-                                <span>Supplier negotiation</span>
-                                <span>Factory process</span>
-                                <span>QC systems</span>
-                                <span>5S</span>
+
+                            <div>
+                                <strong>~60</strong>
+                                <span>peak containers/month</span>
                             </div>
-                            <span class="work-card-link">Open China case study ↗</span>
+
                         </div>
+
+
+                        <span class="work-card-link">
+                            Open case study ↗
+                        </span>
+
                     </article>
 
-                    <article class="work-card reveal case-trigger" data-case="eos" tabindex="0" role="button" aria-haspopup="dialog">
-                        <div class="work-card-top">
-                            <span>Business Operations</span>
-                            <span>Optimise Outsourcing</span>
+
+                    <article
+                        class="work-card reveal case-trigger"
+                        data-case="eos"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
+                    >
+
+                        <div class="work-meta">
+
+                            <span>
+                                Business Operations
+                            </span>
+
+                            <span>
+                                Optimise Outsourcing
+                            </span>
+
                         </div>
-                        <h3>Embedding an operating system for execution</h3>
+
+                        <h3>
+                            Embedding an operating system
+                            for execution
+                        </h3>
+
                         <p>
-                            Functioned as the internal EOS Integrator, translating leadership priorities into
-                            VTO reviews, quarterly Rocks, scorecards, Level 10s, Issues/IDS and follow-through.
+                            Functioned as the internal EOS Integrator,
+                            translating leadership priorities into
+                            VTO reviews, Rocks, scorecards, Level 10s,
+                            Issues/IDS and follow-through.
                         </p>
-                        <div class="mini-flow" aria-label="EOS execution flow">
-                            <span>Vision</span><b>→</b><span>Rocks</span><b>→</b><span>Scorecard</span><b>→</b><span>IDS</span><b>→</b><span>Action</span>
+
+
+                        <div class="mini-flow">
+
+                            <span>Vision</span>
+                            <b>→</b>
+                            <span>Rocks</span>
+                            <b>→</b>
+                            <span>Scorecard</span>
+                            <b>→</b>
+                            <span>IDS</span>
+                            <b>→</b>
+                            <span>Action</span>
+
                         </div>
-                        <span class="work-card-link">Open case study ↗</span>
+
+
+                        <span class="work-card-link">
+                            Open case study ↗
+                        </span>
+
                     </article>
 
-                    <article class="work-card reveal case-trigger" data-case="quality" tabindex="0" role="button" aria-haspopup="dialog">
-                        <div class="work-card-top">
-                            <span>Quality + Product Improvement</span>
-                            <span>Rattan Direct</span>
+
+                    <article
+                        class="work-card reveal case-trigger"
+                        data-case="quality"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
+                    >
+
+                        <div class="work-meta">
+
+                            <span>
+                                Quality + Product Improvement
+                            </span>
+
+                            <span>
+                                Rattan Direct
+                            </span>
+
                         </div>
-                        <h3>Reducing returns through product and process improvement</h3>
+
+                        <h3>
+                            Reducing returns through product
+                            and process improvement
+                        </h3>
+
                         <p>
-                            Connected customer evidence, supplier quality, packaging, handling, delivery and product
-                            design changes to reduce returns by cubic volume from approximately 12% to 4%.
+                            Connected customer evidence, supplier
+                            quality, packaging, handling, delivery and
+                            product design changes to reduce returns by
+                            cubic volume.
                         </p>
-                        <div class="work-card-stats compact">
-                            <div><strong>12% → 4%</strong><span>returns by CBM</span></div>
+
+
+                        <div class="single-stat">
+
+                            <strong>
+                                12% → 4%
+                            </strong>
+
+                            <span>
+                                returns by CBM
+                            </span>
+
                         </div>
-                        <span class="work-card-link">Open case study ↗</span>
+
+
+                        <span class="work-card-link">
+                            Open case study ↗
+                        </span>
+
                     </article>
 
-                    <article class="work-card work-card-featured work-card-ai reveal case-trigger" data-case="automation" tabindex="0" role="button" aria-haspopup="dialog">
-                        <div class="work-card-top">
-                            <span>AI-Enabled Operations</span>
-                            <span>Optimise Outsourcing</span>
+
+                    <article
+                        class="work-card work-card-ai reveal case-trigger"
+                        data-case="automation"
+                        tabindex="0"
+                        role="button"
+                        aria-haspopup="dialog"
+                    >
+
+                        <div class="work-meta">
+
+                            <span>
+                                AI-Enabled Operations
+                            </span>
+
+                            <span>
+                                Optimise Outsourcing
+                            </span>
+
                         </div>
-                        <h3>From leadership meeting transcript to management intelligence</h3>
+
+                        <h3>
+                            From leadership meeting transcript
+                            to management intelligence
+                        </h3>
+
                         <p>
-                            Built a live workflow that retrieved leadership meeting information, used AI-assisted
-                            analysis and returned structured reporting to Microsoft Teams with workflow-state controls.
+                            Built a live workflow that retrieved
+                            leadership meeting information, applied
+                            AI-assisted analysis and returned structured
+                            reporting to Microsoft Teams.
                         </p>
+
+
                         <div class="mini-flow mini-flow-teal">
-                            <span>SharePoint</span><b>→</b><span>Graph</span><b>→</b><span>AI</span><b>→</b><span>Teams</span>
+
+                            <span>SharePoint</span>
+                            <b>→</b>
+                            <span>Graph</span>
+                            <b>→</b>
+                            <span>AI</span>
+                            <b>→</b>
+                            <span>Teams</span>
+
                         </div>
-                        <span class="work-card-link">Open case study ↗</span>
+
+
+                        <span class="work-card-link">
+                            Open case study ↗
+                        </span>
+
                     </article>
+
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- AUTOMATION -->
-        <section id="automation" class="section automation-section">
+
+        <!-- =========================================
+             AUTOMATION
+        ========================================== -->
+
+        <section
+            id="automation"
+            class="section automation-section"
+        >
+
             <div class="container">
+
                 <div class="automation-heading reveal">
+
                     <div>
-                        <p class="eyebrow eyebrow-teal">AI-Enabled Operations & Automation</p>
-                        <h2>Technology as part of the operating system.</h2>
-                        <p>
-                            My automation work focuses on practical business problems: reporting, information flow,
-                            decision support, routing and persistent operational context.
+
+                        <h2 class="section-title">
+                            AI-Enabled Operations & Automation
+                        </h2>
+
+                        <p class="section-tagline">
+                            Technology as part of the operating system.
                         </p>
+
                     </div>
+
+
                     <a
                         href="https://github.com/vicakoyo/victor-ai-automation"
                         target="_blank"
@@ -407,18 +868,39 @@
                     >
                         View Full GitHub Portfolio
                     </a>
+
                 </div>
 
+
                 <div class="automation-grid">
+
+
                     <article class="automation-card reveal">
-                        <span class="automation-number">01</span>
-                        <div class="automation-icon">MI</div>
-                        <h3>Executive Meeting Intelligence</h3>
+
+                        <span class="automation-number">
+                            01
+                        </span>
+
+                        <div class="automation-icon">
+                            MI
+                        </div>
+
+                        <h3>
+                            Executive Meeting Intelligence
+                        </h3>
+
                         <p>
-                            Converts recurring leadership meeting information into structured AI-assisted reporting
-                            using Microsoft 365 retrieval, processing, workflow state and Teams delivery.
+                            Converts recurring leadership meeting
+                            information into structured AI-assisted
+                            reporting using Microsoft 365 retrieval,
+                            workflow state and Teams delivery.
                         </p>
-                        <div class="automation-stack">Make.com • SharePoint • Microsoft Graph • OpenAI • Teams</div>
+
+                        <div class="automation-stack">
+                            Make.com • SharePoint • Microsoft Graph •
+                            OpenAI • Teams
+                        </div>
+
                         <a
                             href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/02-executive-meeting-intelligence"
                             target="_blank"
@@ -426,17 +908,38 @@
                         >
                             View case study →
                         </a>
+
                     </article>
 
+
                     <article class="automation-card reveal">
-                        <span class="automation-number">02</span>
-                        <div class="automation-icon automation-icon-amber">OI</div>
-                        <h3>Operational AI Intelligence</h3>
+
+                        <span class="automation-number">
+                            02
+                        </span>
+
+                        <div
+                            class="automation-icon automation-icon-amber"
+                        >
+                            OI
+                        </div>
+
+                        <h3>
+                            Operational AI Intelligence
+                        </h3>
+
                         <p>
-                            A two-stage Collector and Publisher system designed to connect operational problems with
-                            relevant AI developments and produce a curated weekly intelligence update.
+                            A two-stage Collector and Publisher system
+                            designed to connect operational problems
+                            with relevant AI developments and produce
+                            a curated weekly intelligence update.
                         </p>
-                        <div class="automation-stack">Make.com • AI Web Search • Data Store • AI Toolkit • Teams</div>
+
+                        <div class="automation-stack">
+                            Make.com • AI Web Search • Data Store •
+                            AI Toolkit • Teams
+                        </div>
+
                         <a
                             href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/06-operational-ai-intelligence"
                             target="_blank"
@@ -444,17 +947,38 @@
                         >
                             View case study →
                         </a>
+
                     </article>
 
+
                     <article class="automation-card reveal">
-                        <span class="automation-number">03</span>
-                        <div class="automation-icon automation-icon-violet">VO</div>
-                        <h3>VORA Personal Operations Assistant</h3>
+
+                        <span class="automation-number">
+                            03
+                        </span>
+
+                        <div
+                            class="automation-icon automation-icon-violet"
+                        >
+                            VO
+                        </div>
+
+                        <h3>
+                            VORA Personal Operations Assistant
+                        </h3>
+
                         <p>
-                            A WhatsApp-based assistant combining text and audio, transcription, conversational memory,
-                            structured context, controlled tools, commitments, check-ins and external search.
+                            A WhatsApp-based assistant combining
+                            text and audio, transcription, conversational
+                            memory, structured context, controlled tools,
+                            commitments, check-ins and external search.
                         </p>
-                        <div class="automation-stack">n8n • WhatsApp • Anthropic • Groq • Structured Tools • Tavily</div>
+
+                        <div class="automation-stack">
+                            n8n • WhatsApp • Anthropic • Groq •
+                            Structured Tools • Tavily
+                        </div>
+
                         <a
                             href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/04-vora-personal-assistant"
                             target="_blank"
@@ -462,193 +986,477 @@
                         >
                             View case study →
                         </a>
+
                     </article>
+
+
                 </div>
+
 
                 <div class="automation-more reveal">
-                    <strong>Also documented:</strong>
-                    <a href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/01-daily-ai-briefing" target="_blank" rel="noopener noreferrer">Daily AI Briefing</a>
+
+                    <strong>
+                        Also documented:
+                    </strong>
+
+                    <a
+                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/01-daily-ai-briefing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Daily AI Briefing
+                    </a>
+
                     <span>•</span>
-                    <a href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/03-crm-campaign-routing" target="_blank" rel="noopener noreferrer">CRM Campaign Routing</a>
+
+                    <a
+                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/03-crm-campaign-routing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CRM Campaign Routing
+                    </a>
+
                     <span>•</span>
-                    <a href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/05-it-support-triage" target="_blank" rel="noopener noreferrer">IT Support Triage</a>
+
+                    <a
+                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/05-it-support-triage"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IT Support Triage
+                    </a>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- EXPERIENCE -->
-        <section id="experience" class="section">
+
+        <!-- =========================================
+             EXPERIENCE
+        ========================================== -->
+
+        <section
+            id="experience"
+            class="section"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">Experience</p>
-                    <h2>Engineering foundation. Operations career.</h2>
-                    <p>
-                        Progression across engineering, manufacturing quality, supply chain and business operations.
+
+                    <h2 class="section-title">
+                        Experience
+                    </h2>
+
+                    <p class="section-tagline">
+                        Engineering foundation. Operations career.
                     </p>
+
                 </div>
+
 
                 <div class="timeline">
+
+
                     <article class="timeline-item reveal">
-                        <div class="timeline-date">2025–2026</div>
+
+                        <div class="timeline-date">
+                            2025–2026
+                        </div>
+
                         <div class="timeline-content">
-                            <h3>Operations Manager & EOS Integrator</h3>
-                            <h4>Optimise Outsourcing</h4>
+
+                            <h3>
+                                Operations Manager & EOS Integrator
+                            </h3>
+
+                            <h4>
+                                Optimise Outsourcing
+                            </h4>
+
                             <p>
-                                Cross-functional Operations Manager and internal EOS Integrator, translating leadership
-                                priorities into execution through VTO planning, quarterly Rocks, current/future
-                                Accountability Charts, SLT and departmental Level 10s, leadership scorecards,
-                                cash-flow and finance reviews, Issues/IDS, Microsoft 365 administration and
+                                Cross-functional Operations Manager and
+                                internal EOS Integrator, translating
+                                leadership priorities into execution
+                                through VTO planning, quarterly Rocks,
+                                current/future Accountability Charts,
+                                Level 10s, leadership scorecards,
+                                finance reviews, Issues/IDS and
                                 AI-enabled workflow automation.
                             </p>
+
                         </div>
+
                     </article>
 
+
                     <article class="timeline-item reveal">
-                        <div class="timeline-date">2022–2026</div>
+
+                        <div class="timeline-date">
+                            2022–2026
+                        </div>
+
                         <div class="timeline-content">
-                            <h3>Supply Chain, Quality Control & Technical Manager</h3>
-                            <h4>Rattan Direct</h4>
+
+                            <h3>
+                                Supply Chain, Quality Control &
+                                Technical Manager
+                            </h3>
+
+                            <h4>
+                                Rattan Direct
+                            </h4>
+
                             <p>
-                                Led international supply chain, logistics, quality and technical operations across a
-                                China-based supplier network, 1,000+ SKUs and UK logistics operations. Scope included
-                                demand planning, supplier quality, commercial negotiation, warehousing, freight,
-                                final mile, returns, product improvement and direct supplier/factory engagement in China.
+                                Led international supply chain,
+                                logistics, quality and technical
+                                operations across a China-based supplier
+                                network, 1,000+ SKUs and UK logistics
+                                operations, including demand planning,
+                                supplier quality, negotiation,
+                                warehousing, freight, final mile,
+                                returns and product improvement.
                             </p>
+
                         </div>
+
                     </article>
 
+
                     <article class="timeline-item reveal">
-                        <div class="timeline-date">2021–2022</div>
+
+                        <div class="timeline-date">
+                            2021–2022
+                        </div>
+
                         <div class="timeline-content">
-                            <h3>Quality Team Lead</h3>
-                            <h4>Tile & Carpet Centre</h4>
+
+                            <h3>
+                                Quality Team Lead
+                            </h3>
+
+                            <h4>
+                                Tile & Carpet Centre
+                            </h4>
+
                             <p>
-                                Led manufacturing-quality controls, inspection, corrective action and complaint
-                                improvement, reducing customer complaints from approximately 12% to 5% while
+                                Led manufacturing-quality controls,
+                                inspection and corrective action,
+                                reducing customer complaints from
+                                approximately 12% to 5% while
                                 maintaining KEBS audit compliance.
                             </p>
+
                         </div>
+
                     </article>
 
-                    <article class="timeline-item reveal">
-                        <div class="timeline-date">2020–2021</div>
-                        <div class="timeline-content">
-                            <h3>Quality Control Engineer</h3>
-                            <h4>Auto Springs East Africa PLC</h4>
-                            <p>
-                                Automotive manufacturing quality using SPC, PFMEA, MSA, control plans and corrective
-                                action, including reduction of U-bolt rejection from approximately 4% to 2%.
-                            </p>
-                        </div>
-                    </article>
 
                     <article class="timeline-item reveal">
-                        <div class="timeline-date">2018–2020</div>
-                        <div class="timeline-content">
-                            <h3>Electrical Engineer</h3>
-                            <h4>Coca-Cola Beverages Africa</h4>
-                            <p>
-                                FMCG production engineering, preventive and reactive maintenance, utilities,
-                                SAP PM, troubleshooting, line efficiency and specialist-vendor overhaul coordination.
-                            </p>
+
+                        <div class="timeline-date">
+                            2020–2021
                         </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Quality Control Engineer
+                            </h3>
+
+                            <h4>
+                                Auto Springs East Africa PLC
+                            </h4>
+
+                            <p>
+                                Automotive manufacturing quality using
+                                SPC, PFMEA, MSA, control plans and
+                                corrective action, including reduction
+                                of U-bolt rejection from approximately
+                                4% to 2%.
+                            </p>
+
+                        </div>
+
                     </article>
+
+
+                    <article class="timeline-item reveal">
+
+                        <div class="timeline-date">
+                            2018–2020
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Electrical Engineer
+                            </h3>
+
+                            <h4>
+                                Coca-Cola Beverages Africa
+                            </h4>
+
+                            <p>
+                                FMCG production engineering, preventive
+                                and reactive maintenance, utilities,
+                                SAP PM, troubleshooting, line efficiency
+                                and specialist-vendor overhaul
+                                coordination.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- SYSTEMS -->
-        <section id="technology" class="section section-soft">
+
+        <!-- =========================================
+             SYSTEMS
+        ========================================== -->
+
+        <section
+            id="technology"
+            class="section section-soft"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">Systems & Technical Capability</p>
-                    <h2>Business systems used to strengthen operations.</h2>
-                    <p>
-                        Capability is positioned by how I have actually used the tools, with developing technical
-                        foundations kept distinct from established operating experience.
+
+                    <h2 class="section-title">
+                        Systems & Technical Capability
+                    </h2>
+
+                    <p class="section-tagline">
+                        Business systems used to strengthen operations.
                     </p>
+
                 </div>
+
 
                 <div class="capability-grid">
-                    <article class="capability-card reveal">
-                        <span class="capability-kicker">Operational Systems</span>
-                        <h3>Enterprise & business platforms</h3>
-                        <p>SAP PM, OrderWise, Xero, eDesk, Sage HR, Microsoft 365, SharePoint and Teams.</p>
-                    </article>
+
 
                     <article class="capability-card reveal">
-                        <span class="capability-kicker">Analytics & Management Information</span>
-                        <h3>Operational visibility</h3>
-                        <p>Excel, practical Power BI, KPI scorecards, forecasting, cost analysis, reconciliations and executive reporting.</p>
+
+                        <span class="capability-kicker">
+                            Operational Systems
+                        </span>
+
+                        <h3>
+                            Enterprise & business platforms
+                        </h3>
+
+                        <p>
+                            SAP PM, OrderWise, Xero, eDesk, Sage HR,
+                            Microsoft 365, SharePoint and Teams.
+                        </p>
+
                     </article>
+
 
                     <article class="capability-card reveal">
-                        <span class="capability-kicker">Workflow Automation</span>
-                        <h3>Practical business automation</h3>
-                        <p>Make.com, n8n, Power Automate, Microsoft Graph, webhooks, OpenAI APIs and structured workflow design.</p>
+
+                        <span class="capability-kicker">
+                            Analytics & Management Information
+                        </span>
+
+                        <h3>
+                            Operational visibility
+                        </h3>
+
+                        <p>
+                            Excel, practical Power BI, KPI scorecards,
+                            forecasting, cost analysis, reconciliations
+                            and executive reporting.
+                        </p>
+
                     </article>
 
-                    <article class="capability-card capability-card-developing reveal">
-                        <span class="capability-kicker">Developing Technical Foundations</span>
-                        <h3>Building greater independence</h3>
-                        <p>JSON, REST APIs, authentication/OAuth, Git/GitHub, Python and more advanced error-handling patterns.</p>
+
+                    <article class="capability-card reveal">
+
+                        <span class="capability-kicker">
+                            Workflow Automation
+                        </span>
+
+                        <h3>
+                            Practical business automation
+                        </h3>
+
+                        <p>
+                            Make.com, n8n, Power Automate,
+                            Microsoft Graph, webhooks, OpenAI APIs
+                            and structured workflow design.
+                        </p>
+
                     </article>
+
+
+                    <article
+                        class="capability-card capability-card-developing reveal"
+                    >
+
+                        <span class="capability-kicker">
+                            Developing Technical Foundations
+                        </span>
+
+                        <h3>
+                            Building greater independence
+                        </h3>
+
+                        <p>
+                            JSON, REST APIs, authentication/OAuth,
+                            Git/GitHub, Python and more advanced
+                            error-handling patterns.
+                        </p>
+
+                    </article>
+
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- EDUCATION -->
-        <section id="education" class="section">
+
+        <!-- =========================================
+             EDUCATION
+        ========================================== -->
+
+        <section
+            id="education"
+            class="section"
+        >
+
             <div class="container">
+
                 <div class="section-heading reveal">
-                    <p class="eyebrow">Education & Certifications</p>
-                    <h2>Engineering foundation with continuous professional development.</h2>
+
+                    <h2 class="section-title">
+                        Education & Certifications
+                    </h2>
+
                 </div>
+
 
                 <div class="education-grid">
-                    <article class="education-card reveal">
-                        <span class="education-year">2018</span>
-                        <h3>BSc Control & Instrumentation</h3>
-                        <p>Jomo Kenyatta University of Agriculture and Technology</p>
-                        <small>Second Class Honours</small>
-                    </article>
+
 
                     <article class="education-card reveal">
-                        <span class="education-year">Professional Certifications</span>
-                        <h3>Operations, Service & Quality</h3>
-                        <p>ITIL 4 • Scrum • ISO 9001 Internal Auditor</p>
-                        <small>Systems and technical tools are listed separately above.</small>
+
+                        <span class="education-year">
+                            2018
+                        </span>
+
+                        <h3>
+                            BSc Control & Instrumentation
+                        </h3>
+
+                        <p>
+                            Jomo Kenyatta University of Agriculture
+                            and Technology
+                        </p>
+
+                        <small>
+                            Second Class Honours
+                        </small>
+
                     </article>
+
+
+                    <article class="education-card reveal">
+
+                        <span class="education-year">
+                            Professional Certifications
+                        </span>
+
+                        <h3>
+                            Operations, Service & Quality
+                        </h3>
+
+                        <p>
+                            ITIL 4 • Scrum • ISO 9001 Internal Auditor
+                        </p>
+
+                    </article>
+
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- CONTACT -->
-        <section id="contact" class="contact-section">
+
+        <!-- =========================================
+             CONTACT
+        ========================================== -->
+
+        <section
+            id="contact"
+            class="contact-section"
+        >
+
             <div class="container">
+
                 <div class="contact-heading reveal">
-                    <p class="eyebrow">Contact</p>
-                    <h2>Let's connect.</h2>
+
+                    <h2>
+                        Let's connect.
+                    </h2>
+
                     <p>
-                        For relevant opportunities across Operations, Business Operations, Supply Chain, Quality,
-                        Process Improvement and AI-enabled Operations, choose the easiest way to reach me.
+                        Open to relevant opportunities across
+                        Operations, Business Operations, Supply Chain,
+                        Quality, Process Improvement and
+                        AI-enabled Operations.
                     </p>
+
                 </div>
 
+
                 <div class="contact-grid">
-                    <a class="contact-card reveal" href="mailto:vicakoyo2@gmail.com">
+
+
+                    <a
+                        class="contact-card reveal"
+                        href="mailto:vicakoyo2@gmail.com"
+                    >
+
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/>
-                            </svg>
+                            ✉
                         </div>
+
                         <div class="contact-info">
-                            <span class="contact-label">Email</span>
-                            <strong>vicakoyo2@gmail.com</strong>
-                            <small>Click to send an email</small>
+
+                            <span class="contact-label">
+                                Email
+                            </span>
+
+                            <strong>
+                                vicakoyo2@gmail.com
+                            </strong>
+
                         </div>
-                        <span class="contact-arrow">↗</span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
+
 
                     <a
                         class="contact-card reveal"
@@ -656,18 +1464,29 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
+
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2a9.84 9.84 0 0 0-8.5 14.8L2 22l5.4-1.4A9.95 9.95 0 1 0 12 2Zm0 17.9a8 8 0 0 1-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.4-3.3-3-.2-.3 0-.4.1-.5l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.4-.6 1.6-1.1.2-.6.2-1 .2-1.1-.1-.2-.3-.2-.5-.3Z"/>
-                            </svg>
+                            ◉
                         </div>
+
                         <div class="contact-info">
-                            <span class="contact-label">WhatsApp</span>
-                            <strong>Message Me</strong>
-                            <small>Start a WhatsApp conversation</small>
+
+                            <span class="contact-label">
+                                WhatsApp
+                            </span>
+
+                            <strong>
+                                Message Me
+                            </strong>
+
                         </div>
-                        <span class="contact-arrow">↗</span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
+
 
                     <a
                         class="contact-card reveal"
@@ -675,41 +1494,81 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
+
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M6.5 8.2H3.2V21h3.3ZM4.9 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 4.9 3ZM21 13.7c0-3.9-2.1-5.8-4.9-5.8-2.3 0-3.3 1.3-3.9 2.1V8.2H9V21h3.3v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21H20Z"/>
-                            </svg>
+                            in
                         </div>
+
                         <div class="contact-info">
-                            <span class="contact-label">LinkedIn</span>
-                            <strong>Connect on LinkedIn</strong>
-                            <small>View my professional profile</small>
+
+                            <span class="contact-label">
+                                LinkedIn
+                            </span>
+
+                            <strong>
+                                Connect on LinkedIn
+                            </strong>
+
                         </div>
-                        <span class="contact-arrow">↗</span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
+
+
                 </div>
 
-                <div class="availability reveal">
-                    <span class="availability-dot"></span>
-                    <span>Nairobi, Kenya</span>
-                    <span>•</span>
-                    <span>Immediately available for relevant professional opportunities</span>
-                </div>
             </div>
+
         </section>
+
     </main>
 
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
     <footer class="site-footer">
+
         <div class="container footer-content">
-            <span>© <span id="currentYear"></span> Victor Akoyo</span>
-            <span>Operations • Supply Chain • Quality • Process Improvement • AI-Enabled Operations</span>
-            <a href="#home">Back to top ↑</a>
+
+            <span>
+                © <span id="currentYear"></span>
+                Victor Akoyo
+            </span>
+
+            <span>
+                Operations • Supply Chain • Quality •
+                AI-Enabled Operations
+            </span>
+
+            <a href="#home">
+                Back to top ↑
+            </a>
+
         </div>
+
     </footer>
 
-    <!-- CASE STUDY MODAL -->
-    <div id="caseModal" class="case-modal" aria-hidden="true">
-        <div class="case-modal-backdrop" data-close-modal></div>
+
+    <!-- =========================================
+         CASE STUDY MODAL
+    ========================================== -->
+
+    <div
+        id="caseModal"
+        class="case-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="case-modal-backdrop"
+            data-close-modal
+        ></div>
+
 
         <section
             class="case-modal-panel"
@@ -718,49 +1577,141 @@
             aria-labelledby="caseModalTitle"
             tabindex="-1"
         >
-            <button type="button" class="case-modal-close" aria-label="Close case study" data-close-modal>×</button>
 
-            <div class="case-modal-kicker" id="caseModalKicker"></div>
+            <button
+                type="button"
+                class="case-modal-close"
+                aria-label="Close case study"
+                data-close-modal
+            >
+                ×
+            </button>
+
+
+            <div
+                class="case-modal-kicker"
+                id="caseModalKicker"
+            ></div>
+
+
             <h2 id="caseModalTitle"></h2>
-            <p class="case-modal-summary" id="caseModalSummary"></p>
 
-            <div id="caseModalMedia" class="case-modal-media" hidden></div>
+
+            <p
+                class="case-modal-summary"
+                id="caseModalSummary"
+            ></p>
+
+
+            <div
+                id="caseModalMedia"
+                class="case-modal-media"
+                hidden
+            ></div>
+
 
             <div class="case-modal-grid">
+
+
                 <div class="case-modal-block">
-                    <span>Context / Problem</span>
+
+                    <span>
+                        Context / Problem
+                    </span>
+
                     <p id="caseModalProblem"></p>
+
                 </div>
+
+
                 <div class="case-modal-block">
-                    <span>Analysis</span>
+
+                    <span>
+                        Analysis
+                    </span>
+
                     <p id="caseModalAnalysis"></p>
+
                 </div>
+
+
                 <div class="case-modal-block">
-                    <span>Action</span>
+
+                    <span>
+                        Action
+                    </span>
+
                     <p id="caseModalAction"></p>
+
                 </div>
+
+
                 <div class="case-modal-block">
-                    <span>Systems / Methods</span>
+
+                    <span>
+                        Systems / Methods
+                    </span>
+
                     <p id="caseModalTools"></p>
+
                 </div>
-                <div class="case-modal-block case-modal-result-block">
-                    <span>Result</span>
+
+
+                <div
+                    class="case-modal-block case-modal-result-block"
+                >
+
+                    <span>
+                        Result
+                    </span>
+
                     <strong id="caseModalResult"></strong>
+
                     <p id="caseModalResultDetail"></p>
+
                 </div>
+
+
                 <div class="case-modal-block">
-                    <span>What this demonstrates</span>
+
+                    <span>
+                        What this demonstrates
+                    </span>
+
                     <p id="caseModalLearning"></p>
+
                 </div>
+
+
             </div>
+
 
             <div class="case-modal-footer">
-                <button type="button" class="button button-secondary" data-close-modal>Close</button>
-                <a href="#contact" class="button button-primary" id="caseModalContact">Discuss this work</a>
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    data-close-modal
+                >
+                    Close
+                </button>
+
+                <a
+                    href="#contact"
+                    class="button button-primary"
+                    id="caseModalContact"
+                >
+                    Discuss this work
+                </a>
+
             </div>
+
         </section>
+
     </div>
 
+
     <script src="script.js"></script>
+
 </body>
 </html>
