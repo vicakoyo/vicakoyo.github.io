@@ -1,6 +1,5 @@
 /* =========================================================
    VICTOR AKOYO PORTFOLIO
-   REFINED RESPONSIVE VERSION
 ========================================================= */
 
 :root {
@@ -32,20 +31,12 @@
     --soft-amber: #fff8ed;
     --soft-violet: #f6f4fb;
 
-    --border:
-        rgba(18, 53, 77, 0.13);
+    --border: rgba(18, 53, 77, 0.13);
 
-    --blue-border:
-        rgba(22, 116, 168, 0.25);
-
-    --teal-border:
-        rgba(22, 140, 133, 0.24);
-
-    --amber-border:
-        rgba(213, 148, 50, 0.27);
-
-    --violet-border:
-        rgba(107, 99, 186, 0.24);
+    --blue-border: rgba(22, 116, 168, 0.25);
+    --teal-border: rgba(22, 140, 133, 0.24);
+    --amber-border: rgba(213, 148, 50, 0.27);
+    --violet-border: rgba(107, 99, 186, 0.24);
 
     --shadow:
         0 14px 38px
@@ -73,9 +64,7 @@
 
 
 html {
-
     scroll-behavior: smooth;
-
     scroll-padding-top: 78px;
 }
 
@@ -109,25 +98,19 @@ body.modal-open {
 
 main,
 .site-footer {
-
     position: relative;
-
     z-index: 1;
 }
 
 
 a {
-
     color: inherit;
-
     text-decoration: none;
 }
 
 
 img {
-
     display: block;
-
     max-width: 100%;
 }
 
@@ -144,9 +127,7 @@ a {
 
 
 ::selection {
-
     color: white;
-
     background: var(--navy);
 }
 
@@ -257,8 +238,6 @@ a {
 
     height: 72px;
 
-    min-height: 72px;
-
     margin-inline: auto;
 
     display: flex;
@@ -272,7 +251,7 @@ a {
 
 
 /* =========================================================
-   ANIMATED NAME
+   BRAND
 ========================================================= */
 
 .brand {
@@ -303,8 +282,6 @@ a {
 
     background-size: 250% 100%;
 
-    background-position: 0% 50%;
-
     -webkit-background-clip: text;
 
     background-clip: text;
@@ -331,7 +308,6 @@ a {
     50% {
         background-position: 100% 50%;
     }
-
 }
 
 
@@ -450,14 +426,7 @@ a {
     z-index: 1;
 
     min-height:
-        calc(
-            100vh - 72px
-        );
-
-    min-height:
-        calc(
-            100svh - 72px
-        );
+        calc(100svh - 72px);
 
     display: flex;
 
@@ -502,7 +471,6 @@ a {
 
 
 .hero-content {
-
     max-width: 680px;
 }
 
@@ -571,6 +539,11 @@ a {
 }
 
 
+.button-label-mobile {
+    display: none;
+}
+
+
 /* =========================================================
    BUTTONS
 ========================================================= */
@@ -617,8 +590,6 @@ a {
 
     background:
         rgba(22, 116, 168, 0.08);
-
-    box-shadow: none;
 }
 
 
@@ -642,8 +613,6 @@ a {
 
     background:
         rgba(22, 140, 133, 0.08);
-
-    box-shadow: none;
 }
 
 
@@ -686,32 +655,33 @@ a {
 
 
 /* =========================================================
-   HERO PROOF NUMBERS
+   HERO PROOF
 ========================================================= */
 
 .hero-proof {
 
-    display: flex;
+    width: min(100%, 485px);
 
-    align-items: flex-start;
+    display: grid;
 
-    gap: 34px;
+    grid-template-columns:
+        repeat(3, 1fr);
 
     margin-top: 42px;
+
+    text-align: center;
 }
 
 
 .hero-proof-item {
 
-    position: relative;
+    min-width: 0;
 
-    min-width: 112px;
+    padding: 0 19px;
 }
 
 
 .hero-proof-item + .hero-proof-item {
-
-    padding-left: 28px;
 
     border-left:
         1px solid
@@ -746,13 +716,11 @@ a {
     font-size: 0.63rem;
 
     line-height: 1.35;
-
-    font-weight: 520;
 }
 
 
 /* =========================================================
-   HERO PORTRAIT
+   HERO VISUAL
 ========================================================= */
 
 .hero-visual {
@@ -835,7 +803,7 @@ a {
 
 
 /* =========================================================
-   HERO ORBITS
+   ORBITS
 ========================================================= */
 
 .hero-orbit,
@@ -915,12 +883,16 @@ a {
 
         opacity: 0;
     }
-
 }
 
 
 /* =========================================================
    FLOATING CAPABILITY CARDS
+
+   IMPORTANT:
+   translate is used rather than transform so that centred
+   cards can keep transform: translateX(-50%) on mobile.
+   This makes ALL SIX cards move.
 ========================================================= */
 
 .skill-float {
@@ -970,8 +942,6 @@ a {
 }
 
 
-/* Individual text colours */
-
 .skill-operations strong {
     color: var(--blue);
 }
@@ -1001,8 +971,6 @@ a {
     color: var(--violet);
 }
 
-
-/* Floating positions */
 
 .skill-operations {
 
@@ -1068,13 +1036,12 @@ a {
 
     0%,
     100% {
-        transform: translateY(-4px);
+        translate: 0 -4px;
     }
 
     50% {
-        transform: translateY(5px);
+        translate: 0 5px;
     }
-
 }
 
 
@@ -1168,7 +1135,6 @@ a {
         box-shadow:
             0 0 0 0
             rgba(37, 173, 118, 0.20);
-
     }
 
     50% {
@@ -1176,9 +1142,7 @@ a {
         box-shadow:
             0 0 0 5px
             rgba(37, 173, 118, 0);
-
     }
-
 }
 
 
@@ -1282,8 +1246,7 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 
@@ -1401,7 +1364,7 @@ a {
 
 
 /* =========================================================
-   VALUE CARDS
+   HOW I CREATE VALUE
 ========================================================= */
 
 .value-grid {
@@ -1421,7 +1384,7 @@ a {
 
     min-height: 220px;
 
-    padding: 28px;
+    padding: 30px;
 
     overflow: hidden;
 
@@ -1444,19 +1407,21 @@ a {
 }
 
 
+/* coloured corner shape */
+
 .value-card::before {
 
     content: "";
 
     position: absolute;
 
-    top: -48px;
+    top: -28px;
 
-    right: -48px;
+    right: -28px;
 
-    width: 120px;
+    width: 112px;
 
-    height: 120px;
+    height: 112px;
 
     border-radius: 50%;
 
@@ -1492,6 +1457,50 @@ a {
 }
 
 
+/* numbers inside coloured corner */
+
+.value-corner {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 19px;
+
+    z-index: 3;
+
+    min-width: 30px;
+
+    text-align: center;
+
+    font-size: 0.76rem;
+
+    font-weight: 850;
+
+    letter-spacing: 0.04em;
+}
+
+
+.value-blue .value-corner {
+    color: var(--blue-dark);
+}
+
+
+.value-amber .value-corner {
+    color: #a76609;
+}
+
+
+.value-teal .value-corner {
+    color: var(--teal-dark);
+}
+
+
+.value-violet .value-corner {
+    color: #574da7;
+}
+
+
 .value-card:hover {
 
     transform: translateY(-3px);
@@ -1500,21 +1509,11 @@ a {
 }
 
 
-.value-index {
-
-    color: var(--blue);
-
-    font-size: 0.62rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.14em;
-}
-
-
 .value-card h3 {
 
-    margin: 31px 0 9px;
+    max-width: 80%;
+
+    margin: 46px 0 9px;
 
     color: var(--navy);
 
@@ -1573,13 +1572,7 @@ a {
 
     border-radius: 19px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.98
-        );
+    background: white;
 
     box-shadow: var(--shadow);
 
@@ -1587,21 +1580,15 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 
-.china-feature:hover,
-.china-feature:focus-visible {
+.china-feature:hover {
 
     transform: translateY(-4px);
 
-    border-color: var(--amber-border);
-
     box-shadow: var(--shadow-hover);
-
-    outline: none;
 }
 
 
@@ -1627,8 +1614,6 @@ a {
 
     overflow: hidden;
 
-    padding: 0;
-
     border-radius: 13px;
 
     background: #eef3f6;
@@ -1642,8 +1627,6 @@ a {
     height: 100%;
 
     object-fit: cover;
-
-    object-position: center center;
 
     border-radius: 13px;
 }
@@ -1718,8 +1701,6 @@ a {
     font-size: 1.32rem;
 
     line-height: 1.24;
-
-    letter-spacing: -0.024em;
 }
 
 
@@ -1765,7 +1746,7 @@ a {
 
 
 /* =========================================================
-   WORK GRID
+   WORK CARDS
 ========================================================= */
 
 .work-grid-secondary {
@@ -1794,13 +1775,7 @@ a {
 
     border-radius: 18px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.97
-        );
+    background: white;
 
     box-shadow:
         0 10px 30px
@@ -1810,21 +1785,15 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 
-.work-card:hover,
-.work-card:focus-visible {
+.work-card:hover {
 
     transform: translateY(-4px);
 
-    border-color: var(--blue-border);
-
     box-shadow: var(--shadow-hover);
-
-    outline: none;
 }
 
 
@@ -1833,8 +1802,8 @@ a {
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.98),
-            rgba(244,250,249,0.98)
+            white,
+            var(--soft-teal)
         );
 }
 
@@ -1850,8 +1819,6 @@ a {
     font-size: 1.15rem;
 
     line-height: 1.3;
-
-    letter-spacing: -0.017em;
 }
 
 
@@ -2052,13 +2019,7 @@ a {
 
     border-radius: 18px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.97
-        );
+    background: white;
 
     transition:
         transform 0.25s ease,
@@ -2093,8 +2054,6 @@ a {
     font-size: 0.61rem;
 
     font-weight: 800;
-
-    letter-spacing: 0.12em;
 }
 
 
@@ -2160,8 +2119,6 @@ a {
     color: var(--muted);
 
     font-size: 0.61rem;
-
-    line-height: 1.55;
 }
 
 
@@ -2198,13 +2155,7 @@ a {
 
     border-radius: 14px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.96
-        );
+    background: white;
 
     font-size: 0.68rem;
 }
@@ -2334,7 +2285,7 @@ a {
 
 
 /* =========================================================
-   SYSTEMS
+   CAPABILITY
 ========================================================= */
 
 .capability-grid {
@@ -2357,13 +2308,7 @@ a {
 
     border-radius: var(--radius);
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.97
-        );
+    background: white;
 }
 
 
@@ -2374,8 +2319,8 @@ a {
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.98),
-            rgba(246,244,251,0.98)
+            white,
+            var(--soft-violet)
         );
 }
 
@@ -2436,13 +2381,7 @@ a {
 
     border-radius: var(--radius);
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.97
-        );
+    background: white;
 }
 
 
@@ -2533,8 +2472,6 @@ a {
             3vw,
             2.45rem
         );
-
-    letter-spacing: -0.035em;
 }
 
 
@@ -2600,24 +2537,6 @@ a {
             255,
             0.055
         );
-
-    transition:
-        transform 0.22s ease,
-        background 0.22s ease;
-}
-
-
-.contact-card:hover {
-
-    transform: translateY(-3px);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.09
-        );
 }
 
 
@@ -2633,8 +2552,6 @@ a {
 
     border-radius: 50%;
 
-    color: white;
-
     background:
         rgba(
             255,
@@ -2643,7 +2560,7 @@ a {
             0.09
         );
 
-    font-size: 0.76rem;
+    color: white;
 
     font-weight: 800;
 }
@@ -2665,8 +2582,6 @@ a {
 
     font-weight: 770;
 
-    letter-spacing: 0.1em;
-
     text-transform: uppercase;
 }
 
@@ -2680,11 +2595,6 @@ a {
     color: white;
 
     font-size: 0.77rem;
-}
-
-
-.contact-arrow {
-    opacity: 0.7;
 }
 
 
@@ -2712,25 +2622,11 @@ a {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: space-between;
 
     gap: 20px;
 
     font-size: 0.61rem;
-}
-
-
-.footer-content a {
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.76
-        );
 }
 
 
@@ -2824,11 +2720,9 @@ a {
 
     border-radius: 50%;
 
-    color: var(--navy);
-
     background: white;
 
-    font-size: 1.35rem;
+    color: var(--navy);
 
     cursor: pointer;
 }
@@ -2846,15 +2740,11 @@ a {
 
     font-weight: 800;
 
-    letter-spacing: 0.11em;
-
     text-transform: uppercase;
 }
 
 
 .case-modal-panel h2 {
-
-    max-width: 770px;
 
     margin: 0;
 
@@ -2868,8 +2758,6 @@ a {
         );
 
     line-height: 1.13;
-
-    letter-spacing: -0.03em;
 }
 
 
@@ -2912,8 +2800,6 @@ a {
     overflow: hidden;
 
     border-radius: 13px;
-
-    background: var(--soft-blue);
 }
 
 
@@ -2932,25 +2818,12 @@ a {
 }
 
 
-.china-gallery figure:first-child img {
-
-    object-fit: cover;
-
-    object-position: center center;
-
-    background: #eef3f6;
-}
-
-
 .case-modal-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
+        repeat(2, 1fr);
 
     gap: 14px;
 }
@@ -2980,8 +2853,6 @@ a {
     font-size: 0.59rem;
 
     font-weight: 800;
-
-    letter-spacing: 0.1em;
 
     text-transform: uppercase;
 }
@@ -3073,6 +2944,7 @@ a {
 
 @media (max-width: 1040px) {
 
+
     .hero-grid {
 
         grid-template-columns:
@@ -3115,19 +2987,12 @@ a {
 
 
     .impact-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 
     .automation-grid {
         grid-template-columns: 1fr;
-    }
-
-
-    .automation-card {
-        min-height: auto;
     }
 
 
@@ -3154,34 +3019,22 @@ a {
     .nav-container {
 
         width:
-            calc(100% - 30px);
+            calc(100% - 28px);
     }
 
 
-    .site-header {
+    /* HEADER */
 
-        height: 68px;
-
-        min-height: 68px;
-
-        max-height: 68px;
-    }
-
-
+    .site-header,
     .nav-container {
 
         height: 68px;
 
         min-height: 68px;
-
-        max-height: 68px;
     }
 
 
     .brand {
-
-        padding: 5px 0;
-
         font-size: 0.98rem;
     }
 
@@ -3200,9 +3053,9 @@ a {
 
         top: 68px;
 
-        left: 15px;
+        left: 14px;
 
-        right: 15px;
+        right: 14px;
 
         display: none;
 
@@ -3219,13 +3072,7 @@ a {
 
         border-radius: 11px;
 
-        background:
-            rgba(
-                255,
-                255,
-                255,
-                0.99
-            );
+        background: white;
 
         box-shadow: var(--shadow);
     }
@@ -3247,27 +3094,48 @@ a {
 
 
     /* =====================================================
-       HERO MOBILE
+       MOBILE HERO — COMPLETE FIRST SCREEN
     ===================================================== */
 
     .hero {
 
-        min-height: auto;
+        height:
+            calc(100svh - 68px);
+
+        min-height: 650px;
 
         padding:
-            32px
+            13px
             0
-            48px;
+            15px;
+
+        display: flex;
+
+        align-items: center;
+
+        overflow: hidden;
     }
 
 
     .hero-grid {
 
-        display: flex;
+        width: 100%;
 
-        flex-direction: column;
+        height: 100%;
 
-        gap: 26px;
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            auto
+            1fr;
+
+        gap: 4px;
+
+        align-items: center;
+
+        align-content: center;
     }
 
 
@@ -3276,274 +3144,400 @@ a {
         width: 100%;
 
         max-width: none;
+
+        text-align: left;
     }
 
+
+    /* HEADING */
 
     .hero h1 {
 
-        max-width: 480px;
+        max-width: 100%;
+
+        margin: 0;
+
+        white-space: normal;
 
         font-size:
             clamp(
-                1.72rem,
-                7.3vw,
-                2.08rem
+                1.55rem,
+                6.7vw,
+                1.92rem
             );
 
-        line-height: 1.06;
+        line-height: 1.02;
 
         letter-spacing: -0.035em;
-
-        font-weight: 700;
-
-        color: var(--hero-heading);
-
-        white-space: normal;
     }
 
+
+    /* DESCRIPTION */
 
     .hero-positioning {
 
-        margin-top: 18px;
-
         max-width: none;
 
-        font-size: 0.91rem;
+        margin-top: 9px;
 
-        line-height: 1.6;
-    }
+        font-size:
+            clamp(
+                0.72rem,
+                3vw,
+                0.82rem
+            );
 
-
-    .hero-actions {
-
-        margin-top: 23px;
+        line-height: 1.43;
     }
 
 
     /* =====================================================
-       HERO PROOF MOBILE
+       THREE BUTTONS ON ONE LINE
+    ===================================================== */
+
+    .hero-actions {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1.2fr
+            1fr
+            0.55fr;
+
+        gap: 6px;
+
+        margin-top: 12px;
+    }
+
+
+    .hero-actions .button {
+
+        width: 100%;
+
+        min-height: 33px;
+
+        padding:
+            0
+            7px;
+
+        border-radius: 7px;
+
+        font-size:
+            clamp(
+                0.54rem,
+                2.25vw,
+                0.65rem
+            );
+
+        white-space: nowrap;
+    }
+
+
+    .button-label-desktop {
+        display: none;
+    }
+
+
+    .button-label-mobile {
+        display: inline;
+    }
+
+
+    /* =====================================================
+       PROOF FIGURES — CENTRED
     ===================================================== */
 
     .hero-proof {
 
-        width: 100%;
+        width:
+            min(
+                100%,
+                390px
+            );
 
-        display: flex;
+        margin:
+            14px
+            auto
+            0;
 
-        justify-content: space-between;
+        display: grid;
 
-        gap: 0;
+        grid-template-columns:
+            repeat(3, 1fr);
 
-        margin-top: 32px;
+        text-align: center;
     }
 
 
     .hero-proof-item {
 
-        flex: 1;
-
         min-width: 0;
 
-        padding-right: 7px;
+        padding:
+            0
+            8px;
     }
 
 
     .hero-proof-item + .hero-proof-item {
 
-        margin-left: 10px;
-
-        padding-left: 10px;
-
         border-left:
             1px solid
-            rgba(18, 53, 77, 0.12);
+            rgba(18, 53, 77, 0.11);
     }
 
 
     .hero-proof-item strong {
 
-        font-size: 1.12rem;
+        font-size:
+            clamp(
+                1rem,
+                4.2vw,
+                1.22rem
+            );
     }
 
 
     .hero-proof-item span {
 
-        margin-top: 5px;
+        margin-top: 3px;
 
-        font-size: 0.53rem;
+        font-size:
+            clamp(
+                0.47rem,
+                1.9vw,
+                0.56rem
+            );
 
-        line-height: 1.3;
+        line-height: 1.18;
     }
 
 
     /* =====================================================
-       PORTRAIT MOBILE
+       MOBILE PORTRAIT AREA
     ===================================================== */
+
+    .hero-visual {
+
+        width: 100%;
+
+        min-height: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
 
     .portrait-system {
 
         width:
             min(
                 100%,
-                350px
+                315px
             );
 
-        height: 370px;
+        height: 260px;
+
+        flex-shrink: 0;
     }
 
 
     .portrait-ring {
 
-        width: 150px;
+        width: 124px;
 
-        height: 150px;
+        height: 124px;
+
+        padding: 5px;
     }
 
 
     .hero-orbit-one {
 
-        width: 225px;
+        width: 190px;
 
-        height: 225px;
+        height: 190px;
     }
 
 
     .hero-orbit-two {
 
-        width: 295px;
+        width: 246px;
 
-        height: 295px;
+        height: 246px;
     }
 
 
     .hero-pulse {
 
-        width: 195px;
+        width: 165px;
 
-        height: 195px;
-    }
-
-
-    .skill-float {
-
-        min-width: 92px;
-
-        padding: 8px 10px;
-    }
-
-
-    .skill-float strong {
-        font-size: 0.59rem;
-    }
-
-
-    .skill-operations {
-
-        top: 17px;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-
-    .skill-supply {
-
-        top: 97px;
-
-        left: 0;
-    }
-
-
-    .skill-quality {
-
-        bottom: 81px;
-
-        left: 0;
-    }
-
-
-    .skill-process {
-
-        top: 97px;
-
-        right: 0;
-    }
-
-
-    .skill-eos {
-
-        bottom: 81px;
-
-        right: 0;
-    }
-
-
-    .skill-automation {
-
-        bottom: 0;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-
-    @keyframes floatCard {
-
-        0%,
-        100% {
-            margin-top: -3px;
-        }
-
-        50% {
-            margin-top: 5px;
-        }
-
+        height: 165px;
     }
 
 
     /* =====================================================
-       META MOBILE
+       ALL SIX MOBILE FLOATING CARDS
+    ===================================================== */
+
+    .skill-float {
+
+        min-width: 82px;
+
+        padding:
+            7px
+            8px;
+
+        border-radius: 10px;
+
+        animation:
+            floatCard
+            4s
+            ease-in-out
+            infinite;
+    }
+
+
+    .skill-float strong {
+
+        font-size:
+            clamp(
+                0.52rem,
+                2.15vw,
+                0.59rem
+            );
+    }
+
+
+    /* TOP */
+
+    .skill-operations {
+
+        top: 5px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+
+        animation-delay: -0.2s;
+    }
+
+
+    /* TOP LEFT */
+
+    .skill-supply {
+
+        top: 68px;
+
+        left: 0;
+
+        animation-delay: -1.2s;
+    }
+
+
+    /* TOP RIGHT */
+
+    .skill-process {
+
+        top: 68px;
+
+        right: 0;
+
+        animation-delay: -2.2s;
+    }
+
+
+    /* BOTTOM LEFT */
+
+    .skill-quality {
+
+        bottom: 52px;
+
+        left: 0;
+
+        animation-delay: -3.1s;
+    }
+
+
+    /* BOTTOM RIGHT */
+
+    .skill-eos {
+
+        bottom: 52px;
+
+        right: 0;
+
+        animation-delay: -0.8s;
+    }
+
+
+    /* BOTTOM CENTRE */
+
+    .skill-automation {
+
+        bottom: 3px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+
+        animation-delay: -1.8s;
+    }
+
+
+    /* =====================================================
+       MOBILE META
     ===================================================== */
 
     .hero-visual-meta {
 
         width: 100%;
 
-        margin-top: 34px;
+        margin-top: 8px;
 
         display: flex;
 
-        align-items: center;
-
         justify-content: center;
 
-        gap: 12px;
+        align-items: center;
+
+        gap: 11px;
 
         white-space: nowrap;
 
-        font-size: 0.68rem;
-
-        font-weight: 650;
+        font-size:
+            clamp(
+                0.59rem,
+                2.55vw,
+                0.7rem
+            );
     }
 
 
     .meta-item {
-        gap: 5px;
+        gap: 4px;
     }
 
 
     .meta-icon {
 
-        width: 13px;
+        width: 12px;
 
-        height: 13px;
+        height: 12px;
     }
 
 
     .availability-meta {
-        gap: 5px;
+        gap: 4px;
     }
 
 
@@ -3581,9 +3575,6 @@ a {
 
 
     .section-tagline {
-
-        margin-top: 7px;
-
         font-size: 0.91rem;
     }
 
@@ -3599,19 +3590,9 @@ a {
     }
 
 
-    .value-card::before {
-
-        width: 92px;
-
-        height: 92px;
-
-        top: -37px;
-
-        right: -37px;
-
-        opacity: 0.15;
-    }
-
+    /* =====================================================
+       VALUE CARD CORNERS MOBILE
+    ===================================================== */
 
     .value-card {
 
@@ -3621,31 +3602,47 @@ a {
     }
 
 
+    .value-card::before {
+
+        top: -20px;
+
+        right: -20px;
+
+        width: 82px;
+
+        height: 82px;
+    }
+
+
+    .value-corner {
+
+        top: 13px;
+
+        right: 13px;
+
+        font-size: 0.66rem;
+    }
+
+
     .value-card h3 {
 
-        margin-top: 26px;
+        max-width: 82%;
 
-        padding-right: 20px;
+        margin-top: 36px;
+
+        padding-right: 0;
 
         font-size: 0.98rem;
     }
 
 
     /* =====================================================
-       CHINA FEATURE MOBILE FIX
+       CHINA MOBILE
     ===================================================== */
 
     .china-feature {
 
-        display: grid;
-
         grid-template-columns: 1fr;
-
-        grid-template-rows:
-            auto
-            auto;
-
-        min-height: auto;
 
         gap: 18px;
 
@@ -3657,8 +3654,6 @@ a {
 
     .china-feature-images {
 
-        display: grid;
-
         grid-template-columns:
             1.15fr
             0.85fr;
@@ -3669,65 +3664,39 @@ a {
 
         min-height: 0;
 
-        max-height: none;
-
         gap: 7px;
 
         overflow: hidden;
-
-        align-items: stretch;
     }
 
 
     .china-main-wrapper {
 
-        width: 100%;
-
         height: 100%;
 
         min-height: 0;
-
-        padding: 0;
-
-        overflow: hidden;
-
-        border-radius: 13px;
-
-        background: #eef3f6;
     }
 
 
     .china-main-image {
-
-        width: 100%;
 
         height: 100%;
 
         min-height: 0;
 
         object-fit: cover;
-
-        object-position: center center;
-
-        border-radius: 13px;
     }
 
 
     .china-side-images {
 
-        display: grid;
-
-        grid-template-rows:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        width: 100%;
-
         height: 100%;
 
         min-height: 0;
 
-        gap: 7px;
+        grid-template-rows:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
 
         overflow: hidden;
     }
@@ -3735,29 +3704,15 @@ a {
 
     .china-side-images img {
 
-        width: 100%;
-
         height: 100%;
 
         min-height: 0;
-
-        object-fit: cover;
-
-        border-radius: 12px;
     }
 
 
     .china-feature-content {
 
-        position: relative;
-
-        z-index: 2;
-
         width: 100%;
-
-        display: flex;
-
-        flex-direction: column;
 
         padding:
             8px
@@ -3778,48 +3733,22 @@ a {
 
     .china-feature h3 {
 
-        max-width: none;
-
         margin:
             18px
             0
             10px;
 
         font-size: 1.2rem;
-
-        line-height: 1.28;
     }
 
 
     .china-feature-content > p {
-
-        max-width: none;
-
-        margin: 0;
 
         font-size: 0.78rem;
 
         line-height: 1.6;
     }
 
-
-    .china-feature .tag-row {
-
-        margin-top: 16px;
-    }
-
-
-    .china-feature .work-card-link {
-
-        margin-top: 0;
-
-        padding-top: 20px;
-    }
-
-
-    /* =====================================================
-       OTHER MOBILE
-    ===================================================== */
 
     .work-card {
         min-height: 320px;
@@ -3880,19 +3809,14 @@ a {
             26px
             18px
             20px;
-
-        border-radius:
-            18px
-            18px
-            10px
-            10px;
     }
 
 
     .china-gallery {
 
         grid-template-columns:
-            1fr 1fr;
+            1fr
+            1fr;
 
         grid-template-rows:
             190px
@@ -3903,7 +3827,8 @@ a {
 
     .china-gallery figure:first-child {
 
-        grid-column: 1 / 3;
+        grid-column:
+            1 / 3;
 
         grid-row: auto;
     }
@@ -3929,95 +3854,149 @@ a {
 @media (max-width: 460px) {
 
 
-    .hero-actions {
+    .hero {
 
-        display: grid;
-
-        grid-template-columns:
-            1fr 1fr;
+        padding:
+            10px
+            0
+            12px;
     }
 
 
-    .hero-actions .button:first-child {
+    .hero-positioning {
 
-        grid-column:
-            1 / -1;
+        font-size:
+            clamp(
+                0.69rem,
+                2.9vw,
+                0.77rem
+            );
+    }
+
+
+    .hero-actions {
+
+        gap: 5px;
+
+        margin-top: 10px;
+    }
+
+
+    .hero-actions .button {
+
+        min-height: 31px;
+
+        font-size:
+            clamp(
+                0.5rem,
+                2.1vw,
+                0.59rem
+            );
+    }
+
+
+    .hero-proof {
+
+        margin-top: 11px;
     }
 
 
     .portrait-system {
 
-        width: 325px;
+        width: 290px;
 
         max-width: 100%;
 
-        height: 355px;
+        height: 245px;
     }
 
 
-    /* Keep proof numbers readable */
+    .portrait-ring {
 
-    .hero-proof {
+        width: 116px;
 
-        margin-top: 30px;
+        height: 116px;
     }
 
 
-    .hero-proof-item + .hero-proof-item {
+    .hero-orbit-one {
 
-        margin-left: 8px;
+        width: 177px;
 
-        padding-left: 8px;
+        height: 177px;
     }
 
 
-    .hero-proof-item strong {
+    .hero-orbit-two {
 
-        font-size: 1.03rem;
+        width: 228px;
+
+        height: 228px;
     }
 
 
-    .hero-proof-item span {
+    .hero-pulse {
 
-        font-size: 0.49rem;
+        width: 155px;
+
+        height: 155px;
     }
 
 
-    /* Keep meta line on one line */
+    .skill-float {
+
+        min-width: 78px;
+
+        padding:
+            6px
+            7px;
+    }
+
+
+    .skill-operations {
+        top: 4px;
+    }
+
+
+    .skill-supply {
+        top: 62px;
+    }
+
+
+    .skill-process {
+        top: 62px;
+    }
+
+
+    .skill-quality {
+        bottom: 49px;
+    }
+
+
+    .skill-eos {
+        bottom: 49px;
+    }
+
+
+    .skill-automation {
+        bottom: 1px;
+    }
+
 
     .hero-visual-meta {
 
-        margin-top: 34px;
+        margin-top: 6px;
 
-        gap: 9px;
+        gap: 8px;
 
         font-size:
             clamp(
-                0.59rem,
-                2.55vw,
-                0.68rem
+                0.56rem,
+                2.45vw,
+                0.65rem
             );
-
-        letter-spacing: -0.012em;
     }
 
-
-    .meta-icon {
-
-        width: 12px;
-
-        height: 12px;
-    }
-
-
-    .work-stat-row {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* =====================================================
-       CHINA FEATURE SMALL MOBILE
-    ===================================================== */
 
     .china-feature-images {
 
@@ -4025,116 +4004,75 @@ a {
             1.05fr
             0.95fr;
 
-        width: 100%;
-
         height: 255px;
-
-        min-height: 0;
-
-        max-height: none;
-
-        overflow: hidden;
     }
 
 
-    .china-main-wrapper {
-
-        width: 100%;
-
-        height: 100%;
-
-        min-height: 0;
-
-        padding: 0;
-
-        overflow: hidden;
-    }
-
-
-    .china-main-image {
-
-        width: 100%;
-
-        height: 100%;
-
-        min-height: 0;
-
-        object-fit: cover;
-
-        object-position: center center;
-    }
-
-
-    .china-side-images {
-
-        width: 100%;
-
-        height: 100%;
-
-        min-height: 0;
-
-        display: grid;
-
-        grid-template-rows:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        overflow: hidden;
-    }
-
-
-    .china-side-images img {
-
-        width: 100%;
-
-        height: 100%;
-
-        min-height: 0;
-
-        object-fit: cover;
-    }
-
-
-    .china-feature-content {
-
-        padding:
-            8px
-            8px
-            10px;
-    }
-
-
-    .china-feature .work-meta {
-
-        flex-direction: column;
-
-        gap: 3px;
+    .work-stat-row {
+        grid-template-columns: 1fr;
     }
 
 }
 
 
 /* =========================================================
-   VERY SMALL DEVICES
+   SHORT MOBILE SCREENS
+
+   Do not squash the design beyond usability.
+========================================================= */
+
+@media
+    (max-width: 760px)
+    and (max-height: 700px) {
+
+    .hero {
+
+        height: auto;
+
+        min-height:
+            calc(100svh - 68px);
+
+        overflow: visible;
+
+        padding:
+            18px
+            0
+            24px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL WIDTHS
 ========================================================= */
 
 @media (max-width: 350px) {
 
+
     .hero h1 {
-        font-size: 1.65rem;
+        font-size: 1.45rem;
     }
 
 
-    .hero-proof-item span {
-        font-size: 0.45rem;
+    .hero-actions .button {
+        font-size: 0.48rem;
     }
 
 
     .hero-visual-meta {
 
-        gap: 6px;
+        gap: 5px;
 
-        font-size: 0.56rem;
+        font-size: 0.53rem;
+    }
+
+
+    .portrait-system {
+
+        width: 270px;
+
+        height: 235px;
     }
 
 }
@@ -4144,9 +4082,7 @@ a {
    REDUCED MOTION
 ========================================================= */
 
-@media (
-    prefers-reduced-motion: reduce
-) {
+@media (prefers-reduced-motion: reduce) {
 
 
     html {
