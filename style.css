@@ -5939,3 +5939,21 @@ a {
         animation-duration: 4.8s;
     }
 }
+/* =========================================================
+   MOBILE HERO — RESTORE DESKTOP-STYLE BLUE TYPOGRAPHY
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        color: #355C72;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-positioning {
+        color: #526F82;
+        font-weight: 450;
+        line-height: 1.55;
+    }
+}
