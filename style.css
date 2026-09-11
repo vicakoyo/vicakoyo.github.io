@@ -5880,3 +5880,62 @@ a {
         padding-bottom: 90px;
     }
 }
+/* =========================================================
+   ORBIT CARDS — RESTORE NORMAL MOVEMENT
+========================================================= */
+
+.skill-float {
+    animation-name: floatCard;
+    animation-duration: 4.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+
+/* Slightly more visible vertical movement */
+@keyframes floatCard {
+
+    0%,
+    100% {
+        translate: 0 -3px;
+    }
+
+    50% {
+        translate: 0 4px;
+    }
+}
+
+
+/* Offset the cards so they don't all move together */
+.skill-operations {
+    animation-delay: -0.4s;
+}
+
+.skill-supply {
+    animation-delay: -1.2s;
+}
+
+.skill-process {
+    animation-delay: -2.1s;
+}
+
+.skill-quality {
+    animation-delay: -3s;
+}
+
+.skill-eos {
+    animation-delay: -1.6s;
+}
+
+.skill-automation {
+    animation-delay: -2.6s;
+}
+
+
+/* Same movement on mobile */
+@media (max-width: 768px) {
+
+    .skill-float {
+        animation-duration: 4.8s;
+    }
+}
