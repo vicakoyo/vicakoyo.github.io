@@ -549,12 +549,9 @@ a {
 
 
 .hero-content {
-
     max-width: 650px;
 }
 
-
-/* Milder headline */
 
 .hero h1 {
 
@@ -1640,17 +1637,17 @@ a {
 }
 
 
+/* REVERTED SELFIE TO LARGE FILLED VERSION */
+
 .china-main-wrapper {
 
-    display: flex;
+    width: 100%;
 
-    align-items: center;
-
-    justify-content: center;
+    height: 100%;
 
     overflow: hidden;
 
-    padding: 5px;
+    padding: 0;
 
     border-radius: 13px;
 
@@ -1664,9 +1661,11 @@ a {
 
     height: 100%;
 
-    object-fit: contain;
+    object-fit: cover;
 
-    border-radius: 10px;
+    object-position: center center;
+
+    border-radius: 13px;
 }
 
 
@@ -2953,9 +2952,13 @@ a {
 }
 
 
+/* First gallery photo also fills its frame */
+
 .china-gallery figure:first-child img {
 
-    object-fit: contain;
+    object-fit: cover;
+
+    object-position: center center;
 
     background: #eef3f6;
 }
@@ -3283,8 +3286,6 @@ a {
     }
 
 
-    /* Smaller + softer mobile heading */
-
     .hero h1 {
 
         max-width: 480px;
@@ -3317,7 +3318,6 @@ a {
 
 
     .hero-actions {
-
         margin-top: 23px;
     }
 
@@ -3457,8 +3457,6 @@ a {
     }
 
 
-    /* Deliberate gap below floating cards */
-
     .hero-visual-meta {
 
         width: 100%;
@@ -3584,6 +3582,20 @@ a {
         min-height: 260px;
 
         max-height: 300px;
+    }
+
+
+    .china-main-wrapper {
+
+        padding: 0;
+    }
+
+
+    .china-main-image {
+
+        object-fit: cover;
+
+        object-position: center center;
     }
 
 
@@ -3771,7 +3783,15 @@ a {
 
 
     .china-main-wrapper {
-        padding: 4px;
+        padding: 0;
+    }
+
+
+    .china-main-image {
+
+        object-fit: cover;
+
+        object-position: center center;
     }
 
 
@@ -3808,7 +3828,6 @@ a {
 
 
     .hero h1 {
-
         font-size: 1.65rem;
     }
 
