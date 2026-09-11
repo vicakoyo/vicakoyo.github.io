@@ -603,8 +603,6 @@ a {
 }
 
 
-/* Softer selected work button */
-
 .button-primary {
 
     color: var(--blue-dark);
@@ -629,8 +627,6 @@ a {
     border-color: var(--blue);
 }
 
-
-/* Softer automation button */
 
 .button-teal {
 
@@ -1251,8 +1247,6 @@ a {
     border-top: 3px solid var(--violet);
 }
 
-
-/* No automatic pop animation */
 
 .impact-card:hover,
 .impact-card:focus-visible {
@@ -3193,7 +3187,9 @@ a {
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO MOBILE
+    ===================================================== */
 
     .hero {
 
@@ -3400,8 +3396,6 @@ a {
     }
 
 
-    /* Larger, readable one-line meta */
-
     .hero-visual-meta {
 
         width: 100%;
@@ -3441,6 +3435,10 @@ a {
         height: 6px;
     }
 
+
+    /* =====================================================
+       GENERAL MOBILE SECTIONS
+    ===================================================== */
 
     .section {
         padding: 62px 0;
@@ -3514,55 +3512,195 @@ a {
     }
 
 
+    /* =====================================================
+       CHINA FEATURE MOBILE FIX
+    ===================================================== */
+
     .china-feature {
 
+        display: grid;
+
         grid-template-columns: 1fr;
+
+        grid-template-rows:
+            auto
+            auto;
 
         min-height: auto;
 
         gap: 18px;
 
         padding: 12px;
+
+        overflow: hidden;
     }
 
 
     .china-feature-images {
 
-        min-height: 260px;
+        display: grid;
 
-        max-height: 300px;
+        grid-template-columns:
+            1.15fr
+            0.85fr;
+
+        width: 100%;
+
+        height: 300px;
+
+        min-height: 0;
+
+        max-height: none;
+
+        gap: 7px;
+
+        overflow: hidden;
+
+        align-items: stretch;
     }
 
 
     .china-main-wrapper {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
         padding: 0;
+
+        overflow: hidden;
+
+        border-radius: 13px;
+
+        background: #eef3f6;
     }
 
 
     .china-main-image {
 
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
         object-fit: cover;
 
         object-position: center center;
+
+        border-radius: 13px;
+    }
+
+
+    .china-side-images {
+
+        display: grid;
+
+        grid-template-rows:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        gap: 7px;
+
+        overflow: hidden;
+    }
+
+
+    .china-side-images img {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+
+        border-radius: 12px;
     }
 
 
     .china-feature-content {
 
+        position: relative;
+
+        z-index: 2;
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
         padding:
-            2px
+            8px
             7px
-            9px;
+            10px;
+
+        background: white;
+    }
+
+
+    .china-feature .work-meta {
+
+        flex-direction: column;
+
+        gap: 3px;
     }
 
 
     .china-feature h3 {
 
-        margin-top: 22px;
+        max-width: none;
+
+        margin:
+            18px
+            0
+            10px;
 
         font-size: 1.2rem;
+
+        line-height: 1.28;
     }
 
+
+    .china-feature-content > p {
+
+        max-width: none;
+
+        margin: 0;
+
+        font-size: 0.78rem;
+
+        line-height: 1.6;
+    }
+
+
+    .china-feature .tag-row {
+
+        margin-top: 16px;
+    }
+
+
+    .china-feature .work-card-link {
+
+        margin-top: 0;
+
+        padding-top: 20px;
+    }
+
+
+    /* =====================================================
+       OTHER MOBILE ELEMENTS
+    ===================================================== */
 
     .work-card {
         min-height: 320px;
@@ -3726,24 +3864,49 @@ a {
     }
 
 
+    /* =====================================================
+       CHINA FEATURE SMALL MOBILE
+    ===================================================== */
+
     .china-feature-images {
 
         grid-template-columns:
             1.05fr
             0.95fr;
 
-        min-height: 235px;
+        width: 100%;
 
-        max-height: 255px;
+        height: 255px;
+
+        min-height: 0;
+
+        max-height: none;
+
+        overflow: hidden;
     }
 
 
     .china-main-wrapper {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
         padding: 0;
+
+        overflow: hidden;
     }
 
 
     .china-main-image {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
 
         object-fit: cover;
 
@@ -3753,13 +3916,44 @@ a {
 
     .china-side-images {
 
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        display: grid;
+
         grid-template-rows:
-            1fr
-            1fr;
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        overflow: hidden;
     }
 
 
-    .work-meta {
+    .china-side-images img {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+    }
+
+
+    .china-feature-content {
+
+        padding:
+            8px
+            8px
+            10px;
+    }
+
+
+    .china-feature .work-meta {
 
         flex-direction: column;
 
