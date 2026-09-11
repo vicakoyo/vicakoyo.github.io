@@ -1,2163 +1,4020 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================================
+   VICTOR AKOYO PORTFOLIO
+   REFINED RESPONSIVE VERSION
+========================================================= */
 
-<head>
+:root {
 
-    <meta charset="UTF-8">
+    --navy: #12354d;
+    --navy-deep: #0b283b;
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    --hero-heading: #355c72;
 
-    <meta
-        name="description"
-        content="Professional portfolio of Victor Akoyo — Operations, Business Operations, Supply Chain, Quality, Process Improvement and AI-enabled operations."
-    >
+    --blue: #1674a8;
+    --blue-dark: #115f8b;
 
-    <title>
-        Victor Akoyo | Operations, Supply Chain & AI-Enabled Operations
-    </title>
+    --teal: #168c85;
+    --teal-dark: #0f746f;
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    --amber: #d59432;
+    --orange: #de7a32;
 
-</head>
+    --violet: #6b63ba;
+    --cyan: #2d9ec0;
 
+    --body: #5d7789;
+    --muted: #8497a5;
 
-<body>
+    --white: #ffffff;
 
+    --soft-blue: #f6f9fb;
+    --soft-teal: #f4faf9;
+    --soft-amber: #fff8ed;
+    --soft-violet: #f6f4fb;
 
-    <!-- =========================================
-         ANIMATED BACKGROUND
-    ========================================== -->
+    --border:
+        rgba(18, 53, 77, 0.13);
 
-    <canvas
-        id="particleCanvas"
-        aria-hidden="true"
-    ></canvas>
+    --blue-border:
+        rgba(22, 116, 168, 0.25);
 
+    --teal-border:
+        rgba(22, 140, 133, 0.24);
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+    --amber-border:
+        rgba(213, 148, 50, 0.27);
 
-    <header class="site-header">
+    --violet-border:
+        rgba(107, 99, 186, 0.24);
 
-        <div class="nav-container">
+    --shadow:
+        0 14px 38px
+        rgba(13, 53, 82, 0.065);
 
+    --shadow-hover:
+        0 22px 48px
+        rgba(13, 53, 82, 0.11);
 
-            <a
-                href="#home"
-                class="brand"
-                aria-label="Victor Akoyo home"
-            >
-                Victor A.
-            </a>
+    --radius: 18px;
 
+    --max-width: 1160px;
+}
 
-            <button
-                id="mobileMenuButton"
-                class="mobile-menu-button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mainNav"
-            >
 
-                <span></span>
-                <span></span>
-                <span></span>
+/* =========================================================
+   BASE
+========================================================= */
 
-            </button>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 
-            <nav
-                id="mainNav"
-                class="main-nav"
-                aria-label="Main navigation"
-            >
+html {
 
-                <a href="#impact">
-                    Impact
-                </a>
+    scroll-behavior: smooth;
 
-                <a href="#expertise">
-                    Expertise
-                </a>
+    scroll-padding-top: 78px;
+}
 
-                <a href="#selected-work">
-                    Selected Work
-                </a>
 
-                <a href="#automation">
-                    Automation
-                </a>
+body {
 
-                <a href="#experience">
-                    Experience
-                </a>
+    margin: 0;
 
-                <a href="#contact">
-                    Contact
-                </a>
+    overflow-x: hidden;
 
-            </nav>
+    color: var(--body);
 
+    background: white;
 
-        </div>
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-    </header>
+    line-height: 1.62;
+}
 
 
-    <main>
+body.modal-open {
+    overflow: hidden;
+}
 
 
-        <!-- =========================================
-             HERO
-        ========================================== -->
+main,
+.site-footer {
 
-        <section
-            id="home"
-            class="hero"
-        >
+    position: relative;
 
+    z-index: 1;
+}
 
-            <div class="container hero-grid">
 
+a {
 
-                <!-- HERO COPY -->
+    color: inherit;
 
-                <div class="hero-content reveal">
+    text-decoration: none;
+}
 
 
-                    <h1>
-                        Building stronger operations.
-                    </h1>
+img {
 
+    display: block;
 
-                   <p class="hero-positioning">
-    Operations and Business Operations professional turning complexity into measurable improvement across supply chain, quality, process execution and AI-enabled systems. I build practical operating rhythms, visibility and workflows that help teams reduce cost, improve quality and make better decisions.
-</p>
+    max-width: 100%;
+}
 
 
-                    <div class="hero-actions">
+button {
+    font: inherit;
+}
 
 
-                        <a
-                            href="#selected-work"
-                            class="button button-primary"
-                        >
-                            View Selected Work
-                        </a>
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
 
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation"
-                            class="button button-teal"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Automation Portfolio
-                        </a>
+::selection {
 
+    color: white;
 
-                        <a
-                            href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View CV
-                        </a>
+    background: var(--navy);
+}
 
 
-                    </div>
+/* =========================================================
+   PARTICLE BACKGROUND
+========================================================= */
 
+#particleCanvas {
 
-                </div>
+    position: fixed;
 
+    inset: 0;
 
-                <!-- HERO PORTRAIT -->
+    z-index: 0;
 
-                <div class="hero-visual reveal">
+    width: 100%;
 
+    height: 100%;
 
-                    <div class="portrait-system">
+    pointer-events: none;
+}
 
 
-                        <div
-                            class="hero-pulse pulse-one"
-                            aria-hidden="true"
-                        ></div>
+/* =========================================================
+   LAYOUT
+========================================================= */
 
+.container {
 
-                        <div
-                            class="hero-pulse pulse-two"
-                            aria-hidden="true"
-                        ></div>
+    width:
+        min(
+            calc(100% - 48px),
+            var(--max-width)
+        );
 
+    margin-inline: auto;
+}
 
-                        <div
-                            class="hero-orbit hero-orbit-one"
-                            aria-hidden="true"
-                        ></div>
 
+.section {
 
-                        <div
-                            class="hero-orbit hero-orbit-two"
-                            aria-hidden="true"
-                        ></div>
+    position: relative;
 
+    padding: 80px 0;
 
-                        <div class="portrait-ring">
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+}
 
 
-                            <div class="portrait-frame">
+.section-soft {
 
-                                <img
-                                    src="victor-akoyo-portrait.png.jpeg"
-                                    alt="Victor Akoyo"
-                                    class="profile-photo"
-                                >
+    background:
+        rgba(
+            246,
+            249,
+            251,
+            0.90
+        );
+}
 
-                            </div>
 
+/* =========================================================
+   HEADER
+========================================================= */
 
-                        </div>
+.site-header {
 
+    position: sticky;
 
-                        <!-- FLOATING CAPABILITY CARDS -->
+    top: 0;
 
-                        <div class="skill-float skill-operations">
+    z-index: 1000;
 
-                            <span
-                                class="skill-dot skill-dot-blue"
-                            ></span>
+    height: 72px;
 
-                            <strong>
-                                Operations
-                            </strong>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.96
+        );
 
-                        </div>
+    border-bottom:
+        1px solid
+        rgba(18, 53, 77, 0.09);
 
+    backdrop-filter: blur(14px);
 
-                        <div class="skill-float skill-supply">
+    -webkit-backdrop-filter: blur(14px);
+}
 
-                            <span
-                                class="skill-dot skill-dot-amber"
-                            ></span>
 
-                            <strong>
-                                Supply Chain
-                            </strong>
+.nav-container {
 
-                        </div>
+    width:
+        min(
+            calc(100% - 48px),
+            var(--max-width)
+        );
 
+    height: 72px;
 
-                        <div class="skill-float skill-quality">
+    min-height: 72px;
 
-                            <span
-                                class="skill-dot skill-dot-teal"
-                            ></span>
+    margin-inline: auto;
 
-                            <strong>
-                                Quality
-                            </strong>
+    display: flex;
 
-                        </div>
+    align-items: center;
 
+    justify-content: space-between;
 
-                        <div class="skill-float skill-process">
+    gap: 30px;
+}
 
-                            <span
-                                class="skill-dot skill-dot-cyan"
-                            ></span>
 
-                            <strong>
-                                Process
-                            </strong>
+/* =========================================================
+   ANIMATED BRAND
+========================================================= */
 
-                        </div>
+.brand {
 
+    position: relative;
 
-                        <div class="skill-float skill-eos">
+    display: inline-block;
 
-                            <span
-                                class="skill-dot skill-dot-orange"
-                            ></span>
+    flex-shrink: 0;
 
-                            <strong>
-                                EOS
-                            </strong>
+    padding: 5px 0;
 
-                        </div>
+    font-size: 1rem;
 
+    line-height: 1;
 
-                        <div class="skill-float skill-automation">
+    font-weight: 800;
 
-                            <span
-                                class="skill-dot skill-dot-violet"
-                            ></span>
+    background:
+        linear-gradient(
+            90deg,
+            var(--navy-deep) 0%,
+            var(--blue) 27%,
+            var(--teal) 52%,
+            var(--amber) 75%,
+            var(--navy-deep) 100%
+        );
 
-                            <strong>
-                                Automation
-                            </strong>
+    background-size: 250% 100%;
 
-                        </div>
+    background-position: 0% 50%;
 
+    -webkit-background-clip: text;
 
-                    </div>
+    background-clip: text;
 
+    color: transparent;
 
-                    <!-- COMPACT FACT LINE -->
-                    <br>
-                    <div class="hero-visual-meta">
+    -webkit-text-fill-color: transparent;
 
-                        <span>
-                            8 years cross-functional experience
-                        </span>
+    animation:
+        brandTextShimmer
+        7s
+        ease-in-out
+        infinite;
+}
 
-                        <span class="meta-divider">
-                            •
-                        </span>
 
-                        <span>
-                            Nairobi, KE
-                        </span>
+@keyframes brandTextShimmer {
 
-                        <span class="meta-divider">
-                            •
-                        </span>
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
 
-                        <span class="availability-meta">
+    50% {
+        background-position: 100% 50%;
+    }
 
-                            <span class="availability-dot"></span>
+}
 
-                            Available
 
-                        </span>
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-                    </div>
+.main-nav {
 
+    display: flex;
 
-                </div>
+    align-items: center;
 
+    gap: 25px;
+}
 
-            </div>
 
+.main-nav a {
 
-        </section>
+    position: relative;
 
+    color: #526d7f;
 
-        <!-- =========================================
-             IMPACT
-        ========================================== -->
+    font-size: 0.75rem;
 
-        <section
-            id="impact"
-            class="section section-soft"
-        >
+    font-weight: 680;
 
+    transition:
+        color 0.2s ease;
+}
 
-            <div class="container">
 
+.main-nav a::after {
 
-                <div class="section-heading reveal">
+    content: "";
 
-                    <h2 class="section-title">
-                        Selected Impact
-                    </h2>
+    position: absolute;
 
-                    <p class="section-tagline">
-                        Evidence over adjectives.
-                    </p>
+    left: 0;
 
-                </div>
+    bottom: -9px;
 
+    width: 100%;
 
-                <div
-                    id="impactGrid"
-                    class="impact-grid"
-                >
+    height: 2px;
 
+    background: var(--blue);
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="logistics"
-                        aria-haspopup="dialog"
-                    >
+    transform: scaleX(0);
 
-                        <span class="card-number">
-                            01
-                        </span>
+    transform-origin: right;
 
+    transition:
+        transform 0.2s ease;
+}
 
-                        <div class="metric">
 
-                            <span>£</span>
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--blue);
+}
 
-                            <span
-                                class="counter"
-                                data-start="0"
-                                data-target="520"
-                            >
-                                0
-                            </span>
 
-                            <span>k</span>
+.main-nav a:hover::after,
+.main-nav a.active::after {
 
-                        </div>
+    transform: scaleX(1);
 
+    transform-origin: left;
+}
 
-                        <h3>
-                            Annual logistics savings
-                        </h3>
 
+.mobile-menu-button {
 
-                        <p>
-                            Warehouse, 3PL and final-mile optimisation.
-                        </p>
+    display: none;
 
+    width: 42px;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    height: 42px;
 
+    padding: 8px;
 
-                    </button>
+    border:
+        1px solid var(--border);
 
+    border-radius: 9px;
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="quality"
-                        aria-haspopup="dialog"
-                    >
+    background: white;
 
-                        <span class="card-number">
-                            02
-                        </span>
+    cursor: pointer;
+}
 
 
-                        <div class="metric transition-metric">
+.mobile-menu-button span {
 
-                            <span>12%</span>
+    display: block;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    width: 20px;
 
-                            <span>4%</span>
+    height: 2px;
 
-                        </div>
+    margin: 4px auto;
 
+    background: var(--navy);
+}
 
-                        <h3>
-                            Returns reduction
-                        </h3>
 
+/* =========================================================
+   HERO
+========================================================= */
 
-                        <p>
+.hero {
 
-                            Supplier quality, packaging,
-                            handling and reverse-logistics improvement.
+    position: relative;
 
-                        </p>
+    z-index: 1;
 
+    min-height:
+        calc(
+            100vh - 72px
+        );
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    min-height:
+        calc(
+            100svh - 72px
+        );
 
+    display: flex;
 
-                    </button>
+    align-items: center;
 
+    padding: 46px 0 54px;
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="manufacturing"
-                        aria-haspopup="dialog"
-                    >
+    overflow: hidden;
 
-                        <span class="card-number">
-                            03
-                        </span>
+    background:
+        radial-gradient(
+            circle at 76% 48%,
+            rgba(22, 116, 168, 0.065),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 84% 48%,
+            rgba(22, 140, 133, 0.04),
+            transparent 36%
+        ),
+        rgba(
+            255,
+            255,
+            255,
+            0.80
+        );
+}
 
 
-                        <div class="metric transition-metric">
+.hero-grid {
 
-                            <span>4%</span>
+    display: grid;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    grid-template-columns:
+        minmax(0, 1.06fr)
+        minmax(390px, 0.94fr);
 
-                            <span>2%</span>
+    gap: 68px;
 
-                        </div>
+    align-items: center;
+}
 
 
-                        <h3>
-                            U-bolt rejection reduction
-                        </h3>
+.hero-content {
 
+    max-width: 680px;
+}
 
-                        <p>
 
-                            SPC, PFMEA, MSA, process control
-                            and corrective action.
+/* =========================================================
+   HERO HEADING
+========================================================= */
 
-                        </p>
+.hero h1 {
 
+    max-width: none;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    margin: 0;
 
+    color: var(--hero-heading);
 
-                    </button>
+    font-size:
+        clamp(
+            2.4rem,
+            3.1vw,
+            2.8rem
+        );
 
+    line-height: 1.05;
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="complaints"
-                        aria-haspopup="dialog"
-                    >
+    letter-spacing: -0.038em;
 
-                        <span class="card-number">
-                            04
-                        </span>
+    font-weight: 700;
 
+    white-space: nowrap;
+}
 
-                        <div class="metric transition-metric">
 
-                            <span>12%</span>
+.hero-positioning {
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    max-width: 640px;
 
-                            <span>5%</span>
+    margin: 25px 0 0;
 
-                        </div>
+    color: #58758a;
 
+    font-size:
+        clamp(
+            0.98rem,
+            1.28vw,
+            1.08rem
+        );
 
-                        <h3>
-                            Customer complaints reduction
-                        </h3>
+    line-height: 1.72;
+}
 
 
-                        <p>
+.hero-actions {
 
-                            Manufacturing-quality controls
-                            and stronger corrective-action discipline.
+    display: flex;
 
-                        </p>
+    flex-wrap: wrap;
 
+    gap: 10px;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    margin-top: 30px;
+}
 
 
-                    </button>
+/* =========================================================
+   BUTTONS
+========================================================= */
 
+.button {
 
-                </div>
+    min-height: 43px;
 
+    display: inline-flex;
 
-            </div>
+    align-items: center;
 
+    justify-content: center;
 
-        </section>
+    padding: 0 18px;
 
+    border-radius: 8px;
 
-        <!-- =========================================
-             HOW I CREATE VALUE
-        ========================================== -->
+    font-size: 0.75rem;
 
-        <section
-            id="expertise"
-            class="section"
-        >
+    font-weight: 720;
 
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
 
-            <div class="container">
 
+.button:hover {
+    transform: translateY(-2px);
+}
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        How I Create Value
-                    </h2>
+.button-primary {
 
-                    <p class="section-tagline">
-                        Operations from problem to execution.
-                    </p>
+    color: var(--blue-dark);
 
-                </div>
+    border:
+        1px solid
+        rgba(22, 116, 168, 0.22);
 
+    background:
+        rgba(22, 116, 168, 0.08);
 
-                <div class="value-grid">
+    box-shadow: none;
+}
 
 
-                    <article
-                        class="value-card value-blue reveal"
-                    >
+.button-primary:hover {
 
-                        <span class="value-index">
-                            01
-                        </span>
+    color: white;
 
+    background: var(--blue);
 
-                        <h3>
-                            Operations & Business Operations
-                        </h3>
+    border-color: var(--blue);
+}
 
 
-                        <p>
+.button-teal {
 
-                            Operating cadence, KPI governance,
-                            EOS execution, cross-functional coordination,
-                            SOPs, executive reporting, issue resolution,
-                            service continuity and accountability.
+    color: var(--teal-dark);
 
-                        </p>
+    border:
+        1px solid
+        rgba(22, 140, 133, 0.23);
 
+    background:
+        rgba(22, 140, 133, 0.08);
 
-                    </article>
+    box-shadow: none;
+}
 
 
-                    <article
-                        class="value-card value-amber reveal"
-                    >
+.button-teal:hover {
 
-                        <span class="value-index">
-                            02
-                        </span>
+    color: white;
 
+    background: var(--teal);
 
-                        <h3>
-                            Supply Chain & Commercial Operations
-                        </h3>
+    border-color: var(--teal);
+}
 
 
-                        <p>
+.button-secondary {
 
-                            International sourcing, demand planning,
-                            supplier management, freight, 3PLs,
-                            warehousing, final mile, inventory,
-                            negotiation and commercial cost improvement.
+    color: var(--navy);
 
-                        </p>
+    border:
+        1px solid
+        rgba(18, 53, 77, 0.15);
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+}
 
-                    </article>
 
+.button-secondary:hover {
 
-                    <article
-                        class="value-card value-teal reveal"
-                    >
+    color: white;
 
-                        <span class="value-index">
-                            03
-                        </span>
+    background: var(--navy);
 
+    border-color: var(--navy);
+}
 
-                        <h3>
-                            Quality & Continuous Improvement
-                        </h3>
 
+/* =========================================================
+   HERO PORTRAIT SYSTEM
+========================================================= */
 
-                        <p>
+.hero-visual {
 
-                            Supplier and manufacturing quality,
-                            CAPA, root-cause analysis, SPC,
-                            PFMEA, MSA, inspection systems,
-                            5S, product improvement and
-                            customer-issue reduction.
+    display: flex;
 
-                        </p>
+    flex-direction: column;
 
+    align-items: center;
 
-                    </article>
+    justify-content: center;
+}
 
 
-                    <article
-                        class="value-card value-violet reveal"
-                    >
+.portrait-system {
 
-                        <span class="value-index">
-                            04
-                        </span>
+    position: relative;
 
+    width: 405px;
 
-                        <h3>
-                            AI-Enabled Operations & Business Systems
-                        </h3>
+    height: 405px;
 
+    display: flex;
 
-                        <p>
+    align-items: center;
 
-                            Workflow automation, Microsoft 365,
-                            AI-assisted reporting, CRM integration,
-                            operational intelligence and practical
-                            use of n8n, Make.com and business APIs.
+    justify-content: center;
+}
 
-                        </p>
 
+.portrait-ring {
 
-                    </article>
+    position: relative;
 
+    z-index: 8;
 
-                </div>
+    width: 174px;
 
+    height: 174px;
 
-            </div>
+    padding: 7px;
 
+    border:
+        1px solid var(--blue-border);
 
-        </section>
+    border-radius: 50%;
 
+    background: white;
 
-        <!-- =========================================
-             SELECTED WORK
-        ========================================== -->
+    box-shadow:
+        0 18px 48px
+        rgba(13, 53, 82, 0.14);
+}
 
-        <section
-            id="selected-work"
-            class="section selected-work-section"
-        >
 
+.portrait-frame {
 
-            <div class="container">
+    width: 100%;
 
+    height: 100%;
 
-                <div class="section-heading reveal">
+    overflow: hidden;
 
-                    <h2 class="section-title">
-                        Selected Work
-                    </h2>
+    border-radius: 50%;
 
-                    <p class="section-tagline">
-                        Evidence from real operating problems.
-                    </p>
+    background: #dce6f7;
+}
 
-                </div>
 
+.profile-photo {
 
-                <article
-                    class="china-feature reveal case-trigger"
-                    data-case="china"
-                    tabindex="0"
-                    role="button"
-                    aria-haspopup="dialog"
-                >
+    width: 100%;
 
+    height: 100%;
 
-                    <div class="china-feature-images">
+    object-fit: cover;
 
+    object-position: center 30%;
+}
 
-                        <div class="china-main-wrapper">
 
-                            <img
-                                src="images/china/china-vivid-supplier-visit.webp"
-                                alt="Victor Akoyo outside the Vivid supplier factory in China"
-                                loading="lazy"
-                                class="china-main-image"
-                            >
+/* =========================================================
+   HERO ORBITS
+========================================================= */
 
-                        </div>
+.hero-orbit,
+.hero-pulse {
 
+    position: absolute;
 
-                        <div class="china-side-images">
+    border-radius: 50%;
 
+    pointer-events: none;
+}
 
-                            <img
-                                src="images/china/china-product-quality-review.webp"
-                                alt="Victor reviewing a woven outdoor furniture product during a China supplier visit"
-                                loading="lazy"
-                            >
 
+.hero-orbit-one {
 
-                            <img
-                                src="images/china/china-aluminium-frame-production.webp"
-                                alt="Aluminium outdoor furniture frames during production at a supplier factory in China"
-                                loading="lazy"
-                            >
+    width: 260px;
 
+    height: 260px;
 
-                        </div>
+    border:
+        1px solid
+        rgba(22, 116, 168, 0.17);
+}
 
 
-                    </div>
+.hero-orbit-two {
 
+    width: 338px;
 
-                    <div class="china-feature-content">
+    height: 338px;
 
+    border:
+        1px dashed
+        rgba(213, 148, 50, 0.20);
+}
 
-                        <div class="work-meta">
 
-                            <span>
-                                International Supplier Development
-                            </span>
+.hero-pulse {
 
-                            <span>
-                                China • March 2025
-                            </span>
+    width: 220px;
 
-                        </div>
+    height: 220px;
 
+    border:
+        1px solid
+        rgba(22, 140, 133, 0.20);
 
-                        <h3>
-                            Supplier continuity &
-                            manufacturing development
-                        </h3>
+    animation:
+        pulseRing
+        4.5s
+        ease-out
+        infinite;
+}
 
 
-                        <p>
+.pulse-two {
+    animation-delay: 2.25s;
+}
 
-                            Supported supplier-continuity negotiations,
-                            studied mature supplier operations and
-                            helped formalise quality and process
-                            controls at an early-stage Hunan
-                            furniture operation.
 
-                        </p>
+@keyframes pulseRing {
 
+    0% {
 
-                        <div class="tag-row">
+        transform: scale(0.82);
 
-                            <span>
-                                Supplier negotiation
-                            </span>
+        opacity: 0;
+    }
 
-                            <span>
-                                Factory process
-                            </span>
+    30% {
+        opacity: 0.45;
+    }
 
-                            <span>
-                                Quality systems
-                            </span>
+    100% {
 
-                            <span>
-                                5S
-                            </span>
+        transform: scale(1.55);
 
-                        </div>
+        opacity: 0;
+    }
 
+}
 
-                        <span class="work-card-link">
-                            Open China case study ↗
-                        </span>
 
+/* =========================================================
+   FLOATING CAPABILITY CARDS
+========================================================= */
 
-                    </div>
+.skill-float {
 
+    position: absolute;
 
-                </article>
+    z-index: 12;
 
+    min-width: 105px;
 
-                <div class="work-grid-secondary">
+    padding: 10px 12px;
 
+    border:
+        1px solid var(--border);
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="logistics"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    border-radius: 13px;
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                        <div class="work-meta">
+    box-shadow:
+        0 13px 30px
+        rgba(13, 53, 82, 0.09);
 
-                            <span>
-                                Supply Chain Transformation
-                            </span>
+    animation:
+        floatCard
+        4.3s
+        ease-in-out
+        infinite;
+}
 
-                            <span>
-                                Rattan Direct
-                            </span>
 
-                        </div>
+.skill-float strong {
 
+    display: block;
 
-                        <h3>
-                            Restructuring warehousing
-                            and final-mile operations
-                        </h3>
+    padding-right: 13px;
 
+    color: var(--navy);
 
-                        <p>
+    font-size: 0.67rem;
 
-                            Reworked logistics economics across storage,
-                            unloading, picking and final-mile delivery,
-                            then led the transition into a more
-                            efficient 3PL model.
+    font-weight: 740;
+}
 
-                        </p>
 
+.skill-dot {
 
-                        <div class="work-stat-row">
+    position: absolute;
 
+    top: 11px;
 
-                            <div>
+    right: 10px;
 
-                                <strong>
-                                    ~£520k
-                                </strong>
+    width: 7px;
 
-                                <span>
-                                    annual savings
-                                </span>
+    height: 7px;
 
-                            </div>
+    border-radius: 50%;
+}
 
 
-                            <div>
+.skill-dot-blue {
+    background: var(--blue);
+}
 
-                                <strong>
-                                    1,000+
-                                </strong>
 
-                                <span>
-                                    SKUs
-                                </span>
+.skill-dot-amber {
+    background: var(--amber);
+}
 
-                            </div>
 
+.skill-dot-teal {
+    background: var(--teal);
+}
 
-                            <div>
 
-                                <strong>
-                                    ~60
-                                </strong>
+.skill-dot-cyan {
+    background: var(--cyan);
+}
 
-                                <span>
-                                    peak containers/month
-                                </span>
 
-                            </div>
+.skill-dot-orange {
+    background: var(--orange);
+}
 
 
-                        </div>
+.skill-dot-violet {
+    background: var(--violet);
+}
 
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+.skill-operations {
 
+    top: 22px;
 
-                    </article>
+    left: 150px;
 
+    animation-delay: -0.4s;
+}
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="eos"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
 
+.skill-supply {
 
-                        <div class="work-meta">
+    top: 108px;
 
-                            <span>
-                                Business Operations
-                            </span>
+    left: 4px;
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+    animation-delay: -1.6s;
+}
 
-                        </div>
 
+.skill-quality {
 
-                        <h3>
-                            Embedding an operating system for execution
-                        </h3>
+    bottom: 93px;
 
+    left: 6px;
 
-                        <p>
+    animation-delay: -2.5s;
+}
 
-                            Functioned as the internal EOS Integrator,
-                            translating leadership priorities into
-                            VTO reviews, Rocks, scorecards, Level 10s,
-                            Issues/IDS and follow-through.
 
-                        </p>
+.skill-process {
 
+    top: 108px;
 
-                        <div class="mini-flow">
+    right: 3px;
 
-                            <span>Vision</span>
+    animation-delay: -3s;
+}
 
-                            <b>→</b>
 
-                            <span>Rocks</span>
+.skill-eos {
 
-                            <b>→</b>
+    bottom: 93px;
 
-                            <span>Scorecard</span>
+    right: 5px;
 
-                            <b>→</b>
+    animation-delay: -1.1s;
+}
 
-                            <span>IDS</span>
 
-                            <b>→</b>
+.skill-automation {
 
-                            <span>Action</span>
+    bottom: 9px;
 
-                        </div>
+    left: 147px;
 
+    animation-delay: -2s;
+}
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
 
+@keyframes floatCard {
 
-                    </article>
+    0%,
+    100% {
+        transform: translateY(-4px);
+    }
 
+    50% {
+        transform: translateY(5px);
+    }
 
-                    <article
-                        class="work-card reveal case-trigger"
-                        data-case="quality"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+}
 
 
-                        <div class="work-meta">
+/* =========================================================
+   META BELOW PORTRAIT
+========================================================= */
 
-                            <span>
-                                Quality + Product Improvement
-                            </span>
+.hero-visual-meta {
 
-                            <span>
-                                Rattan Direct
-                            </span>
+    margin-top: 34px;
 
-                        </div>
+    display: flex;
 
+    align-items: center;
 
-                        <h3>
-                            Reducing returns through product
-                            and process improvement
-                        </h3>
+    justify-content: center;
 
+    gap: 7px;
 
-                        <p>
+    white-space: nowrap;
 
-                            Connected customer evidence,
-                            supplier quality, packaging, handling,
-                            delivery and product design changes
-                            to reduce returns by cubic volume.
+    color: #617b8c;
 
-                        </p>
+    font-size:
+        clamp(
+            0.74rem,
+            0.9vw,
+            0.84rem
+        );
 
+    font-weight: 650;
 
-                        <div class="single-stat">
+    letter-spacing: -0.005em;
+}
 
-                            <strong>
-                                12% → 4%
-                            </strong>
 
-                            <span>
-                                returns by CBM
-                            </span>
+.meta-divider {
 
-                        </div>
+    color:
+        rgba(
+            18,
+            53,
+            77,
+            0.27
+        );
+}
 
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+.availability-meta {
 
+    display: inline-flex;
 
-                    </article>
+    align-items: center;
 
+    gap: 5px;
 
-                    <article
-                        class="work-card work-card-ai reveal case-trigger"
-                        data-case="automation"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    color: var(--teal-dark);
+}
 
 
-                        <div class="work-meta">
+.availability-dot {
 
-                            <span>
-                                AI-Enabled Operations
-                            </span>
+    position: relative;
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+    width: 7px;
 
-                        </div>
+    height: 7px;
 
+    flex-shrink: 0;
 
-                        <h3>
-                            From leadership meeting transcript
-                            to management intelligence
-                        </h3>
+    border-radius: 50%;
 
+    background: #25ad76;
 
-                        <p>
+    animation:
+        availabilityPulse
+        2.2s
+        ease-in-out
+        infinite;
+}
 
-                            Built a live workflow that retrieved
-                            leadership meeting information,
-                            applied AI-assisted analysis and
-                            returned structured reporting
-                            to Microsoft Teams.
 
-                        </p>
+@keyframes availabilityPulse {
 
+    0%,
+    100% {
 
-                        <div
-                            class="mini-flow mini-flow-teal"
-                        >
+        box-shadow:
+            0 0 0 0
+            rgba(37, 173, 118, 0.20);
 
-                            <span>
-                                SharePoint
-                            </span>
+    }
 
-                            <b>→</b>
+    50% {
 
-                            <span>
-                                Graph
-                            </span>
+        box-shadow:
+            0 0 0 5px
+            rgba(37, 173, 118, 0);
 
-                            <b>→</b>
+    }
 
-                            <span>
-                                AI
-                            </span>
+}
 
-                            <b>→</b>
 
-                            <span>
-                                Teams
-                            </span>
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
 
-                        </div>
+.section-heading {
 
+    max-width: 760px;
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+    margin-bottom: 35px;
+}
 
 
-                    </article>
+.section-title {
 
+    margin: 0;
 
-                </div>
+    color: var(--navy);
 
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            2.5rem
+        );
 
-            </div>
+    line-height: 1.12;
 
+    letter-spacing: -0.035em;
 
-        </section>
+    font-weight: 740;
+}
 
 
-        <!-- =========================================
-             AUTOMATION
-        ========================================== -->
+.section-tagline {
 
-        <section
-            id="automation"
-            class="section automation-section"
-        >
+    margin: 9px 0 0;
 
+    color: var(--blue);
 
-            <div class="container">
+    font-size:
+        clamp(
+            0.94rem,
+            1.25vw,
+            1.05rem
+        );
 
+    font-weight: 580;
+}
 
-                <div class="automation-heading reveal">
 
+/* =========================================================
+   IMPACT
+========================================================= */
 
-                    <div>
+.impact-grid {
 
-                        <h2 class="section-title">
-                            AI-Enabled Operations & Automation
-                        </h2>
+    display: grid;
 
-                        <p class="section-tagline">
-                            Technology as part of the operating system.
-                        </p>
+    grid-template-columns:
+        repeat(4, 1fr);
 
-                    </div>
+    gap: 16px;
+}
 
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="button button-teal"
-                    >
-                        View Full GitHub Portfolio
-                    </a>
+.impact-card {
 
+    position: relative;
 
-                </div>
+    width: 100%;
 
+    min-height: 255px;
 
-                <div class="automation-grid">
+    padding: 24px;
 
+    text-align: left;
 
-                    <article class="automation-card reveal">
+    color: inherit;
 
+    cursor: pointer;
 
-                        <span class="automation-number">
-                            01
-                        </span>
+    border:
+        1px solid var(--border);
 
+    border-radius: var(--radius);
 
-                        <div class="automation-icon">
-                            MI
-                        </div>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
+    box-shadow:
+        0 7px 22px
+        rgba(13, 53, 82, 0.035);
 
-                        <h3>
-                            Executive Meeting Intelligence
-                        </h3>
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
 
-                        <p>
+.impact-card:nth-child(1) {
+    border-top: 3px solid var(--blue);
+}
 
-                            Converts recurring leadership meeting
-                            information into structured AI-assisted
-                            reporting using Microsoft 365 retrieval,
-                            workflow state and Teams delivery.
 
-                        </p>
+.impact-card:nth-child(2) {
+    border-top: 3px solid var(--teal);
+}
 
 
-                        <div class="automation-stack">
+.impact-card:nth-child(3) {
+    border-top: 3px solid var(--amber);
+}
 
-                            Make.com • SharePoint • Microsoft Graph •
-                            OpenAI • Teams
 
-                        </div>
+.impact-card:nth-child(4) {
+    border-top: 3px solid var(--violet);
+}
 
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/02-executive-meeting-intelligence"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+.impact-card:hover,
+.impact-card:focus-visible {
 
+    transform: translateY(-4px);
 
-                    </article>
+    box-shadow: var(--shadow-hover);
 
+    outline: none;
+}
 
-                    <article class="automation-card reveal">
 
+.card-number {
 
-                        <span class="automation-number">
-                            02
-                        </span>
+    display: block;
 
+    margin-bottom: 24px;
 
-                        <div
-                            class="automation-icon automation-icon-amber"
-                        >
-                            OI
-                        </div>
+    color: var(--blue);
 
+    font-size: 0.61rem;
 
-                        <h3>
-                            Operational AI Intelligence
-                        </h3>
+    font-weight: 800;
 
+    letter-spacing: 0.14em;
+}
 
-                        <p>
 
-                            A two-stage Collector and Publisher
-                            system designed to connect operational
-                            problems with relevant AI developments
-                            and produce a curated weekly
-                            intelligence update.
+.metric {
 
-                        </p>
+    min-height: 45px;
 
+    display: flex;
 
-                        <div class="automation-stack">
+    align-items: baseline;
 
-                            Make.com • AI Web Search •
-                            Data Store • AI Toolkit • Teams
+    gap: 2px;
 
-                        </div>
+    color: var(--navy);
 
+    font-size: 2rem;
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/06-operational-ai-intelligence"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+    font-weight: 750;
 
+    line-height: 1;
 
-                    </article>
+    letter-spacing: -0.04em;
+}
 
 
-                    <article class="automation-card reveal">
+.transition-metric {
+    gap: 7px;
+}
 
 
-                        <span class="automation-number">
-                            03
-                        </span>
+.metric-arrow {
+    font-size: 1.1rem;
+}
 
 
-                        <div
-                            class="automation-icon automation-icon-violet"
-                        >
-                            VO
-                        </div>
+.impact-card h3 {
 
+    margin: 15px 0 8px;
 
-                        <h3>
-                            VORA Personal Operations Assistant
-                        </h3>
+    color: var(--navy);
 
+    font-size: 0.9rem;
+}
 
-                        <p>
 
-                            A WhatsApp-based assistant combining
-                            text and audio, transcription,
-                            conversational memory, structured context,
-                            controlled tools, commitments, check-ins
-                            and external search.
+.impact-card p {
 
-                        </p>
+    margin: 0;
 
+    color: var(--body);
 
-                        <div class="automation-stack">
+    font-size: 0.75rem;
+}
 
-                            n8n • WhatsApp • Anthropic • Groq •
-                            Structured Tools • Tavily
 
-                        </div>
+.impact-cta {
 
+    display: block;
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/04-vora-personal-assistant"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+    margin-top: 17px;
 
+    color: var(--blue);
 
-                    </article>
+    font-size: 0.66rem;
 
+    font-weight: 720;
+}
 
-                </div>
 
+/* =========================================================
+   VALUE CARDS
+========================================================= */
 
-                <div class="automation-more reveal">
+.value-grid {
 
-                    <strong>
-                        Also documented:
-                    </strong>
+    display: grid;
 
+    grid-template-columns:
+        repeat(2, 1fr);
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/01-daily-ai-briefing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Daily AI Briefing
-                    </a>
+    gap: 17px;
+}
 
 
-                    <span>•</span>
+.value-card {
 
+    position: relative;
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/03-crm-campaign-routing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        CRM Campaign Routing
-                    </a>
+    min-height: 220px;
 
+    padding: 28px;
 
-                    <span>•</span>
+    overflow: hidden;
 
+    border:
+        1px solid var(--border);
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/05-it-support-triage"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        IT Support Triage
-                    </a>
+    border-radius: var(--radius);
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                </div>
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
 
-            </div>
+.value-card::before {
 
+    content: "";
 
-        </section>
+    position: absolute;
 
+    top: -48px;
 
-        <!-- =========================================
-             EXPERIENCE
-        ========================================== -->
+    right: -48px;
 
-        <section
-            id="experience"
-            class="section"
-        >
+    width: 120px;
 
+    height: 120px;
 
-            <div class="container">
+    border-radius: 50%;
 
+    opacity: 0.16;
+}
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        Experience
-                    </h2>
+.value-card > * {
 
-                    <p class="section-tagline">
-                        Engineering foundation. Operations career.
-                    </p>
+    position: relative;
 
-                </div>
+    z-index: 1;
+}
 
 
-                <div class="timeline">
+.value-blue::before {
+    background: var(--blue);
+}
 
 
-                    <article class="timeline-item reveal">
+.value-amber::before {
+    background: var(--amber);
+}
 
 
-                        <div class="timeline-date">
-                            2025–2026
-                        </div>
+.value-teal::before {
+    background: var(--teal);
+}
 
 
-                        <div class="timeline-content">
+.value-violet::before {
+    background: var(--violet);
+}
 
-                            <h3>
-                                Operations Manager & EOS Integrator
-                            </h3>
 
-                            <h4>
-                                Optimise Outsourcing
-                            </h4>
+.value-card:hover {
 
-                            <p>
+    transform: translateY(-3px);
 
-                                Cross-functional Operations Manager and
-                                internal EOS Integrator, translating
-                                leadership priorities into execution
-                                through VTO planning, quarterly Rocks,
-                                current/future Accountability Charts,
-                                Level 10s, leadership scorecards,
-                                finance reviews, Issues/IDS and
-                                AI-enabled workflow automation.
+    box-shadow: var(--shadow);
+}
 
-                            </p>
 
-                        </div>
+.value-index {
 
+    color: var(--blue);
 
-                    </article>
+    font-size: 0.62rem;
 
+    font-weight: 800;
 
-                    <article class="timeline-item reveal">
+    letter-spacing: 0.14em;
+}
 
 
-                        <div class="timeline-date">
-                            2022–2026
-                        </div>
+.value-card h3 {
 
+    margin: 31px 0 9px;
 
-                        <div class="timeline-content">
+    color: var(--navy);
 
-                            <h3>
-                                Supply Chain, Quality Control &
-                                Technical Manager
-                            </h3>
+    font-size: 1.04rem;
+}
 
-                            <h4>
-                                Rattan Direct
-                            </h4>
 
-                            <p>
+.value-card p {
 
-                                Led international supply chain,
-                                logistics, quality and technical
-                                operations across a China-based
-                                supplier network, 1,000+ SKUs
-                                and UK logistics operations,
-                                including demand planning,
-                                supplier quality, negotiation,
-                                warehousing, freight, final mile,
-                                returns and product improvement.
+    max-width: 485px;
 
-                            </p>
+    margin: 0;
 
-                        </div>
+    font-size: 0.79rem;
+}
 
 
-                    </article>
+/* =========================================================
+   SELECTED WORK
+========================================================= */
 
+.selected-work-section {
 
-                    <article class="timeline-item reveal">
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.87
+        );
+}
 
 
-                        <div class="timeline-date">
-                            2021–2022
-                        </div>
+/* =========================================================
+   CHINA FEATURE
+========================================================= */
 
+.china-feature {
 
-                        <div class="timeline-content">
+    display: grid;
 
-                            <h3>
-                                Quality Team Lead
-                            </h3>
+    grid-template-columns:
+        minmax(0, 0.92fr)
+        minmax(0, 1.08fr);
 
-                            <h4>
-                                Tile & Carpet Centre
-                            </h4>
+    gap: 28px;
 
-                            <p>
+    min-height: 330px;
 
-                                Led manufacturing-quality controls,
-                                inspection and corrective action,
-                                reducing customer complaints from
-                                approximately 12% to 5% while
-                                maintaining KEBS audit compliance.
+    padding: 14px;
 
-                            </p>
+    margin-bottom: 18px;
 
-                        </div>
+    border:
+        1px solid var(--border);
 
+    border-radius: 19px;
 
-                    </article>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.98
+        );
 
+    box-shadow: var(--shadow);
 
-                    <article class="timeline-item reveal">
+    cursor: pointer;
 
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-                        <div class="timeline-date">
-                            2020–2021
-                        </div>
 
+.china-feature:hover,
+.china-feature:focus-visible {
 
-                        <div class="timeline-content">
+    transform: translateY(-4px);
 
-                            <h3>
-                                Quality Control Engineer
-                            </h3>
+    border-color: var(--amber-border);
 
-                            <h4>
-                                Auto Springs East Africa PLC
-                            </h4>
+    box-shadow: var(--shadow-hover);
 
-                            <p>
+    outline: none;
+}
 
-                                Automotive manufacturing quality
-                                using SPC, PFMEA, MSA, control plans
-                                and corrective action, including
-                                reduction of U-bolt rejection
-                                from approximately 4% to 2%.
 
-                            </p>
+.china-feature-images {
 
-                        </div>
+    display: grid;
 
+    grid-template-columns:
+        1.15fr
+        0.85fr;
 
-                    </article>
+    gap: 7px;
 
+    min-height: 285px;
+}
 
-                    <article class="timeline-item reveal">
 
+.china-main-wrapper {
 
-                        <div class="timeline-date">
-                            2018–2020
-                        </div>
+    width: 100%;
 
+    height: 100%;
 
-                        <div class="timeline-content">
+    overflow: hidden;
 
-                            <h3>
-                                Electrical Engineer
-                            </h3>
+    padding: 0;
 
-                            <h4>
-                                Coca-Cola Beverages Africa
-                            </h4>
+    border-radius: 13px;
 
-                            <p>
+    background: #eef3f6;
+}
 
-                                FMCG production engineering,
-                                preventive and reactive maintenance,
-                                utilities, SAP PM, troubleshooting,
-                                line efficiency and specialist-vendor
-                                overhaul coordination.
 
-                            </p>
+.china-main-image {
 
-                        </div>
+    width: 100%;
 
+    height: 100%;
 
-                    </article>
+    object-fit: cover;
 
+    object-position: center center;
 
-                </div>
+    border-radius: 13px;
+}
 
 
-            </div>
+.china-side-images {
 
+    display: grid;
 
-        </section>
+    grid-template-rows:
+        1fr
+        1fr;
 
+    gap: 7px;
+}
 
-        <!-- =========================================
-             SYSTEMS
-        ========================================== -->
 
-        <section
-            id="technology"
-            class="section section-soft"
-        >
+.china-side-images img {
 
+    width: 100%;
 
-            <div class="container">
+    height: 100%;
 
+    object-fit: cover;
 
-                <div class="section-heading reveal">
+    border-radius: 12px;
+}
 
-                    <h2 class="section-title">
-                        Systems & Technical Capability
-                    </h2>
 
-                    <p class="section-tagline">
-                        Business systems used to strengthen operations.
-                    </p>
+.china-feature-content {
 
-                </div>
+    display: flex;
 
+    flex-direction: column;
 
-                <div class="capability-grid">
+    padding:
+        13px
+        14px
+        11px
+        1px;
+}
 
 
-                    <article class="capability-card reveal">
+.work-meta {
 
-                        <span class="capability-kicker">
-                            Operational Systems
-                        </span>
+    display: flex;
 
-                        <h3>
-                            Enterprise & business platforms
-                        </h3>
+    justify-content: space-between;
 
-                        <p>
+    gap: 16px;
 
-                            SAP PM, OrderWise, Xero, eDesk,
-                            Sage HR, Microsoft 365,
-                            SharePoint and Teams.
+    color: var(--muted);
 
-                        </p>
+    font-size: 0.57rem;
 
-                    </article>
+    font-weight: 770;
 
+    letter-spacing: 0.075em;
 
-                    <article class="capability-card reveal">
+    text-transform: uppercase;
+}
 
-                        <span class="capability-kicker">
-                            Analytics & Management Information
-                        </span>
 
-                        <h3>
-                            Operational visibility
-                        </h3>
+.china-feature h3 {
 
-                        <p>
+    max-width: 450px;
 
-                            Excel, practical Power BI,
-                            KPI scorecards, forecasting,
-                            cost analysis, reconciliations
-                            and executive reporting.
+    margin: 33px 0 12px;
 
-                        </p>
+    color: var(--navy);
 
-                    </article>
+    font-size: 1.32rem;
 
+    line-height: 1.24;
 
-                    <article class="capability-card reveal">
+    letter-spacing: -0.024em;
+}
 
-                        <span class="capability-kicker">
-                            Workflow Automation
-                        </span>
 
-                        <h3>
-                            Practical business automation
-                        </h3>
+.china-feature-content > p {
 
-                        <p>
+    max-width: 470px;
 
-                            Make.com, n8n, Power Automate,
-                            Microsoft Graph, webhooks,
-                            OpenAI APIs and structured
-                            workflow design.
+    margin: 0;
 
-                        </p>
+    font-size: 0.76rem;
+}
 
-                    </article>
 
+.tag-row {
 
-                    <article
-                        class="capability-card capability-card-developing reveal"
-                    >
+    display: flex;
 
-                        <span class="capability-kicker">
-                            Developing Technical Foundations
-                        </span>
+    flex-wrap: wrap;
 
-                        <h3>
-                            Building greater independence
-                        </h3>
+    gap: 6px;
 
-                        <p>
+    margin-top: 18px;
+}
 
-                            JSON, REST APIs, authentication/OAuth,
-                            Git/GitHub, Python and more advanced
-                            error-handling patterns.
 
-                        </p>
+.tag-row span {
 
-                    </article>
+    padding: 5px 9px;
 
+    border:
+        1px solid var(--amber-border);
 
-                </div>
+    border-radius: 999px;
 
+    color: #7d5b22;
 
-            </div>
+    background: var(--soft-amber);
 
+    font-size: 0.58rem;
 
-        </section>
+    font-weight: 670;
+}
 
 
-        <!-- =========================================
-             EDUCATION
-        ========================================== -->
+/* =========================================================
+   WORK GRID
+========================================================= */
 
-        <section
-            id="education"
-            class="section"
-        >
+.work-grid-secondary {
 
+    display: grid;
 
-            <div class="container">
+    grid-template-columns:
+        repeat(2, 1fr);
 
+    gap: 18px;
+}
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        Education & Certifications
-                    </h2>
+.work-card {
 
-                </div>
+    min-height: 350px;
 
+    display: flex;
 
-                <div class="education-grid">
+    flex-direction: column;
 
+    padding: 28px;
 
-                    <article class="education-card reveal">
+    border:
+        1px solid var(--border);
 
-                        <span class="education-year">
-                            2018
-                        </span>
+    border-radius: 18px;
 
-                        <h3>
-                            BSc Control & Instrumentation
-                        </h3>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                        <p>
+    box-shadow:
+        0 10px 30px
+        rgba(13, 53, 82, 0.045);
 
-                            Jomo Kenyatta University
-                            of Agriculture and Technology
+    cursor: pointer;
 
-                        </p>
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-                        <small>
-                            Second Class Honours
-                        </small>
 
-                    </article>
+.work-card:hover,
+.work-card:focus-visible {
 
+    transform: translateY(-4px);
 
-                    <article class="education-card reveal">
+    border-color: var(--blue-border);
 
-                        <span class="education-year">
-                            Professional Certifications
-                        </span>
+    box-shadow: var(--shadow-hover);
 
-                        <h3>
-                            Operations, Service & Quality
-                        </h3>
+    outline: none;
+}
 
-                        <p>
-                            ITIL 4 • Scrum • ISO 9001 Internal Auditor
-                        </p>
 
-                    </article>
+.work-card-ai {
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(244,250,249,0.98)
+        );
+}
 
-                </div>
 
+.work-card h3 {
 
-            </div>
+    max-width: 480px;
 
+    margin: 30px 0 12px;
 
-        </section>
+    color: var(--navy);
 
+    font-size: 1.15rem;
 
-        <!-- =========================================
-             CONTACT
-        ========================================== -->
+    line-height: 1.3;
 
-        <section
-            id="contact"
-            class="contact-section"
-        >
+    letter-spacing: -0.017em;
+}
 
 
-            <div class="container">
+.work-card > p {
 
+    margin: 0;
 
-                <div class="contact-heading reveal">
+    font-size: 0.78rem;
+}
 
-                    <h2>
-                        Let's connect.
-                    </h2>
 
-                    <p>
+.work-stat-row {
 
-                        Open to relevant opportunities across
-                        Operations, Business Operations,
-                        Supply Chain, Quality,
-                        Process Improvement and
-                        AI-enabled Operations.
+    display: grid;
 
-                    </p>
+    grid-template-columns:
+        repeat(3, 1fr);
 
-                </div>
+    gap: 8px;
 
+    margin-top: 26px;
+}
 
-                <div class="contact-grid">
 
+.work-stat-row div,
+.single-stat {
 
-                    <a
-                        class="contact-card reveal"
-                        href="mailto:vicakoyo2@gmail.com"
-                    >
+    padding: 12px;
 
-                        <div class="contact-icon">
-                            ✉
-                        </div>
+    border:
+        1px solid var(--border);
 
-                        <div class="contact-info">
+    border-radius: 11px;
 
-                            <span class="contact-label">
-                                Email
-                            </span>
+    background: #fbfdfe;
+}
 
-                            <strong>
-                                vicakoyo2@gmail.com
-                            </strong>
 
-                        </div>
+.work-stat-row strong,
+.single-stat strong {
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+    display: block;
 
-                    </a>
+    color: var(--navy);
 
+    font-size: 0.92rem;
+}
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://wa.me/254797590490"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
 
-                        <div class="contact-icon">
-                            ◉
-                        </div>
+.work-stat-row span,
+.single-stat span {
 
-                        <div class="contact-info">
+    display: block;
 
-                            <span class="contact-label">
-                                WhatsApp
-                            </span>
+    margin-top: 2px;
 
-                            <strong>
-                                Message Me
-                            </strong>
+    color: var(--muted);
 
-                        </div>
+    font-size: 0.56rem;
+}
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+.single-stat {
 
+    width: 155px;
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://www.linkedin.com/in/victorakoyo/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+    margin-top: 27px;
+}
 
-                        <div class="contact-icon">
-                            in
-                        </div>
 
-                        <div class="contact-info">
+.mini-flow {
 
-                            <span class="contact-label">
-                                LinkedIn
-                            </span>
+    display: flex;
 
-                            <strong>
-                                Connect on LinkedIn
-                            </strong>
+    flex-wrap: wrap;
 
-                        </div>
+    align-items: center;
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
+    gap: 7px;
 
-                    </a>
+    margin-top: 28px;
+}
 
 
-                </div>
+.mini-flow span {
 
+    padding: 6px 9px;
 
-            </div>
+    border:
+        1px solid var(--amber-border);
 
+    border-radius: 999px;
 
-        </section>
+    color: #7b5a22;
 
+    background: var(--soft-amber);
 
-    </main>
+    font-size: 0.59rem;
 
+    font-weight: 690;
+}
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
 
-    <footer class="site-footer">
+.mini-flow b {
 
+    color: var(--muted);
 
-        <div class="container footer-content">
+    font-size: 0.63rem;
+}
 
-            <span>
-                © <span id="currentYear"></span> Victor Akoyo
-            </span>
 
-            <span>
-                Operations • Supply Chain • Quality • AI-Enabled Operations
-            </span>
+.mini-flow-teal span {
 
-            <a href="#home">
-                Back to top ↑
-            </a>
+    border-color: var(--teal-border);
 
-        </div>
+    color: var(--teal-dark);
 
+    background: var(--soft-teal);
+}
 
-    </footer>
 
+.work-card-link {
 
-    <!-- =========================================
-         CASE STUDY MODAL
-    ========================================== -->
+    display: block;
 
-    <div
-        id="caseModal"
-        class="case-modal"
-        aria-hidden="true"
-    >
+    margin-top: auto;
 
+    padding-top: 22px;
 
-        <div
-            class="case-modal-backdrop"
-            data-close-modal
-        ></div>
+    color: var(--blue);
 
+    font-size: 0.67rem;
 
-        <section
-            class="case-modal-panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="caseModalTitle"
-            tabindex="-1"
-        >
+    font-weight: 740;
+}
 
 
-            <button
-                type="button"
-                class="case-modal-close"
-                aria-label="Close case study"
-                data-close-modal
-            >
-                ×
-            </button>
+/* =========================================================
+   AUTOMATION
+========================================================= */
 
+.automation-section {
 
-            <div
-                class="case-modal-kicker"
-                id="caseModalKicker"
-            ></div>
+    background:
+        rgba(
+            246,
+            251,
+            250,
+            0.92
+        );
+}
 
 
-            <h2 id="caseModalTitle"></h2>
+.automation-heading {
 
+    display: flex;
 
-            <p
-                class="case-modal-summary"
-                id="caseModalSummary"
-            ></p>
+    align-items: flex-end;
 
+    justify-content: space-between;
 
-            <div
-                id="caseModalMedia"
-                class="case-modal-media"
-                hidden
-            ></div>
+    gap: 35px;
 
+    margin-bottom: 36px;
+}
 
-            <div class="case-modal-grid">
 
+.automation-heading > div {
+    max-width: 720px;
+}
 
-                <div class="case-modal-block">
 
-                    <span>
-                        Context / Problem
-                    </span>
+.automation-grid {
 
-                    <p id="caseModalProblem"></p>
+    display: grid;
 
-                </div>
+    grid-template-columns:
+        repeat(3, 1fr);
 
+    gap: 16px;
+}
 
-                <div class="case-modal-block">
 
-                    <span>
-                        Analysis
-                    </span>
+.automation-card {
 
-                    <p id="caseModalAnalysis"></p>
+    position: relative;
 
-                </div>
+    min-height: 345px;
 
+    display: flex;
 
-                <div class="case-modal-block">
+    flex-direction: column;
 
-                    <span>
-                        Action
-                    </span>
+    padding: 25px;
 
-                    <p id="caseModalAction"></p>
+    border:
+        1px solid var(--teal-border);
 
-                </div>
+    border-radius: 18px;
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                <div class="case-modal-block">
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
-                    <span>
-                        Systems / Methods
-                    </span>
 
-                    <p id="caseModalTools"></p>
+.automation-card:hover {
 
-                </div>
+    transform: translateY(-4px);
 
+    box-shadow: var(--shadow);
+}
 
-                <div
-                    class="case-modal-block case-modal-result-block"
-                >
 
-                    <span>
-                        Result
-                    </span>
+.automation-number {
 
-                    <strong id="caseModalResult"></strong>
+    position: absolute;
 
-                    <p id="caseModalResultDetail"></p>
+    top: 21px;
 
-                </div>
+    right: 21px;
 
+    color:
+        rgba(
+            18,
+            53,
+            77,
+            0.34
+        );
 
-                <div class="case-modal-block">
+    font-size: 0.61rem;
 
-                    <span>
-                        What this demonstrates
-                    </span>
+    font-weight: 800;
 
-                    <p id="caseModalLearning"></p>
+    letter-spacing: 0.12em;
+}
 
-                </div>
 
+.automation-icon {
 
-            </div>
+    width: 42px;
 
+    height: 42px;
 
-            <div class="case-modal-footer">
+    display: grid;
 
-                <button
-                    type="button"
-                    class="button button-secondary"
-                    data-close-modal
-                >
-                    Close
-                </button>
+    place-items: center;
 
-                <a
-                    href="#contact"
-                    class="button button-primary"
-                    id="caseModalContact"
-                >
-                    Discuss this work
-                </a>
+    border-radius: 12px;
 
-            </div>
+    color: white;
 
+    background: var(--teal);
 
-        </section>
+    font-size: 0.68rem;
 
+    font-weight: 800;
+}
 
-    </div>
 
+.automation-icon-amber {
+    background: var(--amber);
+}
 
-    <script src="script.js"></script>
 
+.automation-icon-violet {
+    background: var(--violet);
+}
 
-</body>
 
-</html>
+.automation-card h3 {
+
+    margin: 23px 0 10px;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.automation-card p {
+
+    margin: 0;
+
+    font-size: 0.77rem;
+}
+
+
+.automation-stack {
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 0.61rem;
+
+    line-height: 1.55;
+}
+
+
+.automation-card a {
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    color: var(--teal-dark);
+
+    font-size: 0.67rem;
+
+    font-weight: 740;
+}
+
+
+.automation-more {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding: 17px 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.96
+        );
+
+    font-size: 0.68rem;
+}
+
+
+.automation-more strong {
+    color: var(--navy);
+}
+
+
+.automation-more a {
+
+    color: var(--blue);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    max-width: 970px;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 180px;
+
+    width: 1px;
+
+    background: var(--border);
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        150px
+        1fr;
+
+    gap: 58px;
+
+    padding-bottom: 42px;
+}
+
+
+.timeline-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+
+    left: 175px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(22, 116, 168, 0.08);
+}
+
+
+.timeline-date {
+
+    color: var(--blue);
+
+    font-size: 0.68rem;
+
+    font-weight: 740;
+}
+
+
+.timeline-content h3 {
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.timeline-content h4 {
+
+    margin: 3px 0 0;
+
+    color: var(--blue);
+
+    font-size: 0.73rem;
+}
+
+
+.timeline-content p {
+
+    max-width: 720px;
+
+    margin: 9px 0 0;
+
+    font-size: 0.79rem;
+}
+
+
+/* =========================================================
+   SYSTEMS
+========================================================= */
+
+.capability-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+.capability-card {
+
+    padding: 27px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
+}
+
+
+.capability-card-developing {
+
+    border-color: var(--violet-border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(246,244,251,0.98)
+        );
+}
+
+
+.capability-kicker {
+
+    color: var(--blue);
+
+    font-size: 0.61rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+.capability-card h3 {
+
+    margin: 18px 0 8px;
+
+    color: var(--navy);
+
+    font-size: 0.98rem;
+}
+
+
+.capability-card p {
+
+    margin: 0;
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 17px;
+}
+
+
+.education-card {
+
+    padding: 28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
+}
+
+
+.education-year {
+
+    color: var(--blue);
+
+    font-size: 0.61rem;
+
+    font-weight: 780;
+
+    letter-spacing: 0.085em;
+
+    text-transform: uppercase;
+}
+
+
+.education-card h3 {
+
+    margin: 22px 0 7px;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.education-card p {
+
+    margin: 0;
+
+    font-size: 0.79rem;
+}
+
+
+.education-card small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 0.66rem;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+
+    position: relative;
+
+    z-index: 1;
+
+    padding: 76px 0 65px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17445f,
+            #0b283b
+        );
+}
+
+
+.contact-heading {
+
+    max-width: 700px;
+
+    margin-bottom: 31px;
+}
+
+
+.contact-heading h2 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            2.45rem
+        );
+
+    letter-spacing: -0.035em;
+}
+
+
+.contact-heading p {
+
+    margin: 11px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-size: 0.84rem;
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.contact-card {
+
+    min-height: 95px;
+
+    display: grid;
+
+    grid-template-columns:
+        42px
+        1fr
+        auto;
+
+    gap: 14px;
+
+    align-items: center;
+
+    padding: 19px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.17
+        );
+
+    border-radius: 13px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.contact-card:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+}
+
+
+.contact-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+}
+
+
+.contact-label {
+
+    display: block;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.61
+        );
+
+    font-size: 0.55rem;
+
+    font-weight: 770;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+.contact-info strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: white;
+
+    font-size: 0.77rem;
+}
+
+
+.contact-arrow {
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    padding: 21px 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.52
+        );
+
+    background: #071c2a;
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 0.61rem;
+}
+
+
+.footer-content a {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.76
+        );
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.case-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 28px;
+}
+
+
+.case-modal.open {
+    display: flex;
+}
+
+
+.case-modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(
+            5,
+            25,
+            39,
+            0.66
+        );
+
+    backdrop-filter: blur(8px);
+}
+
+
+.case-modal-panel {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            960px,
+            100%
+        );
+
+    max-height: 89vh;
+
+    overflow: auto;
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 30px 90px
+        rgba(5, 25, 39, 0.24);
+}
+
+
+.case-modal-close {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--navy);
+
+    background: white;
+
+    font-size: 1.35rem;
+
+    cursor: pointer;
+}
+
+
+.case-modal-kicker {
+
+    margin-bottom: 10px;
+
+    padding-right: 55px;
+
+    color: var(--blue);
+
+    font-size: 0.66rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.11em;
+
+    text-transform: uppercase;
+}
+
+
+.case-modal-panel h2 {
+
+    max-width: 770px;
+
+    margin: 0;
+
+    color: var(--navy-deep);
+
+    font-size:
+        clamp(
+            1.7rem,
+            3vw,
+            2.3rem
+        );
+
+    line-height: 1.13;
+
+    letter-spacing: -0.03em;
+}
+
+
+.case-modal-summary {
+
+    max-width: 790px;
+
+    margin: 14px 0 25px;
+
+    font-size: 0.87rem;
+}
+
+
+.case-modal-media {
+    margin-bottom: 24px;
+}
+
+
+.china-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr
+        0.8fr;
+
+    grid-template-rows:
+        180px
+        180px;
+
+    gap: 8px;
+}
+
+
+.china-gallery figure {
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background: var(--soft-blue);
+}
+
+
+.china-gallery figure:first-child {
+    grid-row: 1 / 3;
+}
+
+
+.china-gallery img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.china-gallery figure:first-child img {
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    background: #eef3f6;
+}
+
+
+.case-modal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+}
+
+
+.case-modal-block {
+
+    padding: 18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    background: #fbfdfe;
+}
+
+
+.case-modal-block > span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--blue);
+
+    font-size: 0.59rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+.case-modal-block p {
+
+    margin: 0;
+
+    font-size: 0.77rem;
+}
+
+
+.case-modal-result-block {
+
+    background:
+        linear-gradient(
+            145deg,
+            #17445f,
+            #0b283b
+        );
+}
+
+
+.case-modal-result-block > span,
+.case-modal-result-block p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.69
+        );
+}
+
+
+.case-modal-result-block strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: white;
+
+    font-size: 1.45rem;
+}
+
+
+.case-modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(14px);
+
+    transition:
+        opacity 0.56s ease,
+        transform 0.56s ease;
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1040px) {
+
+    .hero-grid {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            365px;
+
+        gap: 40px;
+    }
+
+
+    .hero h1 {
+
+        white-space: normal;
+
+        font-size:
+            clamp(
+                2.15rem,
+                4vw,
+                2.65rem
+            );
+    }
+
+
+    .portrait-system {
+
+        width: 365px;
+
+        height: 385px;
+    }
+
+
+    .skill-operations {
+        left: 124px;
+    }
+
+
+    .skill-automation {
+        left: 121px;
+    }
+
+
+    .impact-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .automation-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .automation-card {
+        min-height: auto;
+    }
+
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+
+    html {
+        scroll-padding-top: 68px;
+    }
+
+
+    .container,
+    .nav-container {
+
+        width:
+            calc(100% - 30px);
+    }
+
+
+    .site-header {
+
+        height: 68px;
+
+        min-height: 68px;
+
+        max-height: 68px;
+    }
+
+
+    .nav-container {
+
+        height: 68px;
+
+        min-height: 68px;
+
+        max-height: 68px;
+    }
+
+
+    .brand {
+
+        padding: 5px 0;
+
+        font-size: 0.98rem;
+    }
+
+
+    .mobile-menu-button {
+
+        display: block;
+
+        flex-shrink: 0;
+    }
+
+
+    .main-nav {
+
+        position: absolute;
+
+        top: 68px;
+
+        left: 15px;
+
+        right: 15px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 8px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 11px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.99
+            );
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .main-nav.open {
+        display: flex;
+    }
+
+
+    .main-nav a {
+        padding: 11px 10px;
+    }
+
+
+    .main-nav a::after {
+        display: none;
+    }
+
+
+    /* =====================================================
+       HERO MOBILE
+    ===================================================== */
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            32px
+            0
+            48px;
+    }
+
+
+    .hero-grid {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 24px;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    .hero h1 {
+
+        max-width: 480px;
+
+        font-size:
+            clamp(
+                1.72rem,
+                7.3vw,
+                2.08rem
+            );
+
+        line-height: 1.06;
+
+        letter-spacing: -0.035em;
+
+        font-weight: 700;
+
+        color: var(--hero-heading);
+
+        white-space: normal;
+    }
+
+
+    .hero-positioning {
+
+        margin-top: 18px;
+
+        max-width: none;
+
+        font-size: 0.91rem;
+
+        line-height: 1.6;
+    }
+
+
+    .hero-actions {
+
+        margin-top: 23px;
+    }
+
+
+    .portrait-system {
+
+        width:
+            min(
+                100%,
+                350px
+            );
+
+        height: 370px;
+    }
+
+
+    .portrait-ring {
+
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 225px;
+
+        height: 225px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 295px;
+
+        height: 295px;
+    }
+
+
+    .hero-pulse {
+
+        width: 195px;
+
+        height: 195px;
+    }
+
+
+    .skill-float {
+
+        min-width: 92px;
+
+        padding: 8px 9px;
+    }
+
+
+    .skill-float strong {
+        font-size: 0.59rem;
+    }
+
+
+    .skill-dot {
+
+        width: 6px;
+
+        height: 6px;
+
+        top: 10px;
+
+        right: 9px;
+    }
+
+
+    .skill-operations {
+
+        top: 17px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    .skill-supply {
+
+        top: 97px;
+
+        left: 0;
+    }
+
+
+    .skill-quality {
+
+        bottom: 81px;
+
+        left: 0;
+    }
+
+
+    .skill-process {
+
+        top: 97px;
+
+        right: 0;
+    }
+
+
+    .skill-eos {
+
+        bottom: 81px;
+
+        right: 0;
+    }
+
+
+    .skill-automation {
+
+        bottom: 0;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    @keyframes floatCard {
+
+        0%,
+        100% {
+            margin-top: -3px;
+        }
+
+        50% {
+            margin-top: 5px;
+        }
+
+    }
+
+
+    .hero-visual-meta {
+
+        width: 100%;
+
+        margin-top: 32px;
+
+        gap: 4px;
+
+        justify-content: center;
+
+        white-space: nowrap;
+
+        color: #617b8c;
+
+        font-size:
+            clamp(
+                0.64rem,
+                2.7vw,
+                0.76rem
+            );
+
+        font-weight: 650;
+
+        letter-spacing: -0.018em;
+    }
+
+
+    .availability-meta {
+        gap: 4px;
+    }
+
+
+    .availability-dot {
+
+        width: 6px;
+
+        height: 6px;
+    }
+
+
+    /* =====================================================
+       GENERAL MOBILE SECTIONS
+    ===================================================== */
+
+    .section {
+        padding: 62px 0;
+    }
+
+
+    .section-heading {
+        margin-bottom: 27px;
+    }
+
+
+    .section-title {
+
+        font-size:
+            clamp(
+                1.72rem,
+                7vw,
+                2.05rem
+            );
+    }
+
+
+    .section-tagline {
+
+        margin-top: 7px;
+
+        font-size: 0.91rem;
+    }
+
+
+    .impact-grid,
+    .value-grid,
+    .work-grid-secondary,
+    .capability-grid,
+    .education-grid,
+    .case-modal-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .value-card::before {
+
+        width: 92px;
+
+        height: 92px;
+
+        top: -37px;
+
+        right: -37px;
+
+        opacity: 0.15;
+    }
+
+
+    .value-card {
+
+        min-height: 205px;
+
+        padding: 25px;
+    }
+
+
+    .value-card h3 {
+
+        margin-top: 26px;
+
+        padding-right: 20px;
+
+        font-size: 0.98rem;
+    }
+
+
+    /* =====================================================
+       CHINA FEATURE MOBILE FIX
+    ===================================================== */
+
+    .china-feature {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            auto
+            auto;
+
+        min-height: auto;
+
+        gap: 18px;
+
+        padding: 12px;
+
+        overflow: hidden;
+    }
+
+
+    .china-feature-images {
+
+        display: grid;
+
+        grid-template-columns:
+            1.15fr
+            0.85fr;
+
+        width: 100%;
+
+        height: 300px;
+
+        min-height: 0;
+
+        max-height: none;
+
+        gap: 7px;
+
+        overflow: hidden;
+
+        align-items: stretch;
+    }
+
+
+    .china-main-wrapper {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        padding: 0;
+
+        overflow: hidden;
+
+        border-radius: 13px;
+
+        background: #eef3f6;
+    }
+
+
+    .china-main-image {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+
+        object-position: center center;
+
+        border-radius: 13px;
+    }
+
+
+    .china-side-images {
+
+        display: grid;
+
+        grid-template-rows:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        gap: 7px;
+
+        overflow: hidden;
+    }
+
+
+    .china-side-images img {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+
+        border-radius: 12px;
+    }
+
+
+    .china-feature-content {
+
+        position: relative;
+
+        z-index: 2;
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding:
+            8px
+            7px
+            10px;
+
+        background: white;
+    }
+
+
+    .china-feature .work-meta {
+
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+
+    .china-feature h3 {
+
+        max-width: none;
+
+        margin:
+            18px
+            0
+            10px;
+
+        font-size: 1.2rem;
+
+        line-height: 1.28;
+    }
+
+
+    .china-feature-content > p {
+
+        max-width: none;
+
+        margin: 0;
+
+        font-size: 0.78rem;
+
+        line-height: 1.6;
+    }
+
+
+    .china-feature .tag-row {
+
+        margin-top: 16px;
+    }
+
+
+    .china-feature .work-card-link {
+
+        margin-top: 0;
+
+        padding-top: 20px;
+    }
+
+
+    /* =====================================================
+       OTHER MOBILE ELEMENTS
+    ===================================================== */
+
+    .work-card {
+        min-height: 320px;
+    }
+
+
+    .automation-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .timeline::before {
+        left: 5px;
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+
+        padding-left: 28px;
+    }
+
+
+    .timeline-item::before {
+        left: 0;
+    }
+
+
+    .footer-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .case-modal {
+
+        padding: 12px;
+
+        align-items: flex-end;
+    }
+
+
+    .case-modal-panel {
+
+        width: 100%;
+
+        max-height: 91vh;
+
+        padding:
+            26px
+            18px
+            20px;
+
+        border-radius:
+            18px
+            18px
+            10px
+            10px;
+    }
+
+
+    .china-gallery {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            190px
+            130px
+            130px;
+    }
+
+
+    .china-gallery figure:first-child {
+
+        grid-column: 1 / 3;
+
+        grid-row: auto;
+    }
+
+
+    .case-modal-footer {
+
+        flex-direction: column-reverse;
+    }
+
+
+    .case-modal-footer .button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 460px) {
+
+
+    .hero-actions {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .hero-actions .button:first-child {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .portrait-system {
+
+        width: 325px;
+
+        max-width: 100%;
+
+        height: 355px;
+    }
+
+
+    .hero-visual-meta {
+
+        width: 100%;
+
+        margin-top: 32px;
+
+        gap: 3px;
+
+        justify-content: center;
+
+        white-space: nowrap;
+
+        font-size:
+            clamp(
+                0.62rem,
+                2.65vw,
+                0.72rem
+            );
+
+        letter-spacing: -0.022em;
+    }
+
+
+    .work-stat-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* =====================================================
+       CHINA FEATURE SMALL MOBILE
+    ===================================================== */
+
+    .china-feature-images {
+
+        grid-template-columns:
+            1.05fr
+            0.95fr;
+
+        width: 100%;
+
+        height: 255px;
+
+        min-height: 0;
+
+        max-height: none;
+
+        overflow: hidden;
+    }
+
+
+    .china-main-wrapper {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        padding: 0;
+
+        overflow: hidden;
+    }
+
+
+    .china-main-image {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+
+        object-position: center center;
+    }
+
+
+    .china-side-images {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        display: grid;
+
+        grid-template-rows:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        overflow: hidden;
+    }
+
+
+    .china-side-images img {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+    }
+
+
+    .china-feature-content {
+
+        padding:
+            8px
+            8px
+            10px;
+    }
+
+
+    .china-feature .work-meta {
+
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .hero h1 {
+        font-size: 1.65rem;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+
+    .reveal {
+
+        opacity: 1;
+
+        transform: none;
+    }
+
+
+    #particleCanvas {
+        display: none;
+    }
+
+}
