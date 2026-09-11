@@ -5865,3 +5865,18 @@ a {
         padding-bottom: 60px;
     }
 }
+/* =========================================================
+   MOBILE HERO — REMOVE BOTTOM GREY STRIP
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: calc(100vh - 68px);
+        min-height: calc(100dvh - 68px);
+
+        background: #ffffff !important;
+
+        padding-bottom: 90px;
+    }
+}
