@@ -2,7 +2,7 @@
 
 
 /* =========================================================
-   SETTINGS
+   ACCESSIBILITY
 ========================================================= */
 
 const reducedMotion =
@@ -50,9 +50,11 @@ if (
     mainNav
 ) {
 
+
     mobileMenuButton.addEventListener(
         "click",
         () => {
+
 
             const open =
                 mainNav.classList.toggle(
@@ -65,6 +67,7 @@ if (
                 String(open)
             );
 
+
         }
     );
 
@@ -73,9 +76,11 @@ if (
         .querySelectorAll("a")
         .forEach(link => {
 
+
             link.addEventListener(
                 "click",
                 () => {
+
 
                     mainNav.classList.remove(
                         "open"
@@ -87,10 +92,13 @@ if (
                         "false"
                     );
 
+
                 }
             );
 
+
         });
+
 
 }
 
@@ -107,29 +115,38 @@ const revealElements =
 
 if (reducedMotion) {
 
+
     revealElements.forEach(
         element => {
+
 
             element.classList.add(
                 "visible"
             );
 
+
         }
     );
 
+
 } else {
+
 
     const revealObserver =
         new IntersectionObserver(
 
+
             entries => {
+
 
                 entries.forEach(
                     entry => {
 
+
                         if (
                             entry.isIntersecting
                         ) {
+
 
                             entry.target
                                 .classList
@@ -143,12 +160,16 @@ if (reducedMotion) {
                                     entry.target
                                 );
 
+
                         }
+
 
                     }
                 );
 
+
             },
+
 
             {
                 threshold: 0.1,
@@ -157,24 +178,28 @@ if (reducedMotion) {
                     "0px 0px -25px 0px"
             }
 
+
         );
 
 
     revealElements.forEach(
         element => {
 
+
             revealObserver.observe(
                 element
             );
 
+
         }
     );
+
 
 }
 
 
 /* =========================================================
-   KPI COUNTER
+   £520K COUNTER
 ========================================================= */
 
 const counters =
@@ -191,13 +216,18 @@ function easeOutCubic(
     progress
 ) {
 
+
     return (
+
         1 -
+
         Math.pow(
             1 - progress,
             3
         )
+
     );
+
 
 }
 
@@ -205,6 +235,7 @@ function easeOutCubic(
 function animateCounter(
     counter
 ) {
+
 
     if (
         counter.dataset.animated ===
@@ -235,8 +266,10 @@ function animateCounter(
 
     if (reducedMotion) {
 
+
         counter.textContent =
             target;
+
 
         return;
 
@@ -250,6 +283,7 @@ function animateCounter(
     function update(
         currentTime
     ) {
+
 
         const elapsed =
             currentTime -
@@ -293,16 +327,21 @@ function animateCounter(
             progress < 1
         ) {
 
+
             requestAnimationFrame(
                 update
             );
 
+
         } else {
+
 
             counter.textContent =
                 target;
 
+
         }
+
 
     }
 
@@ -311,22 +350,28 @@ function animateCounter(
         update
     );
 
+
 }
 
 
 if (counters.length) {
 
+
     const counterObserver =
         new IntersectionObserver(
 
+
             entries => {
+
 
                 entries.forEach(
                     entry => {
 
+
                         if (
                             entry.isIntersecting
                         ) {
+
 
                             animateCounter(
                                 entry.target
@@ -338,16 +383,21 @@ if (counters.length) {
                                     entry.target
                                 );
 
+
                         }
+
 
                     }
                 );
 
+
             },
+
 
             {
                 threshold: 0.35
             }
+
 
         );
 
@@ -355,12 +405,15 @@ if (counters.length) {
     counters.forEach(
         counter => {
 
+
             counterObserver.observe(
                 counter
             );
 
+
         }
     );
+
 
 }
 
@@ -387,6 +440,7 @@ let impactAnimationPlayed =
 
 function playImpactHint() {
 
+
     if (
         reducedMotion ||
         impactAnimationPlayed
@@ -407,6 +461,7 @@ function playImpactHint() {
             index
         ) => {
 
+
             const delay =
                 170 +
                 index * 150;
@@ -414,6 +469,7 @@ function playImpactHint() {
 
             window.setTimeout(
                 () => {
+
 
                     card.classList.add(
                         "attention-pop"
@@ -423,20 +479,25 @@ function playImpactHint() {
                     window.setTimeout(
                         () => {
 
+
                             card.classList.remove(
                                 "attention-pop"
                             );
+
 
                         },
                         850
                     );
 
+
                 },
                 delay
             );
 
+
         }
     );
+
 
 }
 
@@ -446,23 +507,22 @@ if (
     !reducedMotion
 ) {
 
+
     const impactHintObserver =
         new IntersectionObserver(
 
+
             entries => {
+
 
                 entries.forEach(
                     entry => {
+
 
                         if (
                             entry.isIntersecting
                         ) {
 
-                            /*
-                             Give the normal fade-in animation
-                             a fraction of a second to finish
-                             before the cards pop.
-                            */
 
                             window.setTimeout(
                                 playImpactHint,
@@ -475,16 +535,21 @@ if (
                                     entry.target
                                 );
 
+
                         }
+
 
                     }
                 );
 
+
             },
 
+
             {
-                threshold: 0.42
+                threshold: 0.38
             }
+
 
         );
 
@@ -492,6 +557,7 @@ if (
     impactHintObserver.observe(
         impactGrid
     );
+
 
 }
 
@@ -513,6 +579,7 @@ const navigationSections =
     .map(
         link => {
 
+
             const selector =
                 link.getAttribute(
                     "href"
@@ -524,12 +591,14 @@ const navigationSections =
                     selector
                 );
 
+
         }
     )
     .filter(Boolean);
 
 
 function updateActiveNavigation() {
+
 
     const position =
         window.scrollY +
@@ -542,6 +611,7 @@ function updateActiveNavigation() {
 
     navigationSections.forEach(
         section => {
+
 
             const top =
                 section.offsetTop;
@@ -557,10 +627,13 @@ function updateActiveNavigation() {
                 position < bottom
             ) {
 
+
                 activeSection =
                     section.id;
 
+
             }
+
 
         }
     );
@@ -568,6 +641,7 @@ function updateActiveNavigation() {
 
     navigationLinks.forEach(
         link => {
+
 
             link.classList.remove(
                 "active"
@@ -581,30 +655,41 @@ function updateActiveNavigation() {
                 `#${activeSection}`
             ) {
 
+
                 link.classList.add(
                     "active"
                 );
 
+
             }
+
 
         }
     );
+
 
 }
 
 
 window.addEventListener(
+
     "scroll",
+
     updateActiveNavigation,
+
     {
         passive: true
     }
+
 );
 
 
 window.addEventListener(
+
     "load",
+
     updateActiveNavigation
+
 );
 
 
@@ -617,304 +702,403 @@ const caseStudyData = {
 
     logistics: {
 
+
         kicker:
             "Supply Chain Transformation • Rattan Direct",
+
 
         title:
             "Restructuring warehousing and final-mile operations",
 
+
         summary:
             "A commercial and operational transformation across warehousing, 3PL and final-mile delivery that materially changed the logistics cost base.",
+
 
         problem:
             "Warehousing, storage, unloading, picking and delivery structures were creating significant cost and operational friction. The business needed a more efficient logistics model without losing service continuity.",
 
+
         analysis:
             "Historical rate cards, invoice structures, storage models, unloading charges, picking methods and final-mile costs were compared across providers. The review focused on the commercial drivers underneath the headline rates rather than treating logistics as one blended cost.",
+
 
         action:
             "Benchmarked providers, negotiated commercial terms and SLAs, redesigned parts of the picking-cost model, challenged invoice structures and led the operational transition from Denholm into a more efficient ArrowXL/RXL model while managing inbound continuity.",
 
+
         tools:
             "Rate-card and invoice analysis, 3PL commercial negotiation, SLA review, warehouse capacity planning, transition governance, executive reporting and operational issue management.",
+
 
         result:
             "~£520K annual logistics savings",
 
+
         resultDetail:
             "Approximately £400K in warehouse/3PL savings plus approximately £120K in final-mile savings.",
+
 
         learning:
             "Demonstrates commercial judgement, provider management, negotiation, operating-model redesign and the ability to turn detailed cost analysis into a material business outcome."
 
+
     },
+
 
 
     china: {
 
+
         kicker:
             "International Supplier & Manufacturing Development • China • March 2025",
+
 
         title:
             "Supplier continuity and early-stage manufacturing formalisation",
 
+
         summary:
             "A two-week China trip combining supplier engagement, business-continuity negotiation, manufacturing learning and practical quality/process formalisation at an early-stage Hunan furniture operation.",
+
 
         problem:
             "Rattan Direct was navigating a difficult cash-flow period while relying on key Chinese suppliers for 2025 production. At the same time, a new Hunan operation intended initially to supply Rattan Direct was producing but still operating with relatively informal work instructions and process controls.",
 
+
         analysis:
             "The first week was used to observe established supplier practices across factory layout, workstations, manufacturing processes, work instructions, quality checks, health and safety, packaging and logistics. Customer-return evidence and known product issues were also used to compare expected quality with what was being produced.",
+
 
         action:
             "Supported Robert Fernandez and sourcing consultant Vincent/Du Wang during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, physically created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
 
+
         tools:
             "Supplier review, approved samples, customer photographs and complaint evidence, product knowledge, visual inspection, QC documentation, work instructions, 5S, process mapping, packaging standards and factory-floor observation.",
+
 
         result:
             "Supplier production restarted and process controls were strengthened",
 
+
         resultDetail:
             "Vivid agreed to resume 2025 production after the negotiation, with aluminium frames already being worked on before the visit ended. The Hunan team adopted the quality and process recommendations.",
+
 
         learning:
             "Demonstrates direct international supplier exposure, business-continuity support, manufacturing-process understanding, quality-at-source thinking and practical early-stage factory-process formalisation.",
 
+
         gallery: [
 
+
             {
+
                 src:
                     "images/china/china-vivid-supplier-visit.webp",
 
                 alt:
                     "Victor Akoyo outside the Vivid supplier factory in China"
+
             },
 
 
             {
+
                 src:
                     "images/china/china-product-quality-review.webp",
 
                 alt:
                     "Victor reviewing a woven outdoor furniture product during a China supplier visit"
+
             },
 
 
             {
+
                 src:
                     "images/china/china-aluminium-frame-production.webp",
 
                 alt:
                     "Aluminium outdoor furniture frames during production at a supplier factory"
+
             },
 
 
             {
+
                 src:
                     "images/china/china-frame-welding-process.webp",
 
                 alt:
                     "Welding equipment and aluminium furniture frames during production"
+
             },
 
 
             {
+
                 src:
                     "images/china/china-weaving-quality-detail.webp",
 
                 alt:
                     "Close-up of woven furniture showing the weaving process and quality detail"
+
             },
 
 
             {
+
                 src:
                     "images/china/china-finished-outdoor-furniture.webp",
 
                 alt:
                     "Finished woven outdoor furniture at a China supplier"
+
             }
+
 
         ]
 
+
     },
+
 
 
     eos: {
 
+
         kicker:
             "Business Operations • Optimise Outsourcing",
+
 
         title:
             "Embedding an operating system for execution",
 
+
         summary:
             "Internal EOS Integrator ownership across planning, meeting cadence, Rocks, scorecards, accountability and issue follow-through.",
+
 
         problem:
             "A growing business needed a repeatable mechanism for turning leadership priorities into visible commitments, weekly follow-through and cross-functional accountability.",
 
+
         analysis:
             "The requirement was broader than running meetings. Vision, quarterly priorities, scorecards, Issues/IDS, current and future accountabilities and department-level execution needed to connect to one operating rhythm.",
+
 
         action:
             "Functioned as the internal Integrator: owned the quarterly VTO review cadence, ran SLT Level 10 meetings, managed company and departmental Rocks in Sage HR using RAG status, created and maintained current/future Accountability Charts, owned the Issues List and Microsoft Teams Planner follow-up, operated daily huddles and other tactical meeting rhythms, and ran the weekly Win the Week execution practice.",
 
+
         tools:
             "EOS/VTO, Level 10s, IDS, quarterly Rocks, Sage HR RAG tracking, current/future Accountability Charts, Microsoft Teams Planner, KPI scorecards, daily huddles, cash-flow tactical reviews and quarterly organisational check-ups.",
+
 
         result:
             "A structured cross-functional execution rhythm",
 
+
         resultDetail:
             "Leadership priorities were connected to weekly measures, quarterly Rocks, issue-solving, ownership and recurring review rather than left as isolated plans.",
+
 
         learning:
             "Demonstrates operating-system thinking: connecting vision, measures, meetings, accountability and decision-making. Strategic content was collaboratively authored; the operating cadence and Integrator mechanism were the core area of ownership."
 
+
     },
+
 
 
     quality: {
 
+
         kicker:
             "Quality + Product Improvement • Rattan Direct",
+
 
         title:
             "Reducing returns through product and process improvement",
 
+
         summary:
             "A cross-functional quality improvement effort spanning supplier quality, packaging, handling, delivery, reverse logistics and product-design changes.",
+
 
         problem:
             "Returns were being driven by several failure modes across the product journey, including defects, packaging weaknesses, handling damage and delivery-related issues.",
 
+
         analysis:
             "Return data, recurring defect patterns, customer photographs, warehouse observations, delivery issues and supplier-quality findings were used to distinguish where failures were occurring and where controls or product changes were needed.",
+
 
         action:
             "Coordinated supplier-quality actions, packaging improvements, delivery-quality reviews and reverse-logistics interventions. Product-design changes included moving some feet from plastic to aluminium where transit damage was recurring. China supplier visits also allowed customer evidence to be taken back into manufacturing discussions.",
 
+
         tools:
             "Return-cause analysis, supplier reviews, customer evidence, packaging reviews, logistics-quality reviews, corrective-action tracking and product-design feedback.",
+
 
         result:
             "Returns reduced from ~12% to ~4% by CBM",
 
+
         resultDetail:
             "The improvement came from combined supplier, packaging, handling, product and logistics interventions rather than one isolated change.",
+
 
         learning:
             "Demonstrates end-to-end quality thinking: following failure from customer experience back through product, supplier, warehouse and delivery processes."
 
+
     },
+
 
 
     automation: {
 
+
         kicker:
             "AI-Enabled Operations • Optimise Outsourcing",
+
 
         title:
             "From leadership meeting transcript to management intelligence",
 
+
         summary:
             "A live workflow that converted recurring senior-leadership meeting information into structured AI-assisted reports and returned them to Microsoft Teams.",
+
 
         problem:
             "SLT Level 10 meetings generated transcripts that required repetitive manual review, structuring and reporting before the main issues, actions and insights could be shared consistently.",
 
+
         analysis:
             "The workflow needed to fit the existing Microsoft 365 environment, retrieve the right meeting and transcript information, apply a repeatable analysis structure, manage processing state and return the result to the same operating context.",
+
 
         action:
             "Built a Make.com workflow using SharePoint monitoring, HTTP/Microsoft Graph retrieval, iteration, meeting/transcript retrieval, OpenAI analysis, Markdown formatting, Teams delivery and Data Store checks/updates to control repeat processing.",
 
+
         tools:
             "Make.com, SharePoint, Microsoft Graph/HTTP, OpenAI, Markdown, Microsoft Teams, Make Data Store and structured reporting logic.",
+
 
         result:
             "Live workflow used on real SLT Level 10 meetings",
 
+
         resultDetail:
             "Converted a recurring manual reporting task into a repeatable workflow embedded in the existing leadership operating rhythm.",
+
 
         learning:
             "Demonstrates practical workflow automation and the ability to connect AI to a real operating need while keeping AI as one component of a wider business process."
 
+
     },
+
 
 
     manufacturing: {
 
+
         kicker:
             "Manufacturing Quality • Auto Springs East Africa",
+
 
         title:
             "Reducing U-bolt rejection",
 
+
         summary:
             "A manufacturing-quality improvement effort using structured quality methods to strengthen process control and reduce rejection.",
+
 
         problem:
             "U-bolt rejection performance required stronger process control, measurement discipline and structured analysis of recurring variation.",
 
+
         analysis:
             "Production quality performance was assessed through inspection data and structured quality tools to understand failure modes, measurement reliability and process conditions contributing to rejection.",
+
 
         action:
             "Applied production quality controls, SPC, PFMEA, MSA and corrective-action practices while working with production teams to strengthen forming controls, checking methods and defect prevention.",
 
+
         tools:
             "SPC, PFMEA, MSA, control plans, production inspection, corrective action and ISO 9001 quality documentation.",
+
 
         result:
             "U-bolt rejection reduced from ~4% to ~2%",
 
+
         resultDetail:
             "The improvement came from stronger process controls, measurement discipline and structured manufacturing-quality improvement.",
+
 
         learning:
             "Demonstrates an engineering-quality foundation and practical use of structured quality tools to produce measurable manufacturing improvement."
 
+
     },
+
 
 
     complaints: {
 
+
         kicker:
             "Quality Leadership • Tile & Carpet Centre",
+
 
         title:
             "Reducing customer complaints",
 
+
         summary:
             "A manufacturing-quality improvement effort that strengthened inspection, corrective action and production-quality discipline.",
+
 
         problem:
             "Customer complaints were running at an elevated level and required better control of recurring defects and more disciplined follow-through.",
 
+
         analysis:
             "Complaint patterns, production issues and inspection findings were used to identify recurring causes and where manufacturing-quality controls needed to be strengthened.",
+
 
         action:
             "Led quality inspection and corrective-action activity, worked with production teams on recurring defects, strengthened quality controls and maintained audit readiness.",
 
+
         tools:
             "Complaint analysis, production inspection, root-cause analysis, corrective action, quality audits and KEBS compliance controls.",
+
 
         result:
             "Customer complaints reduced from ~12% to ~5%",
 
+
         resultDetail:
             "The reduction was achieved while maintaining 100% KEBS audit compliance.",
+
 
         learning:
             "Demonstrates quality leadership, structured problem solving and the ability to convert customer-quality signals into production improvement."
 
+
     }
+
 
 };
 
@@ -1021,6 +1205,7 @@ function populateCaseModal(
     caseKey
 ) {
 
+
     const data =
         caseStudyData[
             caseKey
@@ -1028,7 +1213,9 @@ function populateCaseModal(
 
 
     if (!data) {
+
         return false;
+
     }
 
 
@@ -1074,6 +1261,7 @@ function populateCaseModal(
 
     if (caseModalMedia) {
 
+
         caseModalMedia.innerHTML =
             "";
 
@@ -1084,6 +1272,7 @@ function populateCaseModal(
             ) &&
             data.gallery.length
         ) {
+
 
             const gallery =
                 document.createElement(
@@ -1097,6 +1286,7 @@ function populateCaseModal(
 
             data.gallery.forEach(
                 item => {
+
 
                     const figure =
                         document.createElement(
@@ -1131,30 +1321,35 @@ function populateCaseModal(
                         figure
                     );
 
+
                 }
             );
 
 
-            caseModalMedia
-                .appendChild(
-                    gallery
-                );
+            caseModalMedia.appendChild(
+                gallery
+            );
 
 
             caseModalMedia.hidden =
                 false;
 
+
         } else {
+
 
             caseModalMedia.hidden =
                 true;
 
+
         }
+
 
     }
 
 
     return true;
+
 
 }
 
@@ -1167,6 +1362,7 @@ function openCaseModal(
     caseKey,
     trigger
 ) {
+
 
     if (
         !caseModal ||
@@ -1205,19 +1401,25 @@ function openCaseModal(
     window.setTimeout(
         () => {
 
+
             caseModalPanel.focus();
+
 
         },
         30
     );
+
 
 }
 
 
 function closeCaseModal() {
 
+
     if (!caseModal) {
+
         return;
+
     }
 
 
@@ -1244,15 +1446,18 @@ function closeCaseModal() {
             "function"
     ) {
 
+
         lastModalTrigger.focus();
 
+
     }
+
 
 }
 
 
 /* =========================================================
-   CASE STUDY TRIGGERS
+   CASE TRIGGERS
 ========================================================= */
 
 document
@@ -1262,14 +1467,17 @@ document
     .forEach(
         trigger => {
 
+
             trigger.addEventListener(
                 "click",
                 () => {
+
 
                     openCaseModal(
                         trigger.dataset.case,
                         trigger
                     );
+
 
                 }
             );
@@ -1282,14 +1490,19 @@ document
                 "button"
             ) {
 
+
                 trigger.addEventListener(
                     "keydown",
                     event => {
 
+
                         if (
-                            event.key === "Enter" ||
-                            event.key === " "
+                            event.key ===
+                                "Enter" ||
+                            event.key ===
+                                " "
                         ) {
+
 
                             event.preventDefault();
 
@@ -1299,12 +1512,16 @@ document
                                 trigger
                             );
 
+
                         }
+
 
                     }
                 );
 
+
             }
+
 
         }
     );
@@ -1321,10 +1538,12 @@ document
     .forEach(
         closeControl => {
 
+
             closeControl.addEventListener(
                 "click",
                 closeCaseModal
             );
+
 
         }
     );
@@ -1332,40 +1551,43 @@ document
 
 if (caseModalContact) {
 
+
     caseModalContact.addEventListener(
         "click",
         closeCaseModal
     );
 
+
 }
 
-
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
+
         if (
-            event.key === "Escape" &&
+            event.key ===
+                "Escape" &&
             caseModal &&
             caseModal.classList.contains(
                 "open"
             )
         ) {
 
+
             closeCaseModal();
 
+
         }
+
 
     }
 );
 
 
 /* =========================================================
-   MOLECULE / PARTICLE BACKGROUND
+   MOLECULE / ATOM BACKGROUND
 ========================================================= */
 
 const canvas =
@@ -1378,6 +1600,7 @@ if (
     canvas &&
     !reducedMotion
 ) {
+
 
     const ctx =
         canvas.getContext(
@@ -1404,23 +1627,106 @@ if (
 
         y: null,
 
-        radius: 145
+        innerRadius: 48,
+
+        outerRadius: 145
 
     };
 
 
-    /* -----------------------------------------
+    /* =====================================================
+       POINTER FADE
+
+       Particles inside the cursor area fade away.
+    ===================================================== */
+
+    function getPointerFade(
+        x,
+        y
+    ) {
+
+
+        if (
+            pointer.x === null ||
+            pointer.y === null
+        ) {
+
+            return 1;
+
+        }
+
+
+        const dx =
+            x -
+            pointer.x;
+
+
+        const dy =
+            y -
+            pointer.y;
+
+
+        const distance =
+            Math.sqrt(
+                dx * dx +
+                dy * dy
+            );
+
+
+        if (
+            distance <=
+            pointer.innerRadius
+        ) {
+
+            return 0;
+
+        }
+
+
+        if (
+            distance >=
+            pointer.outerRadius
+        ) {
+
+            return 1;
+
+        }
+
+
+        return (
+
+            (
+                distance -
+                pointer.innerRadius
+            ) /
+
+            (
+                pointer.outerRadius -
+                pointer.innerRadius
+            )
+
+        );
+
+
+    }
+
+
+    /* =====================================================
        PARTICLE CLASS
-    ----------------------------------------- */
+    ===================================================== */
 
     class Particle {
 
+
         constructor() {
+
             this.reset();
+
         }
 
 
         reset() {
+
 
             this.x =
                 Math.random() *
@@ -1434,7 +1740,7 @@ if (
 
             this.radius =
                 Math.random() *
-                1.45 +
+                1.25 +
                 0.8;
 
 
@@ -1443,7 +1749,7 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.13;
+                0.12;
 
 
             this.speedY =
@@ -1451,133 +1757,69 @@ if (
                     Math.random() -
                     0.5
                 ) *
-                0.13;
-
-
-            this.forceX = 0;
-
-            this.forceY = 0;
+                0.12;
 
 
             this.opacity =
                 Math.random() *
-                0.15 +
+                0.16 +
                 0.14;
 
 
-            const randomTone =
+            const tone =
                 Math.random();
 
 
             if (
-                randomTone > 0.82
+                tone > 0.84
             ) {
+
 
                 this.tone =
                     "teal";
 
+
             } else if (
-                randomTone > 0.69
+                tone > 0.73
             ) {
+
 
                 this.tone =
                     "amber";
 
+
             } else {
+
 
                 this.tone =
                     "blue";
 
+
             }
+
 
         }
 
 
         update() {
 
+
             this.x +=
-                this.speedX +
-                this.forceX;
+                this.speedX;
 
 
             this.y +=
-                this.speedY +
-                this.forceY;
+                this.speedY;
 
-
-            this.forceX *= 0.91;
-
-            this.forceY *= 0.91;
-
-
-            /* gentle mouse interaction */
-
-            if (
-                pointer.x !== null &&
-                pointer.y !== null
-            ) {
-
-                const dx =
-                    this.x -
-                    pointer.x;
-
-
-                const dy =
-                    this.y -
-                    pointer.y;
-
-
-                const distance =
-                    Math.sqrt(
-                        dx * dx +
-                        dy * dy
-                    );
-
-
-                if (
-                    distance <
-                        pointer.radius &&
-                    distance > 0
-                ) {
-
-                    const force =
-                        (
-                            pointer.radius -
-                            distance
-                        ) /
-                        pointer.radius;
-
-
-                    this.forceX +=
-                        (
-                            dx /
-                            distance
-                        ) *
-                        force *
-                        0.19;
-
-
-                    this.forceY +=
-                        (
-                            dy /
-                            distance
-                        ) *
-                        force *
-                        0.19;
-
-                }
-
-            }
-
-
-            /* wrap around edges */
 
             if (
                 this.x < -20
             ) {
 
+
                 this.x =
                     width + 20;
+
 
             }
 
@@ -1587,8 +1829,10 @@ if (
                 width + 20
             ) {
 
+
                 this.x =
                     -20;
+
 
             }
 
@@ -1597,8 +1841,10 @@ if (
                 this.y < -20
             ) {
 
+
                 this.y =
                     height + 20;
+
 
             }
 
@@ -1608,15 +1854,40 @@ if (
                 height + 20
             ) {
 
+
                 this.y =
                     -20;
 
+
             }
+
 
         }
 
 
         draw() {
+
+
+            const pointerFade =
+                getPointerFade(
+                    this.x,
+                    this.y
+                );
+
+
+            const alpha =
+                this.opacity *
+                pointerFade;
+
+
+            if (
+                alpha <= 0.005
+            ) {
+
+                return;
+
+            }
+
 
             let fill;
 
@@ -1626,21 +1897,27 @@ if (
                 "teal"
             ) {
 
+
                 fill =
-                    `rgba(22, 140, 133, ${this.opacity})`;
+                    `rgba(22, 140, 133, ${alpha})`;
+
 
             } else if (
                 this.tone ===
                 "amber"
             ) {
 
+
                 fill =
-                    `rgba(213, 148, 50, ${this.opacity * 0.72})`;
+                    `rgba(213, 148, 50, ${alpha * 0.76})`;
+
 
             } else {
 
+
                 fill =
-                    `rgba(22, 116, 168, ${this.opacity})`;
+                    `rgba(22, 116, 168, ${alpha})`;
+
 
             }
 
@@ -1663,16 +1940,19 @@ if (
 
             ctx.fill();
 
+
         }
+
 
     }
 
 
-    /* -----------------------------------------
+    /* =====================================================
        CREATE PARTICLES
-    ----------------------------------------- */
+    ===================================================== */
 
     function createParticles() {
+
 
         particles = [];
 
@@ -1685,7 +1965,7 @@ if (
         let count =
             Math.floor(
                 area /
-                22500
+                19000
             );
 
 
@@ -1693,25 +1973,29 @@ if (
             width < 760
         ) {
 
+
             count =
                 Math.min(
                     Math.max(
                         count,
-                        20
+                        25
                     ),
-                    28
+                    34
                 );
+
 
         } else {
 
+
             count =
                 Math.min(
                     Math.max(
                         count,
-                        44
+                        52
                     ),
-                    72
+                    82
                 );
+
 
         }
 
@@ -1722,25 +2006,29 @@ if (
             i++
         ) {
 
+
             particles.push(
                 new Particle()
             );
 
+
         }
+
 
     }
 
 
-    /* -----------------------------------------
+    /* =====================================================
        CONNECT NEARBY PARTICLES
-    ----------------------------------------- */
+    ===================================================== */
 
     function connectParticles() {
 
+
         const maxDistance =
             width < 760
-                ? 88
-                : 122;
+                ? 95
+                : 128;
 
 
         for (
@@ -1750,6 +2038,7 @@ if (
             i++
         ) {
 
+
             for (
                 let j =
                     i + 1;
@@ -1758,14 +2047,23 @@ if (
                 j++
             ) {
 
+
+                const particleA =
+                    particles[i];
+
+
+                const particleB =
+                    particles[j];
+
+
                 const dx =
-                    particles[i].x -
-                    particles[j].x;
+                    particleA.x -
+                    particleB.x;
 
 
                 const dy =
-                    particles[i].y -
-                    particles[j].y;
+                    particleA.y -
+                    particleB.y;
 
 
                 const distance =
@@ -1780,27 +2078,60 @@ if (
                     maxDistance
                 ) {
 
+
+                    const fadeA =
+                        getPointerFade(
+                            particleA.x,
+                            particleA.y
+                        );
+
+
+                    const fadeB =
+                        getPointerFade(
+                            particleB.x,
+                            particleB.y
+                        );
+
+
+                    const cursorFade =
+                        Math.min(
+                            fadeA,
+                            fadeB
+                        );
+
+
+                    if (
+                        cursorFade <=
+                        0.01
+                    ) {
+
+                        continue;
+
+                    }
+
+
                     const opacity =
                         (
                             1 -
                             distance /
                             maxDistance
                         ) *
-                        0.10;
+                        0.105 *
+                        cursorFade;
 
 
                     ctx.beginPath();
 
 
                     ctx.moveTo(
-                        particles[i].x,
-                        particles[i].y
+                        particleA.x,
+                        particleA.y
                     );
 
 
                     ctx.lineTo(
-                        particles[j].x,
-                        particles[j].y
+                        particleB.x,
+                        particleB.y
                     );
 
 
@@ -1814,20 +2145,25 @@ if (
 
                     ctx.stroke();
 
+
                 }
+
 
             }
 
+
         }
+
 
     }
 
 
-    /* -----------------------------------------
-       CANVAS SIZE
-    ----------------------------------------- */
+    /* =====================================================
+       RESIZE CANVAS
+    ===================================================== */
 
     function resizeCanvas() {
+
 
         width =
             window.innerWidth;
@@ -1875,14 +2211,16 @@ if (
 
         createParticles();
 
+
     }
 
 
-    /* -----------------------------------------
+    /* =====================================================
        ANIMATION LOOP
-    ----------------------------------------- */
+    ===================================================== */
 
     function animateParticles() {
+
 
         ctx.clearRect(
             0,
@@ -1895,9 +2233,11 @@ if (
         particles.forEach(
             particle => {
 
+
                 particle.update();
 
                 particle.draw();
+
 
             }
         );
@@ -1911,12 +2251,13 @@ if (
                 animateParticles
             );
 
+
     }
 
 
-    /* -----------------------------------------
+    /* =====================================================
        POINTER INTERACTION
-    ----------------------------------------- */
+    ===================================================== */
 
     const finePointer =
         window.matchMedia(
@@ -1928,9 +2269,11 @@ if (
         finePointer.matches
     ) {
 
+
         window.addEventListener(
             "mousemove",
             event => {
+
 
                 pointer.x =
                     event.clientX;
@@ -1938,6 +2281,7 @@ if (
 
                 pointer.y =
                     event.clientY;
+
 
             },
             {
@@ -1950,6 +2294,7 @@ if (
             "mouseleave",
             () => {
 
+
                 pointer.x =
                     null;
 
@@ -1957,19 +2302,22 @@ if (
                 pointer.y =
                     null;
 
+
             }
         );
+
 
     }
 
 
-    /* -----------------------------------------
-       RESIZE
-    ----------------------------------------- */
+    /* =====================================================
+       RESIZE HANDLING
+    ===================================================== */
 
     window.addEventListener(
         "resize",
         () => {
+
 
             clearTimeout(
                 resizeTimer
@@ -1982,27 +2330,32 @@ if (
                     160
                 );
 
+
         }
     );
 
 
-    /* -----------------------------------------
-       SAVE CPU WHEN TAB HIDDEN
-    ----------------------------------------- */
+    /* =====================================================
+       SAVE CPU WHEN TAB IS HIDDEN
+    ===================================================== */
 
     document.addEventListener(
         "visibilitychange",
         () => {
 
+
             if (
                 document.hidden
             ) {
+
 
                 cancelAnimationFrame(
                     animationFrame
                 );
 
+
             } else {
+
 
                 cancelAnimationFrame(
                     animationFrame
@@ -2011,7 +2364,9 @@ if (
 
                 animateParticles();
 
+
             }
+
 
         }
     );
@@ -2021,22 +2376,25 @@ if (
 
     animateParticles();
 
+
 }
 
 
 /* =========================================================
-   MOBILE MENU RESIZE CLEANUP
+   DESKTOP RESIZE CLEANUP
 ========================================================= */
 
 window.addEventListener(
     "resize",
     () => {
 
+
         if (
             window.innerWidth >
                 760 &&
             mainNav
         ) {
+
 
             mainNav.classList.remove(
                 "open"
@@ -2047,15 +2405,19 @@ window.addEventListener(
                 mobileMenuButton
             ) {
 
+
                 mobileMenuButton
                     .setAttribute(
                         "aria-expanded",
                         "false"
                     );
 
+
             }
 
+
         }
+
 
     }
 );
