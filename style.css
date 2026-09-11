@@ -4864,3 +4864,647 @@ a {
     }
 
 }
+/* =========================================================
+   MOBILE HERO — CLEANER / CALMER VERSION
+   Desktop remains unchanged
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------------------------------
+       HERO
+       Natural height prevents large forced empty areas.
+    ----------------------------------------------------- */
+
+    .hero {
+        min-height: auto;
+        height: auto;
+
+        padding:
+            34px
+            0
+            38px;
+
+        display: block;
+
+        overflow: hidden;
+
+        background:
+            radial-gradient(
+                circle at 70% 70%,
+                rgba(22, 116, 168, 0.045),
+                transparent 32%
+            ),
+            rgba(255, 255, 255, 0.94);
+    }
+
+
+    .hero .hero-grid {
+        width: calc(100% - 34px);
+
+        max-width: none;
+
+        margin:
+            0
+            auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        justify-content: flex-start;
+
+        gap: 0;
+    }
+
+
+    /* =====================================================
+       INTRODUCTION
+    ===================================================== */
+
+    .hero-content {
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        text-align: left;
+    }
+
+
+    /* -----------------------------------------------------
+       STRONGER HEADLINE
+    ----------------------------------------------------- */
+
+    .hero h1 {
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        color: #243F52;
+
+        font-size:
+            clamp(
+                2rem,
+                8.4vw,
+                2.45rem
+            );
+
+        line-height: 1.03;
+
+        letter-spacing: -0.045em;
+
+        font-weight: 800;
+
+        text-align: left;
+
+        white-space: normal;
+    }
+
+
+    /* -----------------------------------------------------
+       SUPPORTING COPY
+    ----------------------------------------------------- */
+
+    .hero-positioning {
+        width: 100%;
+
+        max-width: 38rem;
+
+        margin:
+            20px
+            0
+            0;
+
+        color: #334155;
+
+        font-size:
+            clamp(
+                0.86rem,
+                3.65vw,
+                0.98rem
+            );
+
+        line-height: 1.62;
+
+        font-weight: 400;
+
+        text-align: left;
+    }
+
+
+    /* =====================================================
+       CTA AREA
+
+       All buttons now use the same quiet visual language.
+    ===================================================== */
+
+    .hero-actions {
+        width: 100%;
+
+        margin-top: 25px;
+
+        display: grid;
+
+        grid-template-columns:
+            1.25fr
+            1fr
+            0.55fr;
+
+        gap: 8px;
+    }
+
+
+    .hero-actions .button,
+    .hero-actions .button-primary,
+    .hero-actions .button-teal,
+    .hero-actions .button-secondary {
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 40px;
+
+        padding:
+            0
+            7px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border:
+            1px solid #CBD5E1;
+
+        border-radius: 9px;
+
+        background: #F8FAFC;
+
+        color: #334155;
+
+        box-shadow: none;
+
+        font-size:
+            clamp(
+                0.58rem,
+                2.55vw,
+                0.7rem
+            );
+
+        font-weight: 700;
+
+        white-space: nowrap;
+
+        transform: none;
+
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+
+    .hero-actions .button:hover,
+    .hero-actions .button:focus-visible,
+    .hero-actions .button-primary:hover,
+    .hero-actions .button-primary:focus-visible,
+    .hero-actions .button-teal:hover,
+    .hero-actions .button-teal:focus-visible,
+    .hero-actions .button-secondary:hover,
+    .hero-actions .button-secondary:focus-visible {
+        background: #EEF2F6;
+
+        color: #1E293B;
+
+        border-color: #AEBCC9;
+
+        transform: none;
+    }
+
+
+    /* =====================================================
+       METRICS
+
+       Hidden only on mobile.
+       Desktop £520k / 1,000+ / 19 remains unchanged.
+    ===================================================== */
+
+    .hero-proof {
+        display: none;
+    }
+
+
+    /* =====================================================
+       PORTRAIT SYSTEM
+
+       Clear separation between CTA area and portrait.
+    ===================================================== */
+
+    .hero-visual {
+        width: 100%;
+
+        margin-top: 34px;
+
+        padding: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+    }
+
+
+    .portrait-system {
+        position: relative;
+
+        width:
+            min(
+                calc(100vw - 46px),
+                310px
+            );
+
+        height: 265px;
+
+        margin:
+            0
+            auto;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* -----------------------------------------------------
+       PROFILE PHOTO
+    ----------------------------------------------------- */
+
+    .portrait-ring {
+        width: 122px;
+
+        height: 122px;
+
+        padding: 5px;
+    }
+
+
+    /* -----------------------------------------------------
+       ORBIT SYSTEM
+    ----------------------------------------------------- */
+
+    .hero-orbit-one {
+        width: 184px;
+
+        height: 184px;
+    }
+
+
+    .hero-orbit-two {
+        width: 238px;
+
+        height: 238px;
+    }
+
+
+    .hero-pulse {
+        width: 158px;
+
+        height: 158px;
+    }
+
+
+    /* =====================================================
+       ORBIT LABELS
+
+       Still animated, but calmer and slightly lighter.
+    ===================================================== */
+
+    .skill-float {
+        min-width: 77px;
+
+        max-width: 104px;
+
+        padding:
+            6px
+            8px;
+
+        border:
+            1px solid rgba(18, 53, 77, 0.10);
+
+        border-radius: 10px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.94
+            );
+
+        box-shadow:
+            0 7px 19px
+            rgba(13, 53, 82, 0.055);
+
+        animation-duration: 9s;
+    }
+
+
+    .skill-float strong {
+        white-space: nowrap;
+
+        font-size:
+            clamp(
+                0.51rem,
+                2.1vw,
+                0.61rem
+            );
+
+        font-weight: 750;
+
+        line-height: 1.15;
+    }
+
+
+    /* Top */
+
+    .skill-operations {
+        top: 2px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    /* Upper left */
+
+    .skill-supply {
+        top: 63px;
+
+        left: 3px;
+    }
+
+
+    /* Upper right */
+
+    .skill-process {
+        top: 63px;
+
+        right: 3px;
+    }
+
+
+    /* Lower left */
+
+    .skill-quality {
+        bottom: 50px;
+
+        left: 3px;
+    }
+
+
+    /* Lower right */
+
+    .skill-eos {
+        bottom: 50px;
+
+        right: 3px;
+    }
+
+
+    /* Bottom */
+
+    .skill-automation {
+        bottom: 0;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    /* =====================================================
+       EXPERIENCE / LOCATION / AVAILABILITY
+    ===================================================== */
+
+    .hero-visual-meta {
+        width: 100%;
+
+        margin-top: 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 11px;
+
+        white-space: nowrap;
+
+        color: #52697A;
+
+        font-size:
+            clamp(
+                0.7rem,
+                2.9vw,
+                0.82rem
+            );
+
+        line-height: 1;
+
+        font-weight: 680;
+    }
+
+
+    .meta-item {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 5px;
+    }
+
+
+    .meta-icon {
+        width: 14px;
+
+        height: 14px;
+    }
+
+
+    .availability-meta {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        color: #12806F;
+
+        font-weight: 730;
+    }
+
+
+    .availability-dot {
+        width: 7px;
+
+        height: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALLER PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero {
+        padding:
+            30px
+            0
+            34px;
+    }
+
+
+    .hero .hero-grid {
+        width: calc(100% - 30px);
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(
+                1.95rem,
+                8.3vw,
+                2.25rem
+            );
+    }
+
+
+    .hero-positioning {
+        margin-top: 18px;
+
+        font-size:
+            clamp(
+                0.83rem,
+                3.55vw,
+                0.94rem
+            );
+
+        line-height: 1.58;
+    }
+
+
+    .hero-actions {
+        margin-top: 23px;
+
+        gap: 7px;
+    }
+
+
+    .hero-actions .button,
+    .hero-actions .button-primary,
+    .hero-actions .button-teal,
+    .hero-actions .button-secondary {
+        min-height: 39px;
+
+        padding:
+            0
+            5px;
+
+        font-size:
+            clamp(
+                0.56rem,
+                2.45vw,
+                0.66rem
+            );
+    }
+
+
+    .hero-visual {
+        margin-top: 31px;
+    }
+
+
+    .portrait-system {
+        width:
+            min(
+                calc(100vw - 40px),
+                292px
+            );
+
+        height: 255px;
+    }
+
+
+    .portrait-ring {
+        width: 118px;
+
+        height: 118px;
+    }
+
+
+    .hero-orbit-one {
+        width: 178px;
+
+        height: 178px;
+    }
+
+
+    .hero-orbit-two {
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .hero-pulse {
+        width: 153px;
+
+        height: 153px;
+    }
+
+
+    .skill-supply,
+    .skill-process {
+        top: 60px;
+    }
+
+
+    .skill-quality,
+    .skill-eos {
+        bottom: 48px;
+    }
+
+
+    .hero-visual-meta {
+        margin-top: 18px;
+
+        gap: 9px;
+
+        font-size:
+            clamp(
+                0.67rem,
+                2.85vw,
+                0.77rem
+            );
+    }
+
+}
