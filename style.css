@@ -5793,3 +5793,13 @@ a {
     color: #334155;
   }
 }
+/* Mobile intro paragraph — quieter sizing */
+
+@media (max-width: 768px) {
+    .hero-positioning {
+        font-size: clamp(0.80rem, 3.2vw, 0.90rem);
+        line-height: 1.55;
+        color: #475569;
+        font-weight: 475;
+    }
+}
