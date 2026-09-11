@@ -5586,3 +5586,132 @@ a {
     color: #334155;
   }
 }
+/* =========================================================
+   MOBILE HERO — FINAL HEADLINE + INTRO REFINEMENT
+   Add at the very END of style.css
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------------------------------
+       HEADLINE
+       Force "Building stronger operations." onto one line
+    ----------------------------------------------------- */
+
+    .hero h1 {
+        width: 100%;
+        max-width: none;
+
+        margin: 0;
+
+        white-space: nowrap;
+
+        color: #17384d;
+
+        font-size: clamp(
+            1.35rem,
+            5.9vw,
+            1.78rem
+        );
+
+        line-height: 1.05;
+
+        letter-spacing: -0.045em;
+
+        font-weight: 850;
+
+        text-align: left;
+    }
+
+
+    /* -----------------------------------------------------
+       INTRO PARAGRAPH
+       Slightly larger, darker and more confident
+    ----------------------------------------------------- */
+
+    .hero-positioning {
+        width: 100%;
+        max-width: 39rem;
+
+        margin: 20px 0 0;
+
+        color: #334155;
+
+        font-size: clamp(
+            0.91rem,
+            3.75vw,
+            1.02rem
+        );
+
+        line-height: 1.58;
+
+        font-weight: 500;
+
+        letter-spacing: -0.008em;
+
+        text-align: left;
+    }
+
+
+    /* Keep good breathing room before the buttons */
+
+    .hero-actions {
+        margin-top: 27px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: clamp(
+            1.32rem,
+            5.85vw,
+            1.55rem
+        );
+
+        letter-spacing: -0.048em;
+    }
+
+
+    .hero-positioning {
+        margin-top: 19px;
+
+        font-size: clamp(
+            0.89rem,
+            3.7vw,
+            0.98rem
+        );
+
+        line-height: 1.57;
+    }
+
+
+    .hero-actions {
+        margin-top: 25px;
+    }
+}
+
+
+/* =========================================================
+   VERY NARROW PHONES
+   Keeps headline safely on one line
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .hero h1 {
+        font-size: 1.28rem;
+
+        letter-spacing: -0.05em;
+    }
+
+
+    .hero-positioning {
+        font-size: 0.87rem;
+    }
+}
