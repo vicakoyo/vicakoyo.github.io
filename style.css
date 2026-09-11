@@ -5508,3 +5508,81 @@ a {
     }
 
 }
+/* =========================================================
+   MOBILE HERO TEXT REFINEMENT
+   - one-line title
+   - stronger title
+   - larger / darker intro paragraph
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 24px 0 34px;
+  }
+
+  .hero .hero-grid {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .hero h1 {
+    margin: 0 0 18px;
+    font-size: clamp(1.45rem, 6.2vw, 2rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 850;
+    color: #183B56;
+    white-space: nowrap;
+    overflow: visible;
+    text-wrap: nowrap;
+  }
+
+  .hero-positioning {
+    margin: 0 0 24px;
+    max-width: 100%;
+    font-size: clamp(1rem, 4vw, 1.08rem);
+    line-height: 1.65;
+    font-weight: 500;
+    color: #334155;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 22px 0 30px;
+  }
+
+  .hero .hero-grid {
+    width: calc(100% - 28px);
+  }
+
+  .hero h1 {
+    margin: 0 0 16px;
+    font-size: clamp(1.38rem, 5.9vw, 1.82rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 850;
+    color: #183B56;
+    white-space: nowrap;
+    overflow: visible;
+    text-wrap: nowrap;
+  }
+
+  .hero-positioning {
+    margin: 0 0 22px;
+    font-size: clamp(0.98rem, 3.95vw, 1.04rem);
+    line-height: 1.68;
+    font-weight: 500;
+    color: #334155;
+  }
+}
