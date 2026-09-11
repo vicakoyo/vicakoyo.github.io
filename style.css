@@ -4008,3 +4008,893 @@ a {
         display: none;
     }
 }
+
+/* =========================================================
+   FINAL HERO BALANCE
+   Desktop proof alignment + improved mobile distribution
+   ADD AT THE VERY END OF style.css
+========================================================= */
+
+
+/* =========================================================
+   DESKTOP
+   Align each figure with the button directly above it
+========================================================= */
+
+.hero-actions,
+.hero-proof {
+
+    width: min(100%, 470px);
+
+    display: grid;
+
+    grid-template-columns:
+        1.28fr
+        1.18fr
+        0.62fr;
+
+    column-gap: 10px;
+}
+
+
+.hero-proof {
+
+    margin-top: 40px;
+
+    text-align: center;
+}
+
+
+.hero-proof-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    min-width: 0;
+
+    padding-left: 4px;
+
+    padding-right: 4px;
+
+    text-align: center;
+}
+
+
+.hero-proof-item strong {
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.hero-proof-item span {
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SLOWER FLOATING CAPABILITY CARDS
+========================================================= */
+
+.skill-float {
+
+    animation-duration: 7s;
+
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        translate: 0 -2px;
+    }
+
+    50% {
+        translate: 0 3px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+
+    /* -----------------------------------------------------
+       HERO ITSELF
+
+       Use almost the whole available first screen.
+       Content is positioned from top to bottom deliberately.
+    ----------------------------------------------------- */
+
+    .hero {
+
+        min-height:
+            calc(100svh - 68px);
+
+        height: auto;
+
+        display: block;
+
+        padding:
+            25px
+            0
+            18px;
+
+        overflow: hidden;
+    }
+
+
+    /* -----------------------------------------------------
+       THE IMPORTANT CHANGE
+
+       hero-content stays near the top.
+       hero-visual gets pushed toward the bottom.
+
+       This avoids both:
+       - crowding at the top
+       - large dead space below the portrait
+    ----------------------------------------------------- */
+
+    .hero .hero-grid {
+
+        width:
+            calc(100% - 30px);
+
+        max-width: none;
+
+        min-height:
+            calc(
+                100svh -
+                68px -
+                43px
+            );
+
+        margin:
+            0
+            auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        justify-content: space-between;
+
+        gap: 34px;
+    }
+
+
+    /* =====================================================
+       TOP CONTENT
+    ===================================================== */
+
+    .hero-content {
+
+        width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        flex: 0 0 auto;
+    }
+
+
+    /* -----------------------------------------------------
+       TITLE
+    ----------------------------------------------------- */
+
+    .hero h1 {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        font-size:
+            clamp(
+                1.7rem,
+                7.2vw,
+                1.98rem
+            );
+
+        line-height: 1.04;
+
+        letter-spacing: -0.038em;
+    }
+
+
+    /* -----------------------------------------------------
+       DESCRIPTION
+       Give the heading room to breathe.
+    ----------------------------------------------------- */
+
+    .hero-positioning {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin:
+            16px
+            0
+            0;
+
+        font-size:
+            clamp(
+                0.74rem,
+                3.05vw,
+                0.83rem
+            );
+
+        line-height: 1.52;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .hero-actions {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1.28fr
+            1.18fr
+            0.62fr;
+
+        gap: 6px;
+
+        margin-top: 19px;
+    }
+
+
+    .hero-actions .button {
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 35px;
+
+        padding:
+            0
+            5px;
+
+        font-size:
+            clamp(
+                0.52rem,
+                2.25vw,
+                0.63rem
+            );
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       FIGURES
+
+       Same grid proportions as the buttons.
+       This means:
+       £520k     sits under Selected Work
+       1,000+    sits under Automation
+       19        sits under CV
+    ===================================================== */
+
+    .hero-proof {
+
+        width: 100%;
+
+        max-width: none;
+
+        display: grid;
+
+        grid-template-columns:
+            1.28fr
+            1.18fr
+            0.62fr;
+
+        column-gap: 6px;
+
+        margin:
+            20px
+            0
+            0;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-item {
+
+        min-width: 0;
+
+        padding:
+            0
+            3px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        text-align: center;
+    }
+
+
+    /* Smaller figures */
+
+    .hero-proof-item strong {
+
+        width: 100%;
+
+        font-size:
+            clamp(
+                1rem,
+                4.55vw,
+                1.18rem
+            );
+
+        line-height: 1;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-item span {
+
+        width: 100%;
+
+        margin-top: 6px;
+
+        font-size:
+            clamp(
+                0.47rem,
+                1.95vw,
+                0.56rem
+            );
+
+        line-height: 1.2;
+
+        text-align: center;
+    }
+
+
+    /* =====================================================
+       PORTRAIT / CAPABILITY SYSTEM
+
+       The entire visual block is now lower down because the
+       parent uses justify-content: space-between.
+    ===================================================== */
+
+    .hero-visual {
+
+        width: 100%;
+
+        min-height: 0;
+
+        margin: 0;
+
+        padding: 0;
+
+        flex: 0 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-end;
+    }
+
+
+    .portrait-system {
+
+        position: relative;
+
+        width:
+            min(
+                100%,
+                305px
+            );
+
+        height: 267px;
+
+        margin:
+            0
+            auto;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* Keep portrait clearly visible */
+
+    .portrait-ring {
+
+        width: 122px;
+
+        height: 122px;
+
+        padding: 5px;
+    }
+
+
+    /* Orbit sizing */
+
+    .hero-orbit-one {
+
+        width: 187px;
+
+        height: 187px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 240px;
+
+        height: 240px;
+    }
+
+
+    .hero-pulse {
+
+        width: 162px;
+
+        height: 162px;
+    }
+
+
+    /* =====================================================
+       FLOATING CARDS
+       Slower and calmer on phone
+    ===================================================== */
+
+    .skill-float {
+
+        min-width: 83px;
+
+        padding:
+            7px
+            9px;
+
+        animation-duration: 7.5s;
+    }
+
+
+    .skill-float strong {
+
+        font-size:
+            clamp(
+                0.53rem,
+                2.15vw,
+                0.61rem
+            );
+    }
+
+
+    /* top */
+
+    .skill-operations {
+
+        top: 2px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    /* upper left */
+
+    .skill-supply {
+
+        top: 65px;
+
+        left: 0;
+    }
+
+
+    /* upper right */
+
+    .skill-process {
+
+        top: 65px;
+
+        right: 0;
+    }
+
+
+    /* lower left */
+
+    .skill-quality {
+
+        bottom: 51px;
+
+        left: 0;
+    }
+
+
+    /* lower right */
+
+    .skill-eos {
+
+        bottom: 51px;
+
+        right: 0;
+    }
+
+
+    /* bottom */
+
+    .skill-automation {
+
+        bottom: 1px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    /* =====================================================
+       META LINE
+
+       Make this more prominent.
+    ===================================================== */
+
+    .hero-visual-meta {
+
+        width: 100%;
+
+        margin-top: 17px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 11px;
+
+        white-space: nowrap;
+
+        color: #58758a;
+
+        font-size:
+            clamp(
+                0.69rem,
+                2.9vw,
+                0.8rem
+            );
+
+        line-height: 1;
+
+        font-weight: 700;
+    }
+
+
+    .meta-item {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 5px;
+    }
+
+
+    .meta-icon {
+
+        width: 14px;
+
+        height: 14px;
+
+        flex-shrink: 0;
+    }
+
+
+    .availability-meta {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        font-weight: 750;
+    }
+
+
+    .availability-dot {
+
+        width: 7px;
+
+        height: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   STANDARD SMALL PHONES
+========================================================= */
+
+@media (max-width: 460px) {
+
+
+    .hero {
+
+        padding-top: 23px;
+
+        padding-bottom: 14px;
+    }
+
+
+    .hero .hero-grid {
+
+        width:
+            calc(100% - 28px);
+
+        min-height:
+            calc(
+                100svh -
+                68px -
+                37px
+            );
+
+        gap: 31px;
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                1.68rem,
+                7.35vw,
+                1.9rem
+            );
+    }
+
+
+    .hero-positioning {
+
+        margin-top: 14px;
+
+        line-height: 1.48;
+    }
+
+
+    .hero-actions {
+        margin-top: 17px;
+    }
+
+
+    .hero-proof {
+        margin-top: 18px;
+    }
+
+
+    .portrait-system {
+
+        width: 295px;
+
+        max-width: 100%;
+
+        height: 258px;
+    }
+
+
+    .portrait-ring {
+
+        width: 119px;
+
+        height: 119px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 182px;
+
+        height: 182px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 234px;
+
+        height: 234px;
+    }
+
+
+    .hero-pulse {
+
+        width: 158px;
+
+        height: 158px;
+    }
+
+
+    .skill-supply,
+    .skill-process {
+
+        top: 62px;
+    }
+
+
+    .skill-quality,
+    .skill-eos {
+
+        bottom: 49px;
+    }
+
+
+    .hero-visual-meta {
+
+        margin-top: 18px;
+
+        gap: 9px;
+
+        font-size:
+            clamp(
+                0.66rem,
+                2.85vw,
+                0.76rem
+            );
+    }
+
+}
+
+
+/* =========================================================
+   SHORT MOBILE SCREENS
+
+   Preserve usability if the phone has unusually little
+   vertical room. It becomes naturally scrollable rather
+   than squeezing the content until it is unreadable.
+========================================================= */
+
+@media
+    (max-width: 760px)
+    and (max-height: 700px) {
+
+
+    .hero {
+
+        min-height:
+            calc(100svh - 68px);
+
+        overflow: visible;
+    }
+
+
+    .hero .hero-grid {
+
+        min-height: 0;
+
+        justify-content: flex-start;
+
+        gap: 25px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 1.6rem;
+    }
+
+
+    .hero-positioning {
+
+        margin-top: 10px;
+
+        line-height: 1.42;
+    }
+
+
+    .hero-actions {
+        margin-top: 13px;
+    }
+
+
+    .hero-proof {
+        margin-top: 14px;
+    }
+
+
+    .portrait-system {
+
+        width: 280px;
+
+        height: 240px;
+    }
+
+
+    .portrait-ring {
+
+        width: 111px;
+
+        height: 111px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 171px;
+
+        height: 171px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 220px;
+
+        height: 220px;
+    }
+
+
+    .hero-pulse {
+
+        width: 149px;
+
+        height: 149px;
+    }
+
+
+    .skill-supply,
+    .skill-process {
+
+        top: 56px;
+    }
+
+
+    .skill-quality,
+    .skill-eos {
+
+        bottom: 45px;
+    }
+
+
+    .hero-visual-meta {
+
+        margin-top: 12px;
+    }
+
+}
