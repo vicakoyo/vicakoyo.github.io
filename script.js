@@ -314,9 +314,7 @@ function animateCounter(
 }
 
 
-if (
-    counters.length
-) {
+if (counters.length) {
 
     const counterObserver =
         new IntersectionObserver(
@@ -362,6 +360,137 @@ if (
             );
 
         }
+    );
+
+}
+
+
+/* =========================================================
+   ONE-TIME IMPACT CARD POP
+========================================================= */
+
+const impactGrid =
+    document.getElementById(
+        "impactGrid"
+    );
+
+
+const impactCards =
+    document.querySelectorAll(
+        ".impact-card"
+    );
+
+
+let impactAnimationPlayed =
+    false;
+
+
+function playImpactHint() {
+
+    if (
+        reducedMotion ||
+        impactAnimationPlayed
+    ) {
+
+        return;
+
+    }
+
+
+    impactAnimationPlayed =
+        true;
+
+
+    impactCards.forEach(
+        (
+            card,
+            index
+        ) => {
+
+            const delay =
+                170 +
+                index * 150;
+
+
+            window.setTimeout(
+                () => {
+
+                    card.classList.add(
+                        "attention-pop"
+                    );
+
+
+                    window.setTimeout(
+                        () => {
+
+                            card.classList.remove(
+                                "attention-pop"
+                            );
+
+                        },
+                        850
+                    );
+
+                },
+                delay
+            );
+
+        }
+    );
+
+}
+
+
+if (
+    impactGrid &&
+    !reducedMotion
+) {
+
+    const impactHintObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            /*
+                             Give the normal fade-in animation
+                             a fraction of a second to finish
+                             before the cards pop.
+                            */
+
+                            window.setTimeout(
+                                playImpactHint,
+                                350
+                            );
+
+
+                            impactHintObserver
+                                .unobserve(
+                                    entry.target
+                                );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.42
+            }
+
+        );
+
+
+    impactHintObserver.observe(
+        impactGrid
     );
 
 }
@@ -465,24 +594,17 @@ function updateActiveNavigation() {
 
 
 window.addEventListener(
-
     "scroll",
-
     updateActiveNavigation,
-
     {
         passive: true
     }
-
 );
 
 
 window.addEventListener(
-
     "load",
-
     updateActiveNavigation
-
 );
 
 
@@ -570,6 +692,7 @@ const caseStudyData = {
                     "Victor Akoyo outside the Vivid supplier factory in China"
             },
 
+
             {
                 src:
                     "images/china/china-product-quality-review.webp",
@@ -577,6 +700,7 @@ const caseStudyData = {
                 alt:
                     "Victor reviewing a woven outdoor furniture product during a China supplier visit"
             },
+
 
             {
                 src:
@@ -586,6 +710,7 @@ const caseStudyData = {
                     "Aluminium outdoor furniture frames during production at a supplier factory"
             },
 
+
             {
                 src:
                     "images/china/china-frame-welding-process.webp",
@@ -594,6 +719,7 @@ const caseStudyData = {
                     "Welding equipment and aluminium furniture frames during production"
             },
 
+
             {
                 src:
                     "images/china/china-weaving-quality-detail.webp",
@@ -601,6 +727,7 @@ const caseStudyData = {
                 alt:
                     "Close-up of woven furniture showing the weaving process and quality detail"
             },
+
 
             {
                 src:
@@ -1160,10 +1287,8 @@ document
                     event => {
 
                         if (
-                            event.key ===
-                                "Enter" ||
-                            event.key ===
-                                " "
+                            event.key === "Enter" ||
+                            event.key === " "
                         ) {
 
                             event.preventDefault();
@@ -1224,8 +1349,7 @@ document.addEventListener(
     event => {
 
         if (
-            event.key ===
-                "Escape" &&
+            event.key === "Escape" &&
             caseModal &&
             caseModal.classList.contains(
                 "open"
@@ -1241,7 +1365,667 @@ document.addEventListener(
 
 
 /* =========================================================
-   RESIZE CLEANUP
+   MOLECULE / PARTICLE BACKGROUND
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+
+if (
+    canvas &&
+    !reducedMotion
+) {
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    let width = 0;
+
+    let height = 0;
+
+    let pixelRatio = 1;
+
+    let particles = [];
+
+    let animationFrame = null;
+
+    let resizeTimer = null;
+
+
+    const pointer = {
+
+        x: null,
+
+        y: null,
+
+        radius: 145
+
+    };
+
+
+    /* -----------------------------------------
+       PARTICLE CLASS
+    ----------------------------------------- */
+
+    class Particle {
+
+        constructor() {
+            this.reset();
+        }
+
+
+        reset() {
+
+            this.x =
+                Math.random() *
+                width;
+
+
+            this.y =
+                Math.random() *
+                height;
+
+
+            this.radius =
+                Math.random() *
+                1.45 +
+                0.8;
+
+
+            this.speedX =
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                0.13;
+
+
+            this.speedY =
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                0.13;
+
+
+            this.forceX = 0;
+
+            this.forceY = 0;
+
+
+            this.opacity =
+                Math.random() *
+                0.15 +
+                0.14;
+
+
+            const randomTone =
+                Math.random();
+
+
+            if (
+                randomTone > 0.82
+            ) {
+
+                this.tone =
+                    "teal";
+
+            } else if (
+                randomTone > 0.69
+            ) {
+
+                this.tone =
+                    "amber";
+
+            } else {
+
+                this.tone =
+                    "blue";
+
+            }
+
+        }
+
+
+        update() {
+
+            this.x +=
+                this.speedX +
+                this.forceX;
+
+
+            this.y +=
+                this.speedY +
+                this.forceY;
+
+
+            this.forceX *= 0.91;
+
+            this.forceY *= 0.91;
+
+
+            /* gentle mouse interaction */
+
+            if (
+                pointer.x !== null &&
+                pointer.y !== null
+            ) {
+
+                const dx =
+                    this.x -
+                    pointer.x;
+
+
+                const dy =
+                    this.y -
+                    pointer.y;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance <
+                        pointer.radius &&
+                    distance > 0
+                ) {
+
+                    const force =
+                        (
+                            pointer.radius -
+                            distance
+                        ) /
+                        pointer.radius;
+
+
+                    this.forceX +=
+                        (
+                            dx /
+                            distance
+                        ) *
+                        force *
+                        0.19;
+
+
+                    this.forceY +=
+                        (
+                            dy /
+                            distance
+                        ) *
+                        force *
+                        0.19;
+
+                }
+
+            }
+
+
+            /* wrap around edges */
+
+            if (
+                this.x < -20
+            ) {
+
+                this.x =
+                    width + 20;
+
+            }
+
+
+            if (
+                this.x >
+                width + 20
+            ) {
+
+                this.x =
+                    -20;
+
+            }
+
+
+            if (
+                this.y < -20
+            ) {
+
+                this.y =
+                    height + 20;
+
+            }
+
+
+            if (
+                this.y >
+                height + 20
+            ) {
+
+                this.y =
+                    -20;
+
+            }
+
+        }
+
+
+        draw() {
+
+            let fill;
+
+
+            if (
+                this.tone ===
+                "teal"
+            ) {
+
+                fill =
+                    `rgba(22, 140, 133, ${this.opacity})`;
+
+            } else if (
+                this.tone ===
+                "amber"
+            ) {
+
+                fill =
+                    `rgba(213, 148, 50, ${this.opacity * 0.72})`;
+
+            } else {
+
+                fill =
+                    `rgba(22, 116, 168, ${this.opacity})`;
+
+            }
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                this.x,
+                this.y,
+                this.radius,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                fill;
+
+
+            ctx.fill();
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       CREATE PARTICLES
+    ----------------------------------------- */
+
+    function createParticles() {
+
+        particles = [];
+
+
+        const area =
+            width *
+            height;
+
+
+        let count =
+            Math.floor(
+                area /
+                22500
+            );
+
+
+        if (
+            width < 760
+        ) {
+
+            count =
+                Math.min(
+                    Math.max(
+                        count,
+                        20
+                    ),
+                    28
+                );
+
+        } else {
+
+            count =
+                Math.min(
+                    Math.max(
+                        count,
+                        44
+                    ),
+                    72
+                );
+
+        }
+
+
+        for (
+            let i = 0;
+            i < count;
+            i++
+        ) {
+
+            particles.push(
+                new Particle()
+            );
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       CONNECT NEARBY PARTICLES
+    ----------------------------------------- */
+
+    function connectParticles() {
+
+        const maxDistance =
+            width < 760
+                ? 88
+                : 122;
+
+
+        for (
+            let i = 0;
+            i <
+            particles.length;
+            i++
+        ) {
+
+            for (
+                let j =
+                    i + 1;
+                j <
+                particles.length;
+                j++
+            ) {
+
+                const dx =
+                    particles[i].x -
+                    particles[j].x;
+
+
+                const dy =
+                    particles[i].y -
+                    particles[j].y;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance <
+                    maxDistance
+                ) {
+
+                    const opacity =
+                        (
+                            1 -
+                            distance /
+                            maxDistance
+                        ) *
+                        0.10;
+
+
+                    ctx.beginPath();
+
+
+                    ctx.moveTo(
+                        particles[i].x,
+                        particles[i].y
+                    );
+
+
+                    ctx.lineTo(
+                        particles[j].x,
+                        particles[j].y
+                    );
+
+
+                    ctx.strokeStyle =
+                        `rgba(22, 116, 168, ${opacity})`;
+
+
+                    ctx.lineWidth =
+                        0.65;
+
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       CANVAS SIZE
+    ----------------------------------------- */
+
+    function resizeCanvas() {
+
+        width =
+            window.innerWidth;
+
+
+        height =
+            window.innerHeight;
+
+
+        pixelRatio =
+            Math.min(
+                window.devicePixelRatio ||
+                1,
+                2
+            );
+
+
+        canvas.width =
+            width *
+            pixelRatio;
+
+
+        canvas.height =
+            height *
+            pixelRatio;
+
+
+        canvas.style.width =
+            `${width}px`;
+
+
+        canvas.style.height =
+            `${height}px`;
+
+
+        ctx.setTransform(
+            pixelRatio,
+            0,
+            0,
+            pixelRatio,
+            0,
+            0
+        );
+
+
+        createParticles();
+
+    }
+
+
+    /* -----------------------------------------
+       ANIMATION LOOP
+    ----------------------------------------- */
+
+    function animateParticles() {
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        particles.forEach(
+            particle => {
+
+                particle.update();
+
+                particle.draw();
+
+            }
+        );
+
+
+        connectParticles();
+
+
+        animationFrame =
+            requestAnimationFrame(
+                animateParticles
+            );
+
+    }
+
+
+    /* -----------------------------------------
+       POINTER INTERACTION
+    ----------------------------------------- */
+
+    const finePointer =
+        window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        );
+
+
+    if (
+        finePointer.matches
+    ) {
+
+        window.addEventListener(
+            "mousemove",
+            event => {
+
+                pointer.x =
+                    event.clientX;
+
+
+                pointer.y =
+                    event.clientY;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+                pointer.x =
+                    null;
+
+
+                pointer.y =
+                    null;
+
+            }
+        );
+
+    }
+
+
+    /* -----------------------------------------
+       RESIZE
+    ----------------------------------------- */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    resizeCanvas,
+                    160
+                );
+
+        }
+    );
+
+
+    /* -----------------------------------------
+       SAVE CPU WHEN TAB HIDDEN
+    ----------------------------------------- */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (
+                document.hidden
+            ) {
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+            } else {
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+
+                animateParticles();
+
+            }
+
+        }
+    );
+
+
+    resizeCanvas();
+
+    animateParticles();
+
+}
+
+
+/* =========================================================
+   MOBILE MENU RESIZE CLEANUP
 ========================================================= */
 
 window.addEventListener(
