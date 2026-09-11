@@ -8,6 +8,8 @@
     --navy: #12354d;
     --navy-deep: #0b283b;
 
+    --hero-heading: #355c72;
+
     --blue: #1674a8;
     --blue-dark: #115f8b;
 
@@ -270,7 +272,7 @@ a {
 
 
 /* =========================================================
-   BRAND
+   ANIMATED BRAND
 ========================================================= */
 
 .brand {
@@ -283,13 +285,39 @@ a {
 
     padding: 5px 0 7px;
 
-    color: var(--navy-deep);
-
     font-size: 1rem;
 
     line-height: 1;
 
     font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--navy-deep) 0%,
+            var(--blue) 27%,
+            var(--teal) 52%,
+            var(--amber) 75%,
+            var(--navy-deep) 100%
+        );
+
+    background-size: 250% 100%;
+
+    background-position: 0% 50%;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        brandTextShimmer
+        7s
+        ease-in-out
+        infinite;
 }
 
 
@@ -327,6 +355,20 @@ a {
         6s
         ease-in-out
         infinite;
+}
+
+
+@keyframes brandTextShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
 }
 
 
@@ -512,26 +554,28 @@ a {
 }
 
 
+/* Milder headline */
+
 .hero h1 {
 
     max-width: 610px;
 
     margin: 0;
 
-    color: var(--navy);
+    color: var(--hero-heading);
 
     font-size:
         clamp(
-            2.65rem,
-            4.15vw,
-            3.8rem
+            2.5rem,
+            3.9vw,
+            3.55rem
         );
 
-    line-height: 1;
+    line-height: 1.02;
 
-    letter-spacing: -0.045em;
+    letter-spacing: -0.041em;
 
-    font-weight: 780;
+    font-weight: 700;
 }
 
 
@@ -1011,12 +1055,12 @@ a {
 
 
 /* =========================================================
-   META LINE BELOW PORTRAIT
+   META BELOW PORTRAIT
 ========================================================= */
 
 .hero-visual-meta {
 
-    margin-top: 3px;
+    margin-top: 21px;
 
     display: flex;
 
@@ -1030,11 +1074,11 @@ a {
 
     color: #718695;
 
-    font-size: 0.65rem;
+    font-size: 0.62rem;
 
-    font-weight: 680;
+    font-weight: 650;
 
-    letter-spacing: 0.005em;
+    letter-spacing: 0.002em;
 }
 
 
@@ -2910,7 +2954,9 @@ a {
 
 
 .china-gallery figure:first-child img {
+
     object-fit: contain;
+
     background: #eef3f6;
 }
 
@@ -3082,7 +3128,6 @@ a {
 
 
     .automation-grid {
-
         grid-template-columns: 1fr;
     }
 
@@ -3118,8 +3163,6 @@ a {
             calc(100% - 30px);
     }
 
-
-    /* hard cap header height */
 
     .site-header {
 
@@ -3218,7 +3261,7 @@ a {
         padding:
             32px
             0
-            44px;
+            48px;
     }
 
 
@@ -3240,20 +3283,26 @@ a {
     }
 
 
+    /* Smaller + softer mobile heading */
+
     .hero h1 {
 
-        max-width: 500px;
+        max-width: 480px;
 
         font-size:
             clamp(
-                1.88rem,
-                8vw,
-                2.28rem
+                1.72rem,
+                7.3vw,
+                2.08rem
             );
 
-        line-height: 1.04;
+        line-height: 1.06;
 
-        letter-spacing: -0.04em;
+        letter-spacing: -0.035em;
+
+        font-weight: 700;
+
+        color: var(--hero-heading);
     }
 
 
@@ -3408,13 +3457,13 @@ a {
     }
 
 
-    /* one-line experience / location / availability */
+    /* Deliberate gap below floating cards */
 
     .hero-visual-meta {
 
         width: 100%;
 
-        margin-top: 0;
+        margin-top: 22px;
 
         gap: 4px;
 
@@ -3424,12 +3473,12 @@ a {
 
         font-size:
             clamp(
-                0.51rem,
-                2.18vw,
-                0.62rem
+                0.48rem,
+                1.95vw,
+                0.59rem
             );
 
-        letter-spacing: -0.01em;
+        letter-spacing: -0.012em;
     }
 
 
@@ -3445,8 +3494,6 @@ a {
         height: 6px;
     }
 
-
-    /* SECTIONS */
 
     .section {
         padding: 62px 0;
@@ -3488,8 +3535,6 @@ a {
     }
 
 
-    /* smaller decorative corners */
-
     .value-card::before {
 
         width: 92px;
@@ -3521,8 +3566,6 @@ a {
         font-size: 0.98rem;
     }
 
-
-    /* CHINA FEATURE */
 
     .china-feature {
 
@@ -3697,11 +3740,13 @@ a {
 
     .hero-visual-meta {
 
+        margin-top: 24px;
+
         font-size:
             clamp(
-                0.48rem,
-                2.05vw,
-                0.58rem
+                0.43rem,
+                1.82vw,
+                0.53rem
             );
 
         gap: 3px;
@@ -3709,7 +3754,6 @@ a {
 
 
     .work-stat-row {
-
         grid-template-columns: 1fr;
     }
 
@@ -3727,7 +3771,6 @@ a {
 
 
     .china-main-wrapper {
-
         padding: 4px;
     }
 
@@ -3758,7 +3801,7 @@ a {
 
     .hero-visual-meta {
 
-        font-size: 0.46rem;
+        font-size: 0.41rem;
 
         gap: 2px;
     }
@@ -3766,7 +3809,7 @@ a {
 
     .hero h1 {
 
-        font-size: 1.8rem;
+        font-size: 1.65rem;
     }
 
 }
