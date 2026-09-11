@@ -1,31 +1,22 @@
 "use strict";
 
-
 /* =========================================================
-   ACCESSIBILITY
+   ACCESSIBILITY / MOTION
 ========================================================= */
 
-const reducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
 
 
 /* =========================================================
    CURRENT YEAR
 ========================================================= */
 
-const currentYear =
-    document.getElementById(
-        "currentYear"
-    );
-
+const currentYear = document.getElementById("currentYear");
 
 if (currentYear) {
-
-    currentYear.textContent =
-        new Date().getFullYear();
-
+    currentYear.textContent = new Date().getFullYear();
 }
 
 
@@ -34,39 +25,25 @@ if (currentYear) {
 ========================================================= */
 
 const mobileMenuButton =
-    document.getElementById(
-        "mobileMenuButton"
-    );
-
+    document.getElementById("mobileMenuButton");
 
 const mainNav =
-    document.getElementById(
-        "mainNav"
-    );
+    document.getElementById("mainNav");
 
 
-if (
-    mobileMenuButton &&
-    mainNav
-) {
-
+if (mobileMenuButton && mainNav) {
 
     mobileMenuButton.addEventListener(
         "click",
         () => {
 
-
             const open =
-                mainNav.classList.toggle(
-                    "open"
-                );
-
+                mainNav.classList.toggle("open");
 
             mobileMenuButton.setAttribute(
                 "aria-expanded",
                 String(open)
             );
-
 
         }
     );
@@ -76,29 +53,21 @@ if (
         .querySelectorAll("a")
         .forEach(link => {
 
-
             link.addEventListener(
                 "click",
                 () => {
 
-
-                    mainNav.classList.remove(
-                        "open"
-                    );
-
+                    mainNav.classList.remove("open");
 
                     mobileMenuButton.setAttribute(
                         "aria-expanded",
                         "false"
                     );
 
-
                 }
             );
 
-
         });
-
 
 }
 
@@ -108,68 +77,56 @@ if (
 ========================================================= */
 
 const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
+    document.querySelectorAll(".reveal");
 
 
-if (reducedMotion) {
-
+function revealEverything() {
 
     revealElements.forEach(
         element => {
 
-
-            element.classList.add(
-                "visible"
-            );
-
+            element.classList.add("visible");
 
         }
     );
 
+}
+
+
+if (
+    reducedMotion ||
+    !("IntersectionObserver" in window)
+) {
+
+    revealEverything();
 
 } else {
-
 
     const revealObserver =
         new IntersectionObserver(
 
-
             entries => {
-
 
                 entries.forEach(
                     entry => {
 
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
+                        if (entry.isIntersecting) {
 
                             entry.target
                                 .classList
-                                .add(
-                                    "visible"
-                                );
-
+                                .add("visible");
 
                             revealObserver
                                 .unobserve(
                                     entry.target
                                 );
 
-
                         }
-
 
                     }
                 );
 
-
             },
-
 
             {
                 threshold: 0.1,
@@ -178,68 +135,86 @@ if (reducedMotion) {
                     "0px 0px -25px 0px"
             }
 
-
         );
 
 
     revealElements.forEach(
         element => {
 
-
             revealObserver.observe(
                 element
             );
-
 
         }
     );
 
 
+    /*
+       Fail-safe:
+       If an observer ever fails or stalls,
+       do not leave visible content hidden.
+    */
+
+    window.setTimeout(
+        () => {
+
+            revealElements.forEach(
+                element => {
+
+                    const rect =
+                        element.getBoundingClientRect();
+
+                    if (
+                        rect.top <
+                        window.innerHeight * 1.25
+                    ) {
+
+                        element.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        1200
+    );
+
 }
 
 
 /* =========================================================
-   £520K COUNTER
+   COUNTERS
 ========================================================= */
 
 const counters =
-    document.querySelectorAll(
-        ".counter"
-    );
+    document.querySelectorAll(".counter");
 
 
 const COUNTER_DURATION =
     1400;
 
 
-function easeOutCubic(
-    progress
-) {
-
+function easeOutCubic(progress) {
 
     return (
-
         1 -
-
         Math.pow(
             1 - progress,
             3
         )
-
     );
-
 
 }
 
 
-function animateCounter(
-    counter
-) {
-
+function animateCounter(counter) {
 
     if (
-        counter.dataset.animated ===
-        "true"
+        !counter ||
+        counter.dataset.animated === "true"
     ) {
 
         return;
@@ -260,16 +235,15 @@ function animateCounter(
 
     const target =
         Number(
-            counter.dataset.target
+            counter.dataset.target ||
+            0
         );
 
 
     if (reducedMotion) {
 
-
         counter.textContent =
             target;
-
 
         return;
 
@@ -280,10 +254,7 @@ function animateCounter(
         performance.now();
 
 
-    function update(
-        currentTime
-    ) {
-
+    function update(currentTime) {
 
         const elapsed =
             currentTime -
@@ -327,21 +298,16 @@ function animateCounter(
             progress < 1
         ) {
 
-
             requestAnimationFrame(
                 update
             );
 
-
         } else {
-
 
             counter.textContent =
                 target;
 
-
         }
-
 
     }
 
@@ -350,214 +316,68 @@ function animateCounter(
         update
     );
 
-
 }
 
 
 if (counters.length) {
 
-
-    const counterObserver =
-        new IntersectionObserver(
-
-
-            entries => {
-
-
-                entries.forEach(
-                    entry => {
-
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-
-                            animateCounter(
-                                entry.target
-                            );
-
-
-                            counterObserver
-                                .unobserve(
-                                    entry.target
-                                );
-
-
-                        }
-
-
-                    }
-                );
-
-
-            },
-
-
-            {
-                threshold: 0.35
-            }
-
-
-        );
-
-
-    counters.forEach(
-        counter => {
-
-
-            counterObserver.observe(
-                counter
-            );
-
-
-        }
-    );
-
-
-}
-
-
-/* =========================================================
-   ONE-TIME IMPACT CARD POP
-========================================================= */
-
-const impactGrid =
-    document.getElementById(
-        "impactGrid"
-    );
-
-
-const impactCards =
-    document.querySelectorAll(
-        ".impact-card"
-    );
-
-
-let impactAnimationPlayed =
-    false;
-
-
-function playImpactHint() {
-
-
     if (
         reducedMotion ||
-        impactAnimationPlayed
+        !("IntersectionObserver" in window)
     ) {
 
-        return;
+        counters.forEach(
+            animateCounter
+        );
 
-    }
+    } else {
 
+        const counterObserver =
+            new IntersectionObserver(
 
-    impactAnimationPlayed =
-        true;
+                entries => {
 
+                    entries.forEach(
+                        entry => {
 
-    impactCards.forEach(
-        (
-            card,
-            index
-        ) => {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-
-            const delay =
-                170 +
-                index * 150;
-
-
-            window.setTimeout(
-                () => {
-
-
-                    card.classList.add(
-                        "attention-pop"
-                    );
-
-
-                    window.setTimeout(
-                        () => {
-
-
-                            card.classList.remove(
-                                "attention-pop"
-                            );
-
-
-                        },
-                        850
-                    );
-
-
-                },
-                delay
-            );
-
-
-        }
-    );
-
-
-}
-
-
-if (
-    impactGrid &&
-    !reducedMotion
-) {
-
-
-    const impactHintObserver =
-        new IntersectionObserver(
-
-
-            entries => {
-
-
-                entries.forEach(
-                    entry => {
-
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-
-                            window.setTimeout(
-                                playImpactHint,
-                                350
-                            );
-
-
-                            impactHintObserver
-                                .unobserve(
+                                animateCounter(
                                     entry.target
                                 );
 
+                                counterObserver
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
 
                         }
+                    );
+
+                },
+
+                {
+                    threshold: 0.35
+                }
+
+            );
 
 
-                    }
+        counters.forEach(
+            counter => {
+
+                counterObserver.observe(
+                    counter
                 );
 
-
-            },
-
-
-            {
-                threshold: 0.38
             }
-
-
         );
 
-
-    impactHintObserver.observe(
-        impactGrid
-    );
-
+    }
 
 }
 
@@ -576,29 +396,44 @@ const navigationSections =
     Array.from(
         navigationLinks
     )
-    .map(
-        link => {
+        .map(
+            link => {
+
+                const selector =
+                    link.getAttribute(
+                        "href"
+                    );
 
 
-            const selector =
-                link.getAttribute(
-                    "href"
-                );
+                if (
+                    !selector ||
+                    !selector.startsWith("#")
+                ) {
+
+                    return null;
+
+                }
 
 
-            return document
-                .querySelector(
-                    selector
-                );
+                try {
 
+                    return document
+                        .querySelector(
+                            selector
+                        );
 
-        }
-    )
-    .filter(Boolean);
+                } catch {
+
+                    return null;
+
+                }
+
+            }
+        )
+        .filter(Boolean);
 
 
 function updateActiveNavigation() {
-
 
     const position =
         window.scrollY +
@@ -611,7 +446,6 @@ function updateActiveNavigation() {
 
     navigationSections.forEach(
         section => {
-
 
             const top =
                 section.offsetTop;
@@ -627,13 +461,10 @@ function updateActiveNavigation() {
                 position < bottom
             ) {
 
-
                 activeSection =
                     section.id;
 
-
             }
-
 
         }
     );
@@ -641,7 +472,6 @@ function updateActiveNavigation() {
 
     navigationLinks.forEach(
         link => {
-
 
             link.classList.remove(
                 "active"
@@ -655,41 +485,30 @@ function updateActiveNavigation() {
                 `#${activeSection}`
             ) {
 
-
                 link.classList.add(
                     "active"
                 );
 
-
             }
-
 
         }
     );
-
 
 }
 
 
 window.addEventListener(
-
     "scroll",
-
     updateActiveNavigation,
-
     {
         passive: true
     }
-
 );
 
 
 window.addEventListener(
-
     "load",
-
     updateActiveNavigation
-
 );
 
 
@@ -700,97 +519,83 @@ window.addEventListener(
 const caseStudyData = {
 
 
-    logistics: {
+    /* =====================================================
+       LOGISTICS
+    ===================================================== */
 
+    logistics: {
 
         kicker:
             "Supply Chain Transformation • Rattan Direct",
 
-
         title:
             "Restructuring warehousing and final-mile operations",
-
 
         summary:
             "A commercial and operational transformation across warehousing, 3PL and final-mile delivery that materially changed the logistics cost base.",
 
-
         problem:
             "Warehousing, storage, unloading, picking and delivery structures were creating significant cost and operational friction. The business needed a more efficient logistics model without losing service continuity.",
-
 
         analysis:
             "Historical rate cards, invoice structures, storage models, unloading charges, picking methods and final-mile costs were compared across providers. The review focused on the commercial drivers underneath the headline rates rather than treating logistics as one blended cost.",
 
-
         action:
             "Benchmarked providers, negotiated commercial terms and SLAs, redesigned parts of the picking-cost model, challenged invoice structures and led the operational transition from Denholm into a more efficient ArrowXL/RXL model while managing inbound continuity.",
-
 
         tools:
             "Rate-card and invoice analysis, 3PL commercial negotiation, SLA review, warehouse capacity planning, transition governance, executive reporting and operational issue management.",
 
-
         result:
             "~£520K annual logistics savings",
-
 
         resultDetail:
             "Approximately £400K in warehouse/3PL savings plus approximately £120K in final-mile savings.",
 
-
         learning:
             "Demonstrates commercial judgement, provider management, negotiation, operating-model redesign and the ability to turn detailed cost analysis into a material business outcome."
-
 
     },
 
 
-    china: {
+    /* =====================================================
+       CHINA
+    ===================================================== */
 
+    china: {
 
         kicker:
             "International Supplier & Manufacturing Development • China • March 2025",
 
-
         title:
             "Supplier continuity and early-stage manufacturing formalisation",
-
 
         summary:
             "A two-week China trip combining supplier engagement, business-continuity negotiation, manufacturing learning and practical quality/process formalisation at an early-stage Hunan furniture operation.",
 
-
         problem:
             "Rattan Direct was navigating a difficult cash-flow period while relying on key Chinese suppliers for 2025 production. At the same time, a new Hunan operation intended initially to supply Rattan Direct was producing but still operating with relatively informal work instructions and process controls.",
-
 
         analysis:
             "The first week was used to observe established supplier practices across factory layout, workstations, manufacturing processes, work instructions, quality checks, health and safety, packaging and logistics. Customer-return evidence and known product issues were also used to compare expected quality with what was being produced.",
 
-
         action:
-            "Supported Robert Fernandez and sourcing consultant Vincent/Du Wang during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, physically created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
-
+            "Supported Robert Fernandez and sourcing consultant Vincent/Du Wang during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
 
         tools:
             "Supplier review, approved samples, customer photographs and complaint evidence, product knowledge, visual inspection, QC documentation, work instructions, 5S, process mapping, packaging standards and factory-floor observation.",
 
-
         result:
             "Supplier production restarted and process controls were strengthened",
 
-
         resultDetail:
             "Vivid agreed to resume 2025 production after the negotiation, with aluminium frames already being worked on before the visit ended. The Hunan team adopted the quality and process recommendations.",
-
 
         learning:
             "Demonstrates direct international supplier exposure, business-continuity support, manufacturing-process understanding, quality-at-source thinking and practical early-stage factory-process formalisation.",
 
 
         gallery: [
-
 
             {
 
@@ -842,7 +647,7 @@ const caseStudyData = {
                     "images/china/china-weaving-quality-detail.webp",
 
                 alt:
-                    "Close-up of woven furniture showing the weaving process and quality detail"
+                    "Close-up of woven furniture showing weaving process and quality detail"
 
             },
 
@@ -857,242 +662,204 @@ const caseStudyData = {
 
             }
 
-
         ]
-
 
     },
 
 
-    eos: {
+    /* =====================================================
+       EOS
+    ===================================================== */
 
+    eos: {
 
         kicker:
             "Business Operations • Optimise Outsourcing",
 
-
         title:
             "Embedding an operating system for execution",
-
 
         summary:
             "Internal EOS Integrator ownership across planning, meeting cadence, Rocks, scorecards, accountability and issue follow-through.",
 
-
         problem:
             "A growing business needed a repeatable mechanism for turning leadership priorities into visible commitments, weekly follow-through and cross-functional accountability.",
-
 
         analysis:
             "The requirement was broader than running meetings. Vision, quarterly priorities, scorecards, Issues/IDS, current and future accountabilities and department-level execution needed to connect to one operating rhythm.",
 
-
         action:
             "Functioned as the internal Integrator: owned the quarterly VTO review cadence, ran SLT Level 10 meetings, managed company and departmental Rocks in Sage HR using RAG status, created and maintained current/future Accountability Charts, owned the Issues List and Microsoft Teams Planner follow-up, operated daily huddles and other tactical meeting rhythms, and ran the weekly Win the Week execution practice.",
-
 
         tools:
             "EOS/VTO, Level 10s, IDS, quarterly Rocks, Sage HR RAG tracking, current/future Accountability Charts, Microsoft Teams Planner, KPI scorecards, daily huddles, cash-flow tactical reviews and quarterly organisational check-ups.",
 
-
         result:
             "A structured cross-functional execution rhythm",
-
 
         resultDetail:
             "Leadership priorities were connected to weekly measures, quarterly Rocks, issue-solving, ownership and recurring review rather than left as isolated plans.",
 
-
         learning:
             "Demonstrates operating-system thinking: connecting vision, measures, meetings, accountability and decision-making. Strategic content was collaboratively authored; the operating cadence and Integrator mechanism were the core area of ownership."
-
 
     },
 
 
-    quality: {
+    /* =====================================================
+       RETURNS / PRODUCT QUALITY
+    ===================================================== */
 
+    quality: {
 
         kicker:
             "Quality + Product Improvement • Rattan Direct",
 
-
         title:
             "Reducing returns through product and process improvement",
-
 
         summary:
             "A cross-functional quality improvement effort spanning supplier quality, packaging, handling, delivery, reverse logistics and product-design changes.",
 
-
         problem:
             "Returns were being driven by several failure modes across the product journey, including defects, packaging weaknesses, handling damage and delivery-related issues.",
-
 
         analysis:
             "Return data, recurring defect patterns, customer photographs, warehouse observations, delivery issues and supplier-quality findings were used to distinguish where failures were occurring and where controls or product changes were needed.",
 
-
         action:
             "Coordinated supplier-quality actions, packaging improvements, delivery-quality reviews and reverse-logistics interventions. Product-design changes included moving some feet from plastic to aluminium where transit damage was recurring. China supplier visits also allowed customer evidence to be taken back into manufacturing discussions.",
-
 
         tools:
             "Return-cause analysis, supplier reviews, customer evidence, packaging reviews, logistics-quality reviews, corrective-action tracking and product-design feedback.",
 
-
         result:
             "Returns reduced from ~12% to ~4% by CBM",
-
 
         resultDetail:
             "The improvement came from combined supplier, packaging, handling, product and logistics interventions rather than one isolated change.",
 
-
         learning:
             "Demonstrates end-to-end quality thinking: following failure from customer experience back through product, supplier, warehouse and delivery processes."
-
 
     },
 
 
-    automation: {
+    /* =====================================================
+       AUTOMATION
+    ===================================================== */
 
+    automation: {
 
         kicker:
             "AI-Enabled Operations • Optimise Outsourcing",
 
-
         title:
             "From leadership meeting transcript to management intelligence",
-
 
         summary:
             "A live workflow that converted recurring senior-leadership meeting information into structured AI-assisted reports and returned them to Microsoft Teams.",
 
-
         problem:
             "SLT Level 10 meetings generated transcripts that required repetitive manual review, structuring and reporting before the main issues, actions and insights could be shared consistently.",
-
 
         analysis:
             "The workflow needed to fit the existing Microsoft 365 environment, retrieve the right meeting and transcript information, apply a repeatable analysis structure, manage processing state and return the result to the same operating context.",
 
-
         action:
             "Built a Make.com workflow using SharePoint monitoring, HTTP/Microsoft Graph retrieval, iteration, meeting/transcript retrieval, OpenAI analysis, Markdown formatting, Teams delivery and Data Store checks/updates to control repeat processing.",
-
 
         tools:
             "Make.com, SharePoint, Microsoft Graph/HTTP, OpenAI, Markdown, Microsoft Teams, Make Data Store and structured reporting logic.",
 
-
         result:
             "Live workflow used on real SLT Level 10 meetings",
-
 
         resultDetail:
             "Converted a recurring manual reporting task into a repeatable workflow embedded in the existing leadership operating rhythm.",
 
-
         learning:
             "Demonstrates practical workflow automation and the ability to connect AI to a real operating need while keeping AI as one component of a wider business process."
-
 
     },
 
 
-    manufacturing: {
+    /* =====================================================
+       AUTO SPRINGS
+    ===================================================== */
 
+    manufacturing: {
 
         kicker:
             "Manufacturing Quality • Auto Springs East Africa",
 
-
         title:
             "Reducing U-bolt rejection",
-
 
         summary:
             "A manufacturing-quality improvement effort using structured quality methods to strengthen process control and reduce rejection.",
 
-
         problem:
             "U-bolt rejection performance required stronger process control, measurement discipline and structured analysis of recurring variation.",
-
 
         analysis:
             "Production quality performance was assessed through inspection data and structured quality tools to understand failure modes, measurement reliability and process conditions contributing to rejection.",
 
-
         action:
             "Applied production quality controls, SPC, PFMEA, MSA and corrective-action practices while working with production teams to strengthen forming controls, checking methods and defect prevention.",
-
 
         tools:
             "SPC, PFMEA, MSA, control plans, production inspection, corrective action and ISO 9001 quality documentation.",
 
-
         result:
             "U-bolt rejection reduced from ~4% to ~2%",
-
 
         resultDetail:
             "The improvement came from stronger process controls, measurement discipline and structured manufacturing-quality improvement.",
 
-
         learning:
             "Demonstrates an engineering-quality foundation and practical use of structured quality tools to produce measurable manufacturing improvement."
-
 
     },
 
 
-    complaints: {
+    /* =====================================================
+       TILE & CARPET
+    ===================================================== */
 
+    complaints: {
 
         kicker:
             "Quality Leadership • Tile & Carpet Centre",
 
-
         title:
             "Reducing customer complaints",
-
 
         summary:
             "A manufacturing-quality improvement effort that strengthened inspection, corrective action and production-quality discipline.",
 
-
         problem:
             "Customer complaints were running at an elevated level and required better control of recurring defects and more disciplined follow-through.",
-
 
         analysis:
             "Complaint patterns, production issues and inspection findings were used to identify recurring causes and where manufacturing-quality controls needed to be strengthened.",
 
-
         action:
             "Led quality inspection and corrective-action activity, worked with production teams on recurring defects, strengthened quality controls and maintained audit readiness.",
-
 
         tools:
             "Complaint analysis, production inspection, root-cause analysis, corrective action, quality audits and KEBS compliance controls.",
 
-
         result:
             "Customer complaints reduced from ~12% to ~5%",
-
 
         resultDetail:
             "The reduction was achieved while maintaining 100% KEBS audit compliance.",
 
-
         learning:
             "Demonstrates quality leadership, structured problem solving and the ability to convert customer-quality signals into production improvement."
 
-
     }
-
 
 };
 
@@ -1192,13 +959,31 @@ let lastModalTrigger =
 
 
 /* =========================================================
-   POPULATE MODAL
+   SMALL HELPER
+========================================================= */
+
+function setText(
+    element,
+    value
+) {
+
+    if (element) {
+
+        element.textContent =
+            value || "";
+
+    }
+
+}
+
+
+/* =========================================================
+   POPULATE CASE STUDY MODAL
 ========================================================= */
 
 function populateCaseModal(
     caseKey
 ) {
-
 
     const data =
         caseStudyData[
@@ -1213,48 +998,71 @@ function populateCaseModal(
     }
 
 
-    caseModalKicker.textContent =
-        data.kicker;
+    setText(
+        caseModalKicker,
+        data.kicker
+    );
 
 
-    caseModalTitle.textContent =
-        data.title;
+    setText(
+        caseModalTitle,
+        data.title
+    );
 
 
-    caseModalSummary.textContent =
-        data.summary;
+    setText(
+        caseModalSummary,
+        data.summary
+    );
 
 
-    caseModalProblem.textContent =
-        data.problem;
+    setText(
+        caseModalProblem,
+        data.problem
+    );
 
 
-    caseModalAnalysis.textContent =
-        data.analysis;
+    setText(
+        caseModalAnalysis,
+        data.analysis
+    );
 
 
-    caseModalAction.textContent =
-        data.action;
+    setText(
+        caseModalAction,
+        data.action
+    );
 
 
-    caseModalTools.textContent =
-        data.tools;
+    setText(
+        caseModalTools,
+        data.tools
+    );
 
 
-    caseModalResult.textContent =
-        data.result;
+    setText(
+        caseModalResult,
+        data.result
+    );
 
 
-    caseModalResultDetail.textContent =
-        data.resultDetail;
+    setText(
+        caseModalResultDetail,
+        data.resultDetail
+    );
 
 
-    caseModalLearning.textContent =
-        data.learning;
+    setText(
+        caseModalLearning,
+        data.learning
+    );
 
+
+    /* =====================================================
+       OPTIONAL CHINA GALLERY
+    ===================================================== */
 
     if (caseModalMedia) {
-
 
         caseModalMedia.innerHTML =
             "";
@@ -1266,7 +1074,6 @@ function populateCaseModal(
             ) &&
             data.gallery.length
         ) {
-
 
             const gallery =
                 document.createElement(
@@ -1280,7 +1087,6 @@ function populateCaseModal(
 
             data.gallery.forEach(
                 item => {
-
 
                     const figure =
                         document.createElement(
@@ -1299,7 +1105,8 @@ function populateCaseModal(
 
 
                     image.alt =
-                        item.alt;
+                        item.alt ||
+                        "Case study image";
 
 
                     image.loading =
@@ -1315,7 +1122,6 @@ function populateCaseModal(
                         figure
                     );
 
-
                 }
             );
 
@@ -1328,28 +1134,23 @@ function populateCaseModal(
             caseModalMedia.hidden =
                 false;
 
-
         } else {
-
 
             caseModalMedia.hidden =
                 true;
 
-
         }
-
 
     }
 
 
     return true;
 
-
 }
 
 
 /* =========================================================
-   OPEN / CLOSE MODAL
+   OPEN CASE STUDY
 ========================================================= */
 
 function openCaseModal(
@@ -1357,10 +1158,17 @@ function openCaseModal(
     trigger
 ) {
 
-
     if (
         !caseModal ||
-        !caseModalPanel ||
+        !caseModalPanel
+    ) {
+
+        return;
+
+    }
+
+
+    if (
         !populateCaseModal(
             caseKey
         )
@@ -1392,23 +1200,26 @@ function openCaseModal(
     );
 
 
-    window.setTimeout(
+    requestAnimationFrame(
         () => {
 
+            caseModalPanel.focus(
+                {
+                    preventScroll: true
+                }
+            );
 
-            caseModalPanel.focus();
-
-
-        },
-        30
+        }
     );
-
 
 }
 
 
-function closeCaseModal() {
+/* =========================================================
+   CLOSE CASE STUDY
+========================================================= */
 
+function closeCaseModal() {
 
     if (!caseModal) {
 
@@ -1435,23 +1246,23 @@ function closeCaseModal() {
 
     if (
         lastModalTrigger &&
-        typeof
-            lastModalTrigger.focus ===
+        typeof lastModalTrigger.focus ===
             "function"
     ) {
 
-
-        lastModalTrigger.focus();
-
+        lastModalTrigger.focus(
+            {
+                preventScroll: true
+            }
+        );
 
     }
-
 
 }
 
 
 /* =========================================================
-   CASE TRIGGERS
+   CASE STUDY TRIGGERS
 ========================================================= */
 
 document
@@ -1466,16 +1277,19 @@ document
                 "click",
                 () => {
 
-
                     openCaseModal(
                         trigger.dataset.case,
                         trigger
                     );
 
-
                 }
             );
 
+
+            /*
+               Article cards use role="button",
+               so Enter and Space should also open them.
+            */
 
             if (
                 trigger.getAttribute(
@@ -1484,11 +1298,9 @@ document
                 "button"
             ) {
 
-
                 trigger.addEventListener(
                     "keydown",
                     event => {
-
 
                         if (
                             event.key ===
@@ -1496,7 +1308,6 @@ document
                             event.key ===
                                 " "
                         ) {
-
 
                             event.preventDefault();
 
@@ -1506,16 +1317,12 @@ document
                                 trigger
                             );
 
-
                         }
-
 
                     }
                 );
 
-
             }
-
 
         }
     );
@@ -1530,14 +1337,12 @@ document
         "[data-close-modal]"
     )
     .forEach(
-        closeControl => {
+        control => {
 
-
-            closeControl.addEventListener(
+            control.addEventListener(
                 "click",
                 closeCaseModal
             );
-
 
         }
     );
@@ -1545,36 +1350,36 @@ document
 
 if (caseModalContact) {
 
-
     caseModalContact.addEventListener(
         "click",
         closeCaseModal
     );
 
-
 }
 
+
+/* Escape closes the modal */
 
 document.addEventListener(
     "keydown",
     event => {
 
-
         if (
             event.key ===
                 "Escape" &&
-            caseModal &&
-            caseModal.classList.contains(
-                "open"
-            )
-        ) {
 
+            caseModal &&
+
+            caseModal
+                .classList
+                .contains(
+                    "open"
+                )
+        ) {
 
             closeCaseModal();
 
-
         }
-
 
     }
 );
@@ -1595,489 +1400,502 @@ if (
     !reducedMotion
 ) {
 
-
     const ctx =
         canvas.getContext(
             "2d"
         );
 
 
-    let width = 0;
+    if (ctx) {
 
-    let height = 0;
-
-    let pixelRatio = 1;
-
-    let particles = [];
-
-    let animationFrame = null;
-
-    let resizeTimer = null;
+        let width =
+            0;
 
 
-    const pointer = {
-
-        x: null,
-
-        y: null,
-
-        innerRadius: 48,
-
-        outerRadius: 145
-
-    };
+        let height =
+            0;
 
 
-    function getPointerFade(
-        x,
-        y
-    ) {
+        let pixelRatio =
+            1;
 
 
-        if (
-            pointer.x === null ||
-            pointer.y === null
+        let particles =
+            [];
+
+
+        let animationFrame =
+            null;
+
+
+        let resizeTimer =
+            null;
+
+
+        const pointer = {
+
+            x: null,
+
+            y: null,
+
+            innerRadius:
+                48,
+
+            outerRadius:
+                145
+
+        };
+
+
+        const palette = {
+
+            blue:
+                [
+                    22,
+                    116,
+                    168
+                ],
+
+            teal:
+                [
+                    22,
+                    140,
+                    133
+                ],
+
+            amber:
+                [
+                    213,
+                    148,
+                    50
+                ]
+
+        };
+
+
+        /* =================================================
+           CURSOR FADE EFFECT
+
+           Particles close to the cursor disappear.
+        ================================================= */
+
+        function pointerFade(
+            x,
+            y
         ) {
 
-            return 1;
+            if (
+                pointer.x === null ||
+                pointer.y === null
+            ) {
 
-        }
+                return 1;
 
-
-        const dx =
-            x -
-            pointer.x;
-
-
-        const dy =
-            y -
-            pointer.y;
+            }
 
 
-        const distance =
-            Math.sqrt(
-                dx * dx +
-                dy * dy
+            const dx =
+                x -
+                pointer.x;
+
+
+            const dy =
+                y -
+                pointer.y;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if (
+                distance <=
+                pointer.innerRadius
+            ) {
+
+                return 0;
+
+            }
+
+
+            if (
+                distance >=
+                pointer.outerRadius
+            ) {
+
+                return 1;
+
+            }
+
+
+            return (
+
+                (
+                    distance -
+                    pointer.innerRadius
+                )
+
+                /
+
+                (
+                    pointer.outerRadius -
+                    pointer.innerRadius
+                )
+
             );
 
-
-        if (
-            distance <=
-            pointer.innerRadius
-        ) {
-
-            return 0;
-
         }
 
 
-        if (
-            distance >=
-            pointer.outerRadius
-        ) {
+        /* =================================================
+           PARTICLE
+        ================================================= */
 
-            return 1;
+        class Particle {
 
-        }
+            constructor() {
 
-
-        return (
-
-            (
-                distance -
-                pointer.innerRadius
-            ) /
-
-            (
-                pointer.outerRadius -
-                pointer.innerRadius
-            )
-
-        );
-
-
-    }
-
-
-    class Particle {
-
-
-        constructor() {
-
-            this.reset();
-
-        }
-
-
-        reset() {
-
-
-            this.x =
-                Math.random() *
-                width;
-
-
-            this.y =
-                Math.random() *
-                height;
-
-
-            this.radius =
-                Math.random() *
-                1.25 +
-                0.8;
-
-
-            this.speedX =
-                (
-                    Math.random() -
-                    0.5
-                ) *
-                0.12;
-
-
-            this.speedY =
-                (
-                    Math.random() -
-                    0.5
-                ) *
-                0.12;
-
-
-            this.opacity =
-                Math.random() *
-                0.16 +
-                0.14;
-
-
-            const tone =
-                Math.random();
-
-
-            if (
-                tone > 0.84
-            ) {
-
-
-                this.tone =
-                    "teal";
-
-
-            } else if (
-                tone > 0.73
-            ) {
-
-
-                this.tone =
-                    "amber";
-
-
-            } else {
-
-
-                this.tone =
-                    "blue";
-
+                this.reset();
 
             }
 
 
-        }
-
-
-        update() {
-
-
-            this.x +=
-                this.speedX;
-
-
-            this.y +=
-                this.speedY;
-
-
-            if (
-                this.x < -20
-            ) {
-
+            reset() {
 
                 this.x =
-                    width + 20;
-
-
-            }
-
-
-            if (
-                this.x >
-                width + 20
-            ) {
-
-
-                this.x =
-                    -20;
-
-
-            }
-
-
-            if (
-                this.y < -20
-            ) {
+                    Math.random() *
+                    width;
 
 
                 this.y =
-                    height + 20;
+                    Math.random() *
+                    height;
 
 
-            }
+                this.radius =
+                    Math.random() *
+                    1.25 +
+                    0.75;
 
 
-            if (
-                this.y >
-                height + 20
-            ) {
+                this.speedX =
+                    (
+                        Math.random() -
+                        0.5
+                    ) *
+                    0.12;
 
 
-                this.y =
-                    -20;
+                this.speedY =
+                    (
+                        Math.random() -
+                        0.5
+                    ) *
+                    0.12;
 
 
-            }
+                this.opacity =
+                    Math.random() *
+                    0.14 +
+                    0.10;
 
 
-        }
-
-
-        draw() {
-
-
-            const pointerFade =
-                getPointerFade(
-                    this.x,
-                    this.y
-                );
-
-
-            const alpha =
-                this.opacity *
-                pointerFade;
-
-
-            if (
-                alpha <= 0.005
-            ) {
-
-                return;
-
-            }
-
-
-            let fill;
-
-
-            if (
-                this.tone ===
-                "teal"
-            ) {
-
-
-                fill =
-                    `rgba(22, 140, 133, ${alpha})`;
-
-
-            } else if (
-                this.tone ===
-                "amber"
-            ) {
-
-
-                fill =
-                    `rgba(213, 148, 50, ${alpha * 0.76})`;
-
-
-            } else {
-
-
-                fill =
-                    `rgba(22, 116, 168, ${alpha})`;
-
-
-            }
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                this.x,
-                this.y,
-                this.radius,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fillStyle =
-                fill;
-
-
-            ctx.fill();
-
-
-        }
-
-
-    }
-
-
-    function createParticles() {
-
-
-        particles = [];
-
-
-        const area =
-            width *
-            height;
-
-
-        let count =
-            Math.floor(
-                area /
-                19000
-            );
-
-
-        if (
-            width < 760
-        ) {
-
-
-            count =
-                Math.min(
-                    Math.max(
-                        count,
-                        25
-                    ),
-                    34
-                );
-
-
-        } else {
-
-
-            count =
-                Math.min(
-                    Math.max(
-                        count,
-                        52
-                    ),
-                    82
-                );
-
-
-        }
-
-
-        for (
-            let i = 0;
-            i < count;
-            i++
-        ) {
-
-
-            particles.push(
-                new Particle()
-            );
-
-
-        }
-
-
-    }
-
-
-    function connectParticles() {
-
-
-        const maxDistance =
-            width < 760
-                ? 95
-                : 128;
-
-
-        for (
-            let i = 0;
-            i <
-            particles.length;
-            i++
-        ) {
-
-
-            for (
-                let j =
-                    i + 1;
-                j <
-                particles.length;
-                j++
-            ) {
-
-
-                const particleA =
-                    particles[i];
-
-
-                const particleB =
-                    particles[j];
-
-
-                const dx =
-                    particleA.x -
-                    particleB.x;
-
-
-                const dy =
-                    particleA.y -
-                    particleB.y;
-
-
-                const distance =
-                    Math.sqrt(
-                        dx * dx +
-                        dy * dy
-                    );
+                const tone =
+                    Math.random();
 
 
                 if (
-                    distance <
-                    maxDistance
+                    tone >
+                    0.84
                 ) {
 
+                    this.tone =
+                        "teal";
 
-                    const fadeA =
-                        getPointerFade(
-                            particleA.x,
-                            particleA.y
-                        );
+                } else if (
+                    tone >
+                    0.73
+                ) {
+
+                    this.tone =
+                        "amber";
+
+                } else {
+
+                    this.tone =
+                        "blue";
+
+                }
+
+            }
 
 
-                    const fadeB =
-                        getPointerFade(
-                            particleB.x,
-                            particleB.y
-                        );
+            update() {
+
+                this.x +=
+                    this.speedX;
 
 
-                    const cursorFade =
-                        Math.min(
-                            fadeA,
-                            fadeB
+                this.y +=
+                    this.speedY;
+
+
+                if (
+                    this.x <
+                    -20
+                ) {
+
+                    this.x =
+                        width +
+                        20;
+
+                }
+
+
+                if (
+                    this.x >
+                    width +
+                    20
+                ) {
+
+                    this.x =
+                        -20;
+
+                }
+
+
+                if (
+                    this.y <
+                    -20
+                ) {
+
+                    this.y =
+                        height +
+                        20;
+
+                }
+
+
+                if (
+                    this.y >
+                    height +
+                    20
+                ) {
+
+                    this.y =
+                        -20;
+
+                }
+
+            }
+
+
+            draw() {
+
+                const fade =
+                    pointerFade(
+                        this.x,
+                        this.y
+                    );
+
+
+                const alpha =
+                    this.opacity *
+                    fade;
+
+
+                if (
+                    alpha <=
+                    0.005
+                ) {
+
+                    return;
+
+                }
+
+
+                const [
+                    r,
+                    g,
+                    b
+                ] =
+                    palette[
+                        this.tone
+                    ];
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
+                    this.x,
+                    this.y,
+                    this.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fillStyle =
+                    `rgba(${r}, ${g}, ${b}, ${alpha})`;
+
+
+                ctx.fill();
+
+            }
+
+        }
+
+
+        /* =================================================
+           CREATE PARTICLES
+        ================================================= */
+
+        function createParticles() {
+
+            particles =
+                [];
+
+
+            const area =
+                width *
+                height;
+
+
+            const base =
+                width <
+                760
+                    ? 24
+                    : 42;
+
+
+            const scaled =
+                Math.round(
+                    area /
+                    42000
+                );
+
+
+            const count =
+                Math.max(
+
+                    base,
+
+                    Math.min(
+
+                        width <
+                        760
+                            ? 34
+                            : 64,
+
+                        scaled
+
+                    )
+
+                );
+
+
+            for (
+                let i = 0;
+                i < count;
+                i += 1
+            ) {
+
+                particles.push(
+                    new Particle()
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           CONNECT NEARBY PARTICLES
+        ================================================= */
+
+        function connectParticles() {
+
+            const maxDistance =
+                width <
+                760
+                    ? 95
+                    : 128;
+
+
+            for (
+                let i = 0;
+                i <
+                particles.length;
+                i += 1
+            ) {
+
+                for (
+                    let j =
+                        i + 1;
+
+                    j <
+                    particles.length;
+
+                    j += 1
+                ) {
+
+                    const a =
+                        particles[i];
+
+
+                    const b =
+                        particles[j];
+
+
+                    const dx =
+                        a.x -
+                        b.x;
+
+
+                    const dy =
+                        a.y -
+                        b.y;
+
+
+                    const distance =
+                        Math.sqrt(
+                            dx * dx +
+                            dy * dy
                         );
 
 
                     if (
-                        cursorFade <=
+                        distance >=
+                        maxDistance
+                    ) {
+
+                        continue;
+
+                    }
+
+
+                    const fade =
+                        Math.min(
+
+                            pointerFade(
+                                a.x,
+                                a.y
+                            ),
+
+                            pointerFade(
+                                b.x,
+                                b.y
+                            )
+
+                        );
+
+
+                    if (
+                        fade <=
                         0.01
                     ) {
 
@@ -2087,27 +1905,34 @@ if (
 
 
                     const opacity =
+
                         (
                             1 -
                             distance /
                             maxDistance
-                        ) *
-                        0.105 *
-                        cursorFade;
+                        )
+
+                        *
+
+                        0.095
+
+                        *
+
+                        fade;
 
 
                     ctx.beginPath();
 
 
                     ctx.moveTo(
-                        particleA.x,
-                        particleA.y
+                        a.x,
+                        a.y
                     );
 
 
                     ctx.lineTo(
-                        particleB.x,
-                        particleB.y
+                        b.x,
+                        b.y
                     );
 
 
@@ -2121,217 +1946,243 @@ if (
 
                     ctx.stroke();
 
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           CANVAS SIZE
+        ================================================= */
+
+        function resizeCanvas() {
+
+            width =
+                window.innerWidth;
+
+
+            height =
+                window.innerHeight;
+
+
+            pixelRatio =
+                Math.min(
+                    window.devicePixelRatio ||
+                    1,
+                    2
+                );
+
+
+            canvas.width =
+                Math.round(
+                    width *
+                    pixelRatio
+                );
+
+
+            canvas.height =
+                Math.round(
+                    height *
+                    pixelRatio
+                );
+
+
+            canvas.style.width =
+                `${width}px`;
+
+
+            canvas.style.height =
+                `${height}px`;
+
+
+            ctx.setTransform(
+
+                pixelRatio,
+
+                0,
+
+                0,
+
+                pixelRatio,
+
+                0,
+
+                0
+
+            );
+
+
+            createParticles();
+
+        }
+
+
+        /* =================================================
+           ANIMATION LOOP
+        ================================================= */
+
+        function animateParticles() {
+
+            ctx.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            particles.forEach(
+                particle => {
+
+                    particle.update();
+
+                    particle.draw();
+
+                }
+            );
+
+
+            connectParticles();
+
+
+            animationFrame =
+                requestAnimationFrame(
+                    animateParticles
+                );
+
+        }
+
+
+        /* =================================================
+           DESKTOP CURSOR INTERACTION
+        ================================================= */
+
+        const finePointer =
+            window.matchMedia(
+
+                "(hover: hover) and (pointer: fine)"
+
+            );
+
+
+        if (
+            finePointer.matches
+        ) {
+
+            window.addEventListener(
+
+                "mousemove",
+
+                event => {
+
+                    pointer.x =
+                        event.clientX;
+
+
+                    pointer.y =
+                        event.clientY;
+
+                },
+
+                {
+                    passive: true
+                }
+
+            );
+
+
+            document.addEventListener(
+                "mouseleave",
+                () => {
+
+                    pointer.x =
+                        null;
+
+
+                    pointer.y =
+                        null;
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           RESIZE
+        ================================================= */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                window.clearTimeout(
+                    resizeTimer
+                );
+
+
+                resizeTimer =
+                    window.setTimeout(
+                        resizeCanvas,
+                        160
+                    );
+
+            }
+        );
+
+
+        /* =================================================
+           PAUSE WHEN TAB IS HIDDEN
+        ================================================= */
+
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+
+                if (
+                    document.hidden
+                ) {
+
+                    if (
+                        animationFrame
+                    ) {
+
+                        cancelAnimationFrame(
+                            animationFrame
+                        );
+
+                    }
+
+                } else {
+
+                    if (
+                        animationFrame
+                    ) {
+
+                        cancelAnimationFrame(
+                            animationFrame
+                        );
+
+                    }
+
+
+                    animateParticles();
 
                 }
 
-
             }
+        );
 
 
-        }
+        /* Start particles */
 
+        resizeCanvas();
+
+        animateParticles();
 
     }
-
-
-    function resizeCanvas() {
-
-
-        width =
-            window.innerWidth;
-
-
-        height =
-            window.innerHeight;
-
-
-        pixelRatio =
-            Math.min(
-                window.devicePixelRatio ||
-                1,
-                2
-            );
-
-
-        canvas.width =
-            width *
-            pixelRatio;
-
-
-        canvas.height =
-            height *
-            pixelRatio;
-
-
-        canvas.style.width =
-            `${width}px`;
-
-
-        canvas.style.height =
-            `${height}px`;
-
-
-        ctx.setTransform(
-            pixelRatio,
-            0,
-            0,
-            pixelRatio,
-            0,
-            0
-        );
-
-
-        createParticles();
-
-
-    }
-
-
-    function animateParticles() {
-
-
-        ctx.clearRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-
-        particles.forEach(
-            particle => {
-
-
-                particle.update();
-
-                particle.draw();
-
-
-            }
-        );
-
-
-        connectParticles();
-
-
-        animationFrame =
-            requestAnimationFrame(
-                animateParticles
-            );
-
-
-    }
-
-
-    const finePointer =
-        window.matchMedia(
-            "(hover: hover) and (pointer: fine)"
-        );
-
-
-    if (
-        finePointer.matches
-    ) {
-
-
-        window.addEventListener(
-            "mousemove",
-            event => {
-
-
-                pointer.x =
-                    event.clientX;
-
-
-                pointer.y =
-                    event.clientY;
-
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        document.addEventListener(
-            "mouseleave",
-            () => {
-
-
-                pointer.x =
-                    null;
-
-
-                pointer.y =
-                    null;
-
-
-            }
-        );
-
-
-    }
-
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-
-            clearTimeout(
-                resizeTimer
-            );
-
-
-            resizeTimer =
-                setTimeout(
-                    resizeCanvas,
-                    160
-                );
-
-
-        }
-    );
-
-
-    document.addEventListener(
-        "visibilitychange",
-        () => {
-
-
-            if (
-                document.hidden
-            ) {
-
-
-                cancelAnimationFrame(
-                    animationFrame
-                );
-
-
-            } else {
-
-
-                cancelAnimationFrame(
-                    animationFrame
-                );
-
-
-                animateParticles();
-
-
-            }
-
-
-        }
-    );
-
-
-    resizeCanvas();
-
-    animateParticles();
-
 
 }
 
@@ -2344,13 +2195,11 @@ window.addEventListener(
     "resize",
     () => {
 
-
         if (
             window.innerWidth >
                 760 &&
             mainNav
         ) {
-
 
             mainNav.classList.remove(
                 "open"
@@ -2361,19 +2210,15 @@ window.addEventListener(
                 mobileMenuButton
             ) {
 
-
                 mobileMenuButton
                     .setAttribute(
                         "aria-expanded",
                         "false"
                     );
 
-
             }
 
-
         }
-
 
     }
 );
