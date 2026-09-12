@@ -6830,6 +6830,54 @@ a {
 
 /* =========================================================
    SMALL PHONES
+/* =========================================================
+   INTERACTIVE BRAND CONTINUITY
+========================================================= */
+
+:root {
+    --action-accent: #3f7d95;
+}
+
+
+/* Active / hovered navigation */
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--action-accent);
+}
+
+.main-nav a::after {
+    background: var(--action-accent);
+}
+
+
+/* Case-study calls to action */
+
+.case-open,
+.impact-cta {
+    color: var(--action-accent);
+}
+
+
+/* Keyboard accessibility */
+
+:focus-visible {
+    outline:
+        3px solid
+        rgba(63, 125, 149, 0.28);
+
+    outline-offset: 3px;
+}
+
+
+/* Interactive card feedback */
+
+.case-card:hover,
+.impact-card:hover,
+.contact-card:hover {
+    border-color:
+        rgba(63, 125, 149, 0.30);
+}
 ========================================================= */
 
 @media (max-width: 460px) {
