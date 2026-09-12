@@ -5957,3 +5957,377 @@ a {
         line-height: 1.55;
     }
 }
+
+/* =========================================================
+   HERO REFINEMENT PATCH
+   12 SEPTEMBER 2026
+
+   IMPORTANT:
+   This block is intentionally hero-only.
+   Do not replace the original site styles.
+========================================================= */
+
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hero-content {
+    max-width: 680px;
+}
+
+
+.hero h1 {
+    font-size: clamp(
+        2.6rem,
+        3.05vw,
+        3.4rem
+    );
+
+    line-height: 1.05;
+    letter-spacing: -0.038em;
+}
+
+
+.hero-positioning {
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    color: #526f82;
+
+    font-size: clamp(
+        1rem,
+        1.22vw,
+        1.08rem
+    );
+
+    line-height: 1.62;
+
+    font-weight: 560;
+}
+
+
+.hero-support {
+    max-width: 650px;
+
+    margin:
+        15px
+        0
+        0;
+
+    color: #8295a2;
+
+    font-size: 0.86rem;
+
+    line-height: 1.55;
+
+    font-weight: 480;
+}
+
+
+/* =========================================================
+   HERO PROOF NUMBERS
+========================================================= */
+
+.hero-proof {
+    width: 100%;
+    max-width: 520px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    margin-top: 26px;
+}
+
+
+.hero-proof-item {
+    min-width: 0;
+
+    padding-right: 20px;
+}
+
+
+.hero-proof-item + .hero-proof-item {
+    padding-left: 20px;
+
+    border-left:
+        1px solid
+        rgba(18, 53, 77, 0.12);
+}
+
+
+.hero-proof-item strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 1.32rem;
+
+    line-height: 1;
+
+    font-weight: 790;
+
+    letter-spacing: -0.035em;
+}
+
+
+.hero-proof-item span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 0.60rem;
+
+    line-height: 1.28;
+
+    font-weight: 560;
+}
+
+
+/* =========================================================
+   HERO CTA GROUP
+========================================================= */
+
+.hero-actions-refined {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 23px;
+}
+
+
+/* MAIN CTA */
+
+.hero-actions-refined .button-primary {
+    min-height: 43px;
+
+    padding:
+        0
+        19px;
+
+    color: #ffffff;
+
+    background: #2f718d;
+
+    border-color: #2f718d;
+
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(47, 113, 141, 0.17);
+}
+
+
+.hero-actions-refined .button-primary:hover {
+    color: #ffffff;
+
+    background: #285f77;
+
+    border-color: #285f77;
+}
+
+
+/* QUIET CTA BUTTONS */
+
+.hero-actions-refined .hero-quiet-button {
+    min-height: 43px;
+
+    padding:
+        0
+        17px;
+
+    color: var(--navy);
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border:
+        1px solid
+        rgba(18, 53, 77, 0.15);
+
+    box-shadow: none;
+}
+
+
+.hero-actions-refined .hero-quiet-button:hover {
+    color: var(--navy);
+
+    background: #f5f8fa;
+
+    border-color:
+        rgba(18, 53, 77, 0.27);
+
+    box-shadow:
+        0
+        6px
+        15px
+        rgba(13, 53, 82, 0.07);
+}
+
+
+/* =========================================================
+   MOBILE HERO ONLY
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .hero-content {
+        max-width: none;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(
+            1.78rem,
+            7.4vw,
+            2.1rem
+        );
+
+        line-height: 1.06;
+
+        white-space: normal;
+    }
+
+
+    .hero-positioning {
+        max-width: none;
+
+        margin-top: 18px;
+
+        font-size: 0.92rem;
+
+        line-height: 1.56;
+    }
+
+
+    .hero-support {
+        max-width: none;
+
+        margin-top: 13px;
+
+        font-size: 0.75rem;
+
+        line-height: 1.47;
+    }
+
+
+    /* PROOF STRIP */
+
+    .hero-proof {
+        width: 100%;
+        max-width: none;
+
+        margin-top: 23px;
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .hero-proof-item {
+        padding-right: 8px;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+        padding-left: 8px;
+    }
+
+
+    .hero-proof-item strong {
+        font-size: 1.04rem;
+    }
+
+
+    .hero-proof-item span {
+        margin-top: 5px;
+
+        font-size: 0.48rem;
+
+        line-height: 1.22;
+    }
+
+
+    /* 2 x 2 CTA GRID */
+
+    .hero-actions-refined {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 8px;
+
+        margin-top: 20px;
+    }
+
+
+    /*
+       Reduced mobile button HEIGHT.
+       Your previous buttons were too thick.
+    */
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        width: 100%;
+
+        min-height: 38px;
+
+        padding:
+            0
+            8px;
+
+        font-size: 0.67rem;
+
+        border-radius: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 460px) {
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 37px;
+
+        font-size: 0.65rem;
+    }
+
+
+    .hero-proof-item strong {
+        font-size: 0.98rem;
+    }
+
+
+    .hero-proof-item span {
+        font-size: 0.45rem;
+    }
+
+}
