@@ -6559,3 +6559,219 @@ a {
     }
 
 }
+/* =========================================================
+   MOBILE HERO COMPACT REFINEMENT
+   MOBILE ONLY - DESKTOP UNCHANGED
+========================================================= */
+
+@media (max-width: 760px) {
+
+
+    /* =====================================================
+       MAIN POSITIONING PARAGRAPH
+       Slightly smaller, but still dominant over support text
+    ====================================================== */
+
+    .hero-positioning {
+        margin-top: 15px;
+        margin-bottom: 0;
+
+        font-size: 0.84rem;
+        line-height: 1.50;
+
+        font-weight: 560;
+    }
+
+
+    /* =====================================================
+       SECONDARY / EXPERIENCE PARAGRAPH
+       Bring much closer to first paragraph
+    ====================================================== */
+
+    .hero-support {
+        margin-top: 4px;
+
+        font-size: 0.71rem;
+        line-height: 1.42;
+
+        color: #8295a2;
+    }
+
+
+    /* =====================================================
+       METRICS
+       Centre all three columns
+    ====================================================== */
+
+    .hero-proof {
+        margin-top: 19px;
+    }
+
+
+    .hero-proof-item {
+        text-align: center;
+        padding-right: 7px;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+        padding-left: 7px;
+    }
+
+
+    .hero-proof-item strong {
+        font-size: 0.98rem;
+        line-height: 1;
+    }
+
+
+    .hero-proof-item span {
+        margin-top: 4px;
+
+        font-size: 0.45rem;
+        line-height: 1.20;
+    }
+
+
+    /* =====================================================
+       CTA AREA
+       More compact vertically
+    ====================================================== */
+
+    .hero-actions-refined {
+        margin-top: 16px;
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 34px;
+
+        padding:
+            0
+            5px;
+
+        border-radius: 8px;
+
+        font-size: 0.60rem;
+        line-height: 1;
+    }
+
+
+    /* =====================================================
+       SELECTED WORK
+       Still highlighted, but softer on mobile
+    ====================================================== */
+
+    .hero-actions-refined .button-primary {
+        background: #3f7d95;
+        border-color: #3f7d95;
+
+        box-shadow:
+            0
+            4px
+            11px
+            rgba(47, 113, 141, 0.13);
+    }
+
+
+    .hero-actions-refined .button-primary:hover {
+        background: #376f86;
+        border-color: #376f86;
+    }
+
+
+    /* =====================================================
+       OTHER CTA BUTTONS
+       Keep uniform and quiet
+    ====================================================== */
+
+    .hero-actions-refined .hero-quiet-button {
+        background: #ffffff;
+
+        border-color:
+            rgba(18, 53, 77, 0.14);
+
+        box-shadow: none;
+    }
+
+
+    /* =====================================================
+       BRING PROFILE SYSTEM HIGHER
+
+       Reduces vertical gap between CTA block and portrait
+       without modifying the portrait itself.
+    ====================================================== */
+
+    .hero-grid {
+        gap: 18px;
+    }
+
+
+    .hero-visual {
+        margin-top: 0;
+    }
+
+}
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 460px) {
+
+    .hero-positioning {
+        font-size: 0.82rem;
+        line-height: 1.48;
+    }
+
+
+    .hero-support {
+        margin-top: 3px;
+
+        font-size: 0.69rem;
+        line-height: 1.40;
+    }
+
+
+    .hero-proof {
+        margin-top: 18px;
+    }
+
+
+    .hero-proof-item strong {
+        font-size: 0.95rem;
+    }
+
+
+    .hero-proof-item span {
+        font-size: 0.43rem;
+    }
+
+
+    .hero-actions-refined {
+        margin-top: 15px;
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 33px;
+
+        font-size: 0.59rem;
+    }
+
+
+    .hero-grid {
+        gap: 16px;
+    }
+
+}
