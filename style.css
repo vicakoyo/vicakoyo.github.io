@@ -6331,3 +6331,231 @@ a {
     }
 
 }
+/* =========================================================
+   HERO FINAL REFINEMENT
+   Desktop title + paragraph spacing + CTA alignment
+========================================================= */
+
+
+/* =========================================================
+   DESKTOP HERO TITLE
+   Reduce size so it does not crowd portrait area
+========================================================= */
+
+.hero h1 {
+    font-size: clamp(
+        2.25rem,
+        2.65vw,
+        2.95rem
+    );
+
+    line-height: 1.06;
+    letter-spacing: -0.036em;
+}
+
+
+/* =========================================================
+   HERO PARAGRAPHS
+   Bring supporting experience line directly underneath
+========================================================= */
+
+.hero-positioning {
+    margin-bottom: 0;
+}
+
+
+.hero-support {
+    margin-top: 5px;
+
+    max-width: 670px;
+
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   METRICS + CTA WIDTH ALIGNMENT
+
+   Metrics and buttons now begin and end at same points
+========================================================= */
+
+.hero-proof,
+.hero-actions-refined {
+    width: 100%;
+    max-width: 520px;
+}
+
+
+/* =========================================================
+   DESKTOP CTA GRID
+
+   Four nearly equal-width buttons across same width
+   as the metrics above
+========================================================= */
+
+.hero-actions-refined {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 8px;
+
+    margin-top: 21px;
+}
+
+
+.hero-actions-refined .button,
+.hero-actions-refined .button-primary,
+.hero-actions-refined .hero-quiet-button {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 42px;
+
+    padding:
+        0
+        9px;
+
+    font-size: 0.69rem;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SELECTED WORK
+   Only highlighted CTA
+========================================================= */
+
+.hero-actions-refined .button-primary {
+    color: #ffffff;
+
+    background: #2f718d;
+
+    border-color: #2f718d;
+
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(47, 113, 141, 0.17);
+}
+
+
+/* =========================================================
+   ALL OTHER CTA BUTTONS
+   Same quiet treatment
+========================================================= */
+
+.hero-actions-refined .hero-quiet-button {
+    color: var(--navy);
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border:
+        1px solid
+        rgba(18, 53, 77, 0.16);
+
+    box-shadow: none;
+}
+
+
+.hero-actions-refined .hero-quiet-button:hover {
+    color: var(--navy);
+
+    background: #f5f8fa;
+
+    border-color:
+        rgba(18, 53, 77, 0.28);
+}
+
+
+/* =========================================================
+   MOBILE
+   Slight title reduction only
+   Keep your current 2 x 2 CTA layout
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .hero h1 {
+        font-size: clamp(
+            1.66rem,
+            6.9vw,
+            1.96rem
+        );
+
+        line-height: 1.07;
+    }
+
+
+    .hero-support {
+        margin-top: 4px;
+
+        font-size: 0.74rem;
+        line-height: 1.46;
+    }
+
+
+    /*
+       Preserve mobile 2 x 2 buttons.
+       This overrides the desktop four-column row.
+    */
+
+    .hero-actions-refined {
+        max-width: none;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 8px;
+
+        margin-top: 19px;
+    }
+
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 37px;
+
+        padding:
+            0
+            7px;
+
+        font-size: 0.64rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 460px) {
+
+    .hero h1 {
+        font-size: 1.68rem;
+    }
+
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 36px;
+
+        font-size: 0.62rem;
+    }
+
+}
