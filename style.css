@@ -6775,3 +6775,67 @@ a {
     }
 
 }
+/* =========================================================
+   MOBILE FINAL POSITIONING FIX
+   1. Centre hero metrics
+   2. Move portrait system lower
+   DESKTOP UNCHANGED
+========================================================= */
+
+@media (max-width: 760px) {
+
+    /* =====================================================
+       1. CENTRE EACH METRIC
+    ====================================================== */
+
+    .hero-proof-item {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: flex-start;
+
+        text-align: center;
+
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+        padding-left: 6px;
+    }
+
+
+    .hero-proof-item strong,
+    .hero-proof-item span {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* =====================================================
+       2. MOVE PORTRAIT + FLOATING CARDS + LOCATION LOWER
+
+       Moves the complete hero visual as one unit.
+       Creates clearance for the bouncing Operations card.
+    ====================================================== */
+
+    .hero-visual {
+        margin-top: 22px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 460px) {
+
+    .hero-visual {
+        margin-top: 24px;
+    }
+
+}
