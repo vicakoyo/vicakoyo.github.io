@@ -6887,3 +6887,163 @@ a {
     }
 
 }
+
+/* =========================================================
+   MOBILE HERO POLISH
+   - lighter primary CTA fills
+   - shorter buttons
+   - stronger headline / paragraph contrast
+   - slightly more separation before metrics
+   - preserve full-screen composition
+========================================================= */
+
+@media (max-width: 760px) {
+
+    /* =====================================================
+       1. HEADLINE — slightly stronger
+    ====================================================== */
+
+    .hero h1 {
+        color: #31596f;
+
+        font-weight: 760;
+    }
+
+
+    /* =====================================================
+       2. MAIN POSITIONING PARAGRAPH
+       Slightly stronger without making it larger
+    ====================================================== */
+
+    .hero-positioning {
+        color: #4f6d7e;
+
+        font-weight: 600;
+    }
+
+
+    /* =====================================================
+       SECONDARY PARAGRAPH
+       Slightly stronger too, but clearly subordinate
+    ====================================================== */
+
+    .hero-support {
+        color: #758b99;
+
+        font-weight: 520;
+    }
+
+
+    /* =====================================================
+       3. ADD A LITTLE MORE SPACE BEFORE METRICS
+    ====================================================== */
+
+    .hero-proof {
+        margin-top: 25px;
+    }
+
+
+    /* Keep metrics centred */
+
+    .hero-proof-item {
+        text-align: center;
+
+        align-items: center;
+    }
+
+
+    .hero-proof-item strong,
+    .hero-proof-item span {
+        text-align: center;
+    }
+
+
+    /* =====================================================
+       4. SHORTER CTA BUTTONS
+       Saves vertical space while keeping touch targets clean
+    ====================================================== */
+
+    .hero-actions-refined .button,
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .button-teal,
+    .hero-actions-refined .hero-quiet-button {
+        min-height: 32px;
+
+        padding:
+            0
+            6px;
+
+        border-radius: 8px;
+
+        font-size: 0.59rem;
+    }
+
+
+    /* =====================================================
+       5. LIGHTER / MILDER FILLED CTA COLOUR
+       Applies to the two filled buttons only
+    ====================================================== */
+
+    .hero-actions-refined .button-primary,
+    .hero-actions-refined .button-teal {
+        color: #ffffff;
+
+        background: #568ca0;
+
+        border-color: #568ca0;
+
+        box-shadow:
+            0
+            4px
+            10px
+            rgba(47, 113, 141, 0.11);
+    }
+
+
+    .hero-actions-refined .button-primary:hover,
+    .hero-actions-refined .button-teal:hover,
+    .hero-actions-refined .button-primary:active,
+    .hero-actions-refined .button-teal:active {
+        color: #ffffff;
+
+        background: #4c8195;
+
+        border-color: #4c8195;
+    }
+
+
+    /* =====================================================
+       6. KEEP WHITE BUTTONS QUIET
+    ====================================================== */
+
+    .hero-actions-refined .hero-quiet-button,
+    .hero-actions-refined .button-secondary {
+        background: #ffffff;
+
+        color: var(--navy);
+
+        border-color:
+            rgba(18, 53, 77, 0.14);
+
+        box-shadow: none;
+    }
+
+
+    /* =====================================================
+       7. SCREEN FILL CONTROL
+
+       Slightly tighter CTA-to-visual spacing so that
+       moving the metrics lower does not push the portrait
+       unnecessarily far below the first screen.
+    ====================================================== */
+
+    .hero-actions-refined {
+        margin-top: 15px;
+    }
+
+
+    .hero-visual {
+        margin-top: 18px;
+    }
+
+}
