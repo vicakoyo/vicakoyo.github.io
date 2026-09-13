@@ -59,7 +59,11 @@
 
     --max-width: 1160px;
 
-    --modal-speed: 420ms;
+    /*
+       Slower case-study transition.
+       JS uses the same 760 ms duration.
+    */
+    --modal-speed: 760ms;
 }
 
 
@@ -462,12 +466,18 @@ a {
 
     z-index: 1;
 
+    /*
+       Full landing viewport beneath the 72px desktop header.
+
+       This deliberately returns the hero to a full-screen
+       composition so Selected Impact begins below the fold.
+    */
+
     min-height:
-        clamp(
-            580px,
-            72vh,
-            660px
-        );
+        calc(100vh - 72px);
+
+    min-height:
+        calc(100svh - 72px);
 
     display: flex;
 
@@ -603,6 +613,11 @@ a {
 
 /* =========================================================
    HERO METRICS
+
+   Slightly greater separation from the two paragraphs.
+
+   Metrics + CTAs still remain close to one another so they
+   read as one proof/action group.
 ========================================================= */
 
 .hero-proof {
@@ -621,7 +636,7 @@ a {
 
     column-gap: 0;
 
-    margin-top: 34px;
+    margin-top: 44px;
 }
 
 
@@ -724,6 +739,10 @@ a {
         0.84fr;
 
     gap: 8px;
+
+    /*
+       Keep CTA close to the metrics.
+    */
 
     margin-top: 13px;
 }
@@ -3020,7 +3039,7 @@ a {
 
 /* =========================================================
    CASE STUDY MODAL
-   SMOOTH ZOOM + FADE
+   SLOW, SMOOTH ZOOM + FADE
 ========================================================= */
 
 .case-modal {
@@ -3047,8 +3066,8 @@ a {
 
     transition:
         opacity
-        var(--modal-speed)
-        cubic-bezier(0.22, 1, 0.36, 1),
+        640ms
+        ease-in-out,
 
         visibility
         0s
@@ -3093,8 +3112,8 @@ a {
 
     transition:
         opacity
-        360ms
-        ease;
+        700ms
+        ease-in-out;
 }
 
 
@@ -3126,9 +3145,14 @@ a {
 
     opacity: 0;
 
+    /*
+       A slightly stronger starting scale makes
+       the slow zoom visible without feeling dramatic.
+    */
+
     transform:
-        translateY(12px)
-        scale(0.955);
+        translateY(14px)
+        scale(0.94);
 
     transform-origin:
         center
@@ -3149,11 +3173,11 @@ a {
     transition:
         transform
         var(--modal-speed)
-        cubic-bezier(0.22, 1, 0.36, 1),
+        cubic-bezier(0.4, 0, 0.2, 1),
 
         opacity
-        calc(var(--modal-speed) - 40ms)
-        ease;
+        650ms
+        ease-in-out;
 }
 
 
@@ -3444,12 +3468,6 @@ a {
     }
 
 
-    .hero {
-
-        min-height: 590px;
-    }
-
-
     .hero-grid {
 
         grid-template-columns:
@@ -3727,7 +3745,9 @@ a {
 
     /* =====================================================
        MOBILE COPY
-       Same font size; hierarchy comes from weight/colour.
+
+       Main and supporting paragraphs retain the same
+       font size. Hierarchy comes from weight/colour.
     ===================================================== */
 
     .hero-positioning,
@@ -3780,6 +3800,8 @@ a {
 
     /* =====================================================
        MOBILE METRICS
+
+       More breathing room above the proof/action group.
     ===================================================== */
 
     .hero-proof {
@@ -3799,7 +3821,7 @@ a {
         column-gap: 0;
 
         margin:
-            28px
+            38px
             0
             0;
 
@@ -3900,18 +3922,20 @@ a {
 
     /* =====================================================
        MOBILE CTA
-       Slightly narrower + centered.
+
+       Returned to full hero width.
+       Buttons made noticeably shorter.
     ===================================================== */
 
     .hero-actions-refined {
 
-        width: 90%;
+        width: 100%;
 
-        max-width: 520px;
+        max-width: none;
 
         margin:
             13px
-            auto
+            0
             0;
 
         display: grid;
@@ -3932,15 +3956,15 @@ a {
 
         min-width: 0;
 
-        min-height: 39px;
+        min-height: 34px;
 
         padding:
             0
             7px;
 
-        border-radius: 9px;
+        border-radius: 8px;
 
-        font-size: 0.66rem;
+        font-size: 0.64rem;
 
         font-weight: 720;
 
@@ -4591,8 +4615,8 @@ a {
             20px;
 
         transform:
-            translateY(14px)
-            scale(0.96);
+            translateY(16px)
+            scale(0.945);
 
         transform-origin:
             center
@@ -4704,9 +4728,13 @@ a {
     }
 
 
+    /*
+       Maintain the larger paragraph-to-proof gap.
+    */
+
     .hero-proof {
 
-        margin-top: 26px;
+        margin-top: 36px;
     }
 
 
@@ -4742,9 +4770,13 @@ a {
     }
 
 
+    /*
+       Full mobile width retained.
+    */
+
     .hero-actions-refined {
 
-        width: 90%;
+        width: 100%;
 
         margin-top: 12px;
 
@@ -4752,15 +4784,19 @@ a {
     }
 
 
+    /*
+       Shorter mobile buttons.
+    */
+
     .hero-actions-refined .button {
 
-        min-height: 38px;
+        min-height: 33px;
 
         padding:
             0
             5px;
 
-        font-size: 0.63rem;
+        font-size: 0.62rem;
     }
 
 
@@ -4918,7 +4954,7 @@ a {
 
     .hero-actions-refined {
 
-        width: 94%;
+        width: 100%;
 
         gap: 6px;
     }
@@ -4926,11 +4962,13 @@ a {
 
     .hero-actions-refined .button {
 
+        min-height: 32px;
+
         padding:
             0
             4px;
 
-        font-size: 0.58rem;
+        font-size: 0.57rem;
     }
 
 
@@ -5064,9 +5102,13 @@ a {
     }
 
 
+    /*
+       Still retain some deliberate separation before proof.
+    */
+
     .hero-proof {
 
-        margin-top: 21px;
+        margin-top: 30px;
     }
 
 
