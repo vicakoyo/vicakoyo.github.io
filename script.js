@@ -1,5 +1,6 @@
 "use strict";
 
+
 /* =========================================================
    ACCESSIBILITY / MOTION
 ========================================================= */
@@ -43,6 +44,30 @@ const mainNav =
     );
 
 
+function closeMobileMenu() {
+
+    if (!mainNav) {
+        return;
+    }
+
+
+    mainNav.classList.remove(
+        "open"
+    );
+
+
+    if (mobileMenuButton) {
+
+        mobileMenuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+}
+
+
 if (
     mobileMenuButton &&
     mainNav
@@ -74,23 +99,98 @@ if (
 
                 link.addEventListener(
                     "click",
-                    () => {
-
-                        mainNav.classList.remove(
-                            "open"
-                        );
-
-
-                        mobileMenuButton.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
+                    closeMobileMenu
                 );
 
             }
         );
+
+
+    /*
+       MOBILE TAP-OUTSIDE BEHAVIOUR
+
+       When the navigation is open, clicking or tapping
+       anywhere outside the menu and hamburger button
+       closes the navigation.
+    */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !mainNav.classList.contains(
+                    "open"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            const target =
+                event.target;
+
+
+            const clickedInsideMenu =
+                mainNav.contains(
+                    target
+                );
+
+
+            const clickedMenuButton =
+                mobileMenuButton.contains(
+                    target
+                );
+
+
+            if (
+                clickedInsideMenu ||
+                clickedMenuButton
+            ) {
+
+                return;
+
+            }
+
+
+            closeMobileMenu();
+
+        }
+    );
+
+
+    /*
+       Escape also closes the mobile menu.
+    */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key ===
+                    "Escape" &&
+
+                mainNav.classList.contains(
+                    "open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+
+                mobileMenuButton.focus(
+                    {
+                        preventScroll: true
+                    }
+                );
+
+            }
+
+        }
+    );
 
 }
 
@@ -182,12 +282,6 @@ if (
         }
     );
 
-
-    /*
-       Fail-safe:
-       If an observer stalls, visible content
-       should never remain hidden.
-    */
 
     window.setTimeout(
         () => {
@@ -564,10 +658,6 @@ window.addEventListener(
 const caseStudyData = {
 
 
-    /* =====================================================
-       LOGISTICS
-    ===================================================== */
-
     logistics: {
 
         kicker:
@@ -602,10 +692,6 @@ const caseStudyData = {
 
     },
 
-
-    /* =====================================================
-       CHINA
-    ===================================================== */
 
     china: {
 
@@ -643,78 +729,57 @@ const caseStudyData = {
         gallery: [
 
             {
-
                 src:
                     "images/china/china-vivid-supplier-visit.webp",
 
                 alt:
                     "Victor Akoyo outside the Vivid supplier factory in China"
-
             },
 
-
             {
-
                 src:
                     "images/china/china-product-quality-review.webp",
 
                 alt:
                     "Victor reviewing a woven outdoor furniture product during a China supplier visit"
-
             },
 
-
             {
-
                 src:
                     "images/china/china-aluminium-frame-production.webp",
 
                 alt:
                     "Aluminium outdoor furniture frames during production at a supplier factory"
-
             },
 
-
             {
-
                 src:
                     "images/china/china-frame-welding-process.webp",
 
                 alt:
                     "Welding equipment and aluminium furniture frames during production"
-
             },
 
-
             {
-
                 src:
                     "images/china/china-weaving-quality-detail.webp",
 
                 alt:
                     "Close-up of woven furniture showing weaving process and quality detail"
-
             },
 
-
             {
-
                 src:
                     "images/china/china-finished-outdoor-furniture.webp",
 
                 alt:
                     "Finished woven outdoor furniture at a China supplier"
-
             }
 
         ]
 
     },
 
-
-    /* =====================================================
-       EOS
-    ===================================================== */
 
     eos: {
 
@@ -751,10 +816,6 @@ const caseStudyData = {
     },
 
 
-    /* =====================================================
-       RETURNS / PRODUCT QUALITY
-    ===================================================== */
-
     quality: {
 
         kicker:
@@ -789,10 +850,6 @@ const caseStudyData = {
 
     },
 
-
-    /* =====================================================
-       AUTOMATION
-    ===================================================== */
 
     automation: {
 
@@ -829,10 +886,6 @@ const caseStudyData = {
     },
 
 
-    /* =====================================================
-       AUTO SPRINGS
-    ===================================================== */
-
     manufacturing: {
 
         kicker:
@@ -867,10 +920,6 @@ const caseStudyData = {
 
     },
 
-
-    /* =====================================================
-       TILE & CARPET
-    ===================================================== */
 
     complaints: {
 
@@ -1007,11 +1056,6 @@ let modalCloseTimer =
     null;
 
 
-/*
-   Keep this value synchronized with:
-   --modal-speed: 760ms in style.css
-*/
-
 const MODAL_TRANSITION_MS =
     reducedMotion
         ? 0
@@ -1019,7 +1063,7 @@ const MODAL_TRANSITION_MS =
 
 
 /* =========================================================
-   SMALL HELPER
+   TEXT HELPER
 ========================================================= */
 
 function setText(
@@ -1038,7 +1082,7 @@ function setText(
 
 
 /* =========================================================
-   POPULATE CASE STUDY MODAL
+   POPULATE MODAL
 ========================================================= */
 
 function populateCaseModal(
@@ -1052,9 +1096,7 @@ function populateCaseModal(
 
 
     if (!data) {
-
         return false;
-
     }
 
 
@@ -1117,10 +1159,6 @@ function populateCaseModal(
         data.learning
     );
 
-
-    /* =====================================================
-       OPTIONAL CHINA GALLERY
-    ===================================================== */
 
     if (caseModalMedia) {
 
@@ -1210,7 +1248,7 @@ function populateCaseModal(
 
 
 /* =========================================================
-   OPEN CASE STUDY
+   OPEN MODAL
 ========================================================= */
 
 function openCaseModal(
@@ -1268,14 +1306,6 @@ function openCaseModal(
     );
 
 
-    /*
-       Two animation frames deliberately separate the
-       modal's hidden state from its visible state.
-
-       This gives the browser time to render scale 0.94
-       before transitioning slowly to scale 1.
-    */
-
     requestAnimationFrame(
         () => {
 
@@ -1311,9 +1341,7 @@ function completeModalClose(
 ) {
 
     if (!caseModal) {
-
         return;
-
     }
 
 
@@ -1355,14 +1383,7 @@ function completeModalClose(
 
 
 /* =========================================================
-   CLOSE CASE STUDY
-
-   The class is removed first.
-
-   CSS then performs the full slow zoom-out and fade-out.
-
-   Only after 760 ms do we restore scrolling,
-   accessibility state and focus.
+   CLOSE MODAL
 ========================================================= */
 
 function closeCaseModal(
@@ -1370,9 +1391,7 @@ function closeCaseModal(
 ) {
 
     if (!caseModal) {
-
         return;
-
     }
 
 
@@ -1459,11 +1478,6 @@ document
             );
 
 
-            /*
-               Article cards use role="button",
-               so Enter and Space should also open them.
-            */
-
             if (
                 trigger.getAttribute(
                     "role"
@@ -1531,11 +1545,6 @@ if (caseModalContact) {
         "click",
         () => {
 
-            /*
-               Do not return focus to the old case-study card
-               when the user intentionally moves to Contact.
-            */
-
             closeCaseModal(
                 {
                     restoreFocus: false
@@ -1548,7 +1557,9 @@ if (caseModalContact) {
 }
 
 
-/* Escape closes the modal */
+/* =========================================================
+   ESCAPE — MODAL
+========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -1576,7 +1587,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   MOLECULE / ATOM BACKGROUND
+   PARTICLE BACKGROUND
 ========================================================= */
 
 const canvas =
@@ -1663,10 +1674,6 @@ if (
         };
 
 
-        /* =================================================
-           CURSOR FADE EFFECT
-        ================================================= */
-
         function pointerFade(
             x,
             y
@@ -1738,16 +1745,10 @@ if (
         }
 
 
-        /* =================================================
-           PARTICLE
-        ================================================= */
-
         class Particle {
 
             constructor() {
-
                 this.reset();
-
             }
 
 
@@ -1938,10 +1939,6 @@ if (
         }
 
 
-        /* =================================================
-           CREATE PARTICLES
-        ================================================= */
-
         function createParticles() {
 
             particles =
@@ -2000,10 +1997,6 @@ if (
 
         }
 
-
-        /* =================================================
-           CONNECT NEARBY PARTICLES
-        ================================================= */
 
         function connectParticles() {
 
@@ -2141,10 +2134,6 @@ if (
         }
 
 
-        /* =================================================
-           CANVAS SIZE
-        ================================================= */
-
         function resizeCanvas() {
 
             width =
@@ -2207,10 +2196,6 @@ if (
         }
 
 
-        /* =================================================
-           ANIMATION LOOP
-        ================================================= */
-
         function animateParticles() {
 
             ctx.clearRect(
@@ -2242,10 +2227,6 @@ if (
 
         }
 
-
-        /* =================================================
-           DESKTOP CURSOR INTERACTION
-        ================================================= */
 
         const finePointer =
             window.matchMedia(
@@ -2292,10 +2273,6 @@ if (
         }
 
 
-        /* =================================================
-           RESIZE
-        ================================================= */
-
         window.addEventListener(
             "resize",
             () => {
@@ -2314,10 +2291,6 @@ if (
             }
         );
 
-
-        /* =================================================
-           PAUSE WHEN TAB IS HIDDEN
-        ================================================= */
 
         document.addEventListener(
             "visibilitychange",
@@ -2358,8 +2331,6 @@ if (
         );
 
 
-        /* Start particles */
-
         resizeCanvas();
 
         animateParticles();
@@ -2383,22 +2354,7 @@ window.addEventListener(
             mainNav
         ) {
 
-            mainNav.classList.remove(
-                "open"
-            );
-
-
-            if (
-                mobileMenuButton
-            ) {
-
-                mobileMenuButton
-                    .setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-            }
+            closeMobileMenu();
 
         }
 
