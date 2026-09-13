@@ -13,10 +13,17 @@ const reducedMotion = window.matchMedia(
    CURRENT YEAR
 ========================================================= */
 
-const currentYear = document.getElementById("currentYear");
+const currentYear =
+    document.getElementById(
+        "currentYear"
+    );
+
 
 if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+
+    currentYear.textContent =
+        new Date().getFullYear();
+
 }
 
 
@@ -25,20 +32,31 @@ if (currentYear) {
 ========================================================= */
 
 const mobileMenuButton =
-    document.getElementById("mobileMenuButton");
+    document.getElementById(
+        "mobileMenuButton"
+    );
+
 
 const mainNav =
-    document.getElementById("mainNav");
+    document.getElementById(
+        "mainNav"
+    );
 
 
-if (mobileMenuButton && mainNav) {
+if (
+    mobileMenuButton &&
+    mainNav
+) {
 
     mobileMenuButton.addEventListener(
         "click",
         () => {
 
             const open =
-                mainNav.classList.toggle("open");
+                mainNav.classList.toggle(
+                    "open"
+                );
+
 
             mobileMenuButton.setAttribute(
                 "aria-expanded",
@@ -51,23 +69,28 @@ if (mobileMenuButton && mainNav) {
 
     mainNav
         .querySelectorAll("a")
-        .forEach(link => {
+        .forEach(
+            link => {
 
-            link.addEventListener(
-                "click",
-                () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                    mainNav.classList.remove("open");
+                        mainNav.classList.remove(
+                            "open"
+                        );
 
-                    mobileMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
 
-                }
-            );
+                        mobileMenuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
 
-        });
+                    }
+                );
+
+            }
+        );
 
 }
 
@@ -77,7 +100,9 @@ if (mobileMenuButton && mainNav) {
 ========================================================= */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 
 function revealEverything() {
@@ -85,7 +110,9 @@ function revealEverything() {
     revealElements.forEach(
         element => {
 
-            element.classList.add("visible");
+            element.classList.add(
+                "visible"
+            );
 
         }
     );
@@ -110,11 +137,16 @@ if (
                 entries.forEach(
                     entry => {
 
-                        if (entry.isIntersecting) {
+                        if (
+                            entry.isIntersecting
+                        ) {
 
                             entry.target
                                 .classList
-                                .add("visible");
+                                .add(
+                                    "visible"
+                                );
+
 
                             revealObserver
                                 .unobserve(
@@ -129,10 +161,12 @@ if (
             },
 
             {
+
                 threshold: 0.1,
 
                 rootMargin:
                     "0px 0px -25px 0px"
+
             }
 
         );
@@ -151,8 +185,8 @@ if (
 
     /*
        Fail-safe:
-       If an observer ever fails or stalls,
-       do not leave visible content hidden.
+       If an observer stalls, visible content
+       should never remain hidden.
     */
 
     window.setTimeout(
@@ -163,6 +197,7 @@ if (
 
                     const rect =
                         element.getBoundingClientRect();
+
 
                     if (
                         rect.top <
@@ -190,14 +225,18 @@ if (
 ========================================================= */
 
 const counters =
-    document.querySelectorAll(".counter");
+    document.querySelectorAll(
+        ".counter"
+    );
 
 
 const COUNTER_DURATION =
     1400;
 
 
-function easeOutCubic(progress) {
+function easeOutCubic(
+    progress
+) {
 
     return (
         1 -
@@ -210,11 +249,14 @@ function easeOutCubic(progress) {
 }
 
 
-function animateCounter(counter) {
+function animateCounter(
+    counter
+) {
 
     if (
         !counter ||
-        counter.dataset.animated === "true"
+        counter.dataset.animated ===
+            "true"
     ) {
 
         return;
@@ -254,7 +296,9 @@ function animateCounter(counter) {
         performance.now();
 
 
-    function update(currentTime) {
+    function update(
+        currentTime
+    ) {
 
         const elapsed =
             currentTime -
@@ -347,6 +391,7 @@ if (counters.length) {
                                 animateCounter(
                                     entry.target
                                 );
+
 
                                 counterObserver
                                     .unobserve(
@@ -958,6 +1003,16 @@ let lastModalTrigger =
     null;
 
 
+let modalCloseTimer =
+    null;
+
+
+const MODAL_TRANSITION_MS =
+    reducedMotion
+        ? 0
+        : 420;
+
+
 /* =========================================================
    SMALL HELPER
 ========================================================= */
@@ -1179,14 +1234,22 @@ function openCaseModal(
     }
 
 
+    if (modalCloseTimer) {
+
+        window.clearTimeout(
+            modalCloseTimer
+        );
+
+
+        modalCloseTimer =
+            null;
+
+    }
+
+
     lastModalTrigger =
         trigger ||
         document.activeElement;
-
-
-    caseModal.classList.add(
-        "open"
-    );
 
 
     caseModal.setAttribute(
@@ -1200,12 +1263,28 @@ function openCaseModal(
     );
 
 
+    /*
+       Two animation frames ensure the browser registers
+       the starting state before the zoom-in state.
+    */
+
     requestAnimationFrame(
         () => {
 
-            caseModalPanel.focus(
-                {
-                    preventScroll: true
+            requestAnimationFrame(
+                () => {
+
+                    caseModal.classList.add(
+                        "open"
+                    );
+
+
+                    caseModalPanel.focus(
+                        {
+                            preventScroll: true
+                        }
+                    );
+
                 }
             );
 
@@ -1216,21 +1295,18 @@ function openCaseModal(
 
 
 /* =========================================================
-   CLOSE CASE STUDY
+   COMPLETE MODAL CLOSE
 ========================================================= */
 
-function closeCaseModal() {
+function completeModalClose(
+    restoreFocus
+) {
 
     if (!caseModal) {
 
         return;
 
     }
-
-
-    caseModal.classList.remove(
-        "open"
-    );
 
 
     caseModal.setAttribute(
@@ -1245,6 +1321,7 @@ function closeCaseModal() {
 
 
     if (
+        restoreFocus &&
         lastModalTrigger &&
         typeof lastModalTrigger.focus ===
             "function"
@@ -1257,6 +1334,89 @@ function closeCaseModal() {
         );
 
     }
+
+
+    lastModalTrigger =
+        null;
+
+
+    modalCloseTimer =
+        null;
+
+}
+
+
+/* =========================================================
+   CLOSE CASE STUDY
+   Allows the visible zoom-out animation to finish before
+   aria state, body scrolling and focus are restored.
+========================================================= */
+
+function closeCaseModal(
+    options = {}
+) {
+
+    if (!caseModal) {
+
+        return;
+
+    }
+
+
+    const {
+        restoreFocus = true
+    } = options;
+
+
+    if (
+        !caseModal.classList.contains(
+            "open"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    caseModal.classList.remove(
+        "open"
+    );
+
+
+    if (modalCloseTimer) {
+
+        window.clearTimeout(
+            modalCloseTimer
+        );
+
+    }
+
+
+    if (
+        MODAL_TRANSITION_MS === 0
+    ) {
+
+        completeModalClose(
+            restoreFocus
+        );
+
+        return;
+
+    }
+
+
+    modalCloseTimer =
+        window.setTimeout(
+            () => {
+
+                completeModalClose(
+                    restoreFocus
+                );
+
+            },
+            MODAL_TRANSITION_MS
+        );
 
 }
 
@@ -1341,7 +1501,11 @@ document
 
             control.addEventListener(
                 "click",
-                closeCaseModal
+                () => {
+
+                    closeCaseModal();
+
+                }
             );
 
         }
@@ -1352,7 +1516,20 @@ if (caseModalContact) {
 
     caseModalContact.addEventListener(
         "click",
-        closeCaseModal
+        () => {
+
+            /*
+               Do not return focus to the old card when the
+               visitor intentionally navigates to Contact.
+            */
+
+            closeCaseModal(
+                {
+                    restoreFocus: false
+                }
+            );
+
+        }
     );
 
 }
@@ -1475,8 +1652,6 @@ if (
 
         /* =================================================
            CURSOR FADE EFFECT
-
-           Particles close to the cursor disappear.
         ================================================= */
 
         function pointerFade(
@@ -2061,9 +2236,7 @@ if (
 
         const finePointer =
             window.matchMedia(
-
                 "(hover: hover) and (pointer: fine)"
-
             );
 
 
@@ -2072,9 +2245,7 @@ if (
         ) {
 
             window.addEventListener(
-
                 "mousemove",
-
                 event => {
 
                     pointer.x =
@@ -2085,11 +2256,9 @@ if (
                         event.clientY;
 
                 },
-
                 {
                     passive: true
                 }
-
             );
 
 
