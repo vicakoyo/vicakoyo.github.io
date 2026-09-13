@@ -1007,10 +1007,15 @@ let modalCloseTimer =
     null;
 
 
+/*
+   Keep this value synchronized with:
+   --modal-speed: 760ms in style.css
+*/
+
 const MODAL_TRANSITION_MS =
     reducedMotion
         ? 0
-        : 420;
+        : 760;
 
 
 /* =========================================================
@@ -1264,8 +1269,11 @@ function openCaseModal(
 
 
     /*
-       Two animation frames ensure the browser registers
-       the starting state before the zoom-in state.
+       Two animation frames deliberately separate the
+       modal's hidden state from its visible state.
+
+       This gives the browser time to render scale 0.94
+       before transitioning slowly to scale 1.
     */
 
     requestAnimationFrame(
@@ -1348,8 +1356,13 @@ function completeModalClose(
 
 /* =========================================================
    CLOSE CASE STUDY
-   Allows the visible zoom-out animation to finish before
-   aria state, body scrolling and focus are restored.
+
+   The class is removed first.
+
+   CSS then performs the full slow zoom-out and fade-out.
+
+   Only after 760 ms do we restore scrolling,
+   accessibility state and focus.
 ========================================================= */
 
 function closeCaseModal(
@@ -1519,8 +1532,8 @@ if (caseModalContact) {
         () => {
 
             /*
-               Do not return focus to the old card when the
-               visitor intentionally navigates to Contact.
+               Do not return focus to the old case-study card
+               when the user intentionally moves to Contact.
             */
 
             closeCaseModal(
