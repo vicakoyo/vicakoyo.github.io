@@ -1,6 +1,6 @@
 /* =========================================================
    VICTOR AKOYO — PROFESSIONAL PORTFOLIO
-   Complete consolidated stylesheet
+   Consolidated stylesheet
 ========================================================= */
 
 
@@ -45,6 +45,8 @@
     --amber-border: rgba(213, 148, 50, 0.27);
     --violet-border: rgba(107, 99, 186, 0.24);
 
+    --action-accent: #3f7d95;
+
     --shadow:
         0 14px 38px
         rgba(13, 53, 82, 0.065);
@@ -56,6 +58,8 @@
     --radius: 18px;
 
     --max-width: 1160px;
+
+    --modal-speed: 420ms;
 }
 
 
@@ -74,7 +78,7 @@ html {
 
     scroll-behavior: smooth;
 
-    scroll-padding-top: 78px;
+    scroll-padding-top: 88px;
 }
 
 
@@ -103,6 +107,7 @@ body {
 
 
 body.modal-open {
+
     overflow: hidden;
 }
 
@@ -150,6 +155,16 @@ a {
     color: #ffffff;
 
     background: var(--navy);
+}
+
+
+:focus-visible {
+
+    outline:
+        3px solid
+        rgba(63, 125, 149, 0.28);
+
+    outline-offset: 3px;
 }
 
 
@@ -249,15 +264,37 @@ a {
 
 .brand {
 
-    position: relative;
+    display: inline-flex;
 
-    display: inline-block;
+    align-items: center;
+
+    gap: 9px;
 
     flex-shrink: 0;
 
     padding: 5px 0;
 
-    font-size: 1rem;
+    line-height: 1;
+}
+
+
+.brand-icon {
+
+    width: 22px;
+
+    height: 22px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+
+.brand-text {
+
+    display: inline-block;
+
+    font-size: 1.08rem;
 
     line-height: 1;
 
@@ -295,10 +332,12 @@ a {
 
     0%,
     100% {
+
         background-position: 0% 50%;
     }
 
     50% {
+
         background-position: 100% 50%;
     }
 }
@@ -314,7 +353,7 @@ a {
 
     align-items: center;
 
-    gap: 25px;
+    gap: 26px;
 }
 
 
@@ -324,7 +363,7 @@ a {
 
     color: #526d7f;
 
-    font-size: 0.75rem;
+    font-size: 0.82rem;
 
     font-weight: 680;
 
@@ -347,7 +386,7 @@ a {
 
     height: 2px;
 
-    background: var(--blue);
+    background: var(--action-accent);
 
     transform: scaleX(0);
 
@@ -361,7 +400,7 @@ a {
 .main-nav a:hover,
 .main-nav a.active {
 
-    color: var(--blue);
+    color: var(--action-accent);
 }
 
 
@@ -424,16 +463,20 @@ a {
     z-index: 1;
 
     min-height:
-        calc(100svh - 72px);
+        clamp(
+            580px,
+            72vh,
+            660px
+        );
 
     display: flex;
 
     align-items: center;
 
     padding:
-        42px
+        44px
         0
-        50px;
+        52px;
 
     overflow: hidden;
 
@@ -452,7 +495,7 @@ a {
             255,
             255,
             255,
-            0.82
+            0.88
         );
 }
 
@@ -465,7 +508,7 @@ a {
         minmax(0, 1.06fr)
         minmax(390px, 0.94fr);
 
-    gap: 68px;
+    gap: 58px;
 
     align-items: center;
 }
@@ -491,23 +534,23 @@ a {
 
     font-size:
         clamp(
-            2.35rem,
-            3.1vw,
-            2.8rem
+            2.25rem,
+            2.65vw,
+            2.95rem
         );
 
-    line-height: 1.05;
+    line-height: 1.06;
 
-    letter-spacing: -0.038em;
+    letter-spacing: -0.036em;
 
-    font-weight: 700;
+    font-weight: 740;
 
     white-space: nowrap;
 }
 
 
 /* =========================================================
-   HERO DESCRIPTION
+   HERO COPY
 ========================================================= */
 
 .hero-positioning {
@@ -515,45 +558,174 @@ a {
     max-width: 650px;
 
     margin:
-        25px
+        22px
         0
         0;
 
-    color: #465f72;
+    color: #4d687a;
 
     font-size:
         clamp(
-            0.98rem,
-            1.28vw,
-            1.08rem
+            1rem,
+            1.15vw,
+            1.07rem
         );
 
-    line-height: 1.72;
+    line-height: 1.58;
+
+    font-weight: 590;
+}
+
+
+.hero-support {
+
+    max-width: 660px;
+
+    margin:
+        6px
+        0
+        0;
+
+    color: #7a909e;
+
+    font-size:
+        clamp(
+            0.91rem,
+            1vw,
+            0.97rem
+        );
+
+    line-height: 1.53;
+
+    font-weight: 470;
 }
 
 
 /* =========================================================
-   HERO BUTTONS
+   HERO METRICS
 ========================================================= */
 
-.hero-actions {
+.hero-proof {
 
-    width:
-        min(
-            100%,
-            470px
-        );
+    width: 100%;
+
+    max-width: 540px;
 
     display: grid;
 
     grid-template-columns:
-        1.28fr
-        1.18fr
-        0.62fr;
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
 
-    gap: 10px;
+    column-gap: 0;
 
-    margin-top: 30px;
+    margin-top: 34px;
+}
+
+
+.hero-proof-item {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding:
+        0
+        18px;
+
+    text-align: center;
+}
+
+
+.hero-proof-item:first-child {
+
+    padding-left: 0;
+}
+
+
+.hero-proof-item:last-child {
+
+    padding-right: 0;
+}
+
+
+.hero-proof-item + .hero-proof-item {
+
+    border-left:
+        1px solid
+        rgba(18, 53, 77, 0.12);
+}
+
+
+.hero-proof-item strong {
+
+    display: block;
+
+    width: 100%;
+
+    color: var(--navy);
+
+    font-size: 1.36rem;
+
+    line-height: 1;
+
+    font-weight: 790;
+
+    letter-spacing: -0.035em;
+
+    text-align: center;
+}
+
+
+.hero-proof-item span {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 7px;
+
+    color: #647789;
+
+    font-size: 0.63rem;
+
+    line-height: 1.32;
+
+    font-weight: 560;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HERO CTA
+========================================================= */
+
+.hero-actions-refined {
+
+    width: 100%;
+
+    max-width: 540px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.05fr
+        1.27fr
+        0.84fr
+        0.84fr;
+
+    gap: 8px;
+
+    margin-top: 13px;
 }
 
 
@@ -571,11 +743,16 @@ a {
         0
         16px;
 
+    border:
+        1px solid transparent;
+
     border-radius: 8px;
 
     font-size: 0.75rem;
 
     font-weight: 720;
+
+    text-align: center;
 
     transition:
         transform 0.22s ease,
@@ -594,24 +771,96 @@ a {
 
 .button-primary {
 
-    color: var(--blue-dark);
+    color: #ffffff;
 
-    border:
-        1px solid
-        rgba(22, 116, 168, 0.22);
+    background: #2f718d;
 
-    background:
-        rgba(22, 116, 168, 0.07);
+    border-color: #2f718d;
+
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(47, 113, 141, 0.17);
 }
 
 
 .button-primary:hover {
 
-    color: white;
+    color: #ffffff;
 
-    background: var(--blue);
+    background: #285f77;
 
-    border-color: var(--blue);
+    border-color: #285f77;
+}
+
+
+.hero-automation-button {
+
+    color: #356a80;
+
+    background:
+        rgba(
+            63,
+            125,
+            149,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(63, 125, 149, 0.25);
+
+    box-shadow: none;
+}
+
+
+.hero-automation-button:hover {
+
+    color: #ffffff;
+
+    background: #568ca0;
+
+    border-color: #568ca0;
+}
+
+
+.button-secondary,
+.hero-quiet-button {
+
+    color: var(--navy);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    border:
+        1px solid
+        rgba(18, 53, 77, 0.15);
+
+    box-shadow: none;
+}
+
+
+.button-secondary:hover,
+.hero-quiet-button:hover {
+
+    color: var(--navy);
+
+    background: #f5f8fa;
+
+    border-color:
+        rgba(18, 53, 77, 0.28);
+
+    box-shadow:
+        0
+        6px
+        15px
+        rgba(13, 53, 82, 0.07);
 }
 
 
@@ -638,128 +887,21 @@ a {
 }
 
 
-.button-secondary {
+.hero-actions-refined .button {
 
-    color: var(--navy);
-
-    border:
-        1px solid
-        rgba(18, 53, 77, 0.15);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.82
-        );
-}
-
-
-.button-secondary:hover {
-
-    color: white;
-
-    background: var(--navy);
-
-    border-color: var(--navy);
-}
-
-
-.button-label-mobile {
-
-    display: none;
-}
-
-
-/* =========================================================
-   HERO METRICS
-========================================================= */
-
-.hero-proof {
-
-    width:
-        min(
-            100%,
-            470px
-        );
-
-    display: grid;
-
-    grid-template-columns:
-        1.28fr
-        1.18fr
-        0.62fr;
-
-    column-gap: 10px;
-
-    margin-top: 39px;
-}
-
-
-.hero-proof-item {
+    width: 100%;
 
     min-width: 0;
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: flex-start;
+    min-height: 42px;
 
     padding:
         0
-        5px;
+        9px;
 
-    text-align: center;
-}
+    font-size: 0.69rem;
 
-
-.hero-proof-item + .hero-proof-item {
-
-    border-left:
-        1px solid
-        rgba(18, 53, 77, 0.12);
-}
-
-
-.hero-proof-item strong {
-
-    display: block;
-
-    width: 100%;
-
-    color: var(--navy);
-
-    font-size: 1.35rem;
-
-    line-height: 1;
-
-    font-weight: 780;
-
-    letter-spacing: -0.035em;
-
-    text-align: center;
-}
-
-
-.hero-proof-item span {
-
-    display: block;
-
-    width: 100%;
-
-    margin-top: 7px;
-
-    color: #647789;
-
-    font-size: 0.62rem;
-
-    line-height: 1.35;
-
-    text-align: center;
+    white-space: nowrap;
 }
 
 
@@ -937,7 +1079,7 @@ a {
 
 
 /* =========================================================
-   FLOATING CAPABILITY CARDS
+   FLOATING CAPABILITY LINKS
 ========================================================= */
 
 .skill-float {
@@ -953,6 +1095,8 @@ a {
         13px;
 
     text-align: center;
+
+    cursor: pointer;
 
     border:
         1px solid var(--border);
@@ -973,9 +1117,15 @@ a {
 
     animation:
         floatCard
-        7s
+        4.8s
         ease-in-out
         infinite;
+
+    transition:
+        scale 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
 }
 
 
@@ -1041,7 +1191,7 @@ a {
 
     left: 4px;
 
-    animation-delay: -1.6s;
+    animation-delay: -1.2s;
 }
 
 
@@ -1051,7 +1201,7 @@ a {
 
     left: 6px;
 
-    animation-delay: -2.5s;
+    animation-delay: -3s;
 }
 
 
@@ -1061,7 +1211,7 @@ a {
 
     right: 3px;
 
-    animation-delay: -3s;
+    animation-delay: -2.1s;
 }
 
 
@@ -1071,7 +1221,7 @@ a {
 
     right: 5px;
 
-    animation-delay: -1.1s;
+    animation-delay: -1.6s;
 }
 
 
@@ -1081,7 +1231,7 @@ a {
 
     left: 147px;
 
-    animation-delay: -2s;
+    animation-delay: -2.6s;
 }
 
 
@@ -1092,25 +1242,49 @@ a {
 
         translate:
             0
-            -2px;
+            -3px;
     }
 
     50% {
 
         translate:
             0
-            3px;
+            4px;
     }
 }
 
 
+@media (hover: hover) and (pointer: fine) {
+
+    .skill-float:hover {
+
+        scale: 1.035;
+
+        border-color:
+            rgba(63, 125, 149, 0.32);
+
+        background: #ffffff;
+
+        box-shadow:
+            0 16px 34px
+            rgba(13, 53, 82, 0.13);
+    }
+}
+
+
+.skill-float:active {
+
+    scale: 0.975;
+}
+
+
 /* =========================================================
-   HERO LOCATION / EXPERIENCE META
+   HERO LOCATION / AVAILABILITY
 ========================================================= */
 
 .hero-visual-meta {
 
-    margin-top: 38px;
+    margin-top: 24px;
 
     display: flex;
 
@@ -1241,6 +1415,16 @@ a {
 }
 
 
+#work-china,
+#work-logistics,
+#work-eos,
+#work-quality,
+#work-automation {
+
+    scroll-margin-top: 94px;
+}
+
+
 /* =========================================================
    SECTION HEADINGS
 ========================================================= */
@@ -1344,7 +1528,8 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
@@ -1386,10 +1571,11 @@ a {
     transform:
         translateY(-4px);
 
+    border-color:
+        rgba(63, 125, 149, 0.30);
+
     box-shadow:
         var(--shadow-hover);
-
-    outline: none;
 }
 
 
@@ -1472,7 +1658,7 @@ a {
 
     margin-top: 17px;
 
-    color: var(--blue);
+    color: var(--action-accent);
 
     font-size: 0.66rem;
 
@@ -1705,14 +1891,19 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-.china-feature:hover {
+.china-feature:hover,
+.china-feature:focus-visible {
 
     transform:
         translateY(-4px);
+
+    border-color:
+        rgba(63, 125, 149, 0.30);
 
     box-shadow: var(--shadow-hover);
 }
@@ -1917,14 +2108,19 @@ a {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-.work-card:hover {
+.work-card:hover,
+.work-card:focus-visible {
 
     transform:
         translateY(-4px);
+
+    border-color:
+        rgba(63, 125, 149, 0.30);
 
     box-shadow:
         var(--shadow-hover);
@@ -2707,7 +2903,8 @@ a {
 
     transition:
         transform 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 
@@ -2715,6 +2912,9 @@ a {
 
     transform:
         translateY(-3px);
+
+    border-color:
+        rgba(255, 255, 255, 0.28);
 
     background:
         rgba(
@@ -2820,6 +3020,7 @@ a {
 
 /* =========================================================
    CASE STUDY MODAL
+   SMOOTH ZOOM + FADE
 ========================================================= */
 
 .case-modal {
@@ -2830,19 +3031,43 @@ a {
 
     z-index: 2000;
 
-    display: none;
+    display: flex;
 
     align-items: center;
 
     justify-content: center;
 
     padding: 28px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity
+        var(--modal-speed)
+        cubic-bezier(0.22, 1, 0.36, 1),
+
+        visibility
+        0s
+        linear
+        var(--modal-speed);
 }
 
 
 .case-modal.open {
 
-    display: flex;
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition-delay:
+        0s,
+        0s;
 }
 
 
@@ -2851,6 +3076,8 @@ a {
     position: absolute;
 
     inset: 0;
+
+    opacity: 0;
 
     background:
         rgba(
@@ -2861,6 +3088,19 @@ a {
         );
 
     backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        opacity
+        360ms
+        ease;
+}
+
+
+.case-modal.open .case-modal-backdrop {
+
+    opacity: 1;
 }
 
 
@@ -2880,7 +3120,19 @@ a {
 
     overflow: auto;
 
+    overscroll-behavior: contain;
+
     padding: 35px;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(0.955);
+
+    transform-origin:
+        center
+        center;
 
     border-radius: 22px;
 
@@ -2889,6 +3141,29 @@ a {
     box-shadow:
         0 30px 90px
         rgba(5, 25, 39, 0.24);
+
+    will-change:
+        transform,
+        opacity;
+
+    transition:
+        transform
+        var(--modal-speed)
+        cubic-bezier(0.22, 1, 0.36, 1),
+
+        opacity
+        calc(var(--modal-speed) - 40ms)
+        ease;
+}
+
+
+.case-modal.open .case-modal-panel {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
@@ -2914,6 +3189,22 @@ a {
     color: var(--navy);
 
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.case-modal-close:hover {
+
+    background: #f5f8fa;
+
+    border-color:
+        rgba(18, 53, 77, 0.25);
+
+    transform: scale(1.04);
 }
 
 
@@ -3135,10 +3426,28 @@ a {
 
 
 /* =========================================================
-   TABLET
+   TABLET / SMALL DESKTOP
 ========================================================= */
 
 @media (max-width: 1040px) {
+
+
+    .main-nav {
+
+        gap: 18px;
+    }
+
+
+    .main-nav a {
+
+        font-size: 0.77rem;
+    }
+
+
+    .hero {
+
+        min-height: 590px;
+    }
 
 
     .hero-grid {
@@ -3147,7 +3456,7 @@ a {
             minmax(0, 1fr)
             365px;
 
-        gap: 40px;
+        gap: 36px;
     }
 
 
@@ -3157,7 +3466,7 @@ a {
 
         font-size:
             clamp(
-                2.15rem,
+                2.1rem,
                 4vw,
                 2.65rem
             );
@@ -3214,7 +3523,7 @@ a {
 
     html {
 
-        scroll-padding-top: 68px;
+        scroll-padding-top: 76px;
     }
 
 
@@ -3239,7 +3548,21 @@ a {
 
     .brand {
 
-        font-size: 0.98rem;
+        gap: 8px;
+    }
+
+
+    .brand-icon {
+
+        width: 20px;
+
+        height: 20px;
+    }
+
+
+    .brand-text {
+
+        font-size: 1.02rem;
     }
 
 
@@ -3293,6 +3616,8 @@ a {
         padding:
             11px
             10px;
+
+        font-size: 0.8rem;
     }
 
 
@@ -3316,11 +3641,13 @@ a {
         display: block;
 
         padding:
-            22px
+            28px
             0
-            20px;
+            40px;
 
         overflow: hidden;
+
+        background: #ffffff;
     }
 
 
@@ -3379,198 +3706,80 @@ a {
 
         white-space: normal;
 
-        color: var(--hero-heading);
+        color: #355c72;
 
         font-size:
             clamp(
-                1.68rem,
-                7vw,
-                1.95rem
+                1.52rem,
+                6.5vw,
+                1.82rem
             );
 
-        line-height: 1.05;
+        line-height: 1.08;
 
-        letter-spacing: -0.038em;
+        letter-spacing: -0.04em;
+
+        font-weight: 770;
 
         text-align: left;
     }
 
 
     /* =====================================================
-       MOBILE DESCRIPTION
+       MOBILE COPY
+       Same font size; hierarchy comes from weight/colour.
     ===================================================== */
 
-    .hero-positioning {
+    .hero-positioning,
+    .hero-support {
 
         width: 100%;
 
         max-width: none;
 
-        margin:
-            15px
-            0
-            0;
-
-        color: #334155;
-
         font-size:
             clamp(
-                0.75rem,
-                3.05vw,
-                0.84rem
+                0.82rem,
+                3.45vw,
+                0.90rem
             );
 
-        line-height: 1.5;
+        line-height: 1.55;
+
+        letter-spacing: 0;
 
         text-align: left;
     }
 
 
-    /* =====================================================
-       MOBILE CTA BUTTONS
-    ===================================================== */
+    .hero-positioning {
 
-    .hero-actions {
-
-        width: 100%;
-
-        margin-top: 19px;
-
-        display: grid;
-
-        grid-template-columns:
-            1.28fr
-            1fr
-            0.55fr;
-
-        gap: 7px;
-    }
-
-
-    .hero-actions .button {
-
-        width: 100%;
-
-        min-width: 0;
-
-        min-height: 38px;
-
-        padding:
+        margin:
+            16px
             0
-            6px;
+            0;
 
-        border-radius: 8px;
+        color: #526f82;
 
-        white-space: nowrap;
-
-        font-size:
-            clamp(
-                0.54rem,
-                2.3vw,
-                0.65rem
-            );
-
-        font-weight: 750;
-
-        box-shadow: none;
+        font-weight: 600;
     }
 
 
-    .button-label-desktop {
+    .hero-support {
 
-        display: none;
-    }
+        margin:
+            4px
+            0
+            0;
 
+        color: #788d9b;
 
-    .button-label-mobile {
-
-        display: inline;
-    }
-
-
-    /* Primary CTA */
-
-    .hero-actions .button-primary {
-
-        color: #ffffff;
-
-        background: #1E293B;
-
-        border:
-            1px solid
-            #1E293B;
-    }
-
-
-    .hero-actions .button-primary:hover,
-    .hero-actions .button-primary:focus-visible {
-
-        color: #ffffff;
-
-        background: #0F172A;
-
-        border-color: #0F172A;
-
-        transform: none;
-    }
-
-
-    /* Automation */
-
-    .hero-actions .button-teal {
-
-        color: #334155;
-
-        background: #F8FAFC;
-
-        border:
-            1px solid
-            #CBD5E1;
-    }
-
-
-    .hero-actions .button-teal:hover,
-    .hero-actions .button-teal:focus-visible {
-
-        color: #1E293B;
-
-        background: #F1F5F9;
-
-        border-color: #94A3B8;
-
-        transform: none;
-    }
-
-
-    /* CV */
-
-    .hero-actions .button-secondary {
-
-        color: #334155;
-
-        background: white;
-
-        border:
-            1px solid
-            #CBD5E1;
-    }
-
-
-    .hero-actions .button-secondary:hover,
-    .hero-actions .button-secondary:focus-visible {
-
-        color: #1E293B;
-
-        background: #F8FAFC;
-
-        border-color: #94A3B8;
-
-        transform: none;
+        font-weight: 480;
     }
 
 
     /* =====================================================
-       MOBILE METRICS — LEFT ALIGNED
+       MOBILE METRICS
     ===================================================== */
 
     .hero-proof {
@@ -3590,11 +3799,11 @@ a {
         column-gap: 0;
 
         margin:
-            22px
+            28px
             0
             0;
 
-        text-align: left;
+        text-align: center;
     }
 
 
@@ -3606,15 +3815,15 @@ a {
 
         flex-direction: column;
 
-        align-items: flex-start;
+        align-items: center;
 
         justify-content: flex-start;
 
         padding:
             0
-            12px;
+            8px;
 
-        text-align: left;
+        text-align: center;
     }
 
 
@@ -3638,31 +3847,31 @@ a {
                 100,
                 116,
                 139,
-                0.22
+                0.20
             );
     }
 
 
     .hero-proof-item strong {
 
-        width: auto;
+        width: 100%;
 
         margin: 0;
 
-        color: #0F2940;
+        color: #0f2940;
 
         font-size:
             clamp(
                 1rem,
                 4.45vw,
-                1.17rem
+                1.16rem
             );
 
         line-height: 1;
 
-        font-weight: 780;
+        font-weight: 790;
 
-        text-align: left;
+        text-align: center;
     }
 
 
@@ -3672,23 +3881,146 @@ a {
 
         margin-top: 6px;
 
-        color: #475569;
+        color: #647789;
 
         font-size:
             clamp(
                 0.49rem,
                 2vw,
-                0.58rem
+                0.57rem
             );
 
         line-height: 1.25;
 
-        text-align: left;
+        font-weight: 560;
+
+        text-align: center;
     }
 
 
     /* =====================================================
-       PROFILE SYSTEM — TIGHTER BELOW METRICS
+       MOBILE CTA
+       Slightly narrower + centered.
+    ===================================================== */
+
+    .hero-actions-refined {
+
+        width: 90%;
+
+        max-width: 520px;
+
+        margin:
+            13px
+            auto
+            0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button {
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 39px;
+
+        padding:
+            0
+            7px;
+
+        border-radius: 9px;
+
+        font-size: 0.66rem;
+
+        font-weight: 720;
+
+        white-space: nowrap;
+    }
+
+
+    .hero-actions-refined .button:hover {
+
+        transform: none;
+    }
+
+
+    .hero-actions-refined .button-primary {
+
+        color: #ffffff;
+
+        background: #568ca0;
+
+        border-color: #568ca0;
+
+        box-shadow:
+            0
+            4px
+            10px
+            rgba(47, 113, 141, 0.11);
+    }
+
+
+    .hero-actions-refined .button-primary:hover,
+    .hero-actions-refined .button-primary:active {
+
+        color: #ffffff;
+
+        background: #4c8195;
+
+        border-color: #4c8195;
+    }
+
+
+    .hero-actions-refined .hero-automation-button {
+
+        color: #356a80;
+
+        background: #eef5f7;
+
+        border-color:
+            rgba(63, 125, 149, 0.26);
+
+        box-shadow: none;
+    }
+
+
+    .hero-actions-refined .hero-automation-button:hover,
+    .hero-actions-refined .hero-automation-button:active {
+
+        color: #315f73;
+
+        background: #e5f0f3;
+
+        border-color:
+            rgba(63, 125, 149, 0.36);
+    }
+
+
+    .hero-actions-refined .hero-quiet-button {
+
+        color: var(--navy);
+
+        background: #ffffff;
+
+        border-color:
+            rgba(18, 53, 77, 0.14);
+
+        box-shadow: none;
+    }
+
+
+    /* =====================================================
+       MOBILE PROFILE SYSTEM
     ===================================================== */
 
     .hero-visual {
@@ -3697,7 +4029,7 @@ a {
 
         min-height: 0;
 
-        margin-top: 17px;
+        margin-top: 22px;
 
         padding: 0;
 
@@ -3772,7 +4104,7 @@ a {
 
 
     /* =====================================================
-       MOBILE FLOATING LABELS
+       MOBILE CLICKABLE FLOATING LABELS
     ===================================================== */
 
     .skill-float {
@@ -3785,13 +4117,25 @@ a {
             6px
             8px;
 
+        border:
+            1px solid
+            rgba(18, 53, 77, 0.10);
+
         border-radius: 10px;
 
-        animation:
-            floatCard
-            8s
-            ease-in-out
-            infinite;
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.95
+            );
+
+        box-shadow:
+            0 7px 19px
+            rgba(13, 53, 82, 0.06);
+
+        animation-duration: 4.8s;
     }
 
 
@@ -3809,6 +4153,8 @@ a {
             );
 
         line-height: 1.15;
+
+        font-weight: 760;
     }
 
 
@@ -3820,8 +4166,6 @@ a {
 
         transform:
             translateX(-50%);
-
-        animation-delay: -0.4s;
     }
 
 
@@ -3830,8 +4174,6 @@ a {
         top: 60px;
 
         left: 3px;
-
-        animation-delay: -1.6s;
     }
 
 
@@ -3840,8 +4182,6 @@ a {
         top: 60px;
 
         right: 3px;
-
-        animation-delay: -2.8s;
     }
 
 
@@ -3850,8 +4190,6 @@ a {
         bottom: 47px;
 
         left: 3px;
-
-        animation-delay: -3.9s;
     }
 
 
@@ -3860,8 +4198,6 @@ a {
         bottom: 47px;
 
         right: 3px;
-
-        animation-delay: -1.1s;
     }
 
 
@@ -3873,20 +4209,18 @@ a {
 
         transform:
             translateX(-50%);
-
-        animation-delay: -2.1s;
     }
 
 
     /* =====================================================
-       MOBILE META LINE
+       MOBILE META
     ===================================================== */
 
     .hero-visual-meta {
 
         width: 100%;
 
-        margin-top: 13px;
+        margin-top: 14px;
 
         display: flex;
 
@@ -3988,7 +4322,7 @@ a {
 
 
     /* =====================================================
-       MOBILE IMPACT CARDS
+       MOBILE IMPACT
     ===================================================== */
 
     .impact-card {
@@ -4044,7 +4378,7 @@ a {
 
 
     /* =====================================================
-       MOBILE CHINA CARD
+       MOBILE CHINA
     ===================================================== */
 
     .china-feature {
@@ -4249,12 +4583,28 @@ a {
 
         width: 100%;
 
-        max-height: 91vh;
+        max-height: 91svh;
 
         padding:
             26px
             18px
             20px;
+
+        transform:
+            translateY(14px)
+            scale(0.96);
+
+        transform-origin:
+            center
+            bottom;
+    }
+
+
+    .case-modal.open .case-modal-panel {
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 
 
@@ -4304,16 +4654,16 @@ a {
     .hero {
 
         padding:
-            19px
+            25px
             0
-            17px;
+            36px;
     }
 
 
     .hero .hero-grid {
 
         width:
-            calc(100% - 30px);
+            calc(100% - 28px);
     }
 
 
@@ -4321,65 +4671,42 @@ a {
 
         font-size:
             clamp(
-                1.64rem,
-                7.15vw,
-                1.87rem
+                1.48rem,
+                6.35vw,
+                1.68rem
             );
+    }
+
+
+    .hero-positioning,
+    .hero-support {
+
+        font-size:
+            clamp(
+                0.81rem,
+                3.35vw,
+                0.88rem
+            );
+
+        line-height: 1.53;
     }
 
 
     .hero-positioning {
 
-        margin-top: 13px;
-
-        font-size:
-            clamp(
-                0.73rem,
-                3vw,
-                0.81rem
-            );
-
-        line-height: 1.48;
+        margin-top: 15px;
     }
 
 
-    .hero-actions {
+    .hero-support {
 
-        grid-template-columns:
-            1.25fr
-            1fr
-            0.52fr;
-
-        gap: 6px;
-
-        margin-top: 17px;
+        margin-top: 4px;
     }
 
-
-    .hero-actions .button {
-
-        min-height: 36px;
-
-        padding:
-            0
-            5px;
-
-        font-size:
-            clamp(
-                0.52rem,
-                2.25vw,
-                0.61rem
-            );
-    }
-
-
-    /* =====================================================
-       SMALL MOBILE METRICS
-    ===================================================== */
 
     .hero-proof {
 
-        margin-top: 19px;
+        margin-top: 26px;
     }
 
 
@@ -4387,23 +4714,7 @@ a {
 
         padding:
             0
-            9px;
-    }
-
-
-    .hero-proof-item:first-child {
-
-        padding-left: 0;
-
-        padding-right: 9px;
-    }
-
-
-    .hero-proof-item:last-child {
-
-        padding-right: 0;
-
-        padding-left: 9px;
+            7px;
     }
 
 
@@ -4413,7 +4724,7 @@ a {
             clamp(
                 0.98rem,
                 4.35vw,
-                1.12rem
+                1.1rem
             );
     }
 
@@ -4426,18 +4737,36 @@ a {
             clamp(
                 0.48rem,
                 1.95vw,
-                0.56rem
+                0.55rem
             );
     }
 
 
-    /* =====================================================
-       SMALL MOBILE PROFILE
-    ===================================================== */
+    .hero-actions-refined {
+
+        width: 90%;
+
+        margin-top: 12px;
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button {
+
+        min-height: 38px;
+
+        padding:
+            0
+            5px;
+
+        font-size: 0.63rem;
+    }
+
 
     .hero-visual {
 
-        margin-top: 15px;
+        margin-top: 21px;
     }
 
 
@@ -4576,29 +4905,32 @@ a {
 
     .hero h1 {
 
-        font-size: 1.55rem;
+        font-size: 1.42rem;
     }
 
 
-    .hero-positioning {
+    .hero-positioning,
+    .hero-support {
 
-        font-size: 0.71rem;
+        font-size: 0.79rem;
     }
 
 
-    .hero-actions {
+    .hero-actions-refined {
 
-        gap: 4px;
+        width: 94%;
+
+        gap: 6px;
     }
 
 
-    .hero-actions .button {
+    .hero-actions-refined .button {
 
         padding:
             0
-            3px;
+            4px;
 
-        font-size: 0.5rem;
+        font-size: 0.58rem;
     }
 
 
@@ -4607,22 +4939,6 @@ a {
         padding:
             0
             6px;
-    }
-
-
-    .hero-proof-item:first-child {
-
-        padding-left: 0;
-
-        padding-right: 6px;
-    }
-
-
-    .hero-proof-item:last-child {
-
-        padding-left: 6px;
-
-        padding-right: 0;
     }
 
 
@@ -4728,35 +5044,41 @@ a {
         min-height:
             calc(100svh - 68px);
 
-        overflow: visible;
+        padding-top: 20px;
 
-        padding-top: 15px;
+        padding-bottom: 30px;
     }
 
 
     .hero-positioning {
 
-        margin-top: 9px;
+        margin-top: 12px;
 
-        line-height: 1.42;
+        line-height: 1.48;
     }
 
 
-    .hero-actions {
+    .hero-support {
 
-        margin-top: 13px;
+        line-height: 1.46;
     }
 
 
     .hero-proof {
 
-        margin-top: 15px;
+        margin-top: 21px;
+    }
+
+
+    .hero-actions-refined {
+
+        margin-top: 10px;
     }
 
 
     .hero-visual {
 
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
 
@@ -4861,2189 +5183,6 @@ a {
     #particleCanvas {
 
         display: none;
-    }
-
-}
-/* =========================================================
-   MOBILE HERO — CLEANER / CALMER VERSION
-   Desktop remains unchanged
-========================================================= */
-
-@media (max-width: 768px) {
-
-    /* -----------------------------------------------------
-       HERO
-       Natural height prevents large forced empty areas.
-    ----------------------------------------------------- */
-
-    .hero {
-        min-height: auto;
-        height: auto;
-
-        padding:
-            34px
-            0
-            38px;
-
-        display: block;
-
-        overflow: hidden;
-
-        background:
-            radial-gradient(
-                circle at 70% 70%,
-                rgba(22, 116, 168, 0.045),
-                transparent 32%
-            ),
-            rgba(255, 255, 255, 0.94);
-    }
-
-
-    .hero .hero-grid {
-        width: calc(100% - 34px);
-
-        max-width: none;
-
-        margin:
-            0
-            auto;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        justify-content: flex-start;
-
-        gap: 0;
-    }
-
-
-    /* =====================================================
-       INTRODUCTION
-    ===================================================== */
-
-    .hero-content {
-        width: 100%;
-
-        max-width: none;
-
-        margin: 0;
-
-        padding: 0;
-
-        text-align: left;
-    }
-
-
-    /* -----------------------------------------------------
-       STRONGER HEADLINE
-    ----------------------------------------------------- */
-
-    .hero h1 {
-        width: 100%;
-
-        max-width: none;
-
-        margin: 0;
-
-        color: #243F52;
-
-        font-size:
-            clamp(
-                2rem,
-                8.4vw,
-                2.45rem
-            );
-
-        line-height: 1.03;
-
-        letter-spacing: -0.045em;
-
-        font-weight: 800;
-
-        text-align: left;
-
-        white-space: normal;
-    }
-
-
-    /* -----------------------------------------------------
-       SUPPORTING COPY
-    ----------------------------------------------------- */
-
-    .hero-positioning {
-        width: 100%;
-
-        max-width: 38rem;
-
-        margin:
-            20px
-            0
-            0;
-
-        color: #334155;
-
-        font-size:
-            clamp(
-                0.86rem,
-                3.65vw,
-                0.98rem
-            );
-
-        line-height: 1.62;
-
-        font-weight: 400;
-
-        text-align: left;
-    }
-
-
-    /* =====================================================
-       CTA AREA
-
-       All buttons now use the same quiet visual language.
-    ===================================================== */
-
-    .hero-actions {
-        width: 100%;
-
-        margin-top: 25px;
-
-        display: grid;
-
-        grid-template-columns:
-            1.25fr
-            1fr
-            0.55fr;
-
-        gap: 8px;
-    }
-
-
-    .hero-actions .button,
-    .hero-actions .button-primary,
-    .hero-actions .button-teal,
-    .hero-actions .button-secondary {
-        width: 100%;
-
-        min-width: 0;
-
-        min-height: 40px;
-
-        padding:
-            0
-            7px;
-
-        display: inline-flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        border:
-            1px solid #CBD5E1;
-
-        border-radius: 9px;
-
-        background: #F8FAFC;
-
-        color: #334155;
-
-        box-shadow: none;
-
-        font-size:
-            clamp(
-                0.58rem,
-                2.55vw,
-                0.7rem
-            );
-
-        font-weight: 700;
-
-        white-space: nowrap;
-
-        transform: none;
-
-        transition:
-            background 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease;
-    }
-
-
-    .hero-actions .button:hover,
-    .hero-actions .button:focus-visible,
-    .hero-actions .button-primary:hover,
-    .hero-actions .button-primary:focus-visible,
-    .hero-actions .button-teal:hover,
-    .hero-actions .button-teal:focus-visible,
-    .hero-actions .button-secondary:hover,
-    .hero-actions .button-secondary:focus-visible {
-        background: #EEF2F6;
-
-        color: #1E293B;
-
-        border-color: #AEBCC9;
-
-        transform: none;
-    }
-
-
-    /* =====================================================
-       METRICS
-
-       Hidden only on mobile.
-       Desktop £520k / 1,000+ / 19 remains unchanged.
-    ===================================================== */
-
-    .hero-proof {
-        display: none;
-    }
-
-
-    /* =====================================================
-       PORTRAIT SYSTEM
-
-       Clear separation between CTA area and portrait.
-    ===================================================== */
-
-    .hero-visual {
-        width: 100%;
-
-        margin-top: 34px;
-
-        padding: 0;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        justify-content: flex-start;
-    }
-
-
-    .portrait-system {
-        position: relative;
-
-        width:
-            min(
-                calc(100vw - 46px),
-                310px
-            );
-
-        height: 265px;
-
-        margin:
-            0
-            auto;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-    }
-
-
-    /* -----------------------------------------------------
-       PROFILE PHOTO
-    ----------------------------------------------------- */
-
-    .portrait-ring {
-        width: 122px;
-
-        height: 122px;
-
-        padding: 5px;
-    }
-
-
-    /* -----------------------------------------------------
-       ORBIT SYSTEM
-    ----------------------------------------------------- */
-
-    .hero-orbit-one {
-        width: 184px;
-
-        height: 184px;
-    }
-
-
-    .hero-orbit-two {
-        width: 238px;
-
-        height: 238px;
-    }
-
-
-    .hero-pulse {
-        width: 158px;
-
-        height: 158px;
-    }
-
-
-    /* =====================================================
-       ORBIT LABELS
-
-       Still animated, but calmer and slightly lighter.
-    ===================================================== */
-
-    .skill-float {
-        min-width: 77px;
-
-        max-width: 104px;
-
-        padding:
-            6px
-            8px;
-
-        border:
-            1px solid rgba(18, 53, 77, 0.10);
-
-        border-radius: 10px;
-
-        background:
-            rgba(
-                255,
-                255,
-                255,
-                0.94
-            );
-
-        box-shadow:
-            0 7px 19px
-            rgba(13, 53, 82, 0.055);
-
-        animation-duration: 9s;
-    }
-
-
-    .skill-float strong {
-        white-space: nowrap;
-
-        font-size:
-            clamp(
-                0.51rem,
-                2.1vw,
-                0.61rem
-            );
-
-        font-weight: 750;
-
-        line-height: 1.15;
-    }
-
-
-    /* Top */
-
-    .skill-operations {
-        top: 2px;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-
-    /* Upper left */
-
-    .skill-supply {
-        top: 63px;
-
-        left: 3px;
-    }
-
-
-    /* Upper right */
-
-    .skill-process {
-        top: 63px;
-
-        right: 3px;
-    }
-
-
-    /* Lower left */
-
-    .skill-quality {
-        bottom: 50px;
-
-        left: 3px;
-    }
-
-
-    /* Lower right */
-
-    .skill-eos {
-        bottom: 50px;
-
-        right: 3px;
-    }
-
-
-    /* Bottom */
-
-    .skill-automation {
-        bottom: 0;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-
-    /* =====================================================
-       EXPERIENCE / LOCATION / AVAILABILITY
-    ===================================================== */
-
-    .hero-visual-meta {
-        width: 100%;
-
-        margin-top: 20px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 11px;
-
-        white-space: nowrap;
-
-        color: #52697A;
-
-        font-size:
-            clamp(
-                0.7rem,
-                2.9vw,
-                0.82rem
-            );
-
-        line-height: 1;
-
-        font-weight: 680;
-    }
-
-
-    .meta-item {
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 5px;
-    }
-
-
-    .meta-icon {
-        width: 14px;
-
-        height: 14px;
-    }
-
-
-    .availability-meta {
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 6px;
-
-        color: #12806F;
-
-        font-weight: 730;
-    }
-
-
-    .availability-dot {
-        width: 7px;
-
-        height: 7px;
-    }
-
-}
-
-
-/* =========================================================
-   SMALLER PHONES
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .hero {
-        padding:
-            30px
-            0
-            34px;
-    }
-
-
-    .hero .hero-grid {
-        width: calc(100% - 30px);
-    }
-
-
-    .hero h1 {
-        font-size:
-            clamp(
-                1.95rem,
-                8.3vw,
-                2.25rem
-            );
-    }
-
-
-    .hero-positioning {
-        margin-top: 18px;
-
-        font-size:
-            clamp(
-                0.83rem,
-                3.55vw,
-                0.94rem
-            );
-
-        line-height: 1.58;
-    }
-
-
-    .hero-actions {
-        margin-top: 23px;
-
-        gap: 7px;
-    }
-
-
-    .hero-actions .button,
-    .hero-actions .button-primary,
-    .hero-actions .button-teal,
-    .hero-actions .button-secondary {
-        min-height: 39px;
-
-        padding:
-            0
-            5px;
-
-        font-size:
-            clamp(
-                0.56rem,
-                2.45vw,
-                0.66rem
-            );
-    }
-
-
-    .hero-visual {
-        margin-top: 31px;
-    }
-
-
-    .portrait-system {
-        width:
-            min(
-                calc(100vw - 40px),
-                292px
-            );
-
-        height: 255px;
-    }
-
-
-    .portrait-ring {
-        width: 118px;
-
-        height: 118px;
-    }
-
-
-    .hero-orbit-one {
-        width: 178px;
-
-        height: 178px;
-    }
-
-
-    .hero-orbit-two {
-        width: 230px;
-
-        height: 230px;
-    }
-
-
-    .hero-pulse {
-        width: 153px;
-
-        height: 153px;
-    }
-
-
-    .skill-supply,
-    .skill-process {
-        top: 60px;
-    }
-
-
-    .skill-quality,
-    .skill-eos {
-        bottom: 48px;
-    }
-
-
-    .hero-visual-meta {
-        margin-top: 18px;
-
-        gap: 9px;
-
-        font-size:
-            clamp(
-                0.67rem,
-                2.85vw,
-                0.77rem
-            );
-    }
-
-}
-/* =========================================================
-   MOBILE HERO TEXT REFINEMENT
-   - one-line title
-   - stronger title
-   - larger / darker intro paragraph
-========================================================= */
-
-@media (max-width: 768px) {
-
-  .hero {
-    padding: 24px 0 34px;
-  }
-
-  .hero .hero-grid {
-    width: calc(100% - 30px);
-    margin: 0 auto;
-  }
-
-  .hero-content {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-  }
-
-  .hero h1 {
-    margin: 0 0 18px;
-    font-size: clamp(1.45rem, 6.2vw, 2rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    font-weight: 850;
-    color: #183B56;
-    white-space: nowrap;
-    overflow: visible;
-    text-wrap: nowrap;
-  }
-
-  .hero-positioning {
-    margin: 0 0 24px;
-    max-width: 100%;
-    font-size: clamp(1rem, 4vw, 1.08rem);
-    line-height: 1.65;
-    font-weight: 500;
-    color: #334155;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .hero {
-    padding: 22px 0 30px;
-  }
-
-  .hero .hero-grid {
-    width: calc(100% - 28px);
-  }
-
-  .hero h1 {
-    margin: 0 0 16px;
-    font-size: clamp(1.38rem, 5.9vw, 1.82rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    font-weight: 850;
-    color: #183B56;
-    white-space: nowrap;
-    overflow: visible;
-    text-wrap: nowrap;
-  }
-
-  .hero-positioning {
-    margin: 0 0 22px;
-    font-size: clamp(0.98rem, 3.95vw, 1.04rem);
-    line-height: 1.68;
-    font-weight: 500;
-    color: #334155;
-  }
-}
-/* =========================================================
-   MOBILE HERO — FINAL HEADLINE + INTRO REFINEMENT
-   Add at the very END of style.css
-========================================================= */
-
-@media (max-width: 768px) {
-
-    /* -----------------------------------------------------
-       HEADLINE
-       Force "Building stronger operations." onto one line
-    ----------------------------------------------------- */
-
-    .hero h1 {
-        width: 100%;
-        max-width: none;
-
-        margin: 0;
-
-        white-space: nowrap;
-
-        color: #17384d;
-
-        font-size: clamp(
-            1.35rem,
-            5.9vw,
-            1.78rem
-        );
-
-        line-height: 1.05;
-
-        letter-spacing: -0.045em;
-
-        font-weight: 850;
-
-        text-align: left;
-    }
-
-
-    /* -----------------------------------------------------
-       INTRO PARAGRAPH
-       Slightly larger, darker and more confident
-    ----------------------------------------------------- */
-
-    .hero-positioning {
-        width: 100%;
-        max-width: 39rem;
-
-        margin: 20px 0 0;
-
-        color: #334155;
-
-        font-size: clamp(
-            0.91rem,
-            3.75vw,
-            1.02rem
-        );
-
-        line-height: 1.58;
-
-        font-weight: 500;
-
-        letter-spacing: -0.008em;
-
-        text-align: left;
-    }
-
-
-    /* Keep good breathing room before the buttons */
-
-    .hero-actions {
-        margin-top: 27px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE PHONES
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .hero h1 {
-        font-size: clamp(
-            1.32rem,
-            5.85vw,
-            1.55rem
-        );
-
-        letter-spacing: -0.048em;
-    }
-
-
-    .hero-positioning {
-        margin-top: 19px;
-
-        font-size: clamp(
-            0.89rem,
-            3.7vw,
-            0.98rem
-        );
-
-        line-height: 1.57;
-    }
-
-
-    .hero-actions {
-        margin-top: 25px;
-    }
-}
-
-
-/* =========================================================
-   VERY NARROW PHONES
-   Keeps headline safely on one line
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .hero h1 {
-        font-size: 1.28rem;
-
-        letter-spacing: -0.05em;
-    }
-
-
-    .hero-positioning {
-        font-size: 0.87rem;
-    }
-}
-/* =========================================================
-   MOBILE HERO TEXT REFINEMENT
-   - one-line title
-   - stronger title
-   - larger / darker intro paragraph
-========================================================= */
-
-@media (max-width: 768px) {
-
-  .hero {
-    padding: 24px 0 34px;
-  }
-
-  .hero .hero-grid {
-    width: calc(100% - 30px);
-    margin: 0 auto;
-  }
-
-  .hero-content {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-  }
-
-  .hero h1 {
-    margin: 0 0 18px;
-    font-size: clamp(1.45rem, 6.2vw, 2rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    font-weight: 850;
-    color: #183B56;
-    white-space: nowrap;
-    overflow: visible;
-    text-wrap: nowrap;
-  }
-
-  .hero-positioning {
-    margin: 0 0 24px;
-    max-width: 100%;
-    font-size: clamp(1rem, 4vw, 1.08rem);
-    line-height: 1.65;
-    font-weight: 500;
-    color: #334155;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .hero {
-    padding: 22px 0 30px;
-  }
-
-  .hero .hero-grid {
-    width: calc(100% - 28px);
-  }
-
-  .hero h1 {
-    margin: 0 0 16px;
-    font-size: clamp(1.38rem, 5.9vw, 1.82rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    font-weight: 850;
-    color: #183B56;
-    white-space: nowrap;
-    overflow: visible;
-    text-wrap: nowrap;
-  }
-
-  .hero-positioning {
-    margin: 0 0 22px;
-    font-size: clamp(0.98rem, 3.95vw, 1.04rem);
-    line-height: 1.68;
-    font-weight: 500;
-    color: #334155;
-  }
-}
-/* Mobile intro paragraph — quieter sizing */
-
-@media (max-width: 768px) {
-    .hero-positioning {
-        font-size: clamp(0.80rem, 3.2vw, 0.90rem);
-        line-height: 1.55;
-        color: #475569;
-        font-weight: 475;
-    }
-}
-/* =========================================================
-   MOBILE HERO — SMALL FINAL REFINEMENTS
-========================================================= */
-
-@media (max-width: 768px) {
-
-    /* Slightly increase paragraph size */
-    .hero-positioning {
-        font-size: clamp(0.83rem, 3.35vw, 0.93rem);
-        line-height: 1.55;
-        color: #475569;
-        font-weight: 475;
-    }
-
-
-    /* Make the CTA group slightly narrower */
-    .hero-actions {
-        width: 92%;
-        margin-top: 25px;
-        margin-left: 0;
-        margin-right: auto;
-    }
-
-
-    /* Keep the buttons the same height, just less wide overall */
-    .hero-actions .button,
-    .hero-actions .button-primary,
-    .hero-actions .button-teal,
-    .hero-actions .button-secondary {
-        min-height: 39px;
-    }
-
-
-    /* Fill the remaining phone viewport with white */
-    .hero {
-        min-height: calc(100dvh - 68px);
-        height: auto;
-
-        background: #ffffff;
-
-        padding-bottom: 56px;
-        margin-bottom: 0;
-    }
-}
-
-
-/* Slight extra protection for normal phone widths */
-@media (max-width: 480px) {
-
-    .hero-positioning {
-        font-size: clamp(0.82rem, 3.3vw, 0.91rem);
-    }
-
-    .hero-actions {
-        width: 92%;
-    }
-
-    .hero {
-        min-height: calc(100dvh - 68px);
-        padding-bottom: 60px;
-    }
-}
-/* =========================================================
-   MOBILE HERO — REMOVE BOTTOM GREY STRIP
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .hero {
-        min-height: calc(100vh - 68px);
-        min-height: calc(100dvh - 68px);
-
-        background: #ffffff !important;
-
-        padding-bottom: 90px;
-    }
-}
-/* =========================================================
-   ORBIT CARDS — RESTORE NORMAL MOVEMENT
-========================================================= */
-
-.skill-float {
-    animation-name: floatCard;
-    animation-duration: 4.8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-}
-
-
-/* Slightly more visible vertical movement */
-@keyframes floatCard {
-
-    0%,
-    100% {
-        translate: 0 -3px;
-    }
-
-    50% {
-        translate: 0 4px;
-    }
-}
-
-
-/* Offset the cards so they don't all move together */
-.skill-operations {
-    animation-delay: -0.4s;
-}
-
-.skill-supply {
-    animation-delay: -1.2s;
-}
-
-.skill-process {
-    animation-delay: -2.1s;
-}
-
-.skill-quality {
-    animation-delay: -3s;
-}
-
-.skill-eos {
-    animation-delay: -1.6s;
-}
-
-.skill-automation {
-    animation-delay: -2.6s;
-}
-
-
-/* Same movement on mobile */
-@media (max-width: 768px) {
-
-    .skill-float {
-        animation-duration: 4.8s;
-    }
-}
-/* =========================================================
-   MOBILE HERO — RESTORE DESKTOP-STYLE BLUE TYPOGRAPHY
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .hero h1 {
-        color: #355C72;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-    }
-
-    .hero-positioning {
-        color: #526F82;
-        font-weight: 450;
-        line-height: 1.55;
-    }
-}
-
-/* =========================================================
-   HERO REFINEMENT PATCH
-   12 SEPTEMBER 2026
-
-   IMPORTANT:
-   This block is intentionally hero-only.
-   Do not replace the original site styles.
-========================================================= */
-
-
-/* =========================================================
-   HERO COPY
-========================================================= */
-
-.hero-content {
-    max-width: 680px;
-}
-
-
-.hero h1 {
-    font-size: clamp(
-        2.6rem,
-        3.05vw,
-        3.4rem
-    );
-
-    line-height: 1.05;
-    letter-spacing: -0.038em;
-}
-
-
-.hero-positioning {
-    max-width: 650px;
-
-    margin-top: 22px;
-
-    color: #526f82;
-
-    font-size: clamp(
-        1rem,
-        1.22vw,
-        1.08rem
-    );
-
-    line-height: 1.62;
-
-    font-weight: 560;
-}
-
-
-.hero-support {
-    max-width: 650px;
-
-    margin:
-        15px
-        0
-        0;
-
-    color: #8295a2;
-
-    font-size: 0.86rem;
-
-    line-height: 1.55;
-
-    font-weight: 480;
-}
-
-
-/* =========================================================
-   HERO PROOF NUMBERS
-========================================================= */
-
-.hero-proof {
-    width: 100%;
-    max-width: 520px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
-
-    margin-top: 26px;
-}
-
-
-.hero-proof-item {
-    min-width: 0;
-
-    padding-right: 20px;
-}
-
-
-.hero-proof-item + .hero-proof-item {
-    padding-left: 20px;
-
-    border-left:
-        1px solid
-        rgba(18, 53, 77, 0.12);
-}
-
-
-.hero-proof-item strong {
-    display: block;
-
-    color: var(--navy);
-
-    font-size: 1.32rem;
-
-    line-height: 1;
-
-    font-weight: 790;
-
-    letter-spacing: -0.035em;
-}
-
-
-.hero-proof-item span {
-    display: block;
-
-    margin-top: 6px;
-
-    color: var(--muted);
-
-    font-size: 0.60rem;
-
-    line-height: 1.28;
-
-    font-weight: 560;
-}
-
-
-/* =========================================================
-   HERO CTA GROUP
-========================================================= */
-
-.hero-actions-refined {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 9px;
-
-    margin-top: 23px;
-}
-
-
-/* MAIN CTA */
-
-.hero-actions-refined .button-primary {
-    min-height: 43px;
-
-    padding:
-        0
-        19px;
-
-    color: #ffffff;
-
-    background: #2f718d;
-
-    border-color: #2f718d;
-
-    box-shadow:
-        0
-        7px
-        18px
-        rgba(47, 113, 141, 0.17);
-}
-
-
-.hero-actions-refined .button-primary:hover {
-    color: #ffffff;
-
-    background: #285f77;
-
-    border-color: #285f77;
-}
-
-
-/* QUIET CTA BUTTONS */
-
-.hero-actions-refined .hero-quiet-button {
-    min-height: 43px;
-
-    padding:
-        0
-        17px;
-
-    color: var(--navy);
-
-    background:
-        rgba(255, 255, 255, 0.92);
-
-    border:
-        1px solid
-        rgba(18, 53, 77, 0.15);
-
-    box-shadow: none;
-}
-
-
-.hero-actions-refined .hero-quiet-button:hover {
-    color: var(--navy);
-
-    background: #f5f8fa;
-
-    border-color:
-        rgba(18, 53, 77, 0.27);
-
-    box-shadow:
-        0
-        6px
-        15px
-        rgba(13, 53, 82, 0.07);
-}
-
-
-/* =========================================================
-   MOBILE HERO ONLY
-========================================================= */
-
-@media (max-width: 760px) {
-
-    .hero-content {
-        max-width: none;
-    }
-
-
-    .hero h1 {
-        font-size: clamp(
-            1.78rem,
-            7.4vw,
-            2.1rem
-        );
-
-        line-height: 1.06;
-
-        white-space: normal;
-    }
-
-
-    .hero-positioning {
-        max-width: none;
-
-        margin-top: 18px;
-
-        font-size: 0.92rem;
-
-        line-height: 1.56;
-    }
-
-
-    .hero-support {
-        max-width: none;
-
-        margin-top: 13px;
-
-        font-size: 0.75rem;
-
-        line-height: 1.47;
-    }
-
-
-    /* PROOF STRIP */
-
-    .hero-proof {
-        width: 100%;
-        max-width: none;
-
-        margin-top: 23px;
-
-        grid-template-columns:
-            repeat(
-                3,
-                minmax(0, 1fr)
-            );
-    }
-
-
-    .hero-proof-item {
-        padding-right: 8px;
-    }
-
-
-    .hero-proof-item + .hero-proof-item {
-        padding-left: 8px;
-    }
-
-
-    .hero-proof-item strong {
-        font-size: 1.04rem;
-    }
-
-
-    .hero-proof-item span {
-        margin-top: 5px;
-
-        font-size: 0.48rem;
-
-        line-height: 1.22;
-    }
-
-
-    /* 2 x 2 CTA GRID */
-
-    .hero-actions-refined {
-        width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
-
-        gap: 8px;
-
-        margin-top: 20px;
-    }
-
-
-    /*
-       Reduced mobile button HEIGHT.
-       Your previous buttons were too thick.
-    */
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        width: 100%;
-
-        min-height: 38px;
-
-        padding:
-            0
-            8px;
-
-        font-size: 0.67rem;
-
-        border-radius: 9px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 460px) {
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 37px;
-
-        font-size: 0.65rem;
-    }
-
-
-    .hero-proof-item strong {
-        font-size: 0.98rem;
-    }
-
-
-    .hero-proof-item span {
-        font-size: 0.45rem;
-    }
-
-}
-/* =========================================================
-   HERO FINAL REFINEMENT
-   Desktop title + paragraph spacing + CTA alignment
-========================================================= */
-
-
-/* =========================================================
-   DESKTOP HERO TITLE
-   Reduce size so it does not crowd portrait area
-========================================================= */
-
-.hero h1 {
-    font-size: clamp(
-        2.25rem,
-        2.65vw,
-        2.95rem
-    );
-
-    line-height: 1.06;
-    letter-spacing: -0.036em;
-}
-
-
-/* =========================================================
-   HERO PARAGRAPHS
-   Bring supporting experience line directly underneath
-========================================================= */
-
-.hero-positioning {
-    margin-bottom: 0;
-}
-
-
-.hero-support {
-    margin-top: 5px;
-
-    max-width: 670px;
-
-    font-size: 0.84rem;
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   METRICS + CTA WIDTH ALIGNMENT
-
-   Metrics and buttons now begin and end at same points
-========================================================= */
-
-.hero-proof,
-.hero-actions-refined {
-    width: 100%;
-    max-width: 520px;
-}
-
-
-/* =========================================================
-   DESKTOP CTA GRID
-
-   Four nearly equal-width buttons across same width
-   as the metrics above
-========================================================= */
-
-.hero-actions-refined {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            4,
-            minmax(0, 1fr)
-        );
-
-    gap: 8px;
-
-    margin-top: 21px;
-}
-
-
-.hero-actions-refined .button,
-.hero-actions-refined .button-primary,
-.hero-actions-refined .hero-quiet-button {
-    width: 100%;
-
-    min-width: 0;
-
-    min-height: 42px;
-
-    padding:
-        0
-        9px;
-
-    font-size: 0.69rem;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   SELECTED WORK
-   Only highlighted CTA
-========================================================= */
-
-.hero-actions-refined .button-primary {
-    color: #ffffff;
-
-    background: #2f718d;
-
-    border-color: #2f718d;
-
-    box-shadow:
-        0
-        7px
-        18px
-        rgba(47, 113, 141, 0.17);
-}
-
-
-/* =========================================================
-   ALL OTHER CTA BUTTONS
-   Same quiet treatment
-========================================================= */
-
-.hero-actions-refined .hero-quiet-button {
-    color: var(--navy);
-
-    background:
-        rgba(255, 255, 255, 0.92);
-
-    border:
-        1px solid
-        rgba(18, 53, 77, 0.16);
-
-    box-shadow: none;
-}
-
-
-.hero-actions-refined .hero-quiet-button:hover {
-    color: var(--navy);
-
-    background: #f5f8fa;
-
-    border-color:
-        rgba(18, 53, 77, 0.28);
-}
-
-
-/* =========================================================
-   MOBILE
-   Slight title reduction only
-   Keep your current 2 x 2 CTA layout
-========================================================= */
-
-@media (max-width: 760px) {
-
-    .hero h1 {
-        font-size: clamp(
-            1.66rem,
-            6.9vw,
-            1.96rem
-        );
-
-        line-height: 1.07;
-    }
-
-
-    .hero-support {
-        margin-top: 4px;
-
-        font-size: 0.74rem;
-        line-height: 1.46;
-    }
-
-
-    /*
-       Preserve mobile 2 x 2 buttons.
-       This overrides the desktop four-column row.
-    */
-
-    .hero-actions-refined {
-        max-width: none;
-
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
-
-        gap: 8px;
-
-        margin-top: 19px;
-    }
-
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 37px;
-
-        padding:
-            0
-            7px;
-
-        font-size: 0.64rem;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 460px) {
-
-    .hero h1 {
-        font-size: 1.68rem;
-    }
-
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 36px;
-
-        font-size: 0.62rem;
-    }
-
-}
-/* =========================================================
-   MOBILE HERO COMPACT REFINEMENT
-   MOBILE ONLY - DESKTOP UNCHANGED
-========================================================= */
-
-@media (max-width: 760px) {
-
-
-    /* =====================================================
-       MAIN POSITIONING PARAGRAPH
-       Slightly smaller, but still dominant over support text
-    ====================================================== */
-
-    .hero-positioning {
-        margin-top: 15px;
-        margin-bottom: 0;
-
-        font-size: 0.84rem;
-        line-height: 1.50;
-
-        font-weight: 560;
-    }
-
-
-    /* =====================================================
-       SECONDARY / EXPERIENCE PARAGRAPH
-       Bring much closer to first paragraph
-    ====================================================== */
-
-    .hero-support {
-        margin-top: 4px;
-
-        font-size: 0.71rem;
-        line-height: 1.42;
-
-        color: #8295a2;
-    }
-
-
-    /* =====================================================
-       METRICS
-       Centre all three columns
-    ====================================================== */
-
-    .hero-proof {
-        margin-top: 19px;
-    }
-
-
-    .hero-proof-item {
-        text-align: center;
-        padding-right: 7px;
-    }
-
-
-    .hero-proof-item + .hero-proof-item {
-        padding-left: 7px;
-    }
-
-
-    .hero-proof-item strong {
-        font-size: 0.98rem;
-        line-height: 1;
-    }
-
-
-    .hero-proof-item span {
-        margin-top: 4px;
-
-        font-size: 0.45rem;
-        line-height: 1.20;
-    }
-
-
-    /* =====================================================
-       CTA AREA
-       More compact vertically
-    ====================================================== */
-
-    .hero-actions-refined {
-        margin-top: 16px;
-
-        gap: 7px;
-    }
-
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 34px;
-
-        padding:
-            0
-            5px;
-
-        border-radius: 8px;
-
-        font-size: 0.60rem;
-        line-height: 1;
-    }
-
-
-    /* =====================================================
-       SELECTED WORK
-       Still highlighted, but softer on mobile
-    ====================================================== */
-
-    .hero-actions-refined .button-primary {
-        background: #3f7d95;
-        border-color: #3f7d95;
-
-        box-shadow:
-            0
-            4px
-            11px
-            rgba(47, 113, 141, 0.13);
-    }
-
-
-    .hero-actions-refined .button-primary:hover {
-        background: #376f86;
-        border-color: #376f86;
-    }
-
-
-    /* =====================================================
-       OTHER CTA BUTTONS
-       Keep uniform and quiet
-    ====================================================== */
-
-    .hero-actions-refined .hero-quiet-button {
-        background: #ffffff;
-
-        border-color:
-            rgba(18, 53, 77, 0.14);
-
-        box-shadow: none;
-    }
-
-
-    /* =====================================================
-       BRING PROFILE SYSTEM HIGHER
-
-       Reduces vertical gap between CTA block and portrait
-       without modifying the portrait itself.
-    ====================================================== */
-
-    .hero-grid {
-        gap: 18px;
-    }
-
-
-    .hero-visual {
-        margin-top: 0;
-    }
-
-}
-
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 460px) {
-
-    .hero-positioning {
-        font-size: 0.82rem;
-        line-height: 1.48;
-    }
-
-
-    .hero-support {
-        margin-top: 3px;
-
-        font-size: 0.69rem;
-        line-height: 1.40;
-    }
-
-
-    .hero-proof {
-        margin-top: 18px;
-    }
-
-
-    .hero-proof-item strong {
-        font-size: 0.95rem;
-    }
-
-
-    .hero-proof-item span {
-        font-size: 0.43rem;
-    }
-
-
-    .hero-actions-refined {
-        margin-top: 15px;
-
-        gap: 7px;
-    }
-
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 33px;
-
-        font-size: 0.59rem;
-    }
-
-
-    .hero-grid {
-        gap: 16px;
-    }
-
-}
-/* =========================================================
-   MOBILE FINAL POSITIONING FIX
-   1. Centre hero metrics
-   2. Move portrait system lower
-   DESKTOP UNCHANGED
-========================================================= */
-
-@media (max-width: 760px) {
-
-    /* =====================================================
-       1. CENTRE EACH METRIC
-    ====================================================== */
-
-    .hero-proof-item {
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: flex-start;
-
-        text-align: center;
-
-        padding-left: 6px;
-        padding-right: 6px;
-    }
-
-
-    .hero-proof-item + .hero-proof-item {
-        padding-left: 6px;
-    }
-
-
-    .hero-proof-item strong,
-    .hero-proof-item span {
-        width: 100%;
-        text-align: center;
-    }
-
-
-    /* =====================================================
-       2. MOVE PORTRAIT + FLOATING CARDS + LOCATION LOWER
-
-       Moves the complete hero visual as one unit.
-       Creates clearance for the bouncing Operations card.
-    ====================================================== */
-
-    .hero-visual {
-        margin-top: 22px;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL PHONES
-/* =========================================================
-   INTERACTIVE BRAND CONTINUITY
-========================================================= */
-
-:root {
-    --action-accent: #3f7d95;
-}
-
-
-/* Active / hovered navigation */
-
-.main-nav a:hover,
-.main-nav a.active {
-    color: var(--action-accent);
-}
-
-.main-nav a::after {
-    background: var(--action-accent);
-}
-
-
-/* Case-study calls to action */
-
-.case-open,
-.impact-cta {
-    color: var(--action-accent);
-}
-
-
-/* Keyboard accessibility */
-
-:focus-visible {
-    outline:
-        3px solid
-        rgba(63, 125, 149, 0.28);
-
-    outline-offset: 3px;
-}
-
-
-/* Interactive card feedback */
-
-.case-card:hover,
-.impact-card:hover,
-.contact-card:hover {
-    border-color:
-        rgba(63, 125, 149, 0.30);
-}
-========================================================= */
-
-@media (max-width: 460px) {
-
-    .hero-visual {
-        margin-top: 24px;
-    }
-
-}
-
-/* =========================================================
-   MOBILE HERO POLISH
-   - lighter primary CTA fills
-   - shorter buttons
-   - stronger headline / paragraph contrast
-   - slightly more separation before metrics
-   - preserve full-screen composition
-========================================================= */
-
-@media (max-width: 760px) {
-
-    /* =====================================================
-       1. HEADLINE — slightly stronger
-    ====================================================== */
-
-    .hero h1 {
-        color: #31596f;
-
-        font-weight: 760;
-    }
-
-
-    /* =====================================================
-       2. MAIN POSITIONING PARAGRAPH
-       Slightly stronger without making it larger
-    ====================================================== */
-
-    .hero-positioning {
-        color: #4f6d7e;
-
-        font-weight: 600;
-    }
-
-
-    /* =====================================================
-       SECONDARY PARAGRAPH
-       Slightly stronger too, but clearly subordinate
-    ====================================================== */
-
-    .hero-support {
-        color: #758b99;
-
-        font-weight: 520;
-    }
-
-
-    /* =====================================================
-       3. ADD A LITTLE MORE SPACE BEFORE METRICS
-    ====================================================== */
-
-    .hero-proof {
-        margin-top: 25px;
-    }
-
-
-    /* Keep metrics centred */
-
-    .hero-proof-item {
-        text-align: center;
-
-        align-items: center;
-    }
-
-
-    .hero-proof-item strong,
-    .hero-proof-item span {
-        text-align: center;
-    }
-
-
-    /* =====================================================
-       4. SHORTER CTA BUTTONS
-       Saves vertical space while keeping touch targets clean
-    ====================================================== */
-
-    .hero-actions-refined .button,
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .button-teal,
-    .hero-actions-refined .hero-quiet-button {
-        min-height: 32px;
-
-        padding:
-            0
-            6px;
-
-        border-radius: 8px;
-
-        font-size: 0.59rem;
-    }
-
-
-    /* =====================================================
-       5. LIGHTER / MILDER FILLED CTA COLOUR
-       Applies to the two filled buttons only
-    ====================================================== */
-
-    .hero-actions-refined .button-primary,
-    .hero-actions-refined .button-teal {
-        color: #ffffff;
-
-        background: #568ca0;
-
-        border-color: #568ca0;
-
-        box-shadow:
-            0
-            4px
-            10px
-            rgba(47, 113, 141, 0.11);
-    }
-
-
-    .hero-actions-refined .button-primary:hover,
-    .hero-actions-refined .button-teal:hover,
-    .hero-actions-refined .button-primary:active,
-    .hero-actions-refined .button-teal:active {
-        color: #ffffff;
-
-        background: #4c8195;
-
-        border-color: #4c8195;
-    }
-
-
-    /* =====================================================
-       6. KEEP WHITE BUTTONS QUIET
-    ====================================================== */
-
-    .hero-actions-refined .hero-quiet-button,
-    .hero-actions-refined .button-secondary {
-        background: #ffffff;
-
-        color: var(--navy);
-
-        border-color:
-            rgba(18, 53, 77, 0.14);
-
-        box-shadow: none;
-    }
-
-
-    /* =====================================================
-       7. SCREEN FILL CONTROL
-
-       Slightly tighter CTA-to-visual spacing so that
-       moving the metrics lower does not push the portrait
-       unnecessarily far below the first screen.
-    ====================================================== */
-
-    .hero-actions-refined {
-        margin-top: 15px;
-    }
-
-
-    .hero-visual {
-        margin-top: 18px;
     }
 
 }
