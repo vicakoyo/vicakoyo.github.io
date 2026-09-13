@@ -100,19 +100,25 @@ body.modal-open {
 
 main,
 .site-footer {
+
     position: relative;
+
     z-index: 1;
 }
 
 
 a {
+
     color: inherit;
+
     text-decoration: none;
 }
 
 
 img {
+
     display: block;
+
     max-width: 100%;
 }
 
@@ -129,7 +135,9 @@ a {
 
 
 ::selection {
+
     color: #ffffff;
+
     background: var(--navy);
 }
 
@@ -206,6 +214,7 @@ a {
         rgba(18, 53, 77, 0.08);
 
     backdrop-filter: blur(14px);
+
     -webkit-backdrop-filter: blur(14px);
 }
 
@@ -225,6 +234,7 @@ a {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 30px;
@@ -267,6 +277,7 @@ a {
     display: inline-block;
 
     font-size: 1.08rem;
+
     line-height: 1;
 
     font-weight: 800;
@@ -284,9 +295,11 @@ a {
     background-size: 250% 100%;
 
     -webkit-background-clip: text;
+
     background-clip: text;
 
     color: transparent;
+
     -webkit-text-fill-color: transparent;
 
     animation:
@@ -301,10 +314,12 @@ a {
 
     0%,
     100% {
+
         background-position: 0% 50%;
     }
 
     50% {
+
         background-position: 100% 50%;
     }
 }
@@ -346,9 +361,11 @@ a {
     position: absolute;
 
     left: 0;
+
     bottom: -9px;
 
     width: 100%;
+
     height: 2px;
 
     background: var(--action-accent);
@@ -386,6 +403,7 @@ a {
     display: none;
 
     width: 42px;
+
     height: 42px;
 
     padding: 8px;
@@ -406,6 +424,7 @@ a {
     display: block;
 
     width: 20px;
+
     height: 2px;
 
     margin: 4px auto;
@@ -562,12 +581,13 @@ a {
 
 
 /* =========================================================
-   HERO METRICS / EVIDENCE LINKS
+   HERO METRICS
 ========================================================= */
 
 .hero-proof {
 
     width: 100%;
+
     max-width: 540px;
 
     display: grid;
@@ -593,6 +613,7 @@ a {
     flex-direction: column;
 
     align-items: center;
+
     justify-content: flex-start;
 
     padding:
@@ -695,11 +716,13 @@ a {
 
 
     .hero-proof-link:hover strong {
+
         color: var(--action-accent);
     }
 
 
     .hero-proof-link:hover span {
+
         color: #4d687a;
     }
 
@@ -720,6 +743,7 @@ a {
 .hero-actions-refined {
 
     width: 100%;
+
     max-width: 540px;
 
     display: grid;
@@ -743,6 +767,7 @@ a {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding:
@@ -921,6 +946,7 @@ a {
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 }
 
@@ -930,11 +956,13 @@ a {
     position: relative;
 
     width: 405px;
+
     height: 405px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 }
 
@@ -950,6 +978,7 @@ a {
     z-index: 8;
 
     width: 174px;
+
     height: 174px;
 
     padding: 7px;
@@ -970,6 +999,7 @@ a {
 .portrait-frame {
 
     width: 100%;
+
     height: 100%;
 
     overflow: hidden;
@@ -983,6 +1013,7 @@ a {
 .profile-photo {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -1009,6 +1040,7 @@ a {
 .hero-orbit-one {
 
     width: 260px;
+
     height: 260px;
 
     border:
@@ -1020,6 +1052,7 @@ a {
 .hero-orbit-two {
 
     width: 338px;
+
     height: 338px;
 
     border:
@@ -1031,6 +1064,7 @@ a {
 .hero-pulse {
 
     width: 220px;
+
     height: 220px;
 
     border:
@@ -1053,16 +1087,21 @@ a {
 @keyframes pulseRing {
 
     0% {
+
         transform: scale(0.82);
+
         opacity: 0;
     }
 
     30% {
+
         opacity: 0.42;
     }
 
     100% {
+
         transform: scale(1.55);
+
         opacity: 0;
     }
 }
@@ -1162,6 +1201,7 @@ a {
 .skill-operations {
 
     top: 22px;
+
     left: 150px;
 
     animation-delay: -0.4s;
@@ -1171,6 +1211,7 @@ a {
 .skill-supply {
 
     top: 108px;
+
     left: 4px;
 
     animation-delay: -1.2s;
@@ -1180,6 +1221,7 @@ a {
 .skill-quality {
 
     bottom: 93px;
+
     left: 6px;
 
     animation-delay: -3s;
@@ -1189,6 +1231,7 @@ a {
 .skill-process {
 
     top: 108px;
+
     right: 3px;
 
     animation-delay: -2.1s;
@@ -1198,6 +1241,7 @@ a {
 .skill-eos {
 
     bottom: 93px;
+
     right: 5px;
 
     animation-delay: -1.6s;
@@ -1207,6 +1251,7 @@ a {
 .skill-automation {
 
     bottom: 9px;
+
     left: 147px;
 
     animation-delay: -2.6s;
@@ -1217,11 +1262,17 @@ a {
 
     0%,
     100% {
-        translate: 0 -3px;
+
+        translate:
+            0
+            -3px;
     }
 
     50% {
-        translate: 0 4px;
+
+        translate:
+            0
+            4px;
     }
 }
 
@@ -1261,6 +1312,7 @@ a {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 20px;
@@ -1288,6 +1340,7 @@ a {
 .meta-icon {
 
     width: 15px;
+
     height: 15px;
 
     flex-shrink: 0;
@@ -1315,6 +1368,7 @@ a {
 .availability-dot {
 
     width: 7px;
+
     height: 7px;
 
     flex-shrink: 0;
@@ -1672,9 +1726,11 @@ a {
     position: absolute;
 
     top: -25px;
+
     right: -25px;
 
     width: 105px;
+
     height: 105px;
 
     border-radius: 50%;
@@ -1716,6 +1772,7 @@ a {
     position: absolute;
 
     top: 17px;
+
     right: 18px;
 
     z-index: 3;
@@ -1870,6 +1927,7 @@ a {
 .china-main-wrapper {
 
     width: 100%;
+
     height: 100%;
 
     overflow: hidden;
@@ -1883,6 +1941,7 @@ a {
 .china-main-image {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -1906,6 +1965,7 @@ a {
 .china-side-images img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -2317,6 +2377,7 @@ a {
     position: absolute;
 
     top: 21px;
+
     right: 21px;
 
     color:
@@ -2336,6 +2397,7 @@ a {
 .automation-icon {
 
     width: 42px;
+
     height: 42px;
 
     display: grid;
@@ -2473,7 +2535,9 @@ a {
     position: absolute;
 
     top: 0;
+
     bottom: 0;
+
     left: 180px;
 
     width: 1px;
@@ -2505,9 +2569,11 @@ a {
     position: absolute;
 
     top: 5px;
+
     left: 175px;
 
     width: 10px;
+
     height: 10px;
 
     border-radius: 50%;
@@ -2860,6 +2926,7 @@ a {
 .contact-icon {
 
     width: 42px;
+
     height: 42px;
 
     display: grid;
@@ -2963,6 +3030,7 @@ a {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 28px;
@@ -2977,7 +3045,6 @@ a {
         opacity
         640ms
         ease-in-out,
-
         visibility
         0s
         linear
@@ -3016,6 +3083,7 @@ a {
         );
 
     backdrop-filter: blur(8px);
+
     -webkit-backdrop-filter: blur(8px);
 
     transition:
@@ -3076,7 +3144,6 @@ a {
         transform
         var(--modal-speed)
         cubic-bezier(0.4, 0, 0.2, 1),
-
         opacity
         650ms
         ease-in-out;
@@ -3098,9 +3165,11 @@ a {
     position: absolute;
 
     top: 18px;
+
     right: 18px;
 
     width: 38px;
+
     height: 38px;
 
     border:
@@ -3218,6 +3287,7 @@ a {
 .china-gallery img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -3322,14 +3392,20 @@ a {
 
 /* =========================================================
    REVEAL
+   FAIL-SAFE VERSION
+
+   Content is visible by default.
+
+   JavaScript only adds the temporary hidden state once it
+   has successfully started. Therefore a JS error can no
+   longer make the whole portfolio appear blank.
 ========================================================= */
 
 .reveal {
 
-    opacity: 0;
+    opacity: 1;
 
-    transform:
-        translateY(14px);
+    transform: none;
 
     transition:
         opacity 0.56s ease,
@@ -3337,7 +3413,16 @@ a {
 }
 
 
-.reveal.visible {
+.reveal.reveal-pending {
+
+    opacity: 0;
+
+    transform:
+        translateY(14px);
+}
+
+
+.reveal.reveal-pending.visible {
 
     opacity: 1;
 
@@ -3388,6 +3473,7 @@ a {
     .portrait-system {
 
         width: 365px;
+
         height: 385px;
     }
 
@@ -3441,7 +3527,9 @@ a {
     }
 
 
-    /* HEADER */
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
     .site-header,
     .nav-container {
@@ -3457,6 +3545,7 @@ a {
     .brand-icon {
 
         width: 20px;
+
         height: 20px;
     }
 
@@ -3481,6 +3570,7 @@ a {
         top: 68px;
 
         left: 15px;
+
         right: 15px;
 
         display: none;
@@ -3524,7 +3614,9 @@ a {
     }
 
 
-    /* MOBILE HERO */
+    /* =====================================================
+       MOBILE HERO
+    ===================================================== */
 
     .hero {
 
@@ -3554,6 +3646,7 @@ a {
         max-width: none;
 
         height: auto;
+
         min-height: 0;
 
         margin:
@@ -3586,7 +3679,9 @@ a {
     }
 
 
-    /* MOBILE HEADLINE */
+    /* =====================================================
+       MOBILE HEADLINE
+    ===================================================== */
 
     .hero h1 {
 
@@ -3619,8 +3714,7 @@ a {
 
     /* =====================================================
        MOBILE COPY
-
-       Both paragraphs now form one visual block.
+       Unified visual paragraph block
     ===================================================== */
 
     .hero-positioning,
@@ -3659,13 +3753,13 @@ a {
 
 
     .hero-support {
-
-        margin:
-            0;
+        margin: 0;
     }
 
 
-    /* METRICS */
+    /* =====================================================
+       MOBILE METRICS
+    ===================================================== */
 
     .hero-proof {
 
@@ -3701,6 +3795,7 @@ a {
         flex-direction: column;
 
         align-items: center;
+
         justify-content: flex-start;
 
         padding:
@@ -3797,9 +3892,7 @@ a {
 
     /* =====================================================
        MOBILE CTA
-
-       Full width preserved.
-       Height deliberately reduced.
+       Full width, reduced height
     ===================================================== */
 
     .hero-actions-refined {
@@ -3919,7 +4012,9 @@ a {
     }
 
 
-    /* PROFILE */
+    /* =====================================================
+       MOBILE PROFILE
+    ===================================================== */
 
     .hero-visual {
 
@@ -3936,6 +4031,7 @@ a {
         flex-direction: column;
 
         align-items: center;
+
         justify-content: flex-start;
     }
 
@@ -3959,6 +4055,7 @@ a {
         display: flex;
 
         align-items: center;
+
         justify-content: center;
 
         flex-shrink: 0;
@@ -3968,6 +4065,7 @@ a {
     .portrait-ring {
 
         width: 118px;
+
         height: 118px;
 
         padding: 5px;
@@ -3977,6 +4075,7 @@ a {
     .hero-orbit-one {
 
         width: 180px;
+
         height: 180px;
     }
 
@@ -3984,6 +4083,7 @@ a {
     .hero-orbit-two {
 
         width: 230px;
+
         height: 230px;
     }
 
@@ -3991,6 +4091,7 @@ a {
     .hero-pulse {
 
         width: 155px;
+
         height: 155px;
     }
 
@@ -4109,6 +4210,7 @@ a {
         display: flex;
 
         align-items: center;
+
         justify-content: center;
 
         gap: 10px;
@@ -4138,6 +4240,7 @@ a {
     .meta-icon {
 
         width: 14px;
+
         height: 14px;
     }
 
@@ -4150,11 +4253,14 @@ a {
     .availability-dot {
 
         width: 7px;
+
         height: 7px;
     }
 
 
-    /* GENERAL MOBILE */
+    /* =====================================================
+       MOBILE GENERAL SECTIONS
+    ===================================================== */
 
     .section {
 
@@ -4215,9 +4321,11 @@ a {
     .value-card::before {
 
         top: -19px;
+
         right: -19px;
 
         width: 80px;
+
         height: 80px;
     }
 
@@ -4225,6 +4333,7 @@ a {
     .value-corner {
 
         top: 13px;
+
         right: 13px;
 
         font-size: 0.66rem;
@@ -4276,6 +4385,7 @@ a {
     .china-main-wrapper {
 
         width: 100%;
+
         height: 100%;
 
         min-height: 0;
@@ -4287,6 +4397,7 @@ a {
     .china-main-image {
 
         width: 100%;
+
         height: 100%;
 
         object-fit: cover;
@@ -4314,6 +4425,7 @@ a {
     .china-side-images img {
 
         width: 100%;
+
         height: 100%;
 
         min-height: 0;
@@ -4405,7 +4517,9 @@ a {
     }
 
 
-    /* MOBILE MODAL */
+    /* =====================================================
+       MOBILE MODAL
+    ===================================================== */
 
     .case-modal {
 
@@ -4621,6 +4735,7 @@ a {
     .portrait-ring {
 
         width: 114px;
+
         height: 114px;
     }
 
@@ -4628,6 +4743,7 @@ a {
     .hero-orbit-one {
 
         width: 175px;
+
         height: 175px;
     }
 
@@ -4635,6 +4751,7 @@ a {
     .hero-orbit-two {
 
         width: 224px;
+
         height: 224px;
     }
 
@@ -4642,6 +4759,7 @@ a {
     .hero-pulse {
 
         width: 150px;
+
         height: 150px;
     }
 
@@ -4796,6 +4914,7 @@ a {
     .portrait-ring {
 
         width: 108px;
+
         height: 108px;
     }
 
@@ -4803,6 +4922,7 @@ a {
     .hero-orbit-one {
 
         width: 166px;
+
         height: 166px;
     }
 
@@ -4810,6 +4930,7 @@ a {
     .hero-orbit-two {
 
         width: 214px;
+
         height: 214px;
     }
 
@@ -4817,6 +4938,7 @@ a {
     .hero-pulse {
 
         width: 144px;
+
         height: 144px;
     }
 
@@ -4847,6 +4969,7 @@ a {
     .meta-icon {
 
         width: 12px;
+
         height: 12px;
     }
 
@@ -4904,6 +5027,7 @@ a {
     .portrait-system {
 
         width: 270px;
+
         height: 220px;
     }
 
@@ -4911,6 +5035,7 @@ a {
     .portrait-ring {
 
         width: 105px;
+
         height: 105px;
     }
 
@@ -4918,6 +5043,7 @@ a {
     .hero-orbit-one {
 
         width: 162px;
+
         height: 162px;
     }
 
@@ -4925,6 +5051,7 @@ a {
     .hero-orbit-two {
 
         width: 208px;
+
         height: 208px;
     }
 
@@ -4932,6 +5059,7 @@ a {
     .hero-pulse {
 
         width: 141px;
+
         height: 141px;
     }
 
@@ -4982,11 +5110,12 @@ a {
     }
 
 
-    .reveal {
+    .reveal,
+    .reveal.reveal-pending {
 
-        opacity: 1;
+        opacity: 1 !important;
 
-        transform: none;
+        transform: none !important;
     }
 
 
