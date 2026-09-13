@@ -52,6 +52,11 @@
         href="/favicon.png"
     >
 
+    <link
+        rel="apple-touch-icon"
+        href="/favicon.png"
+    >
+
 
     <!-- =====================================================
          OPEN GRAPH / LINKEDIN
@@ -108,48 +113,48 @@
     ====================================================== -->
 
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
     {
-      "@type": "WebSite",
-      "@id": "https://victorakoyo.com/#website",
-      "url": "https://victorakoyo.com/",
-      "name": "Victor Akoyo",
-      "alternateName": "Victor Akoyo Portfolio"
-    },
-    {
-      "@type": "Person",
-      "@id": "https://victorakoyo.com/#person",
-      "name": "Victor Akoyo",
-      "url": "https://victorakoyo.com/",
-      "image": "https://victorakoyo.com/victor-akoyo-portrait.png.jpeg",
-      "jobTitle": "Supply Chain, Quality and Operations Professional",
-      "description": "Supply chain, quality and operations professional with experience across manufacturing, international logistics, process improvement and AI-enabled operations.",
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Jomo Kenyatta University of Agriculture and Technology"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/victorakoyo/",
-        "https://github.com/vicakoyo"
-      ],
-      "knowsAbout": [
-        "Supply Chain Management",
-        "Operations Management",
-        "Quality Management",
-        "Continuous Improvement",
-        "Logistics",
-        "Demand Planning",
-        "Supplier Management",
-        "Process Improvement",
-        "Business Operations",
-        "Workflow Automation"
-      ]
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://victorakoyo.com/#website",
+                "url": "https://victorakoyo.com/",
+                "name": "Victor Akoyo",
+                "alternateName": "Victor Akoyo Portfolio"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://victorakoyo.com/#person",
+                "name": "Victor Akoyo",
+                "url": "https://victorakoyo.com/",
+                "image": "https://victorakoyo.com/victor-akoyo-portrait.png.jpeg",
+                "jobTitle": "Supply Chain, Quality and Operations Professional",
+                "description": "Supply chain, quality and operations professional with experience across manufacturing, international logistics, process improvement and AI-enabled operations.",
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Jomo Kenyatta University of Agriculture and Technology"
+                },
+                "sameAs": [
+                    "https://www.linkedin.com/in/victorakoyo/",
+                    "https://github.com/vicakoyo"
+                ],
+                "knowsAbout": [
+                    "Supply Chain Management",
+                    "Operations Management",
+                    "Quality Management",
+                    "Continuous Improvement",
+                    "Logistics",
+                    "Demand Planning",
+                    "Supplier Management",
+                    "Process Improvement",
+                    "Business Operations",
+                    "Workflow Automation"
+                ]
+            }
+        ]
     }
-  ]
-}
-</script>
+    </script>
 
 
     <!-- =====================================================
@@ -188,7 +193,16 @@
                 class="brand"
                 aria-label="Victor Akoyo home"
             >
-                Victor Akoyo
+                <img
+                    src="/favicon.png"
+                    alt=""
+                    class="brand-icon"
+                    aria-hidden="true"
+                >
+
+                <span class="brand-text">
+                    Victor Akoyo
+                </span>
             </a>
 
 
@@ -273,18 +287,41 @@
                     >
 
                         <div class="hero-proof-item">
-                            <strong>£520k</strong>
-                            <span>Annual logistics savings</span>
+
+                            <strong>
+                                £520k
+                            </strong>
+
+                            <span>
+                                Annual logistics savings
+                            </span>
+
                         </div>
 
-                        <div class="hero-proof-item">
-                            <strong>12%→4%</strong>
-                            <span>Returns by CBM</span>
-                        </div>
 
                         <div class="hero-proof-item">
-                            <strong>1,000+</strong>
-                            <span>SKUs managed</span>
+
+                            <strong>
+                                12%→4%
+                            </strong>
+
+                            <span>
+                                Returns by CBM
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-proof-item">
+
+                            <strong>
+                                1,000+
+                            </strong>
+
+                            <span>
+                                SKUs managed
+                            </span>
+
                         </div>
 
                     </div>
@@ -301,14 +338,16 @@
                             Selected Work
                         </a>
 
+
                         <a
                             href="https://github.com/vicakoyo/victor-ai-automation"
-                            class="button button-primary"
+                            class="button hero-automation-button"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             Automation Projects
                         </a>
+
 
                         <a
                             href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
@@ -318,6 +357,7 @@
                         >
                             View CV
                         </a>
+
 
                         <a
                             href="#contact"
@@ -367,31 +407,60 @@
                         ></span>
 
 
-                        <!-- FLOATING CAPABILITY CARDS -->
+                        <!-- CLICKABLE CAPABILITY CARDS -->
 
-                        <div class="skill-float skill-operations">
+                        <a
+                            href="#experience"
+                            class="skill-float skill-operations"
+                            aria-label="View Operations experience"
+                        >
                             <strong>Operations</strong>
-                        </div>
+                        </a>
 
-                        <div class="skill-float skill-supply">
+
+                        <a
+                            href="#work-logistics"
+                            class="skill-float skill-supply"
+                            aria-label="View Supply Chain selected work"
+                        >
                             <strong>Supply Chain</strong>
-                        </div>
+                        </a>
 
-                        <div class="skill-float skill-process">
+
+                        <a
+                            href="#impact"
+                            class="skill-float skill-process"
+                            aria-label="View Operational Excellence impact"
+                        >
                             <strong>Operational Excellence</strong>
-                        </div>
+                        </a>
 
-                        <div class="skill-float skill-quality">
+
+                        <a
+                            href="#work-quality"
+                            class="skill-float skill-quality"
+                            aria-label="View Quality selected work"
+                        >
                             <strong>Quality</strong>
-                        </div>
+                        </a>
 
-                        <div class="skill-float skill-eos">
+
+                        <a
+                            href="#work-eos"
+                            class="skill-float skill-eos"
+                            aria-label="View Business Execution selected work"
+                        >
                             <strong>Business Execution</strong>
-                        </div>
+                        </a>
 
-                        <div class="skill-float skill-automation">
+
+                        <a
+                            href="#automation"
+                            class="skill-float skill-automation"
+                            aria-label="View Automation projects"
+                        >
                             <strong>Automation</strong>
-                        </div>
+                        </a>
 
 
                         <!-- PORTRAIT -->
@@ -429,7 +498,9 @@
                                 />
                             </svg>
 
-                            <span>Nairobi, Kenya</span>
+                            <span>
+                                Nairobi, Kenya
+                            </span>
 
                         </span>
 
@@ -441,7 +512,9 @@
                                 aria-hidden="true"
                             ></span>
 
-                            <span>Available</span>
+                            <span>
+                                Available
+                            </span>
 
                         </span>
 
@@ -493,7 +566,9 @@
                         aria-haspopup="dialog"
                     >
 
-                        <span class="card-number">01</span>
+                        <span class="card-number">
+                            01
+                        </span>
 
                         <div class="metric">
 
@@ -535,13 +610,17 @@
                         aria-haspopup="dialog"
                     >
 
-                        <span class="card-number">02</span>
+                        <span class="card-number">
+                            02
+                        </span>
 
                         <div class="metric transition-metric">
 
                             <span>12%</span>
 
-                            <span class="metric-arrow">→</span>
+                            <span class="metric-arrow">
+                                →
+                            </span>
 
                             <span>4%</span>
 
@@ -572,13 +651,17 @@
                         aria-haspopup="dialog"
                     >
 
-                        <span class="card-number">03</span>
+                        <span class="card-number">
+                            03
+                        </span>
 
                         <div class="metric transition-metric">
 
                             <span>4%</span>
 
-                            <span class="metric-arrow">→</span>
+                            <span class="metric-arrow">
+                                →
+                            </span>
 
                             <span>2%</span>
 
@@ -609,13 +692,17 @@
                         aria-haspopup="dialog"
                     >
 
-                        <span class="card-number">04</span>
+                        <span class="card-number">
+                            04
+                        </span>
 
                         <div class="metric transition-metric">
 
                             <span>12%</span>
 
-                            <span class="metric-arrow">→</span>
+                            <span class="metric-arrow">
+                                →
+                            </span>
 
                             <span>5%</span>
 
@@ -796,6 +883,7 @@
                 <!-- CHINA FEATURE -->
 
                 <article
+                    id="work-china"
                     class="china-feature reveal case-trigger"
                     data-case="china"
                     tabindex="0"
@@ -867,13 +955,21 @@
 
                         <div class="tag-row">
 
-                            <span>Supplier negotiation</span>
+                            <span>
+                                Supplier negotiation
+                            </span>
 
-                            <span>Factory process</span>
+                            <span>
+                                Factory process
+                            </span>
 
-                            <span>Quality systems</span>
+                            <span>
+                                Quality systems
+                            </span>
 
-                            <span>5S</span>
+                            <span>
+                                5S
+                            </span>
 
                         </div>
 
@@ -895,6 +991,7 @@
                     <!-- LOGISTICS -->
 
                     <article
+                        id="work-logistics"
                         class="work-card reveal case-trigger"
                         data-case="logistics"
                         tabindex="0"
@@ -933,7 +1030,9 @@
 
                             <div>
 
-                                <strong>~£520k</strong>
+                                <strong>
+                                    ~£520k
+                                </strong>
 
                                 <span>
                                     annual savings
@@ -944,7 +1043,9 @@
 
                             <div>
 
-                                <strong>1,000+</strong>
+                                <strong>
+                                    1,000+
+                                </strong>
 
                                 <span>
                                     SKUs
@@ -955,7 +1056,9 @@
 
                             <div>
 
-                                <strong>~60</strong>
+                                <strong>
+                                    ~60
+                                </strong>
 
                                 <span>
                                     peak containers/month
@@ -976,6 +1079,7 @@
                     <!-- EOS -->
 
                     <article
+                        id="work-eos"
                         class="work-card reveal case-trigger"
                         data-case="eos"
                         tabindex="0"
@@ -1042,6 +1146,7 @@
                     <!-- QUALITY -->
 
                     <article
+                        id="work-quality"
                         class="work-card reveal case-trigger"
                         data-case="quality"
                         tabindex="0"
@@ -1099,6 +1204,7 @@
                     <!-- AUTOMATION -->
 
                     <article
+                        id="work-automation"
                         class="work-card work-card-ai reveal case-trigger"
                         data-case="automation"
                         tabindex="0"
