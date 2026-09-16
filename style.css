@@ -314,12 +314,10 @@ a {
 
     0%,
     100% {
-
         background-position: 0% 50%;
     }
 
     50% {
-
         background-position: 100% 50%;
     }
 }
@@ -416,6 +414,12 @@ a {
     background: white;
 
     cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        background-color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
 }
 
 
@@ -428,6 +432,8 @@ a {
     height: 2px;
 
     margin: 4px auto;
+
+    border-radius: 999px;
 
     background: var(--navy);
 }
@@ -716,23 +722,18 @@ a {
 
 
     .hero-proof-link:hover strong {
-
         color: var(--action-accent);
     }
 
 
     .hero-proof-link:hover span {
-
         color: #4d687a;
     }
-
 }
 
 
 .hero-proof-link:active {
-
-    transform:
-        scale(0.985);
+    transform: scale(0.985);
 }
 
 
@@ -1094,7 +1095,6 @@ a {
     }
 
     30% {
-
         opacity: 0.42;
     }
 
@@ -1262,17 +1262,11 @@ a {
 
     0%,
     100% {
-
-        translate:
-            0
-            -3px;
+        translate: 0 -3px;
     }
 
     50% {
-
-        translate:
-            0
-            4px;
+        translate: 0 4px;
     }
 }
 
@@ -1292,7 +1286,6 @@ a {
             0 16px 34px
             rgba(13, 53, 82, 0.13);
     }
-
 }
 
 
@@ -3392,13 +3385,6 @@ a {
 
 /* =========================================================
    REVEAL
-   FAIL-SAFE VERSION
-
-   Content is visible by default.
-
-   JavaScript only adds the temporary hidden state once it
-   has successfully started. Therefore a JS error can no
-   longer make the whole portfolio appear blank.
 ========================================================= */
 
 .reveal {
@@ -3555,13 +3541,68 @@ a {
     }
 
 
+    /* =====================================================
+       MOBILE MENU BUTTON
+    ===================================================== */
+
     .mobile-menu-button {
 
         display: block;
 
         flex-shrink: 0;
+
+        position: relative;
+
+        width: 42px;
+
+        height: 42px;
+
+        padding: 8px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 10px;
+
+        background: #ffffff;
+
+        cursor: pointer;
+
+        transition:
+            transform 220ms ease,
+            background-color 220ms ease,
+            border-color 220ms ease,
+            box-shadow 220ms ease;
     }
 
+
+    .mobile-menu-button:active {
+
+        transform:
+            scale(0.92);
+    }
+
+
+    .mobile-menu-button span {
+
+        display: block;
+
+        width: 20px;
+
+        height: 2px;
+
+        margin: 4px auto;
+
+        border-radius: 999px;
+
+        background: var(--navy);
+    }
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+       CLOSED STATE
+    ===================================================== */
 
     .main-nav {
 
@@ -3573,7 +3614,12 @@ a {
 
         right: 15px;
 
-        display: none;
+        /*
+           Keep the navigation rendered.
+           This allows the transform and opacity
+           to animate smoothly.
+        */
+        display: flex;
 
         flex-direction: column;
 
@@ -3588,14 +3634,93 @@ a {
 
         border-radius: 11px;
 
-        background: white;
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.985
+            );
 
-        box-shadow: var(--shadow);
+        box-shadow:
+            0 16px 42px
+            rgba(13, 53, 82, 0.13);
+
+        backdrop-filter:
+            blur(14px);
+
+        -webkit-backdrop-filter:
+            blur(14px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform:
+            translateY(-10px)
+            scale(0.88);
+
+        /*
+           This makes the menu appear to grow
+           outward from the top-right menu button.
+        */
+        transform-origin:
+            top right;
+
+        will-change:
+            transform,
+            opacity;
+
+        transition:
+            transform
+            340ms
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity
+            240ms
+            ease,
+
+            visibility
+            0s
+            linear
+            340ms;
+
+        z-index: 1100;
     }
 
 
+    /* =====================================================
+       MOBILE NAVIGATION
+       OPEN STATE
+    ===================================================== */
+
     .main-nav.open {
-        display: flex;
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        transition:
+            transform
+            340ms
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity
+            240ms
+            ease,
+
+            visibility
+            0s
+            linear
+            0s;
     }
 
 
@@ -3605,12 +3730,34 @@ a {
             11px
             10px;
 
+        border-radius: 8px;
+
         font-size: 0.8rem;
+
+        transition:
+            background-color 180ms ease,
+            color 180ms ease,
+            transform 180ms ease;
     }
 
 
     .main-nav a::after {
         display: none;
+    }
+
+
+    .main-nav a:active {
+
+        transform:
+            scale(0.985);
+
+        background:
+            rgba(
+                63,
+                125,
+                149,
+                0.07
+            );
     }
 
 
@@ -3679,10 +3826,6 @@ a {
     }
 
 
-    /* =====================================================
-       MOBILE HEADLINE
-    ===================================================== */
-
     .hero h1 {
 
         width: 100%;
@@ -3711,11 +3854,6 @@ a {
         text-align: left;
     }
 
-
-    /* =====================================================
-       MOBILE COPY
-       Unified visual paragraph block
-    ===================================================== */
 
     .hero-positioning,
     .hero-support {
@@ -3756,10 +3894,6 @@ a {
         margin: 0;
     }
 
-
-    /* =====================================================
-       MOBILE METRICS
-    ===================================================== */
 
     .hero-proof {
 
@@ -3890,11 +4024,6 @@ a {
     }
 
 
-    /* =====================================================
-       MOBILE CTA
-       Full width, reduced height
-    ===================================================== */
-
     .hero-actions-refined {
 
         width: 100%;
@@ -4011,10 +4140,6 @@ a {
         box-shadow: none;
     }
 
-
-    /* =====================================================
-       MOBILE PROFILE
-    ===================================================== */
 
     .hero-visual {
 
@@ -4257,10 +4382,6 @@ a {
         height: 7px;
     }
 
-
-    /* =====================================================
-       MOBILE GENERAL SECTIONS
-    ===================================================== */
 
     .section {
 
@@ -4516,10 +4637,6 @@ a {
         align-items: flex-start;
     }
 
-
-    /* =====================================================
-       MOBILE MODAL
-    ===================================================== */
 
     .case-modal {
 
