@@ -1,2321 +1,5428 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================================
+   VICTOR AKOYO — PROFESSIONAL PORTFOLIO
+========================================================= */
 
-<head>
-    <meta charset="UTF-8">
+:root {
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    --navy: #12354d;
+    --navy-deep: #0b283b;
+    --hero-heading: #355c72;
 
-    <!-- =====================================================
-         PRIMARY SEO
-    ====================================================== -->
+    --blue: #1674a8;
+    --blue-dark: #115f8b;
 
-    <title>Victor Akoyo | Supply Chain, Quality & Operations</title>
+    --teal: #168c85;
+    --teal-dark: #0f746f;
 
-    <meta
-        name="description"
-        content="Victor Akoyo is a supply chain, quality and operations professional based in Nairobi, Kenya, with experience across manufacturing, international logistics, process improvement and AI-enabled operations."
-    >
+    --amber: #d59432;
+    --orange: #de7a32;
+    --violet: #6b63ba;
+    --cyan: #2d9ec0;
 
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large"
-    >
+    --text: #526f82;
+    --text-dark: #334155;
+    --muted: #718697;
+    --white: #ffffff;
 
-    <meta
-        name="author"
-        content="Victor Akoyo"
-    >
+    --soft-blue: #f6f9fb;
+    --soft-teal: #f4faf9;
+    --soft-amber: #fff8ed;
+    --soft-violet: #f6f4fb;
 
-    <link
-        rel="canonical"
-        href="https://victorakoyo.com/"
-    >
+    --border: rgba(18, 53, 77, 0.13);
+    --blue-border: rgba(22, 116, 168, 0.24);
+    --teal-border: rgba(22, 140, 133, 0.24);
+    --amber-border: rgba(213, 148, 50, 0.27);
+    --violet-border: rgba(107, 99, 186, 0.24);
 
+    --action-accent: #3f7d95;
 
-    <!-- =====================================================
-         FAVICON
-    ====================================================== -->
+    --shadow:
+        0 14px 38px
+        rgba(13, 53, 82, 0.065);
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="/favicon.png"
-    >
+    --shadow-hover:
+        0 22px 48px
+        rgba(13, 53, 82, 0.11);
 
-    <link
-        rel="shortcut icon"
-        type="image/png"
-        href="/favicon.png"
-    >
+    --radius: 18px;
+    --max-width: 1160px;
 
-    <link
-        rel="apple-touch-icon"
-        href="/favicon.png"
-    >
+    --modal-speed: 760ms;
+}
 
 
-    <!-- =====================================================
-         OPEN GRAPH / LINKEDIN
-    ====================================================== -->
+/* =========================================================
+   RESET / BASE
+========================================================= */
 
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        property="og:site_name"
-        content="Victor Akoyo"
-    >
-
-    <meta
-        property="og:title"
-        content="Victor Akoyo | Supply Chain, Quality & Operations"
-    >
-
-    <meta
-        property="og:description"
-        content="Supply chain, quality and operations professional with experience across manufacturing, international logistics, process improvement and AI-enabled operations."
-    >
-
-    <meta
-        property="og:url"
-        content="https://victorakoyo.com/"
-    >
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 
-    <!-- =====================================================
-         TWITTER / X
-    ====================================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary"
-    >
-
-    <meta
-        name="twitter:title"
-        content="Victor Akoyo | Supply Chain, Quality & Operations"
-    >
-
-    <meta
-        name="twitter:description"
-        content="Supply chain, quality and operations professional based in Nairobi, Kenya."
-    >
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+}
 
 
-    <!-- =====================================================
-         STRUCTURED DATA
-    ====================================================== -->
+body {
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "@id": "https://victorakoyo.com/#website",
-                "url": "https://victorakoyo.com/",
-                "name": "Victor Akoyo",
-                "alternateName": "Victor Akoyo Portfolio"
-            },
-            {
-                "@type": "Person",
-                "@id": "https://victorakoyo.com/#person",
-                "name": "Victor Akoyo",
-                "url": "https://victorakoyo.com/",
-                "image": "https://victorakoyo.com/victor-akoyo-portrait.png.jpeg",
-                "jobTitle": "Supply Chain, Quality and Operations Professional",
-                "description": "Supply chain, quality and operations professional with experience across manufacturing, international logistics, process improvement and AI-enabled operations.",
-                "alumniOf": {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Jomo Kenyatta University of Agriculture and Technology"
-                },
-                "sameAs": [
-                    "https://www.linkedin.com/in/victorakoyo/",
-                    "https://github.com/vicakoyo"
-                ],
-                "knowsAbout": [
-                    "Supply Chain Management",
-                    "Operations Management",
-                    "Quality Management",
-                    "Continuous Improvement",
-                    "Logistics",
-                    "Demand Planning",
-                    "Supplier Management",
-                    "Process Improvement",
-                    "Business Operations",
-                    "Workflow Automation"
-                ]
-            }
-        ]
+    margin: 0;
+
+    overflow-x: hidden;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height: 1.62;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+main,
+.site-footer {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+img {
+
+    display: block;
+
+    max-width: 100%;
+}
+
+
+button {
+    font: inherit;
+}
+
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+::selection {
+
+    color: #ffffff;
+
+    background: var(--navy);
+}
+
+
+:focus-visible {
+
+    outline:
+        3px solid
+        rgba(63, 125, 149, 0.28);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   PARTICLE CANVAS
+========================================================= */
+
+#particleCanvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width:
+        min(
+            calc(100% - 48px),
+            var(--max-width)
+        );
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    height: 72px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.96
+        );
+
+    border-bottom:
+        1px solid
+        rgba(18, 53, 77, 0.08);
+
+    backdrop-filter: blur(14px);
+
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+.nav-container {
+
+    width:
+        min(
+            calc(100% - 48px),
+            var(--max-width)
+        );
+
+    height: 72px;
+
+    margin-inline: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+
+    padding: 5px 0;
+
+    line-height: 1;
+}
+
+
+.brand-icon {
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+
+.brand-text {
+
+    display: inline-block;
+
+    font-size: 1.08rem;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--navy-deep) 0%,
+            var(--blue) 27%,
+            var(--teal) 52%,
+            var(--amber) 75%,
+            var(--navy-deep) 100%
+        );
+
+    background-size: 250% 100%;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        brandTextShimmer
+        7s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes brandTextShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
     }
-    </script>
 
+    50% {
+        background-position: 100% 50%;
+    }
+}
 
-    <!-- =====================================================
-         STYLESHEET
-    ====================================================== -->
 
-    <link
-        rel="stylesheet"
-        href="style.css?v=20260916-4"
-    >
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-</head>
+.main-nav {
 
+    display: flex;
 
-<body>
+    align-items: center;
 
-    <!-- =====================================================
-         ANIMATED BACKGROUND
-    ====================================================== -->
+    gap: 26px;
+}
 
-    <canvas
-        id="particleCanvas"
-        aria-hidden="true"
-    ></canvas>
 
+.main-nav a {
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    position: relative;
 
-    <header class="site-header">
+    color: #526d7f;
 
-        <div class="nav-container">
+    font-size: 0.82rem;
 
-            <a
-                href="#home"
-                class="brand"
-                aria-label="Victor Akoyo home"
-            >
+    font-weight: 680;
 
-                <img
-                    src="/favicon.png"
-                    alt=""
-                    class="brand-icon"
-                    aria-hidden="true"
-                >
+    transition:
+        color 0.2s ease;
+}
 
-                <span class="brand-text">
-                    Victor Akoyo
-                </span>
 
-            </a>
+.main-nav a::after {
 
+    content: "";
 
-            <button
-                id="mobileMenuButton"
-                class="mobile-menu-button"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mainNav"
-            >
+    position: absolute;
 
-                <span></span>
-                <span></span>
-                <span></span>
+    left: 0;
 
-            </button>
+    bottom: -9px;
 
+    width: 100%;
 
-            <nav
-                id="mainNav"
-                class="main-nav"
-                aria-label="Main navigation"
-            >
+    height: 2px;
 
-                <a href="#impact">
-                    Impact
-                </a>
+    background: var(--action-accent);
 
-                <a href="#expertise">
-                    Expertise
-                </a>
+    transform: scaleX(0);
 
-                <a href="#selected-work">
-                    Selected Work
-                </a>
+    transform-origin: right;
 
-                <a href="#automation">
-                    Automation
-                </a>
+    transition:
+        transform 0.2s ease;
+}
 
-                <a href="#experience">
-                    Experience
-                </a>
 
-                <a href="#contact">
-                    Contact
-                </a>
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--action-accent);
+}
 
-            </nav>
 
-        </div>
+.main-nav a:hover::after,
+.main-nav a.active::after {
 
-    </header>
+    transform: scaleX(1);
 
+    transform-origin: left;
+}
 
-    <main>
 
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
+.mobile-menu-button {
 
-        <section
-            class="hero"
-            id="home"
-        >
+    display: none;
 
-            <div class="container hero-grid">
+    width: 42px;
 
+    height: 42px;
 
-                <div class="hero-content reveal">
+    padding: 8px;
 
-                    <h1>
-                        Building stronger operations.
-                    </h1>
+    border:
+        1px solid var(--border);
 
+    border-radius: 10px;
 
-                    <p class="hero-positioning">
-                        I turn supply chain, quality and operational complexity
-                        into measurable improvement in cost, service and execution.
-                    </p>
+    background: white;
 
+    cursor: pointer;
 
-                    <p class="hero-support">
-                        8+ years across manufacturing, international supply chain,
-                        logistics, quality and business operations - increasingly
-                        using automation and AI to improve execution.
-                    </p>
+    transition:
+        transform 0.22s ease,
+        background-color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
 
 
-                    <div
-                        class="hero-proof"
-                        aria-label="Selected professional impact"
-                    >
+.mobile-menu-button span {
 
-                        <a
-                            href="#work-logistics"
-                            class="hero-proof-item hero-proof-link"
-                            aria-label="View evidence for £520k annual logistics savings"
-                        >
+    display: block;
 
-                            <strong>
-                                £520k
-                            </strong>
+    width: 20px;
 
-                            <span>
-                                Annual logistics savings
-                            </span>
+    height: 2px;
 
-                        </a>
+    margin: 4px auto;
 
+    border-radius: 999px;
 
-                        <a
-                            href="#work-quality"
-                            class="hero-proof-item hero-proof-link"
-                            aria-label="View evidence for returns reduction from 12 percent to 4 percent by CBM"
-                        >
+    background: var(--navy);
+}
 
-                            <strong>
-                                12%→4%
-                            </strong>
 
-                            <span>
-                                Returns by CBM
-                            </span>
+/* =========================================================
+   HERO
+========================================================= */
 
-                        </a>
+.hero {
 
+    position: relative;
 
-                        <a
-                            href="#work-logistics"
-                            class="hero-proof-item hero-proof-link"
-                            aria-label="View supply chain evidence for managing more than 1,000 SKUs"
-                        >
+    z-index: 1;
 
-                            <strong>
-                                1,000+
-                            </strong>
+    min-height:
+        calc(100vh - 72px);
 
-                            <span>
-                                SKUs managed
-                            </span>
+    min-height:
+        calc(100svh - 72px);
 
-                        </a>
+    display: flex;
 
-                    </div>
+    align-items: center;
 
+    padding:
+        44px
+        0
+        52px;
 
-                    <div class="hero-actions hero-actions-refined">
+    overflow: hidden;
 
-                        <a
-                            href="#selected-work"
-                            class="button button-primary"
-                        >
-                            Selected Work
-                        </a>
+    background:
+        radial-gradient(
+            circle at 78% 48%,
+            rgba(22, 116, 168, 0.06),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(22, 140, 133, 0.035),
+            transparent 40%
+        ),
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+}
 
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation"
-                            class="button hero-automation-button"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Automation Projects
-                        </a>
+.hero-grid {
 
+    display: grid;
 
-                        <a
-                            href="Victor_Akoyo_Master_Operations_Supply_Chain_Quality_Technology_CV.pdf"
-                            class="button button-secondary hero-quiet-button"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View CV
-                        </a>
+    grid-template-columns:
+        minmax(0, 1.06fr)
+        minmax(390px, 0.94fr);
 
+    gap: 58px;
 
-                        <a
-                            href="#contact"
-                            class="button button-secondary hero-quiet-button"
-                        >
-                            Contact
-                        </a>
+    align-items: center;
+}
 
-                    </div>
 
-                </div>
+.hero-content {
+    max-width: 680px;
+}
 
 
-                <div class="hero-visual reveal">
+.hero h1 {
 
-                    <div class="portrait-system">
+    max-width: none;
 
+    margin: 0;
 
-                        <span
-                            class="hero-orbit hero-orbit-one"
-                            aria-hidden="true"
-                        ></span>
+    color: var(--hero-heading);
 
-                        <span
-                            class="hero-orbit hero-orbit-two"
-                            aria-hidden="true"
-                        ></span>
+    font-size:
+        clamp(
+            2.25rem,
+            2.65vw,
+            2.95rem
+        );
 
+    line-height: 1.06;
 
-                        <span
-                            class="hero-pulse"
-                            aria-hidden="true"
-                        ></span>
+    letter-spacing: -0.036em;
 
-                        <span
-                            class="hero-pulse pulse-two"
-                            aria-hidden="true"
-                        ></span>
+    font-weight: 740;
 
+    white-space: nowrap;
+}
 
-                        <a
-                            href="#experience"
-                            class="skill-float skill-operations"
-                            aria-label="View Operations experience"
-                        >
-                            <strong>
-                                Operations
-                            </strong>
-                        </a>
 
+.hero-positioning {
 
-                        <a
-                            href="#work-logistics"
-                            class="skill-float skill-supply"
-                            aria-label="View Supply Chain selected work"
-                        >
-                            <strong>
-                                Supply Chain
-                            </strong>
-                        </a>
+    max-width: 650px;
 
+    margin:
+        22px
+        0
+        0;
 
-                        <a
-                            href="#impact"
-                            class="skill-float skill-process"
-                            aria-label="View Operational Excellence impact"
-                        >
-                            <strong>
-                                Operational Excellence
-                            </strong>
-                        </a>
+    color: #4d687a;
 
+    font-size:
+        clamp(
+            1rem,
+            1.15vw,
+            1.07rem
+        );
 
-                        <a
-                            href="#work-quality"
-                            class="skill-float skill-quality"
-                            aria-label="View Quality selected work"
-                        >
-                            <strong>
-                                Quality
-                            </strong>
-                        </a>
+    line-height: 1.58;
 
+    font-weight: 590;
+}
 
-                        <a
-                            href="#work-eos"
-                            class="skill-float skill-eos"
-                            aria-label="View Business Execution selected work"
-                        >
-                            <strong>
-                                Business Execution
-                            </strong>
-                        </a>
 
+.hero-support {
 
-                        <a
-                            href="#automation"
-                            class="skill-float skill-automation"
-                            aria-label="View Automation projects"
-                        >
-                            <strong>
-                                Automation
-                            </strong>
-                        </a>
+    max-width: 660px;
 
+    margin:
+        6px
+        0
+        0;
 
-                        <div class="portrait-ring">
+    color: #7a909e;
 
-                            <div class="portrait-frame">
+    font-size:
+        clamp(
+            0.91rem,
+            1vw,
+            0.97rem
+        );
 
-                                <img
-                                    src="victor-akoyo-portrait.png.jpeg"
-                                    alt="Victor Akoyo - Supply Chain, Quality and Operations Professional"
-                                    class="profile-photo"
-                                >
+    line-height: 1.53;
 
-                            </div>
+    font-weight: 470;
+}
 
-                        </div>
 
-                    </div>
+/* =========================================================
+   HERO METRICS
+========================================================= */
 
+.hero-proof {
 
-                    <div class="hero-visual-meta">
+    width: 100%;
 
-                        <span class="meta-item">
+    max-width: 540px;
 
-                            <svg
-                                class="meta-icon"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
+    display: grid;
 
-                                <path
-                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
-                                />
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
 
-                            </svg>
+    column-gap: 0;
 
-                            <span>
-                                Nairobi, Kenya
-                            </span>
+    margin-top: 44px;
+}
 
-                        </span>
 
+.hero-proof-item {
 
-                        <span class="availability-meta">
+    min-width: 0;
 
-                            <span
-                                class="availability-dot"
-                                aria-hidden="true"
-                            ></span>
+    display: flex;
 
-                            <span>
-                                Open to opportunities
-                            </span>
+    flex-direction: column;
 
-                        </span>
+    align-items: center;
 
-                    </div>
+    justify-content: flex-start;
 
-                </div>
+    padding:
+        0
+        18px;
 
-            </div>
+    text-align: center;
+}
 
-        </section>
 
+.hero-proof-item:first-child {
+    padding-left: 0;
+}
 
-        <!-- =====================================================
-             SELECTED IMPACT
-        ====================================================== -->
 
-        <section
-            id="impact"
-            class="section section-soft"
-        >
+.hero-proof-item:last-child {
+    padding-right: 0;
+}
 
-            <div class="container">
 
-                <div class="section-heading reveal">
+.hero-proof-item + .hero-proof-item {
 
-                    <h2 class="section-title">
-                        Selected Impact
-                    </h2>
+    border-left:
+        1px solid
+        rgba(18, 53, 77, 0.12);
+}
 
-                    <p class="section-tagline">
-                        Evidence over adjectives.
-                    </p>
 
-                </div>
+.hero-proof-item strong {
 
+    display: block;
 
-                <div
-                    id="impactGrid"
-                    class="impact-grid"
-                >
+    width: 100%;
 
+    color: var(--navy);
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="logistics"
-                        aria-haspopup="dialog"
-                    >
+    font-size: 1.36rem;
 
-                        <span class="card-number">
-                            01
-                        </span>
+    line-height: 1;
 
+    font-weight: 790;
 
-                        <div class="metric">
+    letter-spacing: -0.035em;
 
-                            <span>
-                                £
-                            </span>
+    text-align: center;
 
-                            <span
-                                class="counter"
-                                data-start="0"
-                                data-target="520"
-                            >
-                                0
-                            </span>
+    transition:
+        color 0.22s ease;
+}
 
-                            <span>
-                                k
-                            </span>
 
-                        </div>
+.hero-proof-item span {
 
+    display: block;
 
-                        <h3>
-                            Annual logistics savings
-                        </h3>
+    width: 100%;
 
+    margin-top: 7px;
 
-                        <p>
-                            Warehouse, 3PL and final-mile optimisation.
-                        </p>
+    color: #647789;
 
+    font-size: 0.63rem;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    line-height: 1.32;
 
-                    </button>
+    font-weight: 560;
 
+    text-align: center;
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="quality"
-                        aria-haspopup="dialog"
-                    >
+    transition:
+        color 0.22s ease;
+}
 
-                        <span class="card-number">
-                            02
-                        </span>
 
+.hero-proof-link {
 
-                        <div class="metric transition-metric">
+    border-radius: 10px;
 
-                            <span>
-                                12%
-                            </span>
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease;
+}
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
 
-                            <span>
-                                4%
-                            </span>
+@media (hover: hover) and (pointer: fine) {
 
-                        </div>
+    .hero-proof-link:hover {
 
+        transform:
+            translateY(-2px);
 
-                        <h3>
-                            Returns reduction
-                        </h3>
+        background:
+            rgba(
+                63,
+                125,
+                149,
+                0.045
+            );
+    }
 
 
-                        <p>
-                            Supplier quality, packaging, handling
-                            and reverse-logistics improvement.
-                        </p>
+    .hero-proof-link:hover strong {
+        color: var(--action-accent);
+    }
 
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    .hero-proof-link:hover span {
+        color: #4d687a;
+    }
+}
 
-                    </button>
 
+.hero-proof-link:active {
+    transform: scale(0.985);
+}
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="manufacturing"
-                        aria-haspopup="dialog"
-                    >
 
-                        <span class="card-number">
-                            03
-                        </span>
+/* =========================================================
+   HERO CTA
+========================================================= */
 
+.hero-actions-refined {
 
-                        <div class="metric transition-metric">
+    width: 100%;
 
-                            <span>
-                                4%
-                            </span>
+    max-width: 540px;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    display: grid;
 
-                            <span>
-                                2%
-                            </span>
+    grid-template-columns:
+        1.05fr
+        1.27fr
+        0.84fr
+        0.84fr;
 
-                        </div>
+    gap: 8px;
 
+    margin-top: 13px;
+}
 
-                        <h3>
-                            U-bolt rejection reduction
-                        </h3>
 
+.button {
 
-                        <p>
-                            SPC, PFMEA, MSA, process control
-                            and corrective action.
-                        </p>
+    min-height: 43px;
 
+    display: inline-flex;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    align-items: center;
 
-                    </button>
+    justify-content: center;
 
+    padding:
+        0
+        16px;
 
-                    <button
-                        type="button"
-                        class="impact-card reveal"
-                        data-case="complaints"
-                        aria-haspopup="dialog"
-                    >
+    border:
+        1px solid transparent;
 
-                        <span class="card-number">
-                            04
-                        </span>
+    border-radius: 8px;
 
+    font-size: 0.75rem;
 
-                        <div class="metric transition-metric">
+    font-weight: 720;
 
-                            <span>
-                                12%
-                            </span>
+    text-align: center;
 
-                            <span class="metric-arrow">
-                                →
-                            </span>
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
 
-                            <span>
-                                5%
-                            </span>
 
-                        </div>
+.button:hover {
+    transform: translateY(-2px);
+}
 
 
-                        <h3>
-                            Customer complaints reduction
-                        </h3>
+.button-primary {
 
+    color: #ffffff;
 
-                        <p>
-                            Manufacturing-quality controls and
-                            stronger corrective-action discipline.
-                        </p>
+    background: #2f718d;
 
+    border-color: #2f718d;
 
-                        <span class="impact-cta">
-                            Explore case study →
-                        </span>
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(47, 113, 141, 0.17);
+}
 
-                    </button>
 
-                </div>
+.button-primary:hover {
 
-            </div>
+    color: #ffffff;
 
-        </section>
+    background: #285f77;
 
+    border-color: #285f77;
+}
 
-        <!-- =====================================================
-             HOW I CREATE VALUE
-        ====================================================== -->
 
-        <section
-            id="expertise"
-            class="section"
-        >
+.hero-automation-button {
 
-            <div class="container">
+    color: #356a80;
 
-                <div class="section-heading reveal">
+    background:
+        rgba(
+            63,
+            125,
+            149,
+            0.08
+        );
 
-                    <h2 class="section-title">
-                        How I Create Value
-                    </h2>
+    border:
+        1px solid
+        rgba(63, 125, 149, 0.25);
 
-                    <p class="section-tagline">
-                        Operations from problem to execution.
-                    </p>
+    box-shadow: none;
+}
 
-                </div>
 
+.hero-automation-button:hover {
 
-                <div class="value-grid">
+    color: #ffffff;
 
+    background: #568ca0;
 
-                    <article class="value-card value-blue reveal">
+    border-color: #568ca0;
+}
 
-                        <span
-                            class="value-corner"
-                            aria-hidden="true"
-                        >
-                            01
-                        </span>
 
+.button-secondary,
+.hero-quiet-button {
 
-                        <h3>
-                            Operations & Business Operations
-                        </h3>
+    color: var(--navy);
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
 
-                        <p>
-                            Operating cadence, KPI governance,
-                            EOS execution, cross-functional coordination,
-                            SOPs, executive reporting, issue resolution,
-                            service continuity and accountability.
-                        </p>
+    border:
+        1px solid
+        rgba(18, 53, 77, 0.15);
 
-                    </article>
+    box-shadow: none;
+}
 
 
-                    <article class="value-card value-amber reveal">
+.button-secondary:hover,
+.hero-quiet-button:hover {
 
-                        <span
-                            class="value-corner"
-                            aria-hidden="true"
-                        >
-                            02
-                        </span>
+    color: var(--navy);
 
+    background: #f5f8fa;
 
-                        <h3>
-                            Supply Chain & Commercial Operations
-                        </h3>
+    border-color:
+        rgba(18, 53, 77, 0.28);
 
+    box-shadow:
+        0
+        6px
+        15px
+        rgba(13, 53, 82, 0.07);
+}
 
-                        <p>
-                            International sourcing, demand planning,
-                            supplier management, freight, 3PLs,
-                            warehousing, final mile, inventory,
-                            negotiation and commercial cost improvement.
-                        </p>
 
-                    </article>
+.button-teal {
 
+    color: var(--teal-dark);
 
-                    <article class="value-card value-teal reveal">
+    border:
+        1px solid
+        rgba(22, 140, 133, 0.22);
 
-                        <span
-                            class="value-corner"
-                            aria-hidden="true"
-                        >
-                            03
-                        </span>
+    background:
+        rgba(22, 140, 133, 0.07);
+}
 
 
-                        <h3>
-                            Quality & Continuous Improvement
-                        </h3>
+.button-teal:hover {
 
+    color: white;
 
-                        <p>
-                            Supplier and manufacturing quality,
-                            CAPA, root-cause analysis, SPC,
-                            PFMEA, MSA, inspection systems,
-                            5S, product improvement and
-                            customer-issue reduction.
-                        </p>
+    background: var(--teal);
 
-                    </article>
+    border-color: var(--teal);
+}
 
 
-                    <article class="value-card value-violet reveal">
+.hero-actions-refined .button {
 
-                        <span
-                            class="value-corner"
-                            aria-hidden="true"
-                        >
-                            04
-                        </span>
+    width: 100%;
 
+    min-width: 0;
 
-                        <h3>
-                            AI-Enabled Operations & Business Systems
-                        </h3>
+    min-height: 42px;
 
+    padding:
+        0
+        9px;
 
-                        <p>
-                            Workflow automation, Microsoft 365,
-                            AI-assisted reporting, CRM integration,
-                            operational intelligence and practical
-                            use of n8n, Make.com and business APIs.
-                        </p>
+    font-size: 0.69rem;
 
-                    </article>
+    white-space: nowrap;
+}
 
-                </div>
 
-            </div>
+/* =========================================================
+   HERO VISUAL
+========================================================= */
 
-        </section>
+.hero-visual {
 
+    display: flex;
 
-        <!-- =====================================================
-             SELECTED WORK
-        ====================================================== -->
+    flex-direction: column;
 
-        <section
-            id="selected-work"
-            class="section selected-work-section"
-        >
+    align-items: center;
 
-            <div class="container">
+    justify-content: center;
+}
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        Selected Work
-                    </h2>
+.portrait-system {
 
-                    <p class="section-tagline">
-                        Evidence from real operating problems.
-                    </p>
+    position: relative;
 
-                </div>
+    width: 405px;
 
+    height: 405px;
 
-                <article
-                    id="work-china"
-                    class="china-feature reveal case-trigger"
-                    data-case="china"
-                    tabindex="0"
-                    role="button"
-                    aria-haspopup="dialog"
-                >
+    display: flex;
 
-                    <div class="china-feature-images">
+    align-items: center;
 
-                        <div class="china-main-wrapper">
+    justify-content: center;
+}
 
-                            <img
-                                src="images/china/china-vivid-supplier-visit.webp"
-                                alt="Victor Akoyo during a supplier factory visit in China"
-                                loading="lazy"
-                                class="china-main-image"
-                            >
 
-                        </div>
+.portrait-ring {
 
+    position: relative;
 
-                        <div class="china-side-images">
+    z-index: 8;
 
-                            <img
-                                src="images/china/china-product-quality-review.webp"
-                                alt="Outdoor furniture product quality review during a China supplier visit"
-                                loading="lazy"
-                            >
+    width: 174px;
 
-                            <img
-                                src="images/china/china-aluminium-frame-production.webp"
-                                alt="Aluminium outdoor furniture frames during supplier production in China"
-                                loading="lazy"
-                            >
+    height: 174px;
 
-                        </div>
+    padding: 7px;
 
-                    </div>
+    border:
+        1px solid var(--blue-border);
 
+    border-radius: 50%;
 
-                    <div class="china-feature-content">
+    background: white;
 
-                        <div class="work-meta">
+    box-shadow:
+        0 18px 48px
+        rgba(13, 53, 82, 0.14);
+}
 
-                            <span>
-                                International Supplier Development
-                            </span>
 
-                            <span>
-                                China • March 2025
-                            </span>
+.portrait-frame {
 
-                        </div>
+    width: 100%;
 
+    height: 100%;
 
-                        <h3>
-                            Supplier continuity &
-                            manufacturing development
-                        </h3>
+    overflow: hidden;
 
+    border-radius: 50%;
 
-                        <p>
-                            Supported supplier-continuity negotiations,
-                            studied mature supplier operations and helped
-                            formalise quality and process controls at an
-                            early-stage Hunan furniture operation.
-                        </p>
+    background: #dce6f7;
+}
 
 
-                        <div class="tag-row">
+.profile-photo {
 
-                            <span>
-                                Supplier negotiation
-                            </span>
+    width: 100%;
 
-                            <span>
-                                Factory process
-                            </span>
+    height: 100%;
 
-                            <span>
-                                Quality systems
-                            </span>
+    object-fit: cover;
 
-                            <span>
-                                5S
-                            </span>
+    object-position: center 30%;
+}
 
-                        </div>
 
+.hero-orbit,
+.hero-pulse {
 
-                        <span class="work-card-link">
-                            Open China case study ↗
-                        </span>
+    position: absolute;
 
-                    </div>
+    border-radius: 50%;
 
-                </article>
+    pointer-events: none;
+}
 
 
-                <div class="work-grid-secondary">
+.hero-orbit-one {
 
+    width: 260px;
 
-                    <article
-                        id="work-logistics"
-                        class="work-card reveal case-trigger"
-                        data-case="logistics"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    height: 260px;
 
-                        <div class="work-meta">
+    border:
+        1px solid
+        rgba(22, 116, 168, 0.17);
+}
 
-                            <span>
-                                Supply Chain Transformation
-                            </span>
 
-                            <span>
-                                Rattan Direct
-                            </span>
+.hero-orbit-two {
 
-                        </div>
+    width: 338px;
 
+    height: 338px;
 
-                        <h3>
-                            Restructuring warehousing and
-                            final-mile operations
-                        </h3>
+    border:
+        1px dashed
+        rgba(213, 148, 50, 0.20);
+}
 
 
-                        <p>
-                            Reworked logistics economics across storage,
-                            unloading, picking and final-mile delivery,
-                            then led the transition into a more efficient
-                            3PL model.
-                        </p>
+.hero-pulse {
 
+    width: 220px;
 
-                        <div class="work-stat-row">
+    height: 220px;
 
-                            <div>
+    border:
+        1px solid
+        rgba(22, 140, 133, 0.20);
 
-                                <strong>
-                                    ~£520k
-                                </strong>
+    animation:
+        pulseRing
+        5.5s
+        ease-out
+        infinite;
+}
 
-                                <span>
-                                    annual savings
-                                </span>
 
-                            </div>
+.pulse-two {
+    animation-delay: 2.75s;
+}
 
 
-                            <div>
+@keyframes pulseRing {
 
-                                <strong>
-                                    1,000+
-                                </strong>
+    0% {
 
-                                <span>
-                                    SKUs
-                                </span>
+        transform: scale(0.82);
 
-                            </div>
+        opacity: 0;
+    }
 
+    30% {
+        opacity: 0.42;
+    }
 
-                            <div>
+    100% {
 
-                                <strong>
-                                    ~60
-                                </strong>
+        transform: scale(1.55);
 
-                                <span>
-                                    peak containers/month
-                                </span>
+        opacity: 0;
+    }
+}
 
-                            </div>
 
-                        </div>
+/* =========================================================
+   FLOATING CAPABILITY LINKS
+========================================================= */
 
+.skill-float {
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+    position: absolute;
 
-                    </article>
+    z-index: 12;
 
+    min-width: 105px;
 
-                    <article
-                        id="work-eos"
-                        class="work-card reveal case-trigger"
-                        data-case="eos"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    padding:
+        10px
+        13px;
 
-                        <div class="work-meta">
+    text-align: center;
 
-                            <span>
-                                Business Operations
-                            </span>
+    cursor: pointer;
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+    border:
+        1px solid var(--border);
 
-                        </div>
+    border-radius: 13px;
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                        <h3>
-                            Embedding an operating system for execution
-                        </h3>
+    box-shadow:
+        0 13px 30px
+        rgba(13, 53, 82, 0.09);
 
+    animation:
+        floatCard
+        4.8s
+        ease-in-out
+        infinite;
 
-                        <p>
-                            Functioned as the internal EOS Integrator,
-                            translating leadership priorities into
-                            VTO reviews, Rocks, scorecards, Level 10s,
-                            Issues/IDS and follow-through.
-                        </p>
+    transition:
+        scale 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
 
 
-                        <div class="mini-flow">
+.skill-float strong {
 
-                            <span>
-                                Vision
-                            </span>
+    display: block;
 
-                            <b>
-                                →
-                            </b>
+    font-size: 0.67rem;
 
-                            <span>
-                                Rocks
-                            </span>
+    font-weight: 780;
+}
 
-                            <b>
-                                →
-                            </b>
 
-                            <span>
-                                Scorecard
-                            </span>
+.skill-operations strong {
+    color: var(--blue);
+}
 
-                            <b>
-                                →
-                            </b>
+.skill-supply strong {
+    color: #b97916;
+}
 
-                            <span>
-                                IDS
-                            </span>
+.skill-process strong {
+    color: var(--cyan);
+}
 
-                            <b>
-                                →
-                            </b>
+.skill-quality strong {
+    color: var(--teal);
+}
 
-                            <span>
-                                Action
-                            </span>
+.skill-eos strong {
+    color: var(--orange);
+}
 
-                        </div>
+.skill-automation strong {
+    color: var(--violet);
+}
 
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+.skill-operations {
 
-                    </article>
+    top: 22px;
+    left: 150px;
 
+    animation-delay: -0.4s;
+}
 
-                    <article
-                        id="work-quality"
-                        class="work-card reveal case-trigger"
-                        data-case="quality"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
 
-                        <div class="work-meta">
+.skill-supply {
 
-                            <span>
-                                Quality + Product Improvement
-                            </span>
+    top: 108px;
+    left: 4px;
 
-                            <span>
-                                Rattan Direct
-                            </span>
+    animation-delay: -1.2s;
+}
 
-                        </div>
 
+.skill-quality {
 
-                        <h3>
-                            Reducing returns through product
-                            and process improvement
-                        </h3>
+    bottom: 93px;
+    left: 6px;
 
+    animation-delay: -3s;
+}
 
-                        <p>
-                            Connected customer evidence,
-                            supplier quality, packaging, handling,
-                            delivery and product design changes
-                            to reduce returns by cubic volume.
-                        </p>
 
+.skill-process {
 
-                        <div class="single-stat">
+    top: 108px;
+    right: 3px;
 
-                            <strong>
-                                12% → 4%
-                            </strong>
+    animation-delay: -2.1s;
+}
 
-                            <span>
-                                returns by CBM
-                            </span>
 
-                        </div>
+.skill-eos {
 
+    bottom: 93px;
+    right: 5px;
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+    animation-delay: -1.6s;
+}
 
-                    </article>
 
+.skill-automation {
 
-                    <article
-                        id="work-automation"
-                        class="work-card work-card-ai reveal case-trigger"
-                        data-case="automation"
-                        tabindex="0"
-                        role="button"
-                        aria-haspopup="dialog"
-                    >
+    bottom: 9px;
+    left: 147px;
 
-                        <div class="work-meta">
+    animation-delay: -2.6s;
+}
 
-                            <span>
-                                AI-Enabled Operations
-                            </span>
 
-                            <span>
-                                Optimise Outsourcing
-                            </span>
+@keyframes floatCard {
 
-                        </div>
+    0%,
+    100% {
+        translate: 0 -3px;
+    }
 
+    50% {
+        translate: 0 4px;
+    }
+}
 
-                        <h3>
-                            From leadership meeting transcript
-                            to management intelligence
-                        </h3>
 
+@media (hover: hover) and (pointer: fine) {
 
-                        <p>
-                            Built a live workflow that retrieved
-                            leadership meeting information, applied
-                            AI-assisted analysis and returned structured
-                            reporting to Microsoft Teams.
-                        </p>
+    .skill-float:hover {
 
+        scale: 1.035;
 
-                        <div class="mini-flow mini-flow-teal">
+        border-color:
+            rgba(63, 125, 149, 0.32);
 
-                            <span>
-                                SharePoint
-                            </span>
+        background: #ffffff;
 
-                            <b>
-                                →
-                            </b>
+        box-shadow:
+            0 16px 34px
+            rgba(13, 53, 82, 0.13);
+    }
+}
 
-                            <span>
-                                Graph
-                            </span>
 
-                            <b>
-                                →
-                            </b>
+.skill-float:active {
+    scale: 0.975;
+}
 
-                            <span>
-                                AI
-                            </span>
 
-                            <b>
-                                →
-                            </b>
+/* =========================================================
+   HERO META
+========================================================= */
 
-                            <span>
-                                Teams
-                            </span>
+.hero-visual-meta {
 
-                        </div>
+    margin-top: 24px;
 
+    display: flex;
 
-                        <span class="work-card-link">
-                            Open case study ↗
-                        </span>
+    align-items: center;
 
-                    </article>
+    justify-content: center;
 
-                </div>
+    gap: 20px;
 
-            </div>
+    white-space: nowrap;
 
-        </section>
+    color: #617b8c;
 
+    font-size: 0.8rem;
 
-        <!-- =====================================================
-             AUTOMATION
-        ====================================================== -->
+    font-weight: 650;
+}
 
-        <section
-            id="automation"
-            class="section automation-section"
-        >
 
-            <div class="container">
+.meta-item {
 
-                <div class="automation-heading reveal">
+    display: inline-flex;
 
-                    <div>
+    align-items: center;
 
-                        <h2 class="section-title">
-                            AI-Enabled Operations & Automation
-                        </h2>
+    gap: 6px;
+}
 
-                        <p class="section-tagline">
-                            Technology as part of the operating system.
-                        </p>
 
-                    </div>
+.meta-icon {
 
+    width: 15px;
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="button button-teal"
-                    >
-                        View Full GitHub Portfolio
-                    </a>
+    height: 15px;
 
-                </div>
+    flex-shrink: 0;
 
+    fill: currentColor;
 
-                <div class="automation-grid">
+    opacity: 0.78;
+}
 
 
-                    <article class="automation-card reveal">
+.availability-meta {
 
-                        <span class="automation-number">
-                            01
-                        </span>
+    display: inline-flex;
 
+    align-items: center;
 
-                        <div class="automation-icon">
-                            MI
-                        </div>
+    gap: 7px;
 
+    color: var(--teal-dark);
 
-                        <h3>
-                            Executive Meeting Intelligence
-                        </h3>
+    font-weight: 750;
+}
 
 
-                        <p>
-                            Converts recurring leadership meeting
-                            information into structured AI-assisted
-                            reporting using Microsoft 365 retrieval,
-                            workflow state and Teams delivery.
-                        </p>
+.availability-dot {
 
+    width: 7px;
 
-                        <div class="automation-stack">
-                            Make.com • SharePoint • Microsoft Graph •
-                            OpenAI • Teams
-                        </div>
+    height: 7px;
 
+    flex-shrink: 0;
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/02-executive-meeting-intelligence"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+    border-radius: 50%;
 
-                    </article>
+    background: #25ad76;
 
+    animation:
+        availabilityPulse
+        2.2s
+        ease-in-out
+        infinite;
+}
 
-                    <article class="automation-card reveal">
 
-                        <span class="automation-number">
-                            02
-                        </span>
+@keyframes availabilityPulse {
 
+    0%,
+    100% {
 
-                        <div class="automation-icon automation-icon-amber">
-                            OI
-                        </div>
+        box-shadow:
+            0 0 0 0
+            rgba(37, 173, 118, 0.22);
+    }
 
+    50% {
 
-                        <h3>
-                            Operational AI Intelligence
-                        </h3>
+        box-shadow:
+            0 0 0 6px
+            rgba(37, 173, 118, 0);
+    }
+}
 
 
-                        <p>
-                            A two-stage Collector and Publisher system
-                            designed to connect operational problems
-                            with relevant AI developments and produce
-                            a curated weekly intelligence update.
-                        </p>
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
 
+.section {
 
-                        <div class="automation-stack">
-                            Make.com • AI Web Search • Data Store •
-                            AI Toolkit • Teams
-                        </div>
+    position: relative;
 
+    padding:
+        80px
+        0;
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+}
 
-                    </article>
 
+.section-soft {
 
-                    <article class="automation-card reveal">
+    background:
+        rgba(
+            246,
+            249,
+            251,
+            0.92
+        );
+}
 
-                        <span class="automation-number">
-                            03
-                        </span>
 
+#work-china,
+#work-logistics,
+#work-eos,
+#work-quality,
+#work-automation {
 
-                        <div class="automation-icon automation-icon-violet">
-                            VO
-                        </div>
+    scroll-margin-top: 94px;
+}
 
 
-                        <h3>
-                            VORA Personal Operations Assistant
-                        </h3>
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
 
+.section-heading {
 
-                        <p>
-                            A WhatsApp-based assistant combining
-                            text and audio, transcription,
-                            conversational memory, structured context,
-                            controlled tools, commitments, check-ins
-                            and external search.
-                        </p>
+    max-width: 760px;
 
+    margin-bottom: 35px;
+}
 
-                        <div class="automation-stack">
-                            n8n • WhatsApp • Anthropic • Groq •
-                            Structured Tools • Tavily
-                        </div>
 
+.section-title {
 
-                        <a
-                            href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/04-vora-personal-assistant"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View case study →
-                        </a>
+    margin: 0;
 
-                    </article>
+    color: var(--navy);
 
-                </div>
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            2.5rem
+        );
 
+    line-height: 1.12;
 
-                <div class="automation-more reveal">
+    letter-spacing: -0.035em;
 
-                    <strong>
-                        Also documented:
-                    </strong>
+    font-weight: 750;
+}
 
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/01-daily-ai-briefing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Daily AI Briefing
-                    </a>
+.section-tagline {
 
+    margin:
+        9px
+        0
+        0;
 
-                    <span>
-                        •
-                    </span>
+    color: var(--blue);
 
+    font-size:
+        clamp(
+            0.94rem,
+            1.25vw,
+            1.05rem
+        );
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/03-crm-campaign-routing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        CRM Campaign Routing
-                    </a>
+    font-weight: 590;
+}
 
 
-                    <span>
-                        •
-                    </span>
+/* =========================================================
+   SELECTED IMPACT
+========================================================= */
 
+.impact-grid {
 
-                    <a
-                        href="https://github.com/vicakoyo/victor-ai-automation/tree/main/projects/05-it-support-triage"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        IT Support Triage
-                    </a>
+    display: grid;
 
-                </div>
+    grid-template-columns:
+        repeat(4, 1fr);
 
-            </div>
+    gap: 16px;
+}
 
-        </section>
 
+.impact-card {
 
-        <!-- =====================================================
-             EXPERIENCE
-        ====================================================== -->
+    position: relative;
 
-        <section
-            id="experience"
-            class="section"
-        >
+    width: 100%;
 
-            <div class="container">
+    min-height: 255px;
 
-                <div class="section-heading reveal">
+    padding: 24px;
 
-                    <h2 class="section-title">
-                        Experience
-                    </h2>
+    text-align: left;
 
-                    <p class="section-tagline">
-                        Engineering foundation. Quality, supply chain and operations progression.
-                    </p>
+    color: inherit;
 
-                </div>
+    cursor: pointer;
 
+    border:
+        1px solid var(--border);
 
-                <div class="timeline">
+    border-radius: var(--radius);
 
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                    <!-- =================================================
-                         OPTIMISE OUTSOURCING
-                         GROUPED CAREER PROGRESSION
-                    ================================================== -->
+    box-shadow:
+        0 7px 22px
+        rgba(13, 53, 82, 0.035);
 
-                    <article class="timeline-item timeline-item-grouped reveal">
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-                        <div class="timeline-date">
-                            Dec 2022 – Sep 2026
-                        </div>
 
+.impact-card:nth-child(1) {
+    border-top: 3px solid var(--blue);
+}
 
-                        <div class="timeline-content">
+.impact-card:nth-child(2) {
+    border-top: 3px solid var(--teal);
+}
 
-                            <div class="career-group-header">
+.impact-card:nth-child(3) {
+    border-top: 3px solid var(--amber);
+}
 
-                                <h3>
-                                    Optimise Outsourcing
-                                </h3>
+.impact-card:nth-child(4) {
+    border-top: 3px solid var(--violet);
+}
 
-                                <p class="career-group-subtitle">
-                                    Career progression across Rattan Direct
-                                    and the Optimise Core Team
-                                </p>
 
-                            </div>
+.impact-card:hover,
+.impact-card:focus-visible {
 
+    transform:
+        translateY(-4px);
 
-                            <div class="career-progression">
+    border-color:
+        rgba(63, 125, 149, 0.30);
 
+    box-shadow:
+        var(--shadow-hover);
+}
 
-                                <!-- OPERATIONS -->
 
-                                <div class="career-role career-role-current">
+.card-number {
 
-                                    <div class="career-role-meta">
-                                        Oct 2025 – Sep 2026
-                                    </div>
+    display: block;
 
-                                    <h4 class="career-role-title">
-                                        Operations Manager &amp; EOS Integrator
-                                    </h4>
+    margin-bottom: 24px;
 
-                                    <div class="career-role-company">
-                                        Optimise Core Team
-                                    </div>
+    color: var(--blue);
 
-                                    <p>
-                                        Led cross-functional business operations spanning
-                                        EOS execution, KPI governance, finance administration,
-                                        recruitment operations, executive support, business
-                                        systems and workflow improvement.
-                                    </p>
+    font-size: 0.61rem;
 
-                                </div>
+    font-weight: 800;
 
+    letter-spacing: 0.14em;
+}
 
-                                <!-- SUPPLY CHAIN -->
 
-                                <div class="career-role">
+.metric {
 
-                                    <div class="career-role-meta">
-                                        Nov 2023 – Feb 2026
-                                    </div>
+    min-height: 45px;
 
-                                    <h4 class="career-role-title">
-                                        Supply Chain, Quality &amp; Technical Manager
-                                    </h4>
+    display: flex;
 
-                                    <div class="career-role-company">
-                                        Rattan Direct
-                                    </div>
+    align-items: baseline;
 
-                                    <p>
-                                        Led end-to-end supply chain, quality and
-                                        technical-product operations across China-based
-                                        suppliers, 1,000+ SKUs, UK warehousing, freight,
-                                        inventory, last-mile delivery, returns and
-                                        product improvement.
-                                    </p>
+    gap: 2px;
 
-                                </div>
+    color: var(--navy);
 
+    font-size: 2rem;
 
-                                <!-- QUALITY -->
+    font-weight: 760;
 
-                                <div class="career-role">
+    line-height: 1;
 
-                                    <div class="career-role-meta">
-                                        Dec 2022 – Nov 2023
-                                    </div>
+    letter-spacing: -0.04em;
+}
 
-                                    <h4 class="career-role-title">
-                                        Quality Assurance &amp; Technical Lead
-                                    </h4>
 
-                                    <div class="career-role-company">
-                                        Rattan Direct
-                                    </div>
+.transition-metric {
+    gap: 7px;
+}
 
-                                    <p>
-                                        Led supplier quality assurance and technical-product
-                                        activities across China manufacturing, inspection,
-                                        product validation, packaging, inbound quality,
-                                        returns and customer-quality escalations.
-                                    </p>
 
-                                </div>
+.metric-arrow {
+    font-size: 1.1rem;
+}
 
-                            </div>
 
-                        </div>
+.impact-card h3 {
 
-                    </article>
+    margin:
+        15px
+        0
+        8px;
 
+    color: var(--navy);
 
-                    <!-- =================================================
-                         TILE & CARPET CENTRE
-                    ================================================== -->
+    font-size: 0.9rem;
+}
 
-                    <article class="timeline-item reveal">
 
-                        <div class="timeline-date">
-                            2021–2022
-                        </div>
+.impact-card p {
 
+    margin: 0;
 
-                        <div class="timeline-content">
+    color: var(--text);
 
-                            <h3>
-                                Quality Team Lead
-                            </h3>
+    font-size: 0.75rem;
+}
 
-                            <h4>
-                                Tile & Carpet Centre
-                            </h4>
 
-                            <p>
-                                Led manufacturing-quality controls,
-                                inspection, corrective action and complaint
-                                improvement, reducing customer complaints
-                                from approximately 12% to 5% while
-                                maintaining KEBS audit compliance.
-                            </p>
+.impact-cta {
 
-                        </div>
+    display: block;
 
-                    </article>
+    margin-top: 17px;
 
+    color: var(--action-accent);
 
-                    <!-- =================================================
-                         AUTO SPRINGS
-                    ================================================== -->
+    font-size: 0.66rem;
 
-                    <article class="timeline-item reveal">
+    font-weight: 720;
+}
 
-                        <div class="timeline-date">
-                            2020–2021
-                        </div>
 
+/* =========================================================
+   VALUE GRID
+========================================================= */
 
-                        <div class="timeline-content">
+.value-grid {
 
-                            <h3>
-                                Quality Control Engineer
-                            </h3>
+    display: grid;
 
-                            <h4>
-                                Auto Springs East Africa PLC
-                            </h4>
+    grid-template-columns:
+        repeat(2, 1fr);
 
-                            <p>
-                                Automotive manufacturing quality using SPC,
-                                PFMEA, MSA, control plans and corrective
-                                action, including reduction of U-bolt
-                                rejection from approximately 4% to 2%.
-                            </p>
+    gap: 17px;
+}
 
-                        </div>
 
-                    </article>
+.value-card {
 
+    position: relative;
 
-                    <!-- =================================================
-                         COCA-COLA
-                    ================================================== -->
+    min-height: 220px;
 
-                    <article class="timeline-item reveal">
+    padding: 30px;
 
-                        <div class="timeline-date">
-                            2018–2020
-                        </div>
+    overflow: hidden;
 
+    border:
+        1px solid var(--border);
 
-                        <div class="timeline-content">
+    border-radius: var(--radius);
 
-                            <h3>
-                                Electrical Engineer
-                            </h3>
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
 
-                            <h4>
-                                Coca-Cola Beverages Africa
-                            </h4>
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
-                            <p>
-                                FMCG production engineering, preventive
-                                and reactive maintenance, utilities,
-                                SAP PM, troubleshooting, line efficiency
-                                and specialist-vendor overhaul coordination.
-                            </p>
 
-                        </div>
+.value-card::before {
 
-                    </article>
+    content: "";
 
-                </div>
+    position: absolute;
 
-            </div>
+    top: -25px;
 
-        </section>
+    right: -25px;
 
+    width: 105px;
 
-        <!-- =====================================================
-             SYSTEMS
-        ====================================================== -->
+    height: 105px;
 
-        <section
-            id="technology"
-            class="section section-soft"
-        >
+    border-radius: 50%;
 
-            <div class="container">
+    opacity: 0.16;
+}
 
-                <div class="section-heading reveal">
 
-                    <h2 class="section-title">
-                        Systems & Technical Capability
-                    </h2>
+.value-card > * {
 
-                    <p class="section-tagline">
-                        Business systems used to strengthen operations.
-                    </p>
+    position: relative;
 
-                </div>
+    z-index: 1;
+}
 
 
-                <div class="capability-grid">
+.value-blue::before {
+    background: var(--blue);
+}
 
+.value-amber::before {
+    background: var(--amber);
+}
 
-                    <article class="capability-card reveal">
+.value-teal::before {
+    background: var(--teal);
+}
 
-                        <span class="capability-kicker">
-                            Operational Systems
-                        </span>
+.value-violet::before {
+    background: var(--violet);
+}
 
-                        <h3>
-                            Enterprise & business platforms
-                        </h3>
 
-                        <p>
-                            SAP PM, OrderWise, Xero, eDesk,
-                            Sage HR, Microsoft 365,
-                            SharePoint and Teams.
-                        </p>
+.value-corner {
 
-                    </article>
+    position: absolute;
 
+    top: 17px;
 
-                    <article class="capability-card reveal">
+    right: 18px;
 
-                        <span class="capability-kicker">
-                            Analytics & Management Information
-                        </span>
+    z-index: 3;
 
-                        <h3>
-                            Operational visibility
-                        </h3>
+    min-width: 30px;
 
-                        <p>
-                            Excel, practical Power BI,
-                            KPI scorecards, forecasting,
-                            cost analysis, reconciliations
-                            and executive reporting.
-                        </p>
+    text-align: center;
 
-                    </article>
+    font-size: 0.76rem;
 
+    font-weight: 850;
 
-                    <article class="capability-card reveal">
+    letter-spacing: 0.04em;
+}
 
-                        <span class="capability-kicker">
-                            Workflow Automation
-                        </span>
 
-                        <h3>
-                            Practical business automation
-                        </h3>
+.value-blue .value-corner {
+    color: var(--blue-dark);
+}
 
-                        <p>
-                            Make.com, n8n, Power Automate,
-                            Microsoft Graph, webhooks,
-                            OpenAI APIs and structured
-                            workflow design.
-                        </p>
+.value-amber .value-corner {
+    color: #a76609;
+}
 
-                    </article>
+.value-teal .value-corner {
+    color: var(--teal-dark);
+}
 
+.value-violet .value-corner {
+    color: #574da7;
+}
 
-                    <article
-                        class="capability-card capability-card-developing reveal"
-                    >
 
-                        <span class="capability-kicker">
-                            Developing Technical Foundations
-                        </span>
+.value-card:hover {
 
-                        <h3>
-                            Building greater independence
-                        </h3>
+    transform:
+        translateY(-3px);
 
-                        <p>
-                            JSON, REST APIs, authentication/OAuth,
-                            Git/GitHub, Python and more advanced
-                            error-handling patterns.
-                        </p>
+    box-shadow: var(--shadow);
+}
 
-                    </article>
 
-                </div>
+.value-card h3 {
 
-            </div>
+    max-width: 80%;
 
-        </section>
+    margin:
+        46px
+        0
+        9px;
 
+    color: var(--navy);
 
-        <!-- =====================================================
-             EDUCATION
-        ====================================================== -->
+    font-size: 1.04rem;
+}
 
-        <section
-            id="education"
-            class="section"
-        >
 
-            <div class="container">
+.value-card p {
 
-                <div class="section-heading reveal">
+    max-width: 485px;
 
-                    <h2 class="section-title">
-                        Education & Certifications
-                    </h2>
+    margin: 0;
 
-                </div>
+    font-size: 0.79rem;
+}
 
 
-                <div class="education-grid">
+/* =========================================================
+   SELECTED WORK
+========================================================= */
 
+.selected-work-section {
 
-                    <article class="education-card reveal">
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.89
+        );
+}
 
-                        <span class="education-year">
-                            2018
-                        </span>
 
-                        <h3>
-                            BSc Control & Instrumentation
-                        </h3>
+/* =========================================================
+   CHINA FEATURE
+========================================================= */
 
-                        <p>
-                            Jomo Kenyatta University of Agriculture
-                            and Technology
-                        </p>
+.china-feature {
 
-                        <small>
-                            Second Class Honours
-                        </small>
+    display: grid;
 
-                    </article>
+    grid-template-columns:
+        minmax(0, 0.92fr)
+        minmax(0, 1.08fr);
 
+    gap: 28px;
 
-                    <article class="education-card reveal">
+    min-height: 330px;
 
-                        <span class="education-year">
-                            Professional Certifications
-                        </span>
+    padding: 14px;
 
-                        <h3>
-                            Operations, Service & Quality
-                        </h3>
+    margin-bottom: 18px;
 
-                        <p>
-                            ITIL 4 • Scrum • ISO 9001 Internal Auditor
-                        </p>
+    border:
+        1px solid var(--border);
 
-                    </article>
+    border-radius: 19px;
 
-                </div>
+    background: white;
 
-            </div>
+    box-shadow: var(--shadow);
 
-        </section>
+    cursor: pointer;
 
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-        <!-- =====================================================
-             CONTACT
-        ====================================================== -->
 
-        <section
-            id="contact"
-            class="contact-section"
-        >
+.china-feature:hover,
+.china-feature:focus-visible {
 
-            <div class="container">
+    transform:
+        translateY(-4px);
 
-                <div class="contact-heading reveal">
+    border-color:
+        rgba(63, 125, 149, 0.30);
 
-                    <h2>
-                        Let's connect.
-                    </h2>
+    box-shadow: var(--shadow-hover);
+}
 
-                    <p>
-                        For relevant opportunities across Supply Chain,
-                        Quality, Operations, Business Operations,
-                        Process Improvement and AI-enabled Operations,
-                        choose the easiest way to reach me.
-                    </p>
 
-                </div>
+.china-feature-images {
 
+    display: grid;
 
-                <div class="contact-grid">
+    grid-template-columns:
+        1.15fr
+        0.85fr;
 
+    gap: 7px;
 
-                    <a
-                        class="contact-card reveal"
-                        href="mailto:vicakoyo2@gmail.com"
-                    >
+    min-height: 285px;
+}
 
-                        <div class="contact-icon">
-                            ✉
-                        </div>
 
+.china-main-wrapper {
 
-                        <div class="contact-info">
+    width: 100%;
 
-                            <span class="contact-label">
-                                Email
-                            </span>
+    height: 100%;
 
-                            <strong>
-                                vicakoyo2@gmail.com
-                            </strong>
+    overflow: hidden;
 
-                        </div>
+    border-radius: 13px;
 
+    background: #eef3f6;
+}
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+.china-main-image {
 
+    width: 100%;
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://wa.me/254797590490"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+    height: 100%;
 
-                        <div class="contact-icon">
-                            ◉
-                        </div>
+    object-fit: cover;
 
+    border-radius: 13px;
+}
 
-                        <div class="contact-info">
 
-                            <span class="contact-label">
-                                WhatsApp
-                            </span>
+.china-side-images {
 
-                            <strong>
-                                Message Me
-                            </strong>
+    display: grid;
 
-                        </div>
+    grid-template-rows:
+        1fr
+        1fr;
 
+    gap: 7px;
+}
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+.china-side-images img {
 
+    width: 100%;
 
-                    <a
-                        class="contact-card reveal"
-                        href="https://www.linkedin.com/in/victorakoyo/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+    height: 100%;
 
-                        <div class="contact-icon">
-                            in
-                        </div>
+    object-fit: cover;
 
+    border-radius: 12px;
+}
 
-                        <div class="contact-info">
 
-                            <span class="contact-label">
-                                LinkedIn
-                            </span>
+.china-feature-content {
 
-                            <strong>
-                                Connect on LinkedIn
-                            </strong>
+    display: flex;
 
-                        </div>
+    flex-direction: column;
 
+    padding:
+        13px
+        14px
+        11px
+        1px;
+}
 
-                        <span class="contact-arrow">
-                            ↗
-                        </span>
 
-                    </a>
+.work-meta {
 
-                </div>
+    display: flex;
 
-            </div>
+    justify-content: space-between;
 
-        </section>
+    gap: 16px;
 
-    </main>
+    color: var(--muted);
 
+    font-size: 0.57rem;
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    font-weight: 770;
 
-    <footer class="site-footer">
+    letter-spacing: 0.075em;
 
-        <div class="container footer-content">
+    text-transform: uppercase;
+}
 
-            <span>
-                © <span id="currentYear"></span> Victor Akoyo
-            </span>
 
-            <span>
-                Supply Chain • Quality • Operations • AI-Enabled Operations
-            </span>
+.china-feature h3 {
 
-            <a href="#home">
-                Back to top ↑
-            </a>
+    max-width: 450px;
 
-        </div>
+    margin:
+        33px
+        0
+        12px;
 
-    </footer>
+    color: var(--navy);
 
+    font-size: 1.32rem;
 
-    <!-- =====================================================
-         CASE STUDY MODAL
-    ====================================================== -->
+    line-height: 1.24;
+}
 
-    <div
-        id="caseModal"
-        class="case-modal"
-        aria-hidden="true"
-    >
 
-        <div
-            class="case-modal-backdrop"
-            data-close-modal
-        ></div>
+.china-feature-content > p {
 
+    max-width: 470px;
 
-        <section
-            class="case-modal-panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="caseModalTitle"
-            tabindex="-1"
-        >
+    margin: 0;
 
-            <button
-                type="button"
-                class="case-modal-close"
-                aria-label="Close case study"
-                data-close-modal
-            >
-                ×
-            </button>
+    font-size: 0.76rem;
+}
 
 
-            <div
-                class="case-modal-kicker"
-                id="caseModalKicker"
-            ></div>
+.tag-row {
 
+    display: flex;
 
-            <h2 id="caseModalTitle"></h2>
+    flex-wrap: wrap;
 
+    gap: 6px;
 
-            <p
-                class="case-modal-summary"
-                id="caseModalSummary"
-            ></p>
+    margin-top: 18px;
+}
 
 
-            <div
-                id="caseModalMedia"
-                class="case-modal-media"
-                hidden
-            ></div>
+.tag-row span {
 
+    padding:
+        5px
+        9px;
 
-            <div class="case-modal-grid">
+    border:
+        1px solid
+        var(--amber-border);
 
+    border-radius: 999px;
 
-                <div class="case-modal-block">
+    color: #7d5b22;
 
-                    <span>
-                        Context / Problem
-                    </span>
+    background: var(--soft-amber);
 
-                    <p id="caseModalProblem"></p>
+    font-size: 0.58rem;
 
-                </div>
+    font-weight: 670;
+}
 
 
-                <div class="case-modal-block">
+/* =========================================================
+   WORK CARDS
+========================================================= */
 
-                    <span>
-                        Analysis
-                    </span>
+.work-grid-secondary {
 
-                    <p id="caseModalAnalysis"></p>
+    display: grid;
 
-                </div>
+    grid-template-columns:
+        repeat(2, 1fr);
 
+    gap: 18px;
+}
 
-                <div class="case-modal-block">
 
-                    <span>
-                        Action
-                    </span>
+.work-card {
 
-                    <p id="caseModalAction"></p>
+    min-height: 350px;
 
-                </div>
+    display: flex;
 
+    flex-direction: column;
 
-                <div class="case-modal-block">
+    padding: 28px;
 
-                    <span>
-                        Systems / Methods
-                    </span>
+    border:
+        1px solid var(--border);
 
-                    <p id="caseModalTools"></p>
+    border-radius: 18px;
 
-                </div>
+    background: white;
 
+    box-shadow:
+        0 10px 30px
+        rgba(13, 53, 82, 0.045);
 
-                <div class="case-modal-block case-modal-result-block">
+    cursor: pointer;
 
-                    <span>
-                        Result
-                    </span>
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-                    <strong id="caseModalResult"></strong>
 
-                    <p id="caseModalResultDetail"></p>
+.work-card:hover,
+.work-card:focus-visible {
 
-                </div>
+    transform:
+        translateY(-4px);
 
+    border-color:
+        rgba(63, 125, 149, 0.30);
 
-                <div class="case-modal-block">
+    box-shadow:
+        var(--shadow-hover);
+}
 
-                    <span>
-                        What this demonstrates
-                    </span>
 
-                    <p id="caseModalLearning"></p>
+.work-card-ai {
 
-                </div>
+    background:
+        linear-gradient(
+            145deg,
+            white,
+            var(--soft-teal)
+        );
+}
 
-            </div>
 
+.work-card h3 {
 
-            <div class="case-modal-footer">
+    max-width: 480px;
 
-                <button
-                    type="button"
-                    class="button button-secondary"
-                    data-close-modal
-                >
-                    Close
-                </button>
+    margin:
+        30px
+        0
+        12px;
 
+    color: var(--navy);
 
-                <a
-                    href="#contact"
-                    class="button button-primary"
-                    id="caseModalContact"
-                >
-                    Discuss this work
-                </a>
+    font-size: 1.15rem;
 
-            </div>
+    line-height: 1.3;
+}
 
-        </section>
 
-    </div>
+.work-card > p {
 
+    margin: 0;
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    font-size: 0.78rem;
+}
 
-    <script src="script.js?v=20260913-3"></script>
 
-</body>
+.work-stat-row {
 
-</html>
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+
+    margin-top: 26px;
+}
+
+
+.work-stat-row div,
+.single-stat {
+
+    padding: 12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: #fbfdfe;
+}
+
+
+.work-stat-row strong,
+.single-stat strong {
+
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 0.92rem;
+}
+
+
+.work-stat-row span,
+.single-stat span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 0.56rem;
+}
+
+
+.single-stat {
+
+    width: 155px;
+
+    margin-top: 27px;
+}
+
+
+.mini-flow {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 28px;
+}
+
+
+.mini-flow span {
+
+    padding:
+        6px
+        9px;
+
+    border:
+        1px solid var(--amber-border);
+
+    border-radius: 999px;
+
+    color: #7b5a22;
+
+    background: var(--soft-amber);
+
+    font-size: 0.59rem;
+
+    font-weight: 690;
+}
+
+
+.mini-flow b {
+
+    color: var(--muted);
+
+    font-size: 0.63rem;
+}
+
+
+.mini-flow-teal span {
+
+    border-color: var(--teal-border);
+
+    color: var(--teal-dark);
+
+    background: var(--soft-teal);
+}
+
+
+.work-card-link {
+
+    display: block;
+
+    margin-top: auto;
+
+    padding-top: 22px;
+
+    color: var(--blue);
+
+    font-size: 0.67rem;
+
+    font-weight: 740;
+}
+
+
+/* =========================================================
+   AUTOMATION
+========================================================= */
+
+.automation-section {
+
+    background:
+        rgba(
+            246,
+            251,
+            250,
+            0.92
+        );
+}
+
+
+.automation-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 35px;
+
+    margin-bottom: 36px;
+}
+
+
+.automation-heading > div {
+    max-width: 720px;
+}
+
+
+.automation-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+
+.automation-card {
+
+    position: relative;
+
+    min-height: 345px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    border:
+        1px solid var(--teal-border);
+
+    border-radius: 18px;
+
+    background: white;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.automation-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow: var(--shadow);
+}
+
+
+.automation-number {
+
+    position: absolute;
+
+    top: 21px;
+
+    right: 21px;
+
+    color:
+        rgba(
+            18,
+            53,
+            77,
+            0.34
+        );
+
+    font-size: 0.61rem;
+
+    font-weight: 800;
+}
+
+
+.automation-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background: var(--teal);
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+}
+
+
+.automation-icon-amber {
+    background: var(--amber);
+}
+
+
+.automation-icon-violet {
+    background: var(--violet);
+}
+
+
+.automation-card h3 {
+
+    margin:
+        23px
+        0
+        10px;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.automation-card p {
+
+    margin: 0;
+
+    font-size: 0.77rem;
+}
+
+
+.automation-stack {
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 0.61rem;
+}
+
+
+.automation-card a {
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    color: var(--teal-dark);
+
+    font-size: 0.67rem;
+
+    font-weight: 740;
+}
+
+
+.automation-more {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding:
+        17px
+        20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: white;
+
+    font-size: 0.68rem;
+}
+
+
+.automation-more strong {
+    color: var(--navy);
+}
+
+
+.automation-more a {
+
+    color: var(--blue);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EXPERIENCE TIMELINE
+========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    max-width: 970px;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 180px;
+
+    width: 1px;
+
+    background: var(--border);
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        150px
+        1fr;
+
+    gap: 58px;
+
+    padding-bottom: 42px;
+}
+
+
+.timeline-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+
+    left: 175px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(22, 116, 168, 0.08);
+}
+
+
+.timeline-date {
+
+    color: var(--blue);
+
+    font-size: 0.68rem;
+
+    font-weight: 740;
+}
+
+
+.timeline-content h3 {
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.timeline-content h4 {
+
+    margin:
+        3px
+        0
+        0;
+
+    color: var(--blue);
+
+    font-size: 0.73rem;
+}
+
+
+.timeline-content p {
+
+    max-width: 720px;
+
+    margin:
+        9px
+        0
+        0;
+
+    font-size: 0.79rem;
+}
+
+
+/* =========================================================
+   GROUPED OPTIMISE CAREER PROGRESSION
+========================================================= */
+
+.timeline-item-grouped {
+
+    padding-bottom: 52px;
+}
+
+
+.career-group-header {
+
+    margin-bottom: 23px;
+}
+
+
+.career-group-header h3 {
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 1.14rem;
+
+    font-weight: 790;
+}
+
+
+.career-group-header .career-group-subtitle {
+
+    margin:
+        5px
+        0
+        0;
+
+    color: var(--blue);
+
+    font-size: 0.72rem;
+
+    line-height: 1.45;
+
+    font-weight: 650;
+}
+
+
+.career-progression {
+
+    position: relative;
+
+    margin-top: 24px;
+
+    padding-left: 22px;
+
+    border-left:
+        2px solid
+        rgba(22, 116, 168, 0.13);
+}
+
+
+.career-role {
+
+    position: relative;
+
+    padding:
+        0
+        0
+        29px
+        18px;
+}
+
+
+.career-role:last-child {
+    padding-bottom: 0;
+}
+
+
+.career-role::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+
+    left: -27px;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    border:
+        2px solid
+        rgba(22, 116, 168, 0.58);
+}
+
+
+.career-role-current::before {
+
+    background: var(--blue);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(22, 116, 168, 0.08);
+}
+
+
+.career-role-meta {
+
+    margin-bottom: 4px;
+
+    color: var(--muted);
+
+    font-size: 0.61rem;
+
+    font-weight: 720;
+
+    letter-spacing: 0.02em;
+}
+
+
+.timeline-content .career-role-title {
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 0.95rem;
+
+    line-height: 1.35;
+
+    font-weight: 760;
+}
+
+
+.career-role-company {
+
+    margin-top: 3px;
+
+    color: var(--blue);
+
+    font-size: 0.69rem;
+
+    font-weight: 690;
+}
+
+
+.timeline-content .career-role p {
+
+    max-width: 720px;
+
+    margin:
+        8px
+        0
+        0;
+
+    color: var(--text);
+
+    font-size: 0.77rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CAPABILITY
+========================================================= */
+
+.capability-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+.capability-card {
+
+    padding: 27px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    background: white;
+}
+
+
+.capability-card-developing {
+
+    border-color: var(--violet-border);
+
+    background:
+        linear-gradient(
+            145deg,
+            white,
+            var(--soft-violet)
+        );
+}
+
+
+.capability-kicker {
+
+    color: var(--blue);
+
+    font-size: 0.61rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+.capability-card h3 {
+
+    margin:
+        18px
+        0
+        8px;
+
+    color: var(--navy);
+
+    font-size: 0.98rem;
+}
+
+
+.capability-card p {
+
+    margin: 0;
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 17px;
+}
+
+
+.education-card {
+
+    padding: 28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    background: white;
+}
+
+
+.education-year {
+
+    color: var(--blue);
+
+    font-size: 0.61rem;
+
+    font-weight: 780;
+
+    letter-spacing: 0.085em;
+
+    text-transform: uppercase;
+}
+
+
+.education-card h3 {
+
+    margin:
+        22px
+        0
+        7px;
+
+    color: var(--navy);
+
+    font-size: 1rem;
+}
+
+
+.education-card p {
+
+    margin: 0;
+
+    font-size: 0.79rem;
+}
+
+
+.education-card small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 0.66rem;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+
+    position: relative;
+
+    z-index: 1;
+
+    padding:
+        76px
+        0
+        65px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17445f,
+            #0b283b
+        );
+}
+
+
+.contact-heading {
+
+    max-width: 700px;
+
+    margin-bottom: 31px;
+}
+
+
+.contact-heading h2 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            2.45rem
+        );
+}
+
+
+.contact-heading p {
+
+    margin:
+        11px
+        0
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-size: 0.84rem;
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.contact-card {
+
+    min-height: 95px;
+
+    display: grid;
+
+    grid-template-columns:
+        42px
+        1fr
+        auto;
+
+    gap: 14px;
+
+    align-items: center;
+
+    padding: 19px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.17
+        );
+
+    border-radius: 13px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.contact-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255, 255, 255, 0.28);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.085
+        );
+}
+
+
+.contact-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+    color: white;
+
+    font-weight: 800;
+}
+
+
+.contact-label {
+
+    display: block;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.61
+        );
+
+    font-size: 0.55rem;
+
+    font-weight: 770;
+
+    text-transform: uppercase;
+}
+
+
+.contact-info strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: white;
+
+    font-size: 0.77rem;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    padding:
+        21px
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.52
+        );
+
+    background: #071c2a;
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 0.61rem;
+}
+
+
+/* =========================================================
+   CASE STUDY MODAL
+========================================================= */
+
+.case-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 28px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity
+        640ms
+        ease-in-out,
+        visibility
+        0s
+        linear
+        var(--modal-speed);
+}
+
+
+.case-modal.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition-delay:
+        0s,
+        0s;
+}
+
+
+.case-modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    background:
+        rgba(
+            5,
+            25,
+            39,
+            0.66
+        );
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        opacity
+        700ms
+        ease-in-out;
+}
+
+
+.case-modal.open .case-modal-backdrop {
+    opacity: 1;
+}
+
+
+.case-modal-panel {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            960px,
+            100%
+        );
+
+    max-height: 89vh;
+
+    overflow: auto;
+
+    overscroll-behavior: contain;
+
+    padding: 35px;
+
+    opacity: 0;
+
+    transform:
+        translateY(14px)
+        scale(0.94);
+
+    transform-origin:
+        center
+        center;
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 30px 90px
+        rgba(5, 25, 39, 0.24);
+
+    will-change:
+        transform,
+        opacity;
+
+    transition:
+        transform
+        var(--modal-speed)
+        cubic-bezier(0.4, 0, 0.2, 1),
+        opacity
+        650ms
+        ease-in-out;
+}
+
+
+.case-modal.open .case-modal-panel {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.case-modal-close {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.case-modal-close:hover {
+
+    background: #f5f8fa;
+
+    border-color:
+        rgba(18, 53, 77, 0.25);
+
+    transform: scale(1.04);
+}
+
+
+.case-modal-kicker {
+
+    margin-bottom: 10px;
+
+    padding-right: 55px;
+
+    color: var(--blue);
+
+    font-size: 0.66rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+.case-modal-panel h2 {
+
+    margin: 0;
+
+    color: var(--navy-deep);
+
+    font-size:
+        clamp(
+            1.7rem,
+            3vw,
+            2.3rem
+        );
+
+    line-height: 1.13;
+}
+
+
+.case-modal-summary {
+
+    max-width: 790px;
+
+    margin:
+        14px
+        0
+        25px;
+
+    font-size: 0.87rem;
+}
+
+
+.case-modal-media {
+    margin-bottom: 24px;
+}
+
+
+.china-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr
+        0.8fr;
+
+    grid-template-rows:
+        180px
+        180px;
+
+    gap: 8px;
+}
+
+
+.china-gallery figure {
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+}
+
+
+.china-gallery figure:first-child {
+    grid-row: 1 / 3;
+}
+
+
+.china-gallery img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.case-modal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+
+.case-modal-block {
+
+    padding: 18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    background: #fbfdfe;
+}
+
+
+.case-modal-block > span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--blue);
+
+    font-size: 0.59rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+.case-modal-block p {
+
+    margin: 0;
+
+    font-size: 0.77rem;
+}
+
+
+.case-modal-result-block {
+
+    background:
+        linear-gradient(
+            145deg,
+            #17445f,
+            #0b283b
+        );
+}
+
+
+.case-modal-result-block > span,
+.case-modal-result-block p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.69
+        );
+}
+
+
+.case-modal-result-block strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: white;
+
+    font-size: 1.45rem;
+}
+
+
+.case-modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 1;
+
+    transform: none;
+
+    transition:
+        opacity 0.56s ease,
+        transform 0.56s ease;
+}
+
+
+.reveal.reveal-pending {
+
+    opacity: 0;
+
+    transform:
+        translateY(14px);
+}
+
+
+.reveal.reveal-pending.visible {
+
+    opacity: 1;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1040px) {
+
+
+    .main-nav {
+        gap: 18px;
+    }
+
+
+    .main-nav a {
+        font-size: 0.77rem;
+    }
+
+
+    .hero-grid {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            365px;
+
+        gap: 36px;
+    }
+
+
+    .hero h1 {
+
+        white-space: normal;
+
+        font-size:
+            clamp(
+                2.1rem,
+                4vw,
+                2.65rem
+            );
+    }
+
+
+    .portrait-system {
+
+        width: 365px;
+
+        height: 385px;
+    }
+
+
+    .skill-operations {
+        left: 124px;
+    }
+
+
+    .skill-automation {
+        left: 121px;
+    }
+
+
+    .impact-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .automation-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    html {
+        scroll-padding-top: 76px;
+    }
+
+
+    .container,
+    .nav-container {
+
+        width:
+            calc(100% - 30px);
+    }
+
+
+    .site-header,
+    .nav-container {
+        height: 68px;
+    }
+
+
+    .brand {
+        gap: 8px;
+    }
+
+
+    .brand-icon {
+
+        width: 20px;
+
+        height: 20px;
+    }
+
+
+    .brand-text {
+        font-size: 1.02rem;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU BUTTON
+    ===================================================== */
+
+    .mobile-menu-button {
+
+        display: block;
+
+        flex-shrink: 0;
+
+        position: relative;
+
+        width: 42px;
+
+        height: 42px;
+
+        padding: 8px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 10px;
+
+        background: #ffffff;
+
+        cursor: pointer;
+
+        transition:
+            transform 220ms ease,
+            background-color 220ms ease,
+            border-color 220ms ease,
+            box-shadow 220ms ease;
+    }
+
+
+    .mobile-menu-button:active {
+
+        transform:
+            scale(0.92);
+    }
+
+
+    .mobile-menu-button span {
+
+        display: block;
+
+        width: 20px;
+
+        height: 2px;
+
+        margin: 4px auto;
+
+        border-radius: 999px;
+
+        background: var(--navy);
+    }
+
+
+    /* =====================================================
+       SMOOTH MOBILE NAVIGATION
+    ===================================================== */
+
+    .main-nav {
+
+        position: absolute;
+
+        top: 68px;
+
+        left: 15px;
+
+        right: 15px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 8px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 11px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.985
+            );
+
+        box-shadow:
+            0 16px 42px
+            rgba(13, 53, 82, 0.13);
+
+        backdrop-filter:
+            blur(14px);
+
+        -webkit-backdrop-filter:
+            blur(14px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform:
+            translateY(-10px)
+            scale(0.88);
+
+        transform-origin:
+            top right;
+
+        will-change:
+            transform,
+            opacity;
+
+        transition:
+            transform
+            340ms
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity
+            240ms
+            ease,
+
+            visibility
+            0s
+            linear
+            340ms;
+
+        z-index: 1100;
+    }
+
+
+    .main-nav.open {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        transition:
+            transform
+            340ms
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity
+            240ms
+            ease,
+
+            visibility
+            0s
+            linear
+            0s;
+    }
+
+
+    .main-nav a {
+
+        padding:
+            11px
+            10px;
+
+        border-radius: 8px;
+
+        font-size: 0.8rem;
+
+        transition:
+            background-color 180ms ease,
+            color 180ms ease,
+            transform 180ms ease;
+    }
+
+
+    .main-nav a::after {
+        display: none;
+    }
+
+
+    .main-nav a:active {
+
+        transform:
+            scale(0.985);
+
+        background:
+            rgba(
+                63,
+                125,
+                149,
+                0.07
+            );
+    }
+
+
+    /* =====================================================
+       MOBILE HERO
+    ===================================================== */
+
+    .hero {
+
+        height: auto;
+
+        min-height:
+            calc(100svh - 68px);
+
+        display: block;
+
+        padding:
+            28px
+            0
+            40px;
+
+        overflow: hidden;
+
+        background: #ffffff;
+    }
+
+
+    .hero .hero-grid {
+
+        width:
+            calc(100% - 30px);
+
+        max-width: none;
+
+        height: auto;
+
+        min-height: 0;
+
+        margin:
+            0
+            auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        justify-content: flex-start;
+
+        gap: 0;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        text-align: left;
+    }
+
+
+    .hero h1 {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        white-space: normal;
+
+        color: #355c72;
+
+        font-size:
+            clamp(
+                1.52rem,
+                6.5vw,
+                1.82rem
+            );
+
+        line-height: 1.08;
+
+        letter-spacing: -0.04em;
+
+        font-weight: 770;
+
+        text-align: left;
+    }
+
+
+    .hero-positioning,
+    .hero-support {
+
+        width: 100%;
+
+        max-width: none;
+
+        color: #5b7484;
+
+        font-size:
+            clamp(
+                0.82rem,
+                3.45vw,
+                0.90rem
+            );
+
+        line-height: 1.55;
+
+        font-weight: 520;
+
+        letter-spacing: 0;
+
+        text-align: left;
+    }
+
+
+    .hero-positioning {
+
+        margin:
+            16px
+            0
+            0;
+    }
+
+
+    .hero-support {
+        margin: 0;
+    }
+
+
+    .hero-proof {
+
+        width: 100%;
+
+        max-width: none;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        column-gap: 0;
+
+        margin:
+            40px
+            0
+            0;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-item {
+
+        min-width: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        padding:
+            0
+            8px;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-item:first-child {
+        padding-left: 0;
+    }
+
+
+    .hero-proof-item:last-child {
+        padding-right: 0;
+    }
+
+
+    .hero-proof-item + .hero-proof-item {
+
+        border-left:
+            1px solid
+            rgba(
+                100,
+                116,
+                139,
+                0.20
+            );
+    }
+
+
+    .hero-proof-item strong {
+
+        width: 100%;
+
+        margin: 0;
+
+        color: #0f2940;
+
+        font-size:
+            clamp(
+                1rem,
+                4.45vw,
+                1.16rem
+            );
+
+        line-height: 1;
+
+        font-weight: 790;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-item span {
+
+        width: 100%;
+
+        margin-top: 6px;
+
+        color: #647789;
+
+        font-size:
+            clamp(
+                0.49rem,
+                2vw,
+                0.57rem
+            );
+
+        line-height: 1.25;
+
+        font-weight: 560;
+
+        text-align: center;
+    }
+
+
+    .hero-proof-link:active {
+
+        background:
+            rgba(
+                63,
+                125,
+                149,
+                0.055
+            );
+
+        transform:
+            scale(0.985);
+    }
+
+
+    .hero-actions-refined {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin:
+            13px
+            0
+            0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button {
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 31px;
+
+        padding:
+            0
+            7px;
+
+        border-radius: 7px;
+
+        font-size: 0.62rem;
+
+        line-height: 1;
+
+        font-weight: 720;
+
+        white-space: nowrap;
+    }
+
+
+    .hero-actions-refined .button:hover {
+        transform: none;
+    }
+
+
+    .hero-actions-refined .button-primary {
+
+        color: #ffffff;
+
+        background: #568ca0;
+
+        border-color: #568ca0;
+
+        box-shadow:
+            0
+            4px
+            10px
+            rgba(47, 113, 141, 0.11);
+    }
+
+
+    .hero-actions-refined .button-primary:hover,
+    .hero-actions-refined .button-primary:active {
+
+        color: #ffffff;
+
+        background: #4c8195;
+
+        border-color: #4c8195;
+    }
+
+
+    .hero-actions-refined .hero-automation-button {
+
+        color: #356a80;
+
+        background: #eef5f7;
+
+        border-color:
+            rgba(63, 125, 149, 0.26);
+
+        box-shadow: none;
+    }
+
+
+    .hero-actions-refined .hero-automation-button:hover,
+    .hero-actions-refined .hero-automation-button:active {
+
+        color: #315f73;
+
+        background: #e5f0f3;
+
+        border-color:
+            rgba(63, 125, 149, 0.36);
+    }
+
+
+    .hero-actions-refined .hero-quiet-button {
+
+        color: var(--navy);
+
+        background: #ffffff;
+
+        border-color:
+            rgba(18, 53, 77, 0.14);
+
+        box-shadow: none;
+    }
+
+
+    .hero-visual {
+
+        width: 100%;
+
+        min-height: 0;
+
+        margin-top: 22px;
+
+        padding: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+    }
+
+
+    .portrait-system {
+
+        position: relative;
+
+        width:
+            min(
+                calc(100vw - 42px),
+                305px
+            );
+
+        height: 250px;
+
+        margin:
+            0
+            auto;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-shrink: 0;
+    }
+
+
+    .portrait-ring {
+
+        width: 118px;
+
+        height: 118px;
+
+        padding: 5px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .hero-pulse {
+
+        width: 155px;
+
+        height: 155px;
+    }
+
+
+    .skill-float {
+
+        min-width: 78px;
+
+        max-width: 106px;
+
+        padding:
+            6px
+            8px;
+
+        border:
+            1px solid
+            rgba(18, 53, 77, 0.10);
+
+        border-radius: 10px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.95
+            );
+
+        box-shadow:
+            0 7px 19px
+            rgba(13, 53, 82, 0.06);
+
+        animation-duration: 4.8s;
+    }
+
+
+    .skill-float strong {
+
+        display: block;
+
+        white-space: nowrap;
+
+        font-size:
+            clamp(
+                0.5rem,
+                2.05vw,
+                0.59rem
+            );
+
+        line-height: 1.15;
+
+        font-weight: 760;
+    }
+
+
+    .skill-operations {
+
+        top: 2px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    .skill-supply {
+
+        top: 60px;
+
+        left: 3px;
+    }
+
+
+    .skill-process {
+
+        top: 60px;
+
+        right: 3px;
+    }
+
+
+    .skill-quality {
+
+        bottom: 47px;
+
+        left: 3px;
+    }
+
+
+    .skill-eos {
+
+        bottom: 47px;
+
+        right: 3px;
+    }
+
+
+    .skill-automation {
+
+        bottom: 0;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    .hero-visual-meta {
+
+        width: 100%;
+
+        margin-top: 14px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        white-space: nowrap;
+
+        color: #475569;
+
+        font-size:
+            clamp(
+                0.67rem,
+                2.75vw,
+                0.79rem
+            );
+
+        line-height: 1;
+
+        font-weight: 700;
+    }
+
+
+    .meta-item {
+        gap: 5px;
+    }
+
+
+    .meta-icon {
+
+        width: 14px;
+
+        height: 14px;
+    }
+
+
+    .availability-meta {
+        gap: 5px;
+    }
+
+
+    .availability-dot {
+
+        width: 7px;
+
+        height: 7px;
+    }
+
+
+    /* =====================================================
+       MOBILE GENERAL SECTIONS
+    ===================================================== */
+
+    .section {
+
+        padding:
+            62px
+            0;
+    }
+
+
+    .section-heading {
+        margin-bottom: 27px;
+    }
+
+
+    .section-title {
+
+        font-size:
+            clamp(
+                1.72rem,
+                7vw,
+                2.05rem
+            );
+    }
+
+
+    .section-tagline {
+        font-size: 0.91rem;
+    }
+
+
+    .impact-grid,
+    .value-grid,
+    .work-grid-secondary,
+    .capability-grid,
+    .education-grid,
+    .case-modal-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .impact-card {
+
+        min-height: auto;
+
+        padding: 24px;
+    }
+
+
+    .value-card {
+
+        min-height: 205px;
+
+        padding: 25px;
+    }
+
+
+    .value-card::before {
+
+        top: -19px;
+
+        right: -19px;
+
+        width: 80px;
+
+        height: 80px;
+    }
+
+
+    .value-corner {
+
+        top: 13px;
+
+        right: 13px;
+
+        font-size: 0.66rem;
+    }
+
+
+    .value-card h3 {
+
+        max-width: 79%;
+
+        margin-top: 34px;
+
+        font-size: 0.98rem;
+    }
+
+
+    .china-feature {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        padding: 12px;
+
+        overflow: hidden;
+    }
+
+
+    .china-feature-images {
+
+        width: 100%;
+
+        height: 300px;
+
+        min-height: 0;
+
+        display: grid;
+
+        grid-template-columns:
+            1.15fr
+            0.85fr;
+
+        gap: 7px;
+
+        overflow: hidden;
+    }
+
+
+    .china-main-wrapper {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        overflow: hidden;
+    }
+
+
+    .china-main-image {
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+    }
+
+
+    .china-side-images {
+
+        height: 100%;
+
+        min-height: 0;
+
+        display: grid;
+
+        grid-template-rows:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        gap: 7px;
+
+        overflow: hidden;
+    }
+
+
+    .china-side-images img {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-height: 0;
+
+        object-fit: cover;
+    }
+
+
+    .china-feature-content {
+
+        width: 100%;
+
+        padding:
+            8px
+            7px
+            10px;
+
+        background: white;
+    }
+
+
+    .china-feature .work-meta {
+
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+
+    .china-feature h3 {
+
+        margin:
+            18px
+            0
+            10px;
+
+        font-size: 1.2rem;
+    }
+
+
+    .china-feature-content > p {
+
+        color: #475569;
+
+        font-size: 0.78rem;
+
+        line-height: 1.6;
+    }
+
+
+    .work-card {
+        min-height: 320px;
+    }
+
+
+    .automation-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    /* =====================================================
+       MOBILE EXPERIENCE TIMELINE
+    ===================================================== */
+
+    .timeline::before {
+        left: 5px;
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+
+        padding-left: 28px;
+    }
+
+
+    .timeline-item::before {
+        left: 0;
+    }
+
+
+    .timeline-item-grouped {
+        padding-bottom: 48px;
+    }
+
+
+    .career-group-header {
+        margin-bottom: 20px;
+    }
+
+
+    .career-group-header h3 {
+        font-size: 1.05rem;
+    }
+
+
+    .career-group-header .career-group-subtitle {
+
+        font-size: 0.68rem;
+
+        line-height: 1.45;
+    }
+
+
+    .career-progression {
+
+        margin-top: 19px;
+
+        padding-left: 17px;
+    }
+
+
+    .career-role {
+
+        padding-left: 15px;
+
+        padding-bottom: 25px;
+    }
+
+
+    .career-role::before {
+        left: -22px;
+    }
+
+
+    .timeline-content .career-role-title {
+        font-size: 0.91rem;
+    }
+
+
+    .career-role-company {
+        font-size: 0.67rem;
+    }
+
+
+    .timeline-content .career-role p {
+        font-size: 0.76rem;
+    }
+
+
+    .footer-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    /* =====================================================
+       MOBILE MODAL
+    ===================================================== */
+
+    .case-modal {
+
+        padding: 12px;
+
+        align-items: flex-end;
+    }
+
+
+    .case-modal-panel {
+
+        width: 100%;
+
+        max-height: 91svh;
+
+        padding:
+            26px
+            18px
+            20px;
+
+        transform:
+            translateY(16px)
+            scale(0.945);
+
+        transform-origin:
+            center
+            bottom;
+    }
+
+
+    .case-modal.open .case-modal-panel {
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+
+    .china-gallery {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        grid-template-rows:
+            190px
+            130px
+            130px;
+    }
+
+
+    .china-gallery figure:first-child {
+
+        grid-column:
+            1 / 3;
+
+        grid-row: auto;
+    }
+
+
+    .case-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+
+    .case-modal-footer .button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+
+    .hero {
+
+        padding:
+            25px
+            0
+            36px;
+    }
+
+
+    .hero .hero-grid {
+
+        width:
+            calc(100% - 28px);
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                1.48rem,
+                6.35vw,
+                1.68rem
+            );
+    }
+
+
+    .hero-positioning,
+    .hero-support {
+
+        font-size:
+            clamp(
+                0.81rem,
+                3.35vw,
+                0.88rem
+            );
+
+        line-height: 1.53;
+
+        color: #5b7484;
+
+        font-weight: 520;
+    }
+
+
+    .hero-positioning {
+        margin-top: 15px;
+    }
+
+
+    .hero-support {
+        margin-top: 0;
+    }
+
+
+    .hero-proof {
+        margin-top: 38px;
+    }
+
+
+    .hero-proof-item {
+
+        padding:
+            0
+            7px;
+    }
+
+
+    .hero-proof-item strong {
+
+        font-size:
+            clamp(
+                0.98rem,
+                4.35vw,
+                1.1rem
+            );
+    }
+
+
+    .hero-proof-item span {
+
+        margin-top: 5px;
+
+        font-size:
+            clamp(
+                0.48rem,
+                1.95vw,
+                0.55rem
+            );
+    }
+
+
+    .hero-actions-refined {
+
+        width: 100%;
+
+        margin-top: 12px;
+
+        gap: 7px;
+    }
+
+
+    .hero-actions-refined .button {
+
+        min-height: 30px;
+
+        padding:
+            0
+            5px;
+
+        border-radius: 7px;
+
+        font-size: 0.60rem;
+    }
+
+
+    .hero-visual {
+        margin-top: 21px;
+    }
+
+
+    .portrait-system {
+
+        width:
+            min(
+                calc(100vw - 40px),
+                290px
+            );
+
+        height: 240px;
+    }
+
+
+    .portrait-ring {
+
+        width: 114px;
+
+        height: 114px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 175px;
+
+        height: 175px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 224px;
+
+        height: 224px;
+    }
+
+
+    .hero-pulse {
+
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    .skill-float {
+
+        min-width: 75px;
+
+        padding:
+            6px
+            7px;
+    }
+
+
+    .skill-supply {
+
+        top: 57px;
+
+        left: 2px;
+    }
+
+
+    .skill-process {
+
+        top: 57px;
+
+        right: 2px;
+    }
+
+
+    .skill-quality {
+
+        bottom: 45px;
+
+        left: 2px;
+    }
+
+
+    .skill-eos {
+
+        bottom: 45px;
+
+        right: 2px;
+    }
+
+
+    .hero-visual-meta {
+
+        margin-top: 12px;
+
+        gap: 8px;
+
+        font-size:
+            clamp(
+                0.64rem,
+                2.7vw,
+                0.75rem
+            );
+    }
+
+
+    .china-feature-images {
+
+        height: 255px;
+
+        grid-template-columns:
+            1.05fr
+            0.95fr;
+    }
+
+
+    .work-stat-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   VERY NARROW PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+
+    .hero .hero-grid {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .hero h1 {
+        font-size: 1.42rem;
+    }
+
+
+    .hero-positioning,
+    .hero-support {
+        font-size: 0.79rem;
+    }
+
+
+    .hero-actions-refined {
+
+        width: 100%;
+
+        gap: 6px;
+    }
+
+
+    .hero-actions-refined .button {
+
+        min-height: 30px;
+
+        padding:
+            0
+            4px;
+
+        font-size: 0.56rem;
+    }
+
+
+    .hero-proof-item {
+
+        padding:
+            0
+            6px;
+    }
+
+
+    .hero-proof-item strong {
+        font-size: 0.95rem;
+    }
+
+
+    .hero-proof-item span {
+        font-size: 0.46rem;
+    }
+
+
+    .portrait-system {
+
+        width: 270px;
+
+        max-width: 100%;
+
+        height: 230px;
+    }
+
+
+    .portrait-ring {
+
+        width: 108px;
+
+        height: 108px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 166px;
+
+        height: 166px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 214px;
+
+        height: 214px;
+    }
+
+
+    .hero-pulse {
+
+        width: 144px;
+
+        height: 144px;
+    }
+
+
+    .skill-float {
+
+        min-width: 70px;
+
+        padding:
+            5px
+            6px;
+    }
+
+
+    .skill-float strong {
+        font-size: 0.49rem;
+    }
+
+
+    .hero-visual-meta {
+
+        gap: 6px;
+
+        font-size: 0.59rem;
+    }
+
+
+    .meta-icon {
+
+        width: 12px;
+
+        height: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   SHORT MOBILE SCREENS
+========================================================= */
+
+@media
+    (max-width: 768px)
+    and (max-height: 700px) {
+
+
+    .hero {
+
+        min-height:
+            calc(100svh - 68px);
+
+        padding-top: 20px;
+
+        padding-bottom: 30px;
+    }
+
+
+    .hero-positioning {
+
+        margin-top: 12px;
+
+        line-height: 1.48;
+    }
+
+
+    .hero-support {
+        line-height: 1.48;
+    }
+
+
+    .hero-proof {
+        margin-top: 31px;
+    }
+
+
+    .hero-actions-refined {
+        margin-top: 10px;
+    }
+
+
+    .hero-visual {
+        margin-top: 15px;
+    }
+
+
+    .portrait-system {
+
+        width: 270px;
+
+        height: 220px;
+    }
+
+
+    .portrait-ring {
+
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    .hero-orbit-one {
+
+        width: 162px;
+
+        height: 162px;
+    }
+
+
+    .hero-orbit-two {
+
+        width: 208px;
+
+        height: 208px;
+    }
+
+
+    .hero-pulse {
+
+        width: 141px;
+
+        height: 141px;
+    }
+
+
+    .skill-supply,
+    .skill-process {
+        top: 52px;
+    }
+
+
+    .skill-quality,
+    .skill-eos {
+        bottom: 42px;
+    }
+
+
+    .hero-visual-meta {
+        margin-top: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+
+    .reveal,
+    .reveal.reveal-pending {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+    }
+
+
+    #particleCanvas {
+        display: none;
+    }
+
+}
