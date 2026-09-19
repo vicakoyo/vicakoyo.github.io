@@ -667,7 +667,7 @@ const caseStudyData = {
             "The first week was used to observe established supplier practices across factory layout, workstations, manufacturing processes, work instructions, quality checks, health and safety, packaging and logistics. Customer-return evidence and known product issues were also used to compare expected quality with what was being produced.",
 
         action:
-            "Supported Robert Fernandez and sourcing consultant Vincent/Du Wang during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
+            "Supported the MD and sourcing consultant during a face-to-face continuity negotiation with Vivid, explaining the logistics savings and expected cash-flow improvement. At the Hunan operation, created QC sheets, workstation layouts, process-flow documentation, safety rules, inspection checklists, illustrated defect standards, packing standards, 5S/housekeeping guidance and worker instructions. Also advised on weaving retention, critical weld integrity, complete powder-coat coverage and handling of freshly coated frames to prevent finish marks.",
 
         tools:
             "Supplier review, approved samples, customer photographs and complaint evidence, product knowledge, visual inspection, QC documentation, work instructions, 5S, process mapping, packaging standards and factory-floor observation.",
@@ -676,7 +676,7 @@ const caseStudyData = {
             "Supplier production restarted and process controls were strengthened",
 
         resultDetail:
-            "Vivid agreed to resume 2025 production after the negotiation, with aluminium frames already being worked on before the visit ended. The Hunan team adopted the quality and process recommendations.",
+            "Supplier agreed to resume 2025 production after the negotiation, with aluminium frames already being worked on before the visit ended. The Hunan team adopted the quality and process recommendations.",
 
         learning:
             "Demonstrates direct international supplier exposure, business-continuity support, manufacturing-process understanding, quality-at-source thinking and practical early-stage factory-process formalisation.",
