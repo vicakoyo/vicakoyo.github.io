@@ -5442,3 +5442,44 @@ a {
 .employer-link-compact .employer-mark img {width:19px;height:19px}
 .employer-link-compact .employer-monogram {font-size:.46rem}
 @media (max-width:520px) {.employer-link{gap:7px}.employer-mark{width:30px;height:30px;flex-basis:30px}.employer-mark img{width:23px;height:23px}}
+
+
+/* Refined employer brand treatment: one mark per employer, readable on mobile. */
+#experience .employer-link:not(.employer-link-text) .employer-mark {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(18,53,77,.055);
+}
+#experience .employer-link:not(.employer-link-text) .employer-mark img {
+    width: 35px;
+    height: 35px;
+    max-width: 100%;
+    object-fit: contain;
+}
+#experience .employer-link-compact:not(.employer-link-text) .employer-mark {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    padding: 3px;
+}
+#experience .employer-link-compact:not(.employer-link-text) .employer-mark img {
+    width: 25px;
+    height: 25px;
+}
+#experience .employer-link-text {
+    gap: 4px;
+}
+@media (max-width: 520px) {
+    #experience .employer-link:not(.employer-link-text) .employer-mark {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+    #experience .employer-link:not(.employer-link-text) .employer-mark img {
+        width: 31px;
+        height: 31px;
+    }
+}
